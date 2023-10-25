@@ -1,0 +1,255 @@
+# Wolfenstein: Youngblood 1.5
+# BID: 8B40EBBA7244C94A
+
+unsafeCheck: true
+
+15FPS:
+  # rs_force460 (default)
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 0
+  # rs_raiseThreshold = 0.96 * (30/FPS)
+  -
+    type: write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: 1.92
+  # rs_dropThreshold = 0.984 * (30/FPS)
+  -
+    type: write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: 1.968
+  # com_adaptiveTickMaxHz (default)
+  -
+    type: write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: 30
+20FPS:
+  # rs_force460 (default)
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 0
+  # rs_raiseThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: 1.44
+  # rs_dropThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: 1.476
+  # com_adaptiveTickMaxHz (default)
+  -
+    type: write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: 30
+25FPS:
+  # rs_force460
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 0
+  # rs_raiseThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: 1.152
+  # rs_dropThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: 1.1808
+  # com_adaptiveTickMaxHz (default)
+  -
+    type: write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: 30
+30FPS:
+  # rs_force460 (default)
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 0
+  # rs_raiseThreshold (default)
+  -
+    type: write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: 0.96
+  # rs_dropThreshold (default)
+  -
+    type: write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: 0.984
+  # com_adaptiveTickMaxHz (default)
+  -
+    type: write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: 30
+35FPS:
+  # rs_force460
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 1
+  # rs_raiseThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: 0.823
+  # rs_dropThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: 0.843
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: 60
+40FPS:
+  # rs_force460
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 1
+  # rs_raiseThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: 0.72
+  # rs_dropThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: 0.738
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: 60
+45FPS:
+  # rs_force460
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 1
+  # rs_raiseThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: 0.64
+  # rs_dropThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: 0.656
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: 60
+50FPS:
+  # rs_force460
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 1
+  # rs_raiseThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: 0.576
+  # rs_dropThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: 0.59
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: 60
+55FPS:
+  # rs_force460
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 1
+  # rs_raiseThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: 0.5236
+  # rs_dropThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: 0.5367
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: 60
+60FPS:
+  # rs_force460
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 1
+  # rs_raiseThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: 0.48
+  # rs_dropThreshold
+  -
+    type: write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: 0.492
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: 60

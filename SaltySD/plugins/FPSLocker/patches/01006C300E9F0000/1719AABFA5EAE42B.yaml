@@ -1,0 +1,339 @@
+# DRAGON QUEST XI S: Echoes of an Elusive Age - Definitive Edition 1.0.3
+# BID: 1719AABFA5EAE42B
+
+unsafeCheck: true
+
+15FPS:
+  # r.DynamicResolution.MaxTimeBudget = 0.99 * (1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x84ECDD8, 0]
+    value_type: float
+    value: [66, 66]
+  # r.DynamicResolution.MinTimeBudget = 0.9 * (1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x84ECDF0, 0]
+    value_type: float
+    value: [60, 60]
+  # r.DynamicResolution.HeavyTimeBudget = 1.05 * (1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x84ECE08, 0]
+    value_type: float
+    value: [70, 70]
+  # r.DynamicResolution.LightTimeBudget = 0.9 * (1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x84ECE20, 0]
+    value_type: float
+    value: [60, 60]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8501C48, 0]
+    value_type: float
+    value: [15, 15]
+  -
+    type: block
+    what: timing
+20FPS:
+  # r.DynamicResolution.MaxTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDD8, 0]
+    value_type: float
+    value: [49.5, 49.5]
+  # r.DynamicResolution.MinTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDF0, 0]
+    value_type: float
+    value: [45, 45]
+  # r.DynamicResolution.HeavyTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE08, 0]
+    value_type: float
+    value: [52.5, 52.5]
+  # r.DynamicResolution.LightTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE20, 0]
+    value_type: float
+    value: [45, 45]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8501C48, 0]
+    value_type: float
+    value: [20, 20]
+  -
+    type: block
+    what: timing
+25FPS:
+  # r.DynamicResolution.MaxTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDD8, 0]
+    value_type: float
+    value: [39.6, 39.6]
+  # r.DynamicResolution.MinTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDF0, 0]
+    value_type: float
+    value: [36, 36]
+  # r.DynamicResolution.HeavyTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE08, 0]
+    value_type: float
+    value: [42, 42]
+  # r.DynamicResolution.LightTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE20, 0]
+    value_type: float
+    value: [36, 36]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8501C48, 0]
+    value_type: float
+    value: [25, 25]
+  -
+    type: block
+    what: timing
+30FPS:
+  # r.DynamicResolution.MaxTimeBudget (default value)
+  -
+    type: write
+    address: [MAIN, 0x84ECDD8, 0]
+    value_type: float
+    value: [33, 33]
+  # r.DynamicResolution.MinTimeBudget (default value)
+  -
+    type: write
+    address: [MAIN, 0x84ECDF0, 0]
+    value_type: float
+    value: [30, 30]
+  # r.DynamicResolution.HeavyTimeBudget (default value)
+  -
+    type: write
+    address: [MAIN, 0x84ECE08, 0]
+    value_type: float
+    value: [35, 35]
+  # r.DynamicResolution.LightTimeBudget (default value)
+  -
+    type: write
+    address: [MAIN, 0x84ECE20, 0]
+    value_type: float
+    value: [30, 30]
+  # t.MaxFPS (default value)
+  -
+    type: write
+    address: [MAIN, 0x8501C48, 0]
+    value_type: float
+    value: [0, 0]
+35FPS:
+  # r.DynamicResolution.MaxTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDD8, 0]
+    value_type: float
+    value: [28.29, 28.29]
+  # r.DynamicResolution.MinTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDF0, 0]
+    value_type: float
+    value: [25.71, 25.71]
+  # r.DynamicResolution.HeavyTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE08, 0]
+    value_type: float
+    value: [30, 30]
+  # r.DynamicResolution.LightTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE20, 0]
+    value_type: float
+    value: [25.71, 25.71]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8501C48, 0]
+    value_type: float
+    value: [35, 35]
+  -
+    type: block
+    what: timing
+40FPS:
+  # r.DynamicResolution.MaxTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDD8, 0]
+    value_type: float
+    value: [24.75, 24.75]
+  # r.DynamicResolution.MinTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDF0, 0]
+    value_type: float
+    value: [22.5, 22.5]
+  # r.DynamicResolution.HeavyTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE08, 0]
+    value_type: float
+    value: [26.25, 26.25]
+  # r.DynamicResolution.LightTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE20, 0]
+    value_type: float
+    value: [22.5, 22.5]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8501C48, 0]
+    value_type: float
+    value: [40, 40]
+  -
+    type: block
+    what: timing
+45FPS:
+  # r.DynamicResolution.MaxTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDD8, 0]
+    value_type: float
+    value: [22, 22]
+  # r.DynamicResolution.MinTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDF0, 0]
+    value_type: float
+    value: [20, 20]
+  # r.DynamicResolution.HeavyTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE08, 0]
+    value_type: float
+    value: [23.33, 23.33]
+  # r.DynamicResolution.LightTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE20, 0]
+    value_type: float
+    value: [20, 20]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8501C48, 0]
+    value_type: float
+    value: [45, 45]
+  -
+    type: block
+    what: timing
+50FPS:
+  # r.DynamicResolution.MaxTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDD8, 0]
+    value_type: float
+    value: [19.8, 19.8]
+  # r.DynamicResolution.MinTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDF0, 0]
+    value_type: float
+    value: [18, 18]
+  # r.DynamicResolution.HeavyTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE08, 0]
+    value_type: float
+    value: [21, 21]
+  # r.DynamicResolution.LightTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE20, 0]
+    value_type: float
+    value: [18, 18]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8501C48, 0]
+    value_type: float
+    value: [50, 50]
+  -
+    type: block
+    what: timing
+55FPS:
+  # r.DynamicResolution.MaxTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDD8, 0]
+    value_type: float
+    value: [18, 18]
+  # r.DynamicResolution.MinTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDF0, 0]
+    value_type: float
+    value: [16.36, 16.36]
+  # r.DynamicResolution.HeavyTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE08, 0]
+    value_type: float
+    value: [19.09, 19.09]
+  # r.DynamicResolution.LightTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE20, 0]
+    value_type: float
+    value: [16.36, 16.36]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8501C48, 0]
+    value_type: float
+    value: [15, 15]
+  -
+    type: block
+    what: timing
+60FPS:
+  # r.DynamicResolution.MaxTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDD8, 0]
+    value_type: float
+    value: [16.5, 16.5]
+  # r.DynamicResolution.MinTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECDF0, 0]
+    value_type: float
+    value: [15, 15]
+  # r.DynamicResolution.HeavyTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE08, 0]
+    value_type: float
+    value: [17.5, 17.5]
+  # r.DynamicResolution.LightTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x84ECE20, 0]
+    value_type: float
+    value: [15, 15]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8501C48, 0]
+    value_type: float
+    value: [0, 0]

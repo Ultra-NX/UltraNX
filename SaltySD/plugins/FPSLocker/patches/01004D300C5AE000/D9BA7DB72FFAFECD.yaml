@@ -1,0 +1,83 @@
+# Kirby and the Forgotten Land 1.0.0
+# BID: D9BA7DB72FFAFECD
+# Thanks to Hazerou for finding offsets
+# Game speed is tied to framerate, no proper support for anything between 30 and 60. 
+
+unsafeCheck: true
+
+15FPS:
+  # Interval
+  -
+    type: write
+    address: [MAIN, 0xA72628, 0x50]
+    value_type: int32
+    value: 4
+  -
+    type: block
+    what: timing
+20FPS:
+  # Interval
+  -
+    type: write
+    address: [MAIN, 0xA72628, 0x50]
+    value_type: int32
+    value: 3
+  -
+    type: block
+    what: timing
+25FPS:
+  # Interval
+  -
+    type: write
+    address: [MAIN, 0xA72628, 0x50]
+    value_type: int32
+    value: 2
+30FPS:
+  # Interval (default value)
+  -
+    type: write
+    address: [MAIN, 0xA72628, 0x50]
+    value_type: int32
+    value: 2
+35FPS:
+  # Interval
+  -
+    type: write
+    address: [MAIN, 0xA72628, 0x50]
+    value_type: int32
+    value: 1
+40FPS:
+  # Interval
+  -
+    type: write
+    address: [MAIN, 0xA72628, 0x50]
+    value_type: int32
+    value: 1
+45FPS:
+  # Interval
+  -
+    type: write
+    address: [MAIN, 0xA72628, 0x50]
+    value_type: int32
+    value: 1
+50FPS:
+  # Interval
+  -
+    type: write
+    address: [MAIN, 0xA72628, 0x50]
+    value_type: int32
+    value: 1
+55FPS:
+  # Interval
+  -
+    type: write
+    address: [MAIN, 0xA72628, 0x50]
+    value_type: int32
+    value: 1
+60FPS:
+  # Interval
+  -
+    type: write
+    address: [MAIN, 0xA72628, 0x50]
+    value_type: int32
+    value: 1

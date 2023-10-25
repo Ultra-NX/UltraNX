@@ -1,0 +1,136 @@
+# Marvel Ultimate Alliance 3: The Black Order 4.0.1
+# BID: E853C44FDF18B88F
+# Credits to Hazerou for finding offsets
+
+unsafeCheck: true
+
+15FPS:
+  # Internal Vsync (default value)
+  -
+    type: write
+    address: [MAIN, 0x45A7410]
+    value_type: int32
+    value: [2, 2]
+  # Game Speed = FPS
+  -
+    type: write
+    address: [MAIN, 0x45A71F0]
+    value_type: float
+    value: 15
+20FPS:
+  # Internal Vsync (default value)
+  -
+    type: write
+    address: [MAIN, 0x45A7410]
+    value_type: int32
+    value: [2, 2]
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x45A71F0]
+    value_type: float
+    value: 20
+25FPS:
+  # Internal Vsync (default value)
+  -
+    type: write
+    address: [MAIN, 0x45A7410]
+    value_type: int32
+    value: [2, 2]
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x45A71F0]
+    value_type: float
+    value: 25
+30FPS:
+  # Internal Vsync (default value)
+  -
+    type: write
+    address: [MAIN, 0x45A7410]
+    value_type: int32
+    value: [2, 2]
+  # Game Speed (default value)
+  -
+    type: write
+    address: [MAIN, 0x45A71F0]
+    value_type: float
+    value: 30
+35FPS:
+  # Internal Vsync
+  -
+    type: write
+    address: [MAIN, 0x45A7410]
+    value_type: int32
+    value: [1, 1]
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x45A71F0]
+    value_type: float
+    value: 35
+40FPS:
+  # Internal Vsync
+  -
+    type: write
+    address: [MAIN, 0x45A7410]
+    value_type: int32
+    value: [1, 1]
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x45A71F0]
+    value_type: float
+    value: 40
+45FPS:
+  # Internal Vsync
+  -
+    type: write
+    address: [MAIN, 0x45A7410]
+    value_type: int32
+    value: [1, 1]
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x45A71F0]
+    value_type: float
+    value: 45
+50FPS:
+  # Internal Vsync
+  -
+    type: write
+    address: [MAIN, 0x45A7410]
+    value_type: int32
+    value: [1, 1]
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x45A71F0]
+    value_type: float
+    value: 50
+55FPS:
+  # Internal Vsync
+  -
+    type: write
+    address: [MAIN, 0x45A7410]
+    value_type: int32
+    value: [1, 1]
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x45A71F0]
+    value_type: float
+    value: 55
+60FPS:
+  # Internal Vsync
+  -
+    type: write
+    address: [MAIN, 0x45A7410]
+    value_type: int32
+    value: [1, 1]
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x45A71F0]
+    value_type: float
+    value: 60

@@ -1,0 +1,141 @@
+# Hyrule Warriors: Age of Calamity 1.3.0
+# BID: C3CF52BF2B05D731
+# Thanks to iCris4 for finding offsets
+# Some cutscenes speed is hardlocked to 30 FPS, so setting FPS above results in faster speed
+
+unsafeCheck: true
+
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x269E150]
+    value_type: int32
+    value: [15, 2, 15]
+  -
+    type: write
+    address: [MAIN, 0x269E15C]
+    value_type: float
+    value: 15
+  -
+    type: block
+    what: timing
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x269E150]
+    value_type: int32
+    value: [20, 2, 20]
+  -
+    type: write
+    address: [MAIN, 0x269E15C]
+    value_type: float
+    value: 20
+  -
+    type: block
+    what: timing
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x269E150]
+    value_type: int32
+    value: [25, 2, 25]
+  -
+    type: write
+    address: [MAIN, 0x269E15C]
+    value_type: float
+    value: 25
+  -
+    type: block
+    what: timing
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x269E150]
+    value_type: int32
+    value: [30, 2, 30]
+  -
+    type: write
+    address: [MAIN, 0x269E15C]
+    value_type: float
+    value: 30
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x269E150]
+    value_type: int32
+    value: [35, 1, 35]
+  -
+    type: write
+    address: [MAIN, 0x269E15C]
+    value_type: float
+    value: 35
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x269E150]
+    value_type: int32
+    value: [40, 1, 40]
+  -
+    type: write
+    address: [MAIN, 0x269E15C]
+    value_type: float
+    value: 40
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x269E150]
+    value_type: int32
+    value: [45, 1, 45]
+  -
+    type: write
+    address: [MAIN, 0x269E15C]
+    value_type: float
+    value: 45
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x269E150]
+    value_type: int32
+    value: [50, 1, 50]
+  -
+    type: write
+    address: [MAIN, 0x269E15C]
+    value_type: float
+    value: 50
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x269E150]
+    value_type: int32
+    value: [55, 1, 55]
+  -
+    type: write
+    address: [MAIN, 0x269E15C]
+    value_type: float
+    value: 55
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x269E150]
+    value_type: int32
+    value: [60, 1, 60]
+  -
+    type: write
+    address: [MAIN, 0x269E15C]
+    value_type: float
+    value: 60

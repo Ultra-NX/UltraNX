@@ -1,0 +1,99 @@
+# A Hat in Time 1.0.4
+# BID: 746F0D697EEEE2DD
+
+unsafeCheck: true
+
+15FPS:
+  # MaxSmoothedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x2265248, 0x71C]
+    value_type: float
+    value: 15
+  -
+    type: block
+    what: timing
+20FPS:
+  # MaxSmoothedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x2265248, 0x71C]
+    value_type: float
+    value: 20
+  -
+    type: block
+    what: timing
+25FPS:
+  # MaxSmoothedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x2265248, 0x71C]
+    value_type: float
+    value: 25
+  -
+    type: block
+    what: timing
+30FPS:
+  # MaxSmoothedFrameRate (default is 32)
+  -
+    type: write
+    address: [MAIN, 0x2265248, 0x71C]
+    value_type: float
+    value: 30
+35FPS:
+  # MaxSmoothedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x2265248, 0x71C]
+    value_type: float
+    value: 35
+  -
+    type: block
+    what: timing
+40FPS:
+  # MaxSmoothedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x2265248, 0x71C]
+    value_type: float
+    value: 40
+  -
+    type: block
+    what: timing
+45FPS:
+  # MaxSmoothedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x2265248, 0x71C]
+    value_type: float
+    value: 45
+  -
+    type: block
+    what: timing
+50FPS:
+  # MaxSmoothedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x2265248, 0x71C]
+    value_type: float
+    value: 50
+  -
+    type: block
+    what: timing
+55FPS:
+  # MaxSmoothedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x2265248, 0x71C]
+    value_type: float
+    value: 55
+  -
+    type: block
+    what: timing
+60FPS:
+  # MaxSmoothedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x2265248, 0x71C]
+    value_type: float
+    value: 60

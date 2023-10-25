@@ -1,0 +1,159 @@
+# Oceanhorn 2: Knights of the Lost Realm 1.2
+# BID: 9F2F187D1C6E44EC
+
+unsafeCheck: true
+
+15FPS:
+  # r.DynamicRes.FrameTimeBudget = (1000/FPS) cutted to 1 decimal - 1.2
+  -
+    type: write
+    address: [MAIN, 0x51E80D8, 0]
+    value_type: float
+    value: [65.4, 65.4]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x52122E0, 0]
+    value_type: float
+    value: [15, 15]
+  -
+    type: block
+    what: timing
+20FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x51E80D8, 0]
+    value_type: float
+    value: [48.8, 48.8]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x52122E0, 0]
+    value_type: float
+    value: [20, 20]
+  -
+    type: block
+    what: timing
+25FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x51E80D8, 0]
+    value_type: float
+    value: [38.8, 38.8]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x52122E0, 0]
+    value_type: float
+    value: [25, 25]
+  -
+    type: block
+    what: timing
+30FPS:
+  # r.DynamicRes.FrameTimeBudget (default value)
+  -
+    type: write
+    address: [MAIN, 0x51E80D8, 0]
+    value_type: float
+    value: [32.1, 32.1]
+  # t.MaxFPS (default value)
+  -
+    type: write
+    address: [MAIN, 0x52122E0, 0]
+    value_type: float
+    value: [0, 0]
+35FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x51E80D8, 0]
+    value_type: float
+    value: [27.3, 27.3]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x52122E0, 0]
+    value_type: float
+    value: [35, 35]
+  -
+    type: block
+    what: timing
+40FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x51E80D8, 0]
+    value_type: float
+    value: [23.8, 23.8]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x52122E0, 0]
+    value_type: float
+    value: [40, 40]
+  -
+    type: block
+    what: timing
+45FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x51E80D8, 0]
+    value_type: float
+    value: [21, 21]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x52122E0, 0]
+    value_type: float
+    value: [45, 45]
+  -
+    type: block
+    what: timing
+50FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x51E80D8, 0]
+    value_type: float
+    value: [18.8, 18.8]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x52122E0, 0]
+    value_type: float
+    value: [50, 50]
+  -
+    type: block
+    what: timing
+55FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x51E80D8, 0]
+    value_type: float
+    value: [16.9, 16.9]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x52122E0, 0]
+    value_type: float
+    value: [55, 55]
+  -
+    type: block
+    what: timing
+60FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x51E80D8, 0]
+    value_type: float
+    value: [15.4, 15.4]
+  # t.MaxFPS (default value)
+  -
+    type: write
+    address: [MAIN, 0x52122E0, 0]
+    value_type: float
+    value: [0, 0]

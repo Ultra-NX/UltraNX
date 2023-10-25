@@ -1,0 +1,140 @@
+# The Legend of Heroes: Trails of Cold Steel IV 1.0.3
+# BID: 8C93B930348C9787
+# Button polling is 2x more sensitive to holding any button
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Move loading FPS lock time to MAIN+0x3AF0800
+  -
+    type: bytes
+    main_offset: 0x5F02F8
+    value_type: uint32
+    value:
+      - 0x9001A809
+      - 0xB9480129
+  # Default value
+  -
+    type: bytes
+    main_offset: 0x3AF0800
+    value_type: uint32
+    value: 33333333
+  # Write game's loop time as float to MAIN+0x3AF0804
+  -
+    type: bytes
+    main_offset: 0x5F0348
+    value_type: uint32
+    value: 0x17FFFF5B
+  -
+    type: bytes
+    main_offset: 0x5F00B4
+    value_type: uint32
+    value: 
+      - 0xF9000660
+      - 0x1E624004
+      - 0x14000086
+  -
+    type: bytes
+    main_offset: 0x5F02D4
+    value_type: uint32
+    value: 
+      - 0x9001A808
+      - 0xBD080504
+      - 0x1400001C
+  - # Read lowest timing float factor from MAIN+0x3AF0804
+    type: bytes
+    main_offset: 0x65548
+    value_type: uint32
+    value:
+      - 0xF001D448
+      - 0x1E227800
+      - 0xBD480502
+  - # Default value
+    type: bytes
+    main_offset: 0x3AF0804
+    value_type: float
+    value: 0.0333333333
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x3AF0800]
+    value_type: uint32
+    value: 66666666
+  -
+    type: block
+    what: timing
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x3AF0800]
+    value_type: uint32
+    value: 50000000
+  -
+    type: block
+    what: timing
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x3AF0800]
+    value_type: uint32
+    value: 40000000
+  -
+    type: block
+    what: timing
+30FPS:
+  - # default value
+    type: write
+    address: [MAIN, 0x3AF0800]
+    value_type: uint32
+    value: 33333333
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x3AF0800]
+    value_type: uint32
+    value: 28571428
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x3AF0800]
+    value_type: uint32
+    value: 25000000
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x3AF0800]
+    value_type: uint32
+    value: 22222222
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x3AF0800]
+    value_type: uint32
+    value: 20000000
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x3AF0800]
+    value_type: uint32
+    value: 18181818
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x3AF0800]
+    value_type: uint32
+    value: 16666666

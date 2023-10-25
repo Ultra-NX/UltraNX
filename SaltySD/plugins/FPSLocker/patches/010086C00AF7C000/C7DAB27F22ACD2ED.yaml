@@ -1,0 +1,87 @@
+# 妖怪ウォッチ4 ぼくらは同じ空を見上げている 2.2.0
+# BID: C7DAB27F22ACD2ED
+# Game is using double buffer, nvnWindowBuilderSetTextures has hardcoded values.
+# So it's not possible to get stable FPS lock between 30 and 60.
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Change main loop delay from 31.6 ms to 4.2 ms
+  -
+    type: bytes
+    main_offset: 0x950C6C
+    value_type: uint32
+    value: 0xD2A00800
+  -
+    type: bytes
+    main_offset: 0x950C74
+    value_type: uint32
+    value: 0xD2A00800
+  -
+    type: bytes
+    main_offset: 0x950C94
+    value_type: uint32
+    value:
+      - 0xD503201F
+      - 0xD503201F
+15FPS:
+  # DUMMY
+  -
+    type: write
+    address: [MAIN, 0x6AE8500]
+    value_type: uint8
+    value: 0
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x6AE8500]
+    value_type: uint8
+    value: 0
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x6AE8500]
+    value_type: uint8
+    value: 0
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x6AE8500]
+    value_type: uint8
+    value: 0
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x6AE8500]
+    value_type: uint8
+    value: 0
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x6AE8500]
+    value_type: uint8
+    value: 0
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x6AE8500]
+    value_type: uint8
+    value: 0
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x6AE8500]
+    value_type: uint8
+    value: 0
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x6AE8500]
+    value_type: uint8
+    value: 0
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x6AE8500]
+    value_type: uint8
+    value: 0

@@ -1,0 +1,532 @@
+# Crysis 2 Remastered 1.3.0
+# BID: B3967105033ACC08
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect Dynamic Resolution Timings to read always not from .text
+  -
+    type: bytes
+    main_offset: 0x2EE9A90
+    value_type: uint32
+    value: 0x1E204020
+  -
+    type: bytes
+    main_offset: 0x2EE9AA8
+    value_type: uint32
+    value: 0x1E221C42
+# Redirect Dynamic Resolution Timings readings to MAIN+0x453B300
+  -
+    type: bytes
+    main_offset: 0x2EE9A38
+    value_type: uint32
+    value: 0xD000B28B
+  -
+    type: bytes
+    main_offset: 0x2EE9A40
+    value_type: uint32
+    value: 
+      - 0xD000B28C
+      - 0xBD430161
+      - 0xBD430582
+  -
+    type: bytes
+    main_offset: 0x2EE9A50
+    value_type: uint32
+    value: 
+      - 0xD000B28D
+      - 0x910C21AD
+  -
+    type: bytes
+    main_offset: 0x2EE9A7C
+    value_type: uint32
+    value: 
+      - 0xD000B289
+      - 0x910C4129
+      - 0xD000B28B
+      - 0x910C616B
+# Write default values
+  # MAIN + 0x333FAFC
+  -
+    type: bytes
+    main_offset: 0x453B300
+    value_type: float
+    value: 31.5
+  # MAIN + 0x333F844
+  -
+    type: bytes
+    main_offset: 0x453B304
+    value_type: float
+    value: 32.5
+  # MAIN + 0x333E360
+  -
+    type: bytes
+    main_offset: 0x453B308
+    value_type: float
+    value: [33, 35]
+  # MAIN + 0x333E258
+  -
+    type: bytes
+    main_offset: 0x453B310
+    value_type: float
+    value: [32, 33.5]
+  # MAIN + 0x333E9F8
+  -
+    type: bytes
+    main_offset: 0x453B318
+    value_type: float
+    value: [28.75, 29.75]
+15FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x43E0B14]
+    value_type: int32
+    value: 15
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x444A0D8]
+    value_type: float
+    value: 0.033
+  # MAIN + 0x333FAFC
+  -
+    type: write
+    address: [MAIN, 0x453B300]
+    value_type: float
+    value: 63
+  # MAIN + 0x333F844
+  -
+    type: write
+    address: [MAIN, 0x453B304]
+    value_type: float
+    value: 65
+  # MAIN + 0x333E360
+  -
+    type: write
+    address: [MAIN, 0x453B308]
+    value_type: float
+    value: [66, 66]
+  # MAIN + 0x333E258
+  -
+    type: write
+    address: [MAIN, 0x453B310]
+    value_type: float
+    value: [64, 64]
+  # MAIN + 0x333E9F8
+  -
+    type: write
+    address: [MAIN, 0x453B318]
+    value_type: float
+    value: [57.5, 57.5]
+  -
+    type: block
+    what: timing
+20FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x43E0B14]
+    value_type: int32
+    value: 20
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x444A0D8]
+    value_type: float
+    value: 0.033
+  # MAIN + 0x333FAFC
+  -
+    type: write
+    address: [MAIN, 0x453B300]
+    value_type: float
+    value: 47.25
+  # MAIN + 0x333F844
+  -
+    type: write
+    address: [MAIN, 0x453B304]
+    value_type: float
+    value: 48.75
+  # MAIN + 0x333E360
+  -
+    type: write
+    address: [MAIN, 0x453B308]
+    value_type: float
+    value: [49.5, 49.5]
+  # MAIN + 0x333E258
+  -
+    type: write
+    address: [MAIN, 0x453B310]
+    value_type: float
+    value: [48, 48]
+  # MAIN + 0x333E9F8
+  -
+    type: write
+    address: [MAIN, 0x453B318]
+    value_type: float
+    value: [43.125, 43.125]
+  -
+    type: block
+    what: timing
+25FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x43E0B14]
+    value_type: int32
+    value: 25
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x444A0D8]
+    value_type: float
+    value: 0.033
+  # MAIN + 0x333FAFC
+  -
+    type: write
+    address: [MAIN, 0x453B300]
+    value_type: float
+    value: 37.8
+  # MAIN + 0x333F844
+  -
+    type: write
+    address: [MAIN, 0x453B304]
+    value_type: float
+    value: 39
+  # MAIN + 0x333E360
+  -
+    type: write
+    address: [MAIN, 0x453B308]
+    value_type: float
+    value: [39.6, 39.6]
+  # MAIN + 0x333E258
+  -
+    type: write
+    address: [MAIN, 0x453B310]
+    value_type: float
+    value: [38.4, 38.4]
+  # MAIN + 0x333E9F8
+  -
+    type: write
+    address: [MAIN, 0x453B318]
+    value_type: float
+    value: [34.5, 34.5]
+  -
+    type: block
+    what: timing
+30FPS:
+  # sys_MaxFPS (default value)
+  -
+    type: write
+    address: [MAIN, 0x43E0B14]
+    value_type: int32
+    value: 30
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x444A0D8]
+    value_type: float
+    value: 0.033
+  # MAIN + 0x333FAFC (default value)
+  -
+    type: write
+    address: [MAIN, 0x453B300]
+    value_type: float
+    value: 31.5
+  # MAIN + 0x333F844 (default value)
+  -
+    type: write
+    address: [MAIN, 0x453B304]
+    value_type: float
+    value: 32.5
+  # MAIN + 0x333E360 (default value)
+  -
+    type: write
+    address: [MAIN, 0x453B308]
+    value_type: float
+    value: [33, 35]
+  # MAIN + 0x333E258 (default value)
+  -
+    type: write
+    address: [MAIN, 0x453B310]
+    value_type: float
+    value: [32, 33.5]
+  # MAIN + 0x333E9F8 (default value)
+  -
+    type: write
+    address: [MAIN, 0x453B318]
+    value_type: float
+    value: [28.75, 29.75]
+35FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x43E0B14]
+    value_type: int32
+    value: 35
+  # Renderer thread delay
+  -
+    type: write
+    address: [MAIN, 0x444A0D8]
+    value_type: float
+    value: 0.015
+  # MAIN + 0x333FAFC
+  -
+    type: write
+    address: [MAIN, 0x453B300]
+    value_type: float
+    value: 27
+  # MAIN + 0x333F844
+  -
+    type: write
+    address: [MAIN, 0x453B304]
+    value_type: float
+    value: 27.8571
+  # MAIN + 0x333E360
+  -
+    type: write
+    address: [MAIN, 0x453B308]
+    value_type: float
+    value: [28.2857, 28.2857]
+  # MAIN + 0x333E258
+  -
+    type: write
+    address: [MAIN, 0x453B310]
+    value_type: float
+    value: [27.4286, 27.4286]
+  # MAIN + 0x333E9F8
+  -
+    type: write
+    address: [MAIN, 0x453B318]
+    value_type: float
+    value: [24.6429, 24.6429]
+  -
+    type: block
+    what: timing
+40FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x43E0B14]
+    value_type: int32
+    value: 40
+  # Renderer thread delay
+  -
+    type: write
+    address: [MAIN, 0x444A0D8]
+    value_type: float
+    value: 0.015
+  # MAIN + 0x333FAFC
+  -
+    type: write
+    address: [MAIN, 0x453B300]
+    value_type: float
+    value: 23.625
+  # MAIN + 0x333F844
+  -
+    type: write
+    address: [MAIN, 0x453B304]
+    value_type: float
+    value: 24.375
+  # MAIN + 0x333E360
+  -
+    type: write
+    address: [MAIN, 0x453B308]
+    value_type: float
+    value: [24.75, 24.75]
+  # MAIN + 0x333E258
+  -
+    type: write
+    address: [MAIN, 0x453B310]
+    value_type: float
+    value: [24, 24]
+  # MAIN + 0x333E9F8
+  -
+    type: write
+    address: [MAIN, 0x453B318]
+    value_type: float
+    value: [21.5625, 21.5625]
+  -
+    type: block
+    what: timing
+45FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x43E0B14]
+    value_type: int32
+    value: 45
+  # Renderer thread delay
+  -
+    type: write
+    address: [MAIN, 0x444A0D8]
+    value_type: float
+    value: 0.015
+  # MAIN + 0x333FAFC
+  -
+    type: write
+    address: [MAIN, 0x453B300]
+    value_type: float
+    value: 21
+  # MAIN + 0x333F844
+  -
+    type: write
+    address: [MAIN, 0x453B304]
+    value_type: float
+    value: 21.6667
+  # MAIN + 0x333E360
+  -
+    type: write
+    address: [MAIN, 0x453B308]
+    value_type: float
+    value: [22, 22]
+  # MAIN + 0x333E258
+  -
+    type: write
+    address: [MAIN, 0x453B310]
+    value_type: float
+    value: [21.3333, 21.3333]
+  # MAIN + 0x333E9F8
+  -
+    type: write
+    address: [MAIN, 0x453B318]
+    value_type: float
+    value: [19.1667, 19.1667]
+  -
+    type: block
+    what: timing
+50FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x43E0B14]
+    value_type: int32
+    value: 50
+  # Renderer thread delay
+  -
+    type: write
+    address: [MAIN, 0x444A0D8]
+    value_type: float
+    value: 0.015
+  # MAIN + 0x333FAFC
+  -
+    type: write
+    address: [MAIN, 0x453B300]
+    value_type: float
+    value: 18.9
+  # MAIN + 0x333F844
+  -
+    type: write
+    address: [MAIN, 0x453B304]
+    value_type: float
+    value: 19.5
+  # MAIN + 0x333E360
+  -
+    type: write
+    address: [MAIN, 0x453B308]
+    value_type: float
+    value: [19.8, 19.8]
+  # MAIN + 0x333E258
+  -
+    type: write
+    address: [MAIN, 0x453B310]
+    value_type: float
+    value: [19.2, 19.2]
+  # MAIN + 0x333E9F8
+  -
+    type: write
+    address: [MAIN, 0x453B318]
+    value_type: float
+    value: [17.25, 17.25]
+  -
+    type: block
+    what: timing
+55FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x43E0B14]
+    value_type: int32
+    value: 55
+  # Renderer thread delay
+  -
+    type: write
+    address: [MAIN, 0x444A0D8]
+    value_type: float
+    value: 0.015
+  # MAIN + 0x333FAFC
+  -
+    type: write
+    address: [MAIN, 0x453B300]
+    value_type: float
+    value: 17.1818
+  # MAIN + 0x333F844
+  -
+    type: write
+    address: [MAIN, 0x453B304]
+    value_type: float
+    value: 17.7273
+  # MAIN + 0x333E360
+  -
+    type: write
+    address: [MAIN, 0x453B308]
+    value_type: float
+    value: [18, 18]
+  # MAIN + 0x333E258
+  -
+    type: write
+    address: [MAIN, 0x453B310]
+    value_type: float
+    value: [17.4545, 17.4545]
+  # MAIN + 0x333E9F8
+  -
+    type: write
+    address: [MAIN, 0x453B318]
+    value_type: float
+    value: [15.6818, 15.6818]
+  -
+    type: block
+    what: timing
+60FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x43E0B14]
+    value_type: int32
+    value: 60
+  # Renderer thread delay
+  -
+    type: write
+    address: [MAIN, 0x444A0D8]
+    value_type: float
+    value: 0.015
+  # MAIN + 0x333FAFC
+  -
+    type: write
+    address: [MAIN, 0x453B300]
+    value_type: float
+    value: 15
+  # MAIN + 0x333F844
+  -
+    type: write
+    address: [MAIN, 0x453B304]
+    value_type: float
+    value: 15.5
+  # MAIN + 0x333E360
+  -
+    type: write
+    address: [MAIN, 0x453B308]
+    value_type: float
+    value: [16.5, 16.5]
+  # MAIN + 0x333E258
+  -
+    type: write
+    address: [MAIN, 0x453B310]
+    value_type: float
+    value: [16, 16]
+  # MAIN + 0x333E9F8
+  -
+    type: write
+    address: [MAIN, 0x453B318]
+    value_type: float
+    value: [14.375, 14.375]

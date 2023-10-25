@@ -1,0 +1,75 @@
+# art of rally 1.1.6
+# BID: 116535367286904C
+
+unsafeCheck: true
+
+15FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F43270, 0xB8, 4]
+    value_type: float
+    value: 15
+20FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F43270, 0xB8, 4]
+    value_type: float
+    value: 20
+25FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F43270, 0xB8, 4]
+    value_type: float
+    value: 25
+30FPS:
+  # DynamicResolutionManager_TypeInfo (default value)
+  -
+    type: write
+    address: [MAIN, 0x5F43270, 0xB8, 4]
+    value_type: float
+    value: 30
+35FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F43270, 0xB8, 4]
+    value_type: float
+    value: 36
+40FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F43270, 0xB8, 4]
+    value_type: float
+    value: 41
+45FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F43270, 0xB8, 4]
+    value_type: float
+    value: 46
+50FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F43270, 0xB8, 4]
+    value_type: float
+    value: 51
+55FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F43270, 0xB8, 4]
+    value_type: float
+    value: 56
+60FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F43270, 0xB8, 4]
+    value_type: float
+    value: 61

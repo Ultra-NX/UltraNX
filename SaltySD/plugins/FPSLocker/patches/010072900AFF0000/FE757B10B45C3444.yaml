@@ -1,0 +1,183 @@
+# Gear.Club Unlimited 2
+# BID: FE757B10B45C3444
+
+unsafeCheck: true
+
+MASTER_WRITE:
+# Edit Eden.Graphics.IGraphicsQualityProfile::set_VSyncCount to get interval from MAIN + 0x5FBAF20
+# If not edited, light is flickering at > 30 FPS
+  -
+    type: bytes
+    main_offset: 0x14B4990
+    value_type: uint32
+    value: 
+      - 0xD0025821
+      - 0xB94F2021
+      - 0xB9005401
+      - 0xD65F03C0
+# Edit UnityEngine.QualitySettings::set_vSyncCount to get interval from MAIN + 0x5FBAF20
+# If not edited, light is flickering at > 30 FPS
+  -
+    type: bytes
+    main_offset: 0x1B46EE4
+    value_type: uint32
+    value: 
+      - 0x900223A0
+      - 0xB94F2000
+      - 0xA9427BFD
+      - 0xA9414FF4
+      - 0x9100C3FF
+      - 0xD61F0020
+# Edit Eden.Graphics.GraphicsQualityManager::SetTargetFrameRate to get interval from MAIN + 0x5FBAF20
+# If not edited, it locks to 30 FPS
+  -
+    type: bytes
+    main_offset: 0x14AB578
+    value_type: uint32
+    value: 0x947E69DC
+  -
+    type: bytes
+    main_offset: 0x3445CE8
+    value_type: uint32
+    value:
+      - 0xB0015BA1
+      - 0xB94F2021
+      - 0x2A0103F3
+      - 0xD65F03C0
+# Edit Eden.Graphics.DynamicResolutionScaler::UpdateScaling to get DR target timing from MAIN + 0x5FBAF28
+# If not edited, performance is much worse at > 30 FPS
+  -
+    type: bytes
+    main_offset: 0x14988BC
+    value_type: uint32
+    value: 0x947EB50F
+  -
+    type: bytes
+    main_offset: 0x3445CF8
+    value_type: uint32
+    value:
+      - 0xB0015BA0
+      - 0xBD4F2800
+      - 0xD65F03C0
+# Default values
+  -
+    type: bytes
+    main_offset: 0x5FBAF20
+    value_type: uint32
+    value: 2
+  -
+    type: bytes
+    main_offset: 0x5FBAF28
+    value_type: float
+    value: 33
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x5FBAF20]
+    value_type: uint32
+    value: 4
+  -
+    type: write
+    address: [MAIN, 0x5FBAF28]
+    value_type: float
+    value: 16.5
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x5FBAF20]
+    value_type: uint32
+    value: 3
+  -
+    type: write
+    address: [MAIN, 0x5FBAF28]
+    value_type: float
+    value: 22
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x5FBAF20]
+    value_type: uint32
+    value: 2
+  -
+    type: write
+    address: [MAIN, 0x5FBAF28]
+    value_type: float
+    value: 27.5
+30FPS:
+  - # Default in races
+    type: write
+    address: [MAIN, 0x5FBAF20]
+    value_type: uint32
+    value: 2
+  -
+    type: write
+    address: [MAIN, 0x5FBAF28]
+    value_type: float
+    value: 33
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x5FBAF20]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x5FBAF28]
+    value_type: float
+    value: 38.5
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x5FBAF20]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x5FBAF28]
+    value_type: float
+    value: 44
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x5FBAF20]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x5FBAF28]
+    value_type: float
+    value: 49.5
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x5FBAF20]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x5FBAF28]
+    value_type: float
+    value: 55
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x5FBAF20]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x5FBAF28]
+    value_type: float
+    value: 60.5
+60FPS:
+  # Default for menus
+  -
+    type: write
+    address: [MAIN, 0x5FBAF20]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x5FBAF28]
+    value_type: float
+    value: 66

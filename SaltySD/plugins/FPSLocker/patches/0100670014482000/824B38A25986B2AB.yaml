@@ -1,0 +1,84 @@
+# Assassin's Creed: The Ezio Collection - Assassin's Creed 2 1.3
+# BID: 824B38A25986B2AB
+# Scenes exclusively 2D are tied to framerate, so at 60 FPS they are 2x faster. 
+
+unsafeCheck: true
+
+MASTER_WRITE:
+# Patch code to multiply last frametime by float scale factor stored in MAIN+0x3B4D800
+# To match it to Dynamic Resolution calculations
+  -
+    type: bytes
+    main_offset: 0xB40638
+    value_type: uint32
+    value:
+      - 0xB0018069
+      - 0xBD480120
+      - 0x1E200909
+      - 0xD503201F
+# Write default dynamic resolution timing factor
+  -
+    type: bytes
+    main_offset: 0x3B4D800
+    value_type: float
+    value: 1
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x3B4D800]
+    value_type: float
+    value: 0.5
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x3B4D800]
+    value_type: float
+    value: 0.6666666666
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x3B4D800]
+    value_type: float
+    value: 0.8333333333
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x3B4D800]
+    value_type: float
+    value: 1
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x3B4D800]
+    value_type: float
+    value: 1.1666666666
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x3B4D800]
+    value_type: float
+    value: 1.3333333333
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x3B4D800]
+    value_type: float
+    value: 1.5
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x3B4D800]
+    value_type: float
+    value: 1.6666666666
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x3B4D800]
+    value_type: float
+    value: 1.8333333333
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x3B4D800]
+    value_type: float
+    value: 2

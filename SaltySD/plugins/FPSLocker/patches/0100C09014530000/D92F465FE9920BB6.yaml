@@ -1,0 +1,91 @@
+# Boomerang X 1.0.2
+# BID: D92F465FE9920BB6
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Patch `DynamicResolution.Settings$$get_TargetFPS` to redirect reading targetFPS to unused .bss region [MAIN, 0x5E9AFF0]
+  -
+    type: bytes
+    main_offset: 0x3821020
+    value_type: int32
+    value: 
+      - 0xB00133C0
+      - 0xBD4FF000
+      - 0xD65F03C0
+  # Write default value of `DynamicResolution.Settings$$get_TargetFPS` to redirected address
+  -
+    type: bytes
+    main_offset: 0x5E9AFF0
+    value_type: float
+    value: 28
+15FPS:
+  # DynamicResolution.Settings$$get_TargetFPS
+  -
+    type: write
+    address: [MAIN, 0x5E9AFF0]
+    value_type: float
+    value: 15
+20FPS:
+  # DynamicResolution.Settings$$get_TargetFPS
+  -
+    type: write
+    address: [MAIN, 0x5E9AFF0]
+    value_type: float
+    value: 20
+25FPS:
+  # DynamicResolution.Settings$$get_TargetFPS
+  -
+    type: write
+    address: [MAIN, 0x5E9AFF0]
+    value_type: float
+    value: 25
+30FPS:
+  # DynamicResolution.Settings$$get_TargetFPS (default is 28)
+  -
+    type: write
+    address: [MAIN, 0x5E9AFF0]
+    value_type: float
+    value: 30
+35FPS:
+  # DynamicResolution.Settings$$get_TargetFPS
+  -
+    type: write
+    address: [MAIN, 0x5E9AFF0]
+    value_type: float
+    value: 35
+40FPS:
+  # DynamicResolution.Settings$$get_TargetFPS
+  -
+    type: write
+    address: [MAIN, 0x5E9AFF0]
+    value_type: float
+    value: 40
+45FPS:
+  # DynamicResolution.Settings$$get_TargetFPS
+  -
+    type: write
+    address: [MAIN, 0x5E9AFF0]
+    value_type: float
+    value: 45
+50FPS:
+  # DynamicResolution.Settings$$get_TargetFPS
+  -
+    type: write
+    address: [MAIN, 0x5E9AFF0]
+    value_type: float
+    value: 50
+55FPS:
+  # DynamicResolution.Settings$$get_TargetFPS
+  -
+    type: write
+    address: [MAIN, 0x5E9AFF0]
+    value_type: float
+    value: 55
+60FPS:
+  # DynamicResolution.Settings$$get_TargetFPS
+  -
+    type: write
+    address: [MAIN, 0x5E9AFF0]
+    value_type: float
+    value: 60

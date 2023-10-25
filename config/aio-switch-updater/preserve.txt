@@ -1,0 +1,5 @@
+/switch/DBI/
+/bootloader/nyx.ini
+/config/tesla/
+/config/ultrapaw/
+/atmosphere/config/system_settings.ini

@@ -1,0 +1,339 @@
+# Remnant: From The Ashes 1.0.1
+# BID: 49CF6B0B0A62F9E2
+
+unsafeCheck: false
+
+15FPS:
+  # r.DynamicRes.MaxGPUTime ((1000/FPS) * 0.93)
+  -
+    type: write
+    address: [MAIN, 0x7E23AF0, 0]
+    value_type: float
+    value: [62, 62]
+  # r.DynamicRes.MinGPUTime ((1000/FPS) * 0.87)
+  -
+    type: write
+    address: [MAIN, 0x7E23B08, 0]
+    value_type: float
+    value: [58, 58]
+  # r.DynamicRes.MaxGPUTimeStill ((1000/FPS) * 0.945)
+  -
+    type: write
+    address: [MAIN, 0x7E23B20, 0]
+    value_type: float
+    value: [63, 63]
+  # r.DynamicRes.MinGPUTimeStill ((1000/FPS) * 0.93)
+  -
+    type: write
+    address: [MAIN, 0x7E23B38, 0]
+    value_type: float
+    value: [62, 62]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E46698, 0]
+    value_type: float
+    value: [15, 15]
+  -
+    type: block
+    what: timing
+20FPS:
+  # r.DynamicRes.MaxGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23AF0, 0]
+    value_type: float
+    value: [46.5, 46.5]
+  # r.DynamicRes.MinGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23B08, 0]
+    value_type: float
+    value: [43.5, 43.5]
+  # r.DynamicRes.MaxGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B20, 0]
+    value_type: float
+    value: [47.25, 47.25]
+  # r.DynamicRes.MinGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B38, 0]
+    value_type: float
+    value: [46.25, 46.25]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E46698, 0]
+    value_type: float
+    value: [20, 20]
+  -
+    type: block
+    what: timing
+25FPS:
+  # r.DynamicRes.MaxGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23AF0, 0]
+    value_type: float
+    value: [37.2, 37.2]
+  # r.DynamicRes.MinGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23B08, 0]
+    value_type: float
+    value: [34.2, 34.2]
+  # r.DynamicRes.MaxGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B20, 0]
+    value_type: float
+    value: [37.8, 37.8]
+  # r.DynamicRes.MinGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B38, 0]
+    value_type: float
+    value: [37.2, 37.2]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E46698, 0]
+    value_type: float
+    value: [25, 25]
+  -
+    type: block
+    what: timing
+30FPS:
+  # r.DynamicRes.MaxGPUTime (default value)
+  -
+    type: write
+    address: [MAIN, 0x7E23AF0, 0]
+    value_type: float
+    value: [31, 31]
+  # r.DynamicRes.MinGPUTime (default value)
+  -
+    type: write
+    address: [MAIN, 0x7E23B08, 0]
+    value_type: float
+    value: [29, 29]
+  # r.DynamicRes.MaxGPUTimeStill (default value)
+  -
+    type: write
+    address: [MAIN, 0x7E23B20, 0]
+    value_type: float
+    value: [31.5, 31.5]
+  # r.DynamicRes.MinGPUTimeStill (default value)
+  -
+    type: write
+    address: [MAIN, 0x7E23B38, 0]
+    value_type: float
+    value: [31, 31]
+  # t.MaxFPS (default value)
+  -
+    type: write
+    address: [MAIN, 0x7E46698, 0]
+    value_type: float
+    value: [0, 0]
+35FPS:
+  # r.DynamicRes.MaxGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23AF0, 0]
+    value_type: float
+    value: [26.57, 26.57]
+  # r.DynamicRes.MinGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23B08, 0]
+    value_type: float
+    value: [24.85, 24.85]
+  # r.DynamicRes.MaxGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B20, 0]
+    value_type: float
+    value: [27, 27]
+  # r.DynamicRes.MinGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B38, 0]
+    value_type: float
+    value: [26.57, 26.57]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E46698, 0]
+    value_type: float
+    value: [35, 35]
+  -
+    type: block
+    what: timing
+40FPS:
+  # r.DynamicRes.MaxGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23AF0, 0]
+    value_type: float
+    value: [23.25, 23.25]
+  # r.DynamicRes.MinGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23B08, 0]
+    value_type: float
+    value: [21.75, 21.75]
+  # r.DynamicRes.MaxGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B20, 0]
+    value_type: float
+    value: [23.625, 23.625]
+  # r.DynamicRes.MinGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B38, 0]
+    value_type: float
+    value: [23.25, 23.25]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E46698, 0]
+    value_type: float
+    value: [40, 40]
+  -
+    type: block
+    what: timing
+45FPS:
+  # r.DynamicRes.MaxGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23AF0, 0]
+    value_type: float
+    value: [20.66, 20.66]
+  # r.DynamicRes.MinGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23B08, 0]
+    value_type: float
+    value: [19.33, 19.33]
+  # r.DynamicRes.MaxGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B20, 0]
+    value_type: float
+    value: [21, 21]
+  # r.DynamicRes.MinGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B38, 0]
+    value_type: float
+    value: [20.66, 20.66]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E46698, 0]
+    value_type: float
+    value: [45, 45]
+  -
+    type: block
+    what: timing
+50FPS:
+  # r.DynamicRes.MaxGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23AF0, 0]
+    value_type: float
+    value: [18.6, 18.6]
+  # r.DynamicRes.MinGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23B08, 0]
+    value_type: float
+    value: [17.4, 17.4]
+  # r.DynamicRes.MaxGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B20, 0]
+    value_type: float
+    value: [18.9, 18.9]
+  # r.DynamicRes.MinGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B38, 0]
+    value_type: float
+    value: [18.6, 18.6]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E46698, 0]
+    value_type: float
+    value: [50, 50]
+  -
+    type: block
+    what: timing
+55FPS:
+  # r.DynamicRes.MaxGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23AF0, 0]
+    value_type: float
+    value: [16.9, 16.9]
+  # r.DynamicRes.MinGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23B08, 0]
+    value_type: float
+    value: [15.81, 15.81]
+  # r.DynamicRes.MaxGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B20, 0]
+    value_type: float
+    value: [17.18, 17.18]
+  # r.DynamicRes.MinGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B38, 0]
+    value_type: float
+    value: [16.9, 16.9]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E46698, 0]
+    value_type: float
+    value: [55, 55]
+  -
+    type: block
+    what: timing
+60FPS:
+  # r.DynamicRes.MaxGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23AF0, 0]
+    value_type: float
+    value: [15.5, 15.5]
+  # r.DynamicRes.MinGPUTime
+  -
+    type: write
+    address: [MAIN, 0x7E23B08, 0]
+    value_type: float
+    value: [14.5, 14.5]
+  # r.DynamicRes.MaxGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B20, 0]
+    value_type: float
+    value: [15.75, 15.75]
+  # r.DynamicRes.MinGPUTimeStill
+  -
+    type: write
+    address: [MAIN, 0x7E23B38, 0]
+    value_type: float
+    value: [15.5, 15.5]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E46698, 0]
+    value_type: float
+    value: [0, 0]

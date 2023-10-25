@@ -1,0 +1,70 @@
+# Clive 'N' Wrench 1.0.6
+# BID: FE211DBFAD6EA549
+
+unsafeCheck: false
+
+15FPS:
+  # Dynamic Resolution GPU Frame Timing target in ms = 0.9 * (1000/FPS)
+  # It was derived by hooking `PSH.DynamicResolutionManager$$ScaleResolutionToAchieveFrameRate` before its first use
+  # at instruction `LDR d1, [x8, #0x18]`
+  # Then Edizon-SE's Pointer Search was used to find reliable offset chain
+  -
+    type: write
+    address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    value_type: double
+    value: 60
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    value_type: double
+    value: 45
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    value_type: double
+    value: 36
+30FPS:
+  # Default
+  -
+    type: write
+    address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    value_type: double
+    value: 30
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    value_type: double
+    value: 25.71
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    value_type: double
+    value: 22.5
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    value_type: double
+    value: 20
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    value_type: double
+    value: 18
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    value_type: double
+    value: 16.3636
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    value_type: double
+    value: 15

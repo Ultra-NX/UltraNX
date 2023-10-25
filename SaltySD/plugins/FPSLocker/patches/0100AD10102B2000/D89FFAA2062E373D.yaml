@@ -1,0 +1,75 @@
+# BioShock Remastered 1.0.2
+# BID: D89FFAA2062E373D
+
+unsafeCheck: true
+
+15FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x29B4BA0, 0]
+    value_type: float
+    value: 15
+20FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x29B4BA0, 0]
+    value_type: float
+    value: 20
+25FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x29B4BA0, 0]
+    value_type: float
+    value: 25
+30FPS:
+  # Dynamic resolution FPS factor (default)
+  -
+    type: write
+    address: [MAIN, 0x29B4BA0, 0]
+    value_type: float
+    value: 30
+35FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x29B4BA0, 0]
+    value_type: float
+    value: 35
+40FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x29B4BA0, 0]
+    value_type: float
+    value: 40
+45FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x29B4BA0, 0]
+    value_type: float
+    value: 45
+50FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x29B4BA0, 0]
+    value_type: float
+    value: 50
+55FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x29B4BA0, 0]
+    value_type: float
+    value: 55
+60FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x29B4BA0, 0]
+    value_type: float
+    value: 60

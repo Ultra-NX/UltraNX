@@ -1,0 +1,192 @@
+# Persona 5 Scramble 1.0.3
+# BID: 737E56D43D2C0B38
+
+unsafeCheck: true
+
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x1D15228]
+    value_type: int32
+    value: [15, 2]
+  -
+    type: write
+    address: [MAIN, 0x1D28CB8]
+    value_type: float
+    value: 15
+  -
+    type: write
+    address: [MAIN, 0x2A88DC0]
+    value_type: int32
+    value: 1
+  -
+    type: block
+    what: timing
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x1D15228]
+    value_type: int32
+    value: [20, 2]
+  -
+    type: write
+    address: [MAIN, 0x1D28CB8]
+    value_type: float
+    value: 20
+  -
+    type: write
+    address: [MAIN, 0x2A88DC0]
+    value_type: int32
+    value: 1
+  -
+    type: block
+    what: timing
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x1D15228]
+    value_type: int32
+    value: [25, 2]
+  -
+    type: write
+    address: [MAIN, 0x1D28CB8]
+    value_type: float
+    value: 25
+  -
+    type: write
+    address: [MAIN, 0x2A88DC0]
+    value_type: int32
+    value: 1
+  -
+    type: block
+    what: timing
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x1D15228]
+    value_type: int32
+    value: [30, 2]
+  -
+    type: write
+    address: [MAIN, 0x1D28CB8]
+    value_type: float
+    value: 30
+  -
+    type: write
+    address: [MAIN, 0x2A88DC0]
+    value_type: int32
+    value: 1
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x1D15228]
+    value_type: int32
+    value: [35, 1]
+  -
+    type: write
+    address: [MAIN, 0x1D28CB8]
+    value_type: float
+    value: 35
+  -
+    type: write
+    address: [MAIN, 0x2A88DC0]
+    value_type: int32
+    value: 0
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x1D15228]
+    value_type: int32
+    value: [40, 1]
+  -
+    type: write
+    address: [MAIN, 0x1D28CB8]
+    value_type: float
+    value: 40
+  -
+    type: write
+    address: [MAIN, 0x2A88DC0]
+    value_type: int32
+    value: 0
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x1D15228]
+    value_type: int32
+    value: [45, 1]
+  -
+    type: write
+    address: [MAIN, 0x1D28CB8]
+    value_type: float
+    value: 45
+  -
+    type: write
+    address: [MAIN, 0x2A88DC0]
+    value_type: int32
+    value: 0
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x1D15228]
+    value_type: int32
+    value: [50, 1]
+  -
+    type: write
+    address: [MAIN, 0x1D28CB8]
+    value_type: float
+    value: 50
+  -
+    type: write
+    address: [MAIN, 0x2A88DC0]
+    value_type: int32
+    value: 0
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x1D15228]
+    value_type: int32
+    value: [55, 1]
+  -
+    type: write
+    address: [MAIN, 0x1D28CB8]
+    value_type: float
+    value: 55
+  -
+    type: write
+    address: [MAIN, 0x2A88DC0]
+    value_type: int32
+    value: 0
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x1D15228]
+    value_type: int32
+    value: [60, 1]
+  -
+    type: write
+    address: [MAIN, 0x1D28CB8]
+    value_type: float
+    value: 60
+  -
+    type: write
+    address: [MAIN, 0x2A88DC0]
+    value_type: int32
+    value: 0
+  -
+    type: block
+    what: timing

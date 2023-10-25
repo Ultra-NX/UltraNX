@@ -1,0 +1,102 @@
+# Eiyuden Chronicle: Rising 1.02
+# BID: 39DC785D9073C22B
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect DynamicResolution$$LowerResSW Max Target in MS to MAIN+0x3BE1200
+  -
+    type: bytes
+    main_offset: 0x2426988
+    value_type: uint32
+    value: 
+      - 0x14000043
+  -
+    type: bytes
+    main_offset: 0x2426A94
+    value_type: uint32
+    value: 
+      - 0xF000BDD3
+      - 0xFD410261
+      - 0x17FFFFBC
+  # Redirect DynamicResolution$$LowerResSW Min Target in MS to MAIN+0x3BE1208
+  -
+    type: bytes
+    main_offset: 0x24269F4
+    value_type: uint32
+    value: 
+      - 0x1400012C
+  -
+    type: bytes
+    main_offset: 0x2426EA4
+    value_type: uint32
+    value: 
+      - 0xF000BDC8
+      - 0xFD410501
+      - 0x17FFFED3
+  # Write default values
+  -
+    type: bytes
+    main_offset: 0x3BE1200
+    value_type: double
+    value: [31, 29]
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x3BE1200]
+    value_type: double
+    value: [62, 58]
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x3BE1200]
+    value_type: double
+    value: [46.5, 43.5]
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x3BE1200]
+    value_type: double
+    value: [37.2, 34.8]
+30FPS:
+  - # Default values
+    type: write
+    address: [MAIN, 0x3BE1200]
+    value_type: double
+    value: [31, 29]
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x3BE1200]
+    value_type: double
+    value: [26.5714, 24.8571]
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x3BE1200]
+    value_type: double
+    value: [23.25, 21.75]
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x3BE1200]
+    value_type: double
+    value: [20.666666, 19.333333]
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x3BE1200]
+    value_type: double
+    value: [18.6, 17.4]
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x3BE1200]
+    value_type: double
+    value: [16.90909, 15.818181]
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x3BE1200]
+    value_type: double
+    value: [15.5, 14.5]

@@ -1,0 +1,143 @@
+# The Legend of Heroes: Trails of Cold Steel III 1.0.1
+# BID: 134EC3D8BE75126F
+# Button polling is 2x more sensitive to holding any button at 60 FPS
+# Fishing timer is decreasing 2x faster at 60 FPS
+# Bike is turning 2x faster at 60 FPS
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Move loading FPS lock time to MAIN+0x2B31200
+  -
+    type: bytes
+    main_offset: 0x511818
+    value_type: uint32
+    value:
+      - 0x90013109
+      - 0xB9420129
+  # Default value
+  -
+    type: bytes
+    main_offset: 0x2B31200
+    value_type: uint32
+    value: 33333333
+  # Write game's loop time as float to MAIN+0x2B31204
+  -
+    type: bytes
+    main_offset: 0x511884
+    value_type: uint32
+    value:
+      - 0x17FFFFDC
+  -
+    type: bytes
+    main_offset: 0x5117F4
+    value_type: uint32
+    value:
+      - 0xFD001100
+      - 0x1E624004
+      - 0x140000A2
+  -
+    type: bytes
+    main_offset: 0x511A84
+    value_type: uint32
+    value:
+      - 0x90013108
+      - 0xBD020504
+      - 0x17FFFF7F
+  - # Read lowest timing float factor from MAIN+0x2B31204
+    type: bytes
+    main_offset: 0x5E5EC
+    value_type: uint32
+    value:
+      - 0xF0015688
+      - 0x1E227821
+      - 0xBD420502
+  - # Default value
+    type: bytes
+    main_offset: 0x2B31204
+    value_type: float
+    value: 0.0333333333
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B31200]
+    value_type: uint32
+    value: 66666666
+  -
+    type: block
+    what: timing
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B31200]
+    value_type: uint32
+    value: 50000000
+  -
+    type: block
+    what: timing
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B31200]
+    value_type: uint32
+    value: 40000000
+  -
+    type: block
+    what: timing
+30FPS:
+  - # default value
+    type: write
+    address: [MAIN, 0x2B31200]
+    value_type: uint32
+    value: 33333333
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B31200]
+    value_type: uint32
+    value: 28571428
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B31200]
+    value_type: uint32
+    value: 25000000
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B31200]
+    value_type: uint32
+    value: 22222222
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B31200]
+    value_type: uint32
+    value: 20000000
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B31200]
+    value_type: uint32
+    value: 18181818
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B31200]
+    value_type: uint32
+    value: 16666666

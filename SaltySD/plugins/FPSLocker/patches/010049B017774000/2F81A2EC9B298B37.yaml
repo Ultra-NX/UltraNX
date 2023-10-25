@@ -1,0 +1,164 @@
+# DRAGON QUEST TREASURES 1.0.1
+# BID: 2F81A2EC9B298B37
+
+unsafeCheck: true
+
+15FPS:
+  # Disable bUseFixedFrameRate to untie game speed from framerate and unlock FPS
+  -
+    type: write
+    address: [MAIN, 0x7E110D8, 0x7C0]
+    value_type: uint32
+    # Default is 0x47, bUseFixedFrameRate |= 0x40 
+    # By writing 7 we are making sure that other flags are maintained: 
+    # bAllowMultiThreadedAnimationUpdate |= 4
+    # bOptimizeAnimBlueprintMemberVariableAccess |= 2
+    # bCanBlueprintsTickByDefault |= 1
+    value: 7
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E119A8, 0]
+    value_type: float
+    value: [15, 15]
+  -
+    type: block
+    what: timing
+20FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x7E110D8, 0x7C0]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E119A8, 0]
+    value_type: float
+    value: [20, 20]
+  -
+    type: block
+    what: timing
+25FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x7E110D8, 0x7C0]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E119A8, 0]
+    value_type: float
+    value: [25, 25]
+  -
+    type: block
+    what: timing
+30FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x7E110D8, 0x7C0]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS (default value is 30)
+  -
+    type: write
+    address: [MAIN, 0x7E119A8, 0]
+    value_type: float
+    value: [0, 0]
+35FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x7E110D8, 0x7C0]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E119A8, 0]
+    value_type: float
+    value: [35, 35]
+  -
+    type: block
+    what: timing
+40FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x7E110D8, 0x7C0]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E119A8, 0]
+    value_type: float
+    value: [40, 40]
+  -
+    type: block
+    what: timing
+45FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x7E110D8, 0x7C0]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E119A8, 0]
+    value_type: float
+    value: [45, 45]
+  -
+    type: block
+    what: timing
+50FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x7E110D8, 0x7C0]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E119A8, 0]
+    value_type: float
+    value: [50, 50]
+  -
+    type: block
+    what: timing
+55FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x7E110D8, 0x7C0]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E119A8, 0]
+    value_type: float
+    value: [55, 55]
+  -
+    type: block
+    what: timing
+60FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x7E110D8, 0x7C0]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x7E119A8, 0]
+    value_type: float
+    value: [0, 0]

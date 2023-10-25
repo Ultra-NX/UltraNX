@@ -1,0 +1,106 @@
+# Ancestors Legacy 1.1.0
+# BID: EE20B8DD92B8F9B4
+
+unsafeCheck: true
+
+# Disable setting double buffer
+MASTER_WRITE:
+  -
+    type: bytes
+    main_offset: 0x41BAB80
+    value_type: int8
+    value: 0x53
+15FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x5075DB0, 0]
+    value_type: float
+    value: [15, 15]
+  -
+    type: block
+    what: timing
+20FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x5075DB0, 0]
+    value_type: float
+    value: [20, 20]
+  -
+    type: block
+    what: timing
+25FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x5075DB0, 0]
+    value_type: float
+    value: [25, 25]
+  -
+    type: block
+    what: timing
+30FPS:
+  # t.MaxFPS (default value)
+  -
+    type: write
+    address: [MAIN, 0x5075DB0, 0]
+    value_type: float
+    value: [30, 30]
+35FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x5075DB0, 0]
+    value_type: float
+    value: [35, 35]
+  -
+    type: block
+    what: timing
+40FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x5075DB0, 0]
+    value_type: float
+    value: [40, 40]
+  -
+    type: block
+    what: timing
+45FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x5075DB0, 0]
+    value_type: float
+    value: [45, 45]
+  -
+    type: block
+    what: timing
+50FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x5075DB0, 0]
+    value_type: float
+    value: [50, 50]
+  -
+    type: block
+    what: timing
+55FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x5075DB0, 0]
+    value_type: float
+    value: [55, 55]
+  -
+    type: block
+    what: timing
+60FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x5075DB0, 0]
+    value_type: float
+    value: [0, 0]

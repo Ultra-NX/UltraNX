@@ -1,0 +1,135 @@
+# Dying Light: Platinum Edition 1.0.5
+# BID: 8C93B930348C9787
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Disable Dynamic GPU Clocks
+  -
+    type: bytes
+    main_offset: 0x1DE89CC
+    value_type: uint32
+    value: 
+      - 0xD503201F
+  # Redirect Dynamic Resolution Timings to MAIN+0x4113D00
+  -
+    type: bytes
+    main_offset: 0x1DE89A8
+    value_type: uint32
+    value: 
+      - 0xF001194A
+      - 0xB94D014A
+  -
+    type: bytes
+    main_offset: 0x1DE8A08
+    value_type: uint32
+    value: 
+      - 0xF001194A
+      - 0xB94D054A
+  -
+    type: bytes
+    main_offset: 0x1DE80C8
+    value_type: uint32
+    value: 
+      - 0xF001194B
+      - 0xB94D096C
+      - 0xB94D0D6B
+      - 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1DE80F8
+    value_type: uint32
+    value: 
+      - 0xF001194B
+      - 0xB94D116B
+# Write default values
+  # MAIN + 0x1DE89AC
+  -
+    type: bytes
+    main_offset: 0x4113D00
+    value_type: float
+    value: 0.034
+  # MAIN + 0x1DE8A0C
+  -
+    type: bytes
+    main_offset: 0x4113D04
+    value_type: float
+    value: 0.028
+  # MAIN + 0x1DE80D4
+  -
+    type: bytes
+    main_offset: 0x4113D08
+    value_type: float
+    value: 0.0289855
+  # MAIN + 0x1DE80D0
+  -
+    type: bytes
+    main_offset: 0x4113D0C
+    value_type: float
+    value: 0.0263158
+  # MAIN + 0x1DE80D0
+  -
+    type: bytes
+    main_offset: 0x4113D10
+    value_type: float
+    value: 0.0324675
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x4113D00]
+    value_type: float
+    value: [0.068, 0.056, 0.057971, 0.0526316, 0.064935]
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x4113D00]
+    value_type: float
+    value: [0.051, 0.042, 0.04347825, 0.0394737, 0.04870125]
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x4113D00]
+    value_type: float
+    value: [0.0408, 0.0336, 0.0347826, 0.03157896, 0.038961]
+30FPS:
+  - # default values
+    type: write
+    address: [MAIN, 0x4113D00]
+    value_type: float
+    value: [0.034, 0.028, 0.0289855, 0.0263158, 0.0324675]
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x4113D00]
+    value_type: float
+    value: [0.02914286, 0.024, 0.02484471, 0.0225564, 0.02782929]
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x4113D00]
+    value_type: float
+    value: [0.0255, 0.021, 0.02173913, 0.01973685, 0.02435063]
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x4113D00]
+    value_type: float
+    value: [0.02266667, 0.01866667, 0.01932367, 0.01754387, 0.021645]
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x4113D00]
+    value_type: float
+    value: [0.0204, 0.0168, 0.0173913, 0.01578948, 0.0194805]
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x4113D00]
+    value_type: float
+    value: [0.01854545, 0.01527273, 0.01581027, 0.01435407, 0.01770955]
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x4113D00]
+    value_type: float
+    value: [0.017, 0.014, 0.01449275, 0.0131579, 0.01623375]

@@ -1,0 +1,81 @@
+# Assassin's Creed The Rebel Collection - Assassin's Creed Rogue 1.0.0
+# BID: 3DEF0E36AA8C6592
+
+unsafeCheck: true
+
+MASTER_WRITE:
+# Patch code to divide last frametime by float scale factor stored in MAIN+0x61EE400
+# To match it to Dynamic Resolution calculations
+  -
+    type: bytes
+    main_offset: 0x9F1DDC
+    value_type: uint32
+    value:
+      - 0xB002BFE8
+      - 0xBD440101
+# Write default dynamic resolution timing factor
+  -
+    type: bytes
+    main_offset: 0x61EE400
+    value_type: float
+    value: 1000
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x61EE400]
+    value_type: float
+    value: 2000
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x61EE400]
+    value_type: float
+    value: 1500
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x61EE400]
+    value_type: float
+    value: 1200
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x61EE400]
+    value_type: float
+    value: 1000
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x61EE400]
+    value_type: float
+    value: 857
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x61EE400]
+    value_type: float
+    value: 750
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x61EE400]
+    value_type: float
+    value: 666
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x61EE400]
+    value_type: float
+    value: 600
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x61EE400]
+    value_type: float
+    value: 545
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x61EE400]
+    value_type: float
+    value: 500

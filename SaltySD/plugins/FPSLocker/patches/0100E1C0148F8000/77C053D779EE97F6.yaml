@@ -1,0 +1,159 @@
+# Severed Steel 1.0.2
+# BID: 77C053D779EE97F6
+
+unsafeCheck: true
+
+15FPS:
+  # r.DynamicRes.FrameTimeBudget = 0.9 * (1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x75EE8A8, 0]
+    value_type: float
+    value: [60, 60]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x761C478, 0]
+    value_type: float
+    value: [15, 15]
+  -
+    type: block
+    what: timing
+20FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x75EE8A8, 0]
+    value_type: float
+    value: [45, 45]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x761C478, 0]
+    value_type: float
+    value: [20, 20]
+  -
+    type: block
+    what: timing
+25FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x75EE8A8, 0]
+    value_type: float
+    value: [36, 36]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x761C478, 0]
+    value_type: float
+    value: [25, 25]
+  -
+    type: block
+    what: timing
+30FPS:
+  # r.DynamicRes.FrameTimeBudget (default value)
+  -
+    type: write
+    address: [MAIN, 0x75EE8A8, 0]
+    value_type: float
+    value: [30, 30]
+  # t.MaxFPS (default value)
+  -
+    type: write
+    address: [MAIN, 0x761C478, 0]
+    value_type: float
+    value: [0, 0]
+35FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x75EE8A8, 0]
+    value_type: float
+    value: [25.71, 25.71]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x761C478, 0]
+    value_type: float
+    value: [35, 35]
+  -
+    type: block
+    what: timing
+40FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x75EE8A8, 0]
+    value_type: float
+    value: [22.5, 22.5]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x761C478, 0]
+    value_type: float
+    value: [40, 40]
+  -
+    type: block
+    what: timing
+45FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x75EE8A8, 0]
+    value_type: float
+    value: [20, 20]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x761C478, 0]
+    value_type: float
+    value: [45, 45]
+  -
+    type: block
+    what: timing
+50FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x75EE8A8, 0]
+    value_type: float
+    value: [18, 18]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x761C478, 0]
+    value_type: float
+    value: [50, 50]
+  -
+    type: block
+    what: timing
+55FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x75EE8A8, 0]
+    value_type: float
+    value: [16.36, 16.36]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x761C478, 0]
+    value_type: float
+    value: [55, 55]
+  -
+    type: block
+    what: timing
+60FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x75EE8A8, 0]
+    value_type: float
+    value: [15, 15]
+  # t.MaxFPS (default value)
+  -
+    type: write
+    address: [MAIN, 0x761C478, 0]
+    value_type: float
+    value: [0, 0]

@@ -1,0 +1,81 @@
+# Othercide 1.3.0.5
+# BID: A8BA2A8F93AAE647
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect DynamicResolutionManager$$Update Timing to be read from MAIN+0x72C6500
+  -
+    type: bytes
+    main_offset: 0x2B0188C
+    value_type: uint32
+    value: 
+      - 0xB0023E28
+      - 0xBD450101
+  # Write default value
+  -
+    type: bytes
+    main_offset: 0x72C6500
+    value_type: float
+    value: 41
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x72C6500]
+    value_type: float
+    value: 65.6666
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x72C6500]
+    value_type: float
+    value: 49
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x72C6500]
+    value_type: float
+    value: 39
+30FPS:
+  # Default is 41, but it sucks
+  -
+    type: write
+    address: [MAIN, 0x72C6500]
+    value_type: float
+    value: 32.3333
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x72C6500]
+    value_type: float
+    value: 27.5714
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x72C6500]
+    value_type: float
+    value: 24
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x72C6500]
+    value_type: float
+    value: 21.2222
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x72C6500]
+    value_type: float
+    value: 19
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x72C6500]
+    value_type: float
+    value: 17.1818
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x72C6500]
+    value_type: float
+    value: 15.5

@@ -1,0 +1,224 @@
+# Redemption Reapers 1.3.0
+# BID: 75960383063ABB4E
+
+unsafeCheck: true
+
+15FPS:
+  # Disable bUseFixedFrameRate to untie game speed from framerate
+  -
+    type: write
+    address: [MAIN, 0x750B478, 0x7A4]
+    value_type: uint32
+    # Default is 0x47, bUseFixedFrameRate |= 0x40 
+    # By writing 7 we are making sure that other flags are maintained: 
+    # bAllowMultiThreadedAnimationUpdate |= 4
+    # bOptimizeAnimBlueprintMemberVariableAccess |= 2
+    # bCanBlueprintsTickByDefault |= 1
+    value: 7
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
+  -
+    type: write
+    address: [MAIN, 0x74DE1C8, 0]
+    value_type: float
+    value: [66.66, 66.66]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x750BD98, 0]
+    value_type: float
+    value: [15, 15]
+  -
+    type: block
+    what: timing
+20FPS:
+  # Disable bSmoothFrameRate and bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x750B478, 0x7A4]
+    value_type: uint32
+    value: 7
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x74DE1C8, 0]
+    value_type: float
+    value: [50, 50]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x750BD98, 0]
+    value_type: float
+    value: [20, 20]
+  -
+    type: block
+    what: timing
+25FPS:
+  # Disable bSmoothFrameRate and bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x750B478, 0x7A4]
+    value_type: uint32
+    value: 7
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x74DE1C8, 0]
+    value_type: float
+    value: [40, 40]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x750BD98, 0]
+    value_type: float
+    value: [25, 25]
+  -
+    type: block
+    what: timing
+30FPS:
+  # Disable bSmoothFrameRate and bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x750B478, 0x7A4]
+    value_type: uint32
+    value: 7
+  # r.DynamicRes.FrameTimeBudget (default value)
+  -
+    type: write
+    address: [MAIN, 0x74DE1C8, 0]
+    value_type: float
+    value: [33.33, 33.33]
+  # t.MaxFPS (default value is 30 in handheld, 60 in docked)
+  -
+    type: write
+    address: [MAIN, 0x750BD98, 0]
+    value_type: float
+    value: [0, 0]
+35FPS:
+  # Disable bSmoothFrameRate and bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x750B478, 0x7A4]
+    value_type: uint32
+    value: 7
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x74DE1C8, 0]
+    value_type: float
+    value: [28.51, 28.51]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x750BD98, 0]
+    value_type: float
+    value: [35, 35]
+  -
+    type: block
+    what: timing
+40FPS:
+  # Disable bSmoothFrameRate and bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x750B478, 0x7A4]
+    value_type: uint32
+    value: 7
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x74DE1C8, 0]
+    value_type: float
+    value: [25, 25]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x750BD98, 0]
+    value_type: float
+    value: [40, 40]
+  -
+    type: block
+    what: timing
+45FPS:
+  # Disable bSmoothFrameRate and bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x750B478, 0x7A4]
+    value_type: uint32
+    value: 7
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x74DE1C8, 0]
+    value_type: float
+    value: [22.22, 22.22]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x750BD98, 0]
+    value_type: float
+    value: [45, 45]
+  -
+    type: block
+    what: timing
+50FPS:
+  # Disable bSmoothFrameRate and bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x750B478, 0x7A4]
+    value_type: uint32
+    value: 7
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x74DE1C8, 0]
+    value_type: float
+    value: [20, 20]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x750BD98, 0]
+    value_type: float
+    value: [50, 50]
+  -
+    type: block
+    what: timing
+55FPS:
+  # Disable bSmoothFrameRate and bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x750B478, 0x7A4]
+    value_type: uint32
+    value: 7
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x74DE1C8, 0]
+    value_type: float
+    value: [18.18, 18.18]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x750BD98, 0]
+    value_type: float
+    value: [55, 55]
+  -
+    type: block
+    what: timing
+60FPS:
+  # Disable bSmoothFrameRate and bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x750B478, 0x7A4]
+    value_type: uint32
+    value: 7
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x74DE1C8, 0]
+    value_type: float
+    value: [16.66, 16.66]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x750BD98, 0]
+    value_type: float
+    value: [0, 0]

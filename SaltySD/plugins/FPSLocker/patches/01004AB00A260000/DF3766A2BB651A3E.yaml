@@ -1,0 +1,328 @@
+# Dark Souls Remastered 1.0.3
+# BID: DF3766A2BB651A3E
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect FPS target to MAIN+0x55E9A00
+  -
+    type: bytes
+    main_offset: 0x706FA4
+    value_type: uint32
+    value: 
+      - 0xF0027701
+  -
+    type: bytes
+    main_offset: 0x7070B0
+    value_type: uint32
+    value: 
+      - 0xFD450020
+  # Redirect game speed to MAIN+0x55E9A08
+  -
+    type: bytes
+    main_offset: 0x667900
+    value_type: uint32
+    value: 
+      - 0xD0027C08
+      - 0xBD4A0908
+  # Write default value
+  -
+    type: bytes
+    main_offset: 0x55E9A00
+    value_type: double
+    value: 30
+  -
+    type: bytes
+    main_offset: 0x55E9A08
+    value_type: float
+    value: 0.0333333333
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 15
+  -
+    type: write
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0666666666
+  -
+    type: block
+    what: timing
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 20
+  -
+    type: write
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.05
+  -
+    type: block
+    what: timing
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 25
+  -
+    type: write
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.04
+  -
+    type: block
+    what: timing
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 30
+  -
+    type: write
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.033333333
+35FPS:
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 30
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0333333333
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 35
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.028571
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 30
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0333333333
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 40
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.025
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 30
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0333333333
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 45
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0222222222
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 30
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0333333333
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 50
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0222222222
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 30
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0333333333
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 55
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0181818181
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 30
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "=="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0333333333
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A00]
+    value_type: double
+    value: 60
+  -
+    type: compare
+    compare_address: [MAIN, 0x4543788, 0x470]
+    compare_type: "!="
+    compare_value_type: int32
+    compare_value: 1
+    address: [MAIN, 0x55E9A08]
+    value_type: float
+    value: 0.0166666666

@@ -1,0 +1,220 @@
+# Need For Speed Hot Pursuit Remastered 1.0.3
+# BID: 799D1061182C1302
+# Thanks to theboy181 for finding instruction responsible for calculating frame time which I used to find where is FPS target stored
+
+unsafeCheck: true
+
+15FPS:
+  # FPS Target = (19200*(1000/(FPS*2)))
+  -
+    type: write
+    address: [MAIN, 0xED96A8, 0x30]
+    value_type: uint64
+    value: 640000
+  # FPS 2D Game Speed Target = (1/(FPS*2))
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x30]
+    value_type: float
+    value: 0.03333333
+  # FPS 3D Game Speed Target = (1/(FPS*2))
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x50]
+    value_type: float
+    value: 0.03333333
+  -
+    type: block
+    what: timing
+20FPS:
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xED96A8, 0x30]
+    value_type: uint64
+    value: 480000
+  # FPS 2D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x30]
+    value_type: float
+    value: 0.025
+  # FPS 3D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x50]
+    value_type: float
+    value: 0.025
+  -
+    type: block
+    what: timing
+25FPS:
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xED96A8, 0x30]
+    value_type: uint64
+    value: 384000
+  # FPS 2D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x30]
+    value_type: float
+    value: 0.02
+  # FPS 3D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x50]
+    value_type: float
+    value: 0.02
+  -
+    type: block
+    what: timing
+30FPS:
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xED96A8, 0x30]
+    value_type: uint64
+    value: 320000
+  # FPS 2D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x30]
+    value_type: float
+    value: 0.01666666
+  # FPS 3D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x50]
+    value_type: float
+    value: 0.01666666
+35FPS:
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xED96A8, 0x30]
+    value_type: uint64
+    value: 274286
+  # FPS 2D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x30]
+    value_type: float
+    value: 0.01428571
+  # FPS 3D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x50]
+    value_type: float
+    value: 0.01428571
+  -
+    type: block
+    what: timing
+40FPS:
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xED96A8, 0x30]
+    value_type: uint64
+    value: 240000
+  # FPS 2D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x30]
+    value_type: float
+    value: 0.0125
+  # FPS 3D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x50]
+    value_type: float
+    value: 0.0125
+  -
+    type: block
+    what: timing
+45FPS:
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xED96A8, 0x30]
+    value_type: uint64
+    value: 213334
+  # FPS 2D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x30]
+    value_type: float
+    value: 0.01111111
+  # FPS 3D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x50]
+    value_type: float
+    value: 0.01111111
+  -
+    type: block
+    what: timing
+50FPS:
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xED96A8, 0x30]
+    value_type: uint64
+    value: 192000
+  # FPS 2D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x30]
+    value_type: float
+    value: 0.01
+  # FPS 3D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x50]
+    value_type: float
+    value: 0.01
+  -
+    type: block
+    what: timing
+55FPS:
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xED96A8, 0x30]
+    value_type: uint64
+    value: 174546
+  # FPS 2D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x30]
+    value_type: float
+    value: 0.00909091
+  # FPS 3D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x50]
+    value_type: float
+    value: 0.00909091
+  -
+    type: block
+    what: timing
+60FPS:
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xED96A8, 0x30]
+    value_type: uint64
+    value: 160000
+  # FPS 2D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x30]
+    value_type: float
+    value: 0.00833333
+  # FPS 3D Game Speed Target
+  -
+    type: write
+    address: [MAIN, 0xEFFC60, 0x50]
+    value_type: float
+    value: 0.00833333

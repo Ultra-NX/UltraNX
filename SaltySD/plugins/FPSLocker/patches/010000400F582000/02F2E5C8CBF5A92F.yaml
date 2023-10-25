@@ -1,0 +1,75 @@
+# TT Isle of Man 2 1.0.1
+# BID: 02F2E5C8CBF5A92F
+
+unsafeCheck: true
+
+15FPS:
+  # OptimalFrameDuration_ms = 0.96 * (1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x2153CFC]
+    value_type: float
+    value: 64
+20FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2153CFC]
+    value_type: float
+    value: 48
+25FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2153CFC]
+    value_type: float
+    value: 38.4
+30FPS:
+  # OptimalFrameDuration_ms (default value)
+  -
+    type: write
+    address: [MAIN, 0x2153CFC]
+    value_type: float
+    value: 32
+35FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2153CFC]
+    value_type: float
+    value: 27.42
+40FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2153CFC]
+    value_type: float
+    value: 24
+45FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2153CFC]
+    value_type: float
+    value: 21.333333
+50FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2153CFC]
+    value_type: float
+    value: 19.2
+55FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2153CFC]
+    value_type: float
+    value: 17.454545
+60FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2153CFC]
+    value_type: float
+    value: 16

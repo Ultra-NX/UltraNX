@@ -1,0 +1,78 @@
+# Ruined King: A League of Legends Story 1.7
+# BID: 9FC46F388F6C684C
+
+unsafeCheck: true
+
+15FPS:
+  # Address that is used to determine if it should use dev's own classes to get vsync target
+  # If we change it to anything that is above or equal 0, it's using Unity class that always returns -1
+  # Returning from function getting vsync target anything else than 2 results in Dynamic Resolution target set to 60 FPS, otherwise it's 30 FPS
+  # We cannot patch those FPS targets directly with FPSLocker as they are hardcoded
+  -
+    type: write
+    address: [MAIN, 0x5B18318, 0x944]
+    value_type: int32
+    value: -1
+20FPS:
+  #Vsync target (default value)
+  -
+    type: write
+    address: [MAIN, 0x5B18318, 0x944]
+    value_type: int32
+    value: -1
+25FPS:
+  #Vsync target (default value)
+  -
+    type: write
+    address: [MAIN, 0x5B18318, 0x944]
+    value_type: int32
+    value: -1
+30FPS:
+  #Vsync target (default value)
+  -
+    type: write
+    address: [MAIN, 0x5B18318, 0x944]
+    value_type: int32
+    value: -1
+35FPS:
+  #Vsync target
+  -
+    type: write
+    address: [MAIN, 0x5B18318, 0x944]
+    value_type: int32
+    value: 0
+40FPS:
+  #Vsync target
+  -
+    type: write
+    address: [MAIN, 0x5B18318, 0x944]
+    value_type: int32
+    value: 0
+45FPS:
+  #Vsync target
+  -
+    type: write
+    address: [MAIN, 0x5B18318, 0x944]
+    value_type: int32
+    value: 0
+50FPS:
+  #Vsync target
+  -
+    type: write
+    address: [MAIN, 0x5B18318, 0x944]
+    value_type: int32
+    value: 0
+55FPS:
+  #Vsync target
+  -
+    type: write
+    address: [MAIN, 0x5B18318, 0x944]
+    value_type: int32
+    value: 0
+60FPS:
+  #Vsync target
+  -
+    type: write
+    address: [MAIN, 0x5B18318, 0x944]
+    value_type: int32
+    value: 0

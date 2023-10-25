@@ -1,0 +1,135 @@
+# Darksiders 2 1.0.0
+# BID: 173E2EDEA9E5D940
+
+unsafeCheck: true
+
+15FPS:
+  # gNXHighThresholdUS_hidden 930*(1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x3293F94]
+    value_type: int32
+    value: 62000
+  # gNXLowThresholdUS_hidden 870*(1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x3293F98]
+    value_type: int32
+    value: 58000
+20FPS:
+  # gNXHighThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F94]
+    value_type: int32
+    value: 46500
+  # gNXLowThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F98]
+    value_type: int32
+    value: 43500
+25FPS:
+  # gNXHighThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F94]
+    value_type: int32
+    value: 37200
+  # gNXLowThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F98]
+    value_type: int32
+    value: 34800
+30FPS:
+  # gNXHighThresholdUS_hidden (default)
+  -
+    type: write
+    address: [MAIN, 0x3293F94]
+    value_type: int32
+    value: 31000
+  # gNXLowThresholdUS_hidden (default)
+  -
+    type: write
+    address: [MAIN, 0x3293F98]
+    value_type: int32
+    value: 29000
+35FPS:
+  # gNXHighThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F94]
+    value_type: int32
+    value: 26571
+  # gNXLowThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F98]
+    value_type: int32
+    value: 24857
+40FPS:
+  # gNXHighThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F94]
+    value_type: int32
+    value: 23250
+  # gNXLowThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F98]
+    value_type: int32
+    value: 21750
+45FPS:
+  # gNXHighThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F94]
+    value_type: int32
+    value: 20666
+  # gNXLowThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F98]
+    value_type: int32
+    value: 19333
+50FPS:
+  # gNXHighThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F94]
+    value_type: int32
+    value: 18600
+  # gNXLowThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F98]
+    value_type: int32
+    value: 17400
+55FPS:
+  # gNXHighThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F94]
+    value_type: int32
+    value: 16909
+  # gNXLowThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F98]
+    value_type: int32
+    value: 15818
+60FPS:
+  # gNXHighThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F94]
+    value_type: int32
+    value: 15500
+  # gNXLowThresholdUS_hidden
+  -
+    type: write
+    address: [MAIN, 0x3293F98]
+    value_type: int32
+    value: 14500

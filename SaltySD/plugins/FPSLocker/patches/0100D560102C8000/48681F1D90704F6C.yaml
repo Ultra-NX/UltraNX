@@ -1,0 +1,75 @@
+# BioShock Infinite 1.0.2
+# BID: 48681F1D90704F6C
+
+unsafeCheck: true
+
+15FPS:
+  # Dynamic resolution FPS factor (FPS_Target + 1.5)
+  -
+    type: write
+    address: [MAIN, 0x28A8450, 0]
+    value_type: float
+    value: 16.5
+20FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x28A8450, 0]
+    value_type: float
+    value: 21.5
+25FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x28A8450, 0]
+    value_type: float
+    value: 26.5
+30FPS:
+  # Dynamic resolution FPS factor (default)
+  -
+    type: write
+    address: [MAIN, 0x28A8450, 0]
+    value_type: float
+    value: 31.5
+35FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x28A8450, 0]
+    value_type: float
+    value: 36.5
+40FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x28A8450, 0]
+    value_type: float
+    value: 41.5
+45FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x28A8450, 0]
+    value_type: float
+    value: 46.5
+50FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x28A8450, 0]
+    value_type: float
+    value: 51.5
+55FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x28A8450, 0]
+    value_type: float
+    value: 56.5
+60FPS:
+  # Dynamic resolution FPS factor
+  -
+    type: write
+    address: [MAIN, 0x28A8450, 0]
+    value_type: float
+    value: 61.5

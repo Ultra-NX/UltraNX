@@ -1,0 +1,113 @@
+# Luigi's Mansion 3 1.4.0
+# BID: 79E5950FFA85ACF6
+# Credits for finding FPS Lock goes to theboy181
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect reading FPS Lock to MAIN+0x1D164DC
+  -
+    type: bytes
+    main_offset: 0x7A3E9C
+    value_type: uint32
+    value: 0xF000AB8C
+  # Default value
+  -
+    type: bytes
+    main_offset: 0x1D164DC
+    value_type: float
+    value: 33.33333333
+15FPS:
+  # FPS Lock in ms
+  -
+    type: write
+    address: [MAIN, 0x1D164DC]
+    value_type: float
+    value: 66.66666666
+  -
+    type: block
+    what: timing
+20FPS:
+  # FPS Lock in ms
+  -
+    type: write
+    address: [MAIN, 0x1D164DC]
+    value_type: float
+    value: 50
+  -
+    type: block
+    what: timing
+25FPS:
+  # FPS Lock in ms
+  -
+    type: write
+    address: [MAIN, 0x1D164DC]
+    value_type: float
+    value: 40
+  -
+    type: block
+    what: timing
+30FPS:
+  # FPS Lock in ms (default value)
+  -
+    type: write
+    address: [MAIN, 0x1D164DC]
+    value_type: float
+    value: 33.33333333
+35FPS:
+  # FPS Lock in ms
+  -
+    type: write
+    address: [MAIN, 0x1D164DC]
+    value_type: float
+    value: 28.57142857
+  -
+    type: block
+    what: timing
+40FPS:
+  # FPS Lock in ms
+  -
+    type: write
+    address: [MAIN, 0x1D164DC]
+    value_type: float
+    value: 25
+  -
+    type: block
+    what: timing
+45FPS:
+  # FPS Lock in ms
+  -
+    type: write
+    address: [MAIN, 0x1D164DC]
+    value_type: float
+    value: 22.22222222
+  -
+    type: block
+    what: timing
+50FPS:
+  # FPS Lock in ms
+  -
+    type: write
+    address: [MAIN, 0x1D164DC]
+    value_type: float
+    value: 20
+  -
+    type: block
+    what: timing
+55FPS:
+  # FPS Lock in ms
+  -
+    type: write
+    address: [MAIN, 0x1D164DC]
+    value_type: float
+    value: 18.18181818
+  -
+    type: block
+    what: timing
+60FPS:
+  # FPS Lock in ms
+  -
+    type: write
+    address: [MAIN, 0x1D164DC]
+    value_type: float
+    value: 16.66666666

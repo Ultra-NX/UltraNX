@@ -1,0 +1,96 @@
+# Monster Hunter Rise 16.0.1
+# BID: 55D50CA1805E9C5B
+
+unsafeCheck: false
+
+# Disable NX-FPS delay function to prioritize game's own FPS lock.
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x12950348, 0x434]
+    value_type: float
+    value: 15
+  -
+    type: block
+    what: timing
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x12950348, 0x434]
+    value_type: float
+    value: 20
+  -
+    type: block
+    what: timing
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x12950348, 0x434]
+    value_type: float
+    value: 25
+  -
+    type: block
+    what: timing
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x12950348, 0x434]
+    value_type: float
+    value: 30
+  -
+    type: block
+    what: timing
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x12950348, 0x434]
+    value_type: float
+    value: 35
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x12950348, 0x434]
+    value_type: float
+    value: 40
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x12950348, 0x434]
+    value_type: float
+    value: 45
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x12950348, 0x434]
+    value_type: float
+    value: 50
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x12950348, 0x434]
+    value_type: float
+    value: 55
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x12950348, 0x434]
+    value_type: float
+    value: 60
+  -
+    type: block
+    what: timing

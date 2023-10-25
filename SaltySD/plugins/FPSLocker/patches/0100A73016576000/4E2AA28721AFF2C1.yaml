@@ -1,0 +1,75 @@
+# Tinykin 1.1.0
+# BID: 4E2AA28721AFF2C1
+
+unsafeCheck: true
+
+15FPS:
+  # Dynamic resolution frametime target in ms = (1000/FPS) minus 2 with cutted decimals
+  -
+    type: write
+    address: [MAIN, 0x53C9710, 0x44F8]
+    value_type: double
+    value: 64
+20FPS:
+  # Dynamic resolution frametime target in ms
+  -
+    type: write
+    address: [MAIN, 0x53C9710, 0x44F8]
+    value_type: double
+    value: 48
+25FPS:
+  # Dynamic resolution frametime target in ms
+  -
+    type: write
+    address: [MAIN, 0x53C9710, 0x44F8]
+    value_type: double
+    value: 38
+30FPS:
+  # Dynamic resolution frametime target in ms (default is 33, but because required difference for DR to really kick in is 2ms, we will lower it to get better performance)
+  -
+    type: write
+    address: [MAIN, 0x53C9710, 0x44F8]
+    value_type: double
+    value: 31
+35FPS:
+  # Dynamic resolution frametime target in ms
+  -
+    type: write
+    address: [MAIN, 0x53C9710, 0x44F8]
+    value_type: double
+    value: 27
+40FPS:
+  # Dynamic resolution frametime target in ms
+  -
+    type: write
+    address: [MAIN, 0x53C9710, 0x44F8]
+    value_type: double
+    value: 23
+45FPS:
+  # Dynamic resolution frametime target in ms
+  -
+    type: write
+    address: [MAIN, 0x53C9710, 0x44F8]
+    value_type: double
+    value: 20
+50FPS:
+  # Dynamic resolution frametime target in ms
+  -
+    type: write
+    address: [MAIN, 0x53C9710, 0x44F8]
+    value_type: double
+    value: 18
+55FPS:
+  # Dynamic resolution frametime target in ms
+  -
+    type: write
+    address: [MAIN, 0x53C9710, 0x44F8]
+    value_type: double
+    value: 16
+60FPS:
+  # Dynamic resolution frametime target in ms
+  -
+    type: write
+    address: [MAIN, 0x53C9710, 0x44F8]
+    value_type: double
+    value: 14

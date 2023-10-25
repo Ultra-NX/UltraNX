@@ -1,0 +1,224 @@
+# The Witcher 3 3.7
+# BID: 4FFB62F1CD9E17F8
+
+unsafeCheck: true
+
+15FPS:
+  # DRGameTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA8F4]
+    value_type: float
+    value: 63
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA924]
+    value_type: float
+    value: 63
+  # LimitFPS
+  -
+    type: write
+    address: [MAIN, 0x4C983EC]
+    value_type: int32
+    value: 15
+  -
+    type: block
+    what: timing
+20FPS:
+  # DRGameTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA8F4]
+    value_type: float
+    value: 47.25
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA924]
+    value_type: float
+    value: 47.25
+  # LimitFPS
+  -
+    type: write
+    address: [MAIN, 0x4C983EC]
+    value_type: int32
+    value: 20
+  -
+    type: block
+    what: timing
+25FPS:
+  # DRGameTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA8F4]
+    value_type: float
+    value: 37.8
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA924]
+    value_type: float
+    value: 37.8
+  # LimitFPS
+  -
+    type: write
+    address: [MAIN, 0x4C983EC]
+    value_type: int32
+    value: 25
+  -
+    type: block
+    what: timing
+30FPS:
+  # DRGameTargetFrameTimeInMs (original value)
+  -
+    type: write
+    address: [MAIN, 0x4FDA8F4]
+    value_type: float
+    value: 31.5
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA924]
+    value_type: float
+    value: 31.5
+  # LimitFPS (original value)
+  -
+    type: write
+    address: [MAIN, 0x4C983EC]
+    value_type: int32
+    value: 60
+
+# For 35-60 FPS check if cutscene is played. If it is, set 30 FPS lock. If not, disable it.
+35FPS:
+  # DRGameTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA8F4]
+    value_type: float
+    value: 27
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA924]
+    value_type: float
+    value: 27
+  # LimitFPS
+  -
+    type: write
+    address: [MAIN, 0x4C983EC]
+    value_type: int32
+    value: 35
+  -
+    type: block
+    what: timing
+40FPS:
+  # DRGameTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA8F4]
+    value_type: float
+    value: 23.625
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA924]
+    value_type: float
+    value: 23.625
+  # LimitFPS
+  -
+    type: write
+    address: [MAIN, 0x4C983EC]
+    value_type: int32
+    value: 40
+  -
+    type: block
+    what: timing
+45FPS:
+  # DRGameTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA8F4]
+    value_type: float
+    value: 21
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA924]
+    value_type: float
+    value: 21
+  # LimitFPS
+  -
+    type: write
+    address: [MAIN, 0x4C983EC]
+    value_type: int32
+    value: 45
+  -
+    type: block
+    what: timing
+50FPS:
+  # DRGameTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA8F4]
+    value_type: float
+    value: 18.9
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA924]
+    value_type: float
+    value: 18.9
+  # LimitFPS
+  -
+    type: write
+    address: [MAIN, 0x4C983EC]
+    value_type: int32
+    value: 50
+  -
+    type: block
+    what: timing
+55FPS:
+  # DRGameTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA8F4]
+    value_type: float
+    value: 17.1818181818
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA924]
+    value_type: float
+    value: 17.1818181818
+  # LimitFPS
+  -
+    type: write
+    address: [MAIN, 0x4C983EC]
+    value_type: int32
+    value: 55
+  -
+    type: block
+    what: timing
+60FPS:
+  # DRGameTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA8F4]
+    value_type: float
+    value: 15.75
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: write
+    address: [MAIN, 0x4FDA924]
+    value_type: float
+    value: 15.75
+  # LimitFPS
+  -
+    type: write
+    address: [MAIN, 0x4C983EC]
+    value_type: int32
+    value: 60
+  -
+    type: block
+    what: timing

@@ -1,0 +1,315 @@
+# DOOM 1.2
+# BID: 01ACE43E724259C3
+
+unsafeCheck: true
+
+15FPS:
+  # rs_460Threshold (default)
+  -
+    type: write
+    address: [MAIN, 0x87AEC74]
+    value_type: float
+    value: 0.285
+  # rs_raiseMilliseconds (32.2/(1000/30))*(1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x87AF0B4]
+    value_type: float
+    value: 64.4
+  # rs_dropMilliseconds (33/(1000/30))*(1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x87AF02C]
+    value_type: float
+    value: 66
+  # com_adaptiveTickMaxHz (default)
+  -
+    type: write
+    address: [MAIN, 0x74B2680]
+    value_type: int32
+    value: 30
+  # com_adaptiveTickMinHz
+  -
+    type: write
+    address: [MAIN, 0x74B25F8]
+    value_type: int32
+    value: 15
+20FPS:
+  # rs_460Threshold (default)
+  -
+    type: write
+    address: [MAIN, 0x87AEC74]
+    value_type: float
+    value: 0.285
+  # rs_raiseMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF0B4]
+    value_type: float
+    value: 48.3
+  # rs_dropMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF02C]
+    value_type: float
+    value: 49.5
+  # com_adaptiveTickMaxHz (default)
+  -
+    type: write
+    address: [MAIN, 0x74B2680]
+    value_type: int32
+    value: 30
+  # com_adaptiveTickMinHz
+  -
+    type: write
+    address: [MAIN, 0x74B25F8]
+    value_type: int32
+    value: 15
+25FPS:
+  # rs_460Threshold
+  -
+    type: write
+    address: [MAIN, 0x87AEC74]
+    value_type: float
+    value: 0.285
+  # rs_raiseMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF0B4]
+    value_type: float
+    value: 38.64
+  # rs_dropMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF02C]
+    value_type: float
+    value: 39.6
+  # com_adaptiveTickMaxHz (default)
+  -
+    type: write
+    address: [MAIN, 0x74B2680]
+    value_type: int32
+    value: 30
+  # com_adaptiveTickMinHz
+  -
+    type: write
+    address: [MAIN, 0x74B25F8]
+    value_type: int32
+    value: 15
+30FPS:
+  # rs_460Threshold (default)
+  -
+    type: write
+    address: [MAIN, 0x87AEC74]
+    value_type: float
+    value: 0.285
+  # rs_raiseMilliseconds (default)
+  -
+    type: write
+    address: [MAIN, 0x87AF0B4]
+    value_type: float
+    value: 32.2
+  # rs_dropMilliseconds (default)
+  -
+    type: write
+    address: [MAIN, 0x87AF02C]
+    value_type: float
+    value: 33
+  # com_adaptiveTickMaxHz (default)
+  -
+    type: write
+    address: [MAIN, 0x74B2680]
+    value_type: int32
+    value: 30
+  # com_adaptiveTickMinHz (default)
+  -
+    type: write
+    address: [MAIN, 0x74B25F8]
+    value_type: int32
+    value: 30
+35FPS:
+  # rs_460Threshold
+  -
+    type: write
+    address: [MAIN, 0x87AEC74]
+    value_type: float
+    value: 1
+  # rs_raiseMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF0B4]
+    value_type: float
+    value: 27.6
+  # rs_dropMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF02C]
+    value_type: float
+    value: 28.28
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x74B2680]
+    value_type: int32
+    value: 60
+  # com_adaptiveTickMinHz
+  -
+    type: write
+    address: [MAIN, 0x74B25F8]
+    value_type: int32
+    value: 15
+40FPS:
+  # rs_460Threshold
+  -
+    type: write
+    address: [MAIN, 0x87AEC74]
+    value_type: float
+    value: 1
+  # rs_raiseMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF0B4]
+    value_type: float
+    value: 24.15
+  # rs_dropMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF02C]
+    value_type: float
+    value: 24.75
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x74B2680]
+    value_type: int32
+    value: 60
+  # com_adaptiveTickMinHz
+  -
+    type: write
+    address: [MAIN, 0x74B25F8]
+    value_type: int32
+    value: 15
+45FPS:
+  # rs_460Threshold
+  -
+    type: write
+    address: [MAIN, 0x87AEC74]
+    value_type: float
+    value: 1
+  # rs_raiseMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF0B4]
+    value_type: float
+    value: 21.46
+  # rs_dropMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF02C]
+    value_type: float
+    value: 22
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x74B2680]
+    value_type: int32
+    value: 60
+  # com_adaptiveTickMinHz
+  -
+    type: write
+    address: [MAIN, 0x74B25F8]
+    value_type: int32
+    value: 15
+50FPS:
+  # rs_460Threshold
+  -
+    type: write
+    address: [MAIN, 0x87AEC74]
+    value_type: float
+    value: 1
+  # rs_raiseMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF0B4]
+    value_type: float
+    value: 19.32
+  # rs_dropMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF02C]
+    value_type: float
+    value: 19.8
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x74B2680]
+    value_type: int32
+    value: 60
+  # com_adaptiveTickMinHz
+  -
+    type: write
+    address: [MAIN, 0x74B25F8]
+    value_type: int32
+    value: 15
+55FPS:
+  # rs_460Threshold
+  -
+    type: write
+    address: [MAIN, 0x87AEC74]
+    value_type: float
+    value: 1
+  # rs_raiseMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF0B4]
+    value_type: float
+    value: 17.56
+  # rs_dropMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF02C]
+    value_type: float
+    value: 18
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x74B2680]
+    value_type: int32
+    value: 60
+  # com_adaptiveTickMinHz
+  -
+    type: write
+    address: [MAIN, 0x74B25F8]
+    value_type: int32
+    value: 15
+60FPS:
+  # rs_460Threshold
+  -
+    type: write
+    address: [MAIN, 0x87AEC74]
+    value_type: float
+    value: 1
+  # rs_raiseMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF0B4]
+    value_type: float
+    value: 16.1
+  # rs_dropMilliseconds
+  -
+    type: write
+    address: [MAIN, 0x87AF02C]
+    value_type: float
+    value: 16.5
+  # com_adaptiveTickMaxHz
+  -
+    type: write
+    address: [MAIN, 0x74B2680]
+    value_type: int32
+    value: 60
+  # com_adaptiveTickMinHz
+  -
+    type: write
+    address: [MAIN, 0x74B25F8]
+    value_type: int32
+    value: 15

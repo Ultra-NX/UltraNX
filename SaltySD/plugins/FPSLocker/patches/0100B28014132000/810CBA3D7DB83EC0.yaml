@@ -1,0 +1,266 @@
+# SAMURAI WARRIORS 5 1.03
+# BID: 810CBA3D7DB83EC0
+
+unsafeCheck: true
+
+# Block updating FPS Lock
+MASTER_WRITE:
+  -
+    type: bytes
+    main_offset: 0x1240DFC
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1240E10
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1240E1C
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1240E24
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1240E2C
+    value_type: uint32
+    value: 0xBD41F100
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: 4
+  -
+    type: write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: 15
+  -
+    type: write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [4, 15]
+  -
+    type: write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: 15
+  -
+    type: block
+    what: timing
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: 3
+  -
+    type: write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: 20
+  -
+    type: write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [3, 20]
+  -
+    type: write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: 20
+  -
+    type: block
+    what: timing
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: 2
+  -
+    type: write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: 25
+  -
+    type: write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [2, 30]
+  -
+    type: write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: 30
+  -
+    type: block
+    what: timing
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: 2
+  -
+    type: write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: 30
+  -
+    type: write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [2, 30]
+  -
+    type: write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: 30
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: 35
+  -
+    type: write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [1, 60]
+  -
+    type: write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: 60
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: 40
+  -
+    type: write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [1, 60]
+  -
+    type: write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: 60
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: 45
+  -
+    type: write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [1, 60]
+  -
+    type: write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: 60
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: 50
+  -
+    type: write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [1, 60]
+  -
+    type: write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: 60
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: 55
+  -
+    type: write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [1, 60]
+  -
+    type: write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: 60
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: 60
+  -
+    type: write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [1, 60]
+  -
+    type: write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: 60

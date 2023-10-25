@@ -1,0 +1,219 @@
+# LEGO 2K Drive 1.4
+# BID: 035715948447A762
+
+unsafeCheck: true
+
+15FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x923DD10, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
+  -
+    type: write
+    address: [MAIN, 0x9A49C48, 0]
+    value_type: float
+    value: [66.66, 66.66]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x9A6FDC0, 0]
+    value_type: float
+    value: [15, 15]
+  -
+    type: block
+    what: timing
+20FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x923DD10, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x9A49C48, 0]
+    value_type: float
+    value: [50, 50]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x9A6FDC0, 0]
+    value_type: float
+    value: [20, 20]
+  -
+    type: block
+    what: timing
+25FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x923DD10, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x9A49C48, 0]
+    value_type: float
+    value: [40, 40]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x9A6FDC0, 0]
+    value_type: float
+    value: [25, 25]
+  -
+    type: block
+    what: timing
+30FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x923DD10, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget (default value)
+  -
+    type: write
+    address: [MAIN, 0x9A49C48, 0]
+    value_type: float
+    value: [33.33, 33.33]
+  # t.MaxFPS (default is 30)
+  -
+    type: write
+    address: [MAIN, 0x9A6FDC0, 0]
+    value_type: float
+    value: [0, 0]
+35FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x923DD10, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x9A49C48, 0]
+    value_type: float
+    value: [28.51, 28.51]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x9A6FDC0, 0]
+    value_type: float
+    value: [35, 35]
+  -
+    type: block
+    what: timing
+40FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x923DD10, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x9A49C48, 0]
+    value_type: float
+    value: [25, 25]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x9A6FDC0, 0]
+    value_type: float
+    value: [40, 40]
+  -
+    type: block
+    what: timing
+45FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x923DD10, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x9A49C48, 0]
+    value_type: float
+    value: [22.22, 22.22]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x9A6FDC0, 0]
+    value_type: float
+    value: [45, 45]
+  -
+    type: block
+    what: timing
+50FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x923DD10, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x9A49C48, 0]
+    value_type: float
+    value: [20, 20]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x9A6FDC0, 0]
+    value_type: float
+    value: [50, 50]
+  -
+    type: block
+    what: timing
+55FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x923DD10, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x9A49C48, 0]
+    value_type: float
+    value: [18.18, 18.18]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x9A6FDC0, 0]
+    value_type: float
+    value: [55, 55]
+  -
+    type: block
+    what: timing
+60FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x923DD10, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x9A49C48, 0]
+    value_type: float
+    value: [16.66, 16.66]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x9A6FDC0, 0]
+    value_type: float
+    value: [0, 0]
