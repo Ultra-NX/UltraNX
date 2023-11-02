@@ -1,11 +1,13 @@
 # Ultra 1.5 by **[redraz](https://github.com/redraz)**
 
+### If someone translates the information from this page into English (Possible with GPT-4), I will gladly add README_ENG.md
+
 [Группа в телеграме](@UltraNX)
 
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Ultra.png)
 
 **ВНИМАНИЕ! Над инструкцией все еще ведется работа! Пулреквесты с исправлениями и дополнениями приветствуются. Пользователям Mac OS, в случае возникновения проблем - прочитать [гайд](https://gbatemp.net/threads/macos-fix-archive-attributes-for-switch-sd-card.545560/)** 
-За образец инструкции взят репозиторий [4IFIR](https://github.com/rashevskyv/4IFIR)
+### За образец инструкции взят репозиторий [4IFIR](https://github.com/rashevskyv/4IFIR)
 
 Инструкция обширная. Используйте поиск для того, чтобы успешно ей пользоваться. 
 
@@ -64,36 +66,37 @@
 ## Состав Ultra
 
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)**
-1. **[Сигпатчи](https://jits.cc/patches)**
+1. **[Сигпатчи](https://sigmapatches.coomer.party)**
 1. **[Hekate](https://github.com/CTCaer/hekate)**
 1. **Установленные пейлоады**:
-   * [Lockpick_RCM](https://github.com/shchmue/Lockpick_RCM) - программа для дампинга ключей консоли
-   * [TegraExplorer](https://github.com/rashevskyv/TegraExplorer/) - низкоуровневый файловый менеджер для работы с системой 
+   * [Lockpick_RCM](https://github.com/shchmue/Lockpick_RCM) - программа для дампинга ключей консоли.
+   * [TegraExplorer](https://github.com/rashevskyv/TegraExplorer/) - низкоуровневый файловый менеджер для работы с системой.
 1. **Установленное Homebrew**
-   * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - программа для обновления Ultra до актуальной версии, а так же для скачивания читов
-   * [DBI](https://github.com/rashevskyv/dbi) - лучший файловый менеджер, менеджер сохранений и установщик программ на консоль
+   * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
+   * [DBI](https://github.com/rashevskyv/dbi) - лучший файловый менеджер, менеджер сохранений и установщик программ на консоль.
 1. **Доступные для скачивания Homebrew**
    * [Homebrew App Store](https://github.com/fortheusers/hb-appstore) - магазин приложений
-   * [Linkalho](https://github.com/rdmrocha/linkalho) - программа для привязки аккаунта
+   * [Linkalho](https://github.com/rdmrocha/linkalho) - программа для привязки аккаунта.
    * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - программа для сброса контроллера батареи. Не используйте просто так!
-   * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere/tree/master/troposphere/daybreak) - программа для обновления системного ПО
-   * [SysDVR](https://github.com/exelix11/SysDVR) - программа для передачи изображения с консоли на ПК или другие устройства
-   * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP сервер, работающий в фоне
-   * MicroMemBench - бенчмарк памяти. Результат сильно зависит от разгона CPU. В версии 0.5.0 нету принудительного авторазгона CPU, в 0.5.1 - есть
-   * MicroMemTest - тест памяти. Проводить только с максимальным разгоном CPU. Если ошибки на Loop ниже 20 - значит с разгоном RAM точно проблемы
-   * mhz - программа показывающая честную максимальную частоту цпу
-   * RaytracingNX - бенчмарк цпу
+   * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere/tree/master/troposphere/daybreak) - программа для обновления системного ПО.
+   * [SysDVR](https://github.com/exelix11/SysDVR) - программа для передачи изображения с консоли на ПК или другие устройства.
+   * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP сервер, работающий в фоне.
+   * MicroMemBench - бенчмарк памяти. Результат сильно зависит от разгона CPU. В версии 0.5.0 нету принудительного авторазгона CPU, в 0.5.1 - есть.
+   * MicroMemTest - тест памяти. Проводить только с максимальным разгоном CPU. Если ошибки на Loop ниже 20 - значит с разгоном RAM точно проблемы.
+   * mhz - программа показывающая честную максимальную частоту цпу.
+   * RaytracingNX - бенчмарк цпу.
 1. **Установленные модули**. Модули - это дополнительные компоненты, работающие внутри Atmosphere и позволяющие делать разные крутые штуки, как-то использование xbox-сoвместимых контроллеров, эмуляцию amiibo, разгон и прочее
    * [SaltyNX](https://github.com/masagrator/SaltyNX), фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины. Не совместим с 32-х битными играми (список на гитхабе проекта).
    * [ReverseNX-Tool](https://github.com/masagrator/ReverseNX-Tool) - (Теперь вшита в SaltyNX) программа, которая принудительно меняет режимы работы консоли на докстанцию и портатив, вне зависимости от того  находится консоль в доке или нет. Потенциально улучшает картинку в портативе за счет того, что рендерит изображение так, как будто консоль в докстанции. 
-   * [Ultra](https://github.com/Ultra-NX/Ultra-Overlay), форк [sys-clk-oc](https://github.com/hanai3Bi/Switch-OC-Suite), модуль отвечающий за разгон процессора, памяти и видеочипа, для лучшей производительности
-   * [nx-ovlloader](https://github.com/WerWolv/nx-ovlloader/) - с помощью этого модуля осуществляется переключение установленных модулей
-   * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), форк [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, как - Ultra Tuner
-     - [FPSLocker](https://github.com/masagrator/FPSLocker) - оверлей, позволяющий разблокировать 60 FPS в играх 
-     - [EdiZon](https://github.com/proferabg/EdiZon-Overlay/releases) - оверлей для использования читов
-     - [ovlSysmodules](https://github.com/WerWolv/ovl-sysmodules/) - оверлей для включения и отключения установленных системных модулей
-     - [InfoNX-ovl](https://github.com/renA21/InfoNX/) - оверлей, показывающий информацию о батарее/CPU/GPU/RAM
-     - [Ultra-Status-Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), форк [Status-Monitor-Overlay](https://github.com/masagrator/Status-Monitor-Overlay) - модуль для контроля параметров консоли в реальном времени. Может выступать в качестве  счетчика FPS
+   * [Ultra](https://github.com/Ultra-NX/Ultra-Overlay), форк [sys-clk-oc](https://github.com/hanai3Bi/Switch-OC-Suite), модуль отвечающий за разгон процессора, памяти и видеочипа, для лучшей производительности.
+   * [nx-ovlloader](https://github.com/WerWolv/nx-ovlloader/) - с помощью этого модуля осуществляется переключение установленных модулей.
+   * [sys-patch](https://github.com/ITotalJustice/sys-patch/) - создает/обновляет патчи при запуске системы. Не заменяет сигпатчи, но избавляет от регулярного ручного обновления патчей системы после каждой микрообновы системы.
+   * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), форк [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, как - Ultra Tuner.
+     - [FPSLocker](https://github.com/masagrator/FPSLocker) - оверлей, позволяющий разблокировать 60 FPS в играх.
+     - [EdiZon](https://github.com/proferabg/EdiZon-Overlay/releases) - оверлей для использования читов.
+     - [ovlSysmodules](https://github.com/WerWolv/ovl-sysmodules/) - оверлей для включения и отключения установленных системных модулей.
+     - [InfoNX-ovl](https://github.com/renA21/InfoNX/) - оверлей, показывающий информацию о батарее/CPU/GPU/RAM.
+     - [Ultra-Status-Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), форк [Status-Monitor-Overlay](https://github.com/masagrator/Status-Monitor-Overlay) - модуль для контроля параметров консоли в реальном времени. Может выступать в качестве  счетчика FPS.
 
 ## Установка 
 
@@ -441,18 +444,18 @@ ERISTA оснащена более мощным контроллером PMICs M
   * [Status-Monitor-Overlay](https://github.com/masagrator/Status-Monitor-Overlay)
   * [Switch-OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite)
 
-[CC-BY-NC-4.0 License]
+[CC-BY-NC-4.0 License](https://github.com/ppkantorski/Ultrahand-Overlay/blob/main/LICENSE)
   * [Ultrahand-Overlay](https://github.com/ppkantorski/Ultrahand-Overlay)
 
 ## Благодарности 
 
 * Cooler3D
+* Efosamark
 * rashevskyv/хНЯ
 * snupt/Catcher In The Grain Field
-* Efosamark
 * ppkantorski/b0rd2dEAth
-* 4PDA
 * hanai3Bi/Meha
+* 4PDA
 
 ## Поддержка
 
