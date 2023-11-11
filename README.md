@@ -82,7 +82,7 @@
    * [nx-ovlloader](https://github.com/WerWolv/nx-ovlloader/) - С помощью этого модуля осуществляется переключение установленных модулей.
    * [sys-patch](https://github.com/ITotalJustice/sys-patch/) - Создает/обновляет патчи при запуске системы. Не заменяет сигпатчи, но избавляет от регулярного ручного обновления патчей системы после каждой микрообновы системы.
    * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), форк [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
-     - **Ultra-Overlay**, форк [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Оверлей для управления модулем sys-clk-oc. Немного изменен мной, но без копания в исходниках.
+     - **'Ultra-Overlay'**, форк [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Оверлей для управления модулем sys-clk-oc. Немного изменен мной, но без копания в исходниках.
      - [Status Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), форк [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Измененить пресет внешности Micro-оверлея можно в Updater.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay/releases) - Оверлей для использования читов.
