@@ -1,9 +1,24 @@
 # Marvel Ultimate Alliance 3: The Black Order 4.0.1
 # BID: E853C44FDF18B88F
-# Credits to Hazerou for finding offsets
+# Credits to Hazerou for finding offsets for FPS lock and speed
 
 unsafeCheck: true
 
+MASTER_WRITE:
+# Redirect reading DR GPU time factor to MAIN + 0x4FC0E00
+  -
+    type: bytes
+    main_offset: 0x470E80
+    value_type: uint32
+    value: 
+      - 0x90025A89
+      - 0xBD4E0122
+# Default value (= 0.5 / FPS)
+  -
+    type: bytes
+    main_offset: 0x4FC0E00
+    value_type: float
+    value: 0.0166666666
 15FPS:
   # Internal Vsync (default value)
   -
@@ -17,6 +32,12 @@ unsafeCheck: true
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: 15
+  # DR GPU time factor
+  -
+    type: write
+    address: [MAIN, 0x4FC0E00]
+    value_type: float
+    value: 0.0333333333
 20FPS:
   # Internal Vsync (default value)
   -
@@ -30,6 +51,12 @@ unsafeCheck: true
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: 20
+  # DR GPU time factor
+  -
+    type: write
+    address: [MAIN, 0x4FC0E00]
+    value_type: float
+    value: 0.025
 25FPS:
   # Internal Vsync (default value)
   -
@@ -43,6 +70,12 @@ unsafeCheck: true
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: 25
+  # DR GPU time factor
+  -
+    type: write
+    address: [MAIN, 0x4FC0E00]
+    value_type: float
+    value: 0.02
 30FPS:
   # Internal Vsync (default value)
   -
@@ -56,6 +89,12 @@ unsafeCheck: true
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: 30
+  # DR GPU time factor (default value)
+  -
+    type: write
+    address: [MAIN, 0x4FC0E00]
+    value_type: float
+    value: 0.0166666666
 35FPS:
   # Internal Vsync
   -
@@ -69,6 +108,12 @@ unsafeCheck: true
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: 35
+  # DR GPU time factor
+  -
+    type: write
+    address: [MAIN, 0x4FC0E00]
+    value_type: float
+    value: 0.01428
 40FPS:
   # Internal Vsync
   -
@@ -82,6 +127,12 @@ unsafeCheck: true
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: 40
+  # DR GPU time factor
+  -
+    type: write
+    address: [MAIN, 0x4FC0E00]
+    value_type: float
+    value: 0.0125
 45FPS:
   # Internal Vsync
   -
@@ -95,6 +146,12 @@ unsafeCheck: true
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: 45
+  # DR GPU time factor
+  -
+    type: write
+    address: [MAIN, 0x4FC0E00]
+    value_type: float
+    value: 0.0111111111
 50FPS:
   # Internal Vsync
   -
@@ -108,6 +165,12 @@ unsafeCheck: true
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: 50
+  # DR GPU time factor
+  -
+    type: write
+    address: [MAIN, 0x4FC0E00]
+    value_type: float
+    value: 0.01
 55FPS:
   # Internal Vsync
   -
@@ -121,6 +184,12 @@ unsafeCheck: true
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: 55
+  # DR GPU time factor
+  -
+    type: write
+    address: [MAIN, 0x4FC0E00]
+    value_type: float
+    value: 0.009009009
 60FPS:
   # Internal Vsync
   -
@@ -134,3 +203,9 @@ unsafeCheck: true
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: 60
+  # DR GPU time factor
+  -
+    type: write
+    address: [MAIN, 0x4FC0E00]
+    value_type: float
+    value: 0.0083333333

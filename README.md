@@ -85,7 +85,7 @@
      - **`Ultra-Overlay`**, форк [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Оверлей для управления модулем sys-clk-oc. Немного изменен мной, но без копания в исходниках.
      - [Status Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), форк [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Измененить пресет внешности Micro-оверлея можно в Updater.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
-     - [EdiZon](https://github.com/proferabg/EdiZon-Overlay/releases) - Оверлей для использования читов.
+     - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов.
      - [InfoNX](https://github.com/renA21/InfoNX/) - Оверлей, показывающий информацию о батарее/CPU/GPU/RAM.
      - [ReverseNX-RT](https://github.com/masagrator/ReverseNX-RT) - Оверлей для управления модулем ReverseNX.
      - [Sysmodules](https://github.com/WerWolv/ovl-sysmodules/) - Оверлей для включения и отключения установленных системных модулей.
