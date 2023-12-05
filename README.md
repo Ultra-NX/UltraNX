@@ -2,7 +2,7 @@
 
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Ultra.png)
 
-### [English Readme](README_ENG.md) | [Группа в телеграме](t.me/UltraNX) | [Wiki](https://github.com/Ultra-NX/Ultra/wiki)
+### [English Readme](README_ENG.md) | [Группа в телеграме](https://t.me/UltraNX) | [Wiki](https://github.com/Ultra-NX/Ultra/wiki)
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
