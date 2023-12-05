@@ -84,4 +84,4 @@
 * Сделать это можно через @wallet telegram, на мой аккаунт @redraz
 * Либо через Сбер: 2202200513345833
 * Так же по QR через Tinkoff
-![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Tinkoff.png)
+![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Tinkoff%20small.png)
