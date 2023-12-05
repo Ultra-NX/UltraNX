@@ -79,6 +79,6 @@ Listed below are the licenses of those programs that have been modified specific
 
 ## Support
 
-If you liked the results of my labors and you wanted to thank me - I would be very grateful.
-You can do this via @wallet telegram, on my @redraz account
+If you liked the results of my labors and you wanted to thank me - I would be very grateful.            
+You can do this via @wallet telegram, on my @redraz account            
 I am from Russia, so there are no other convenient ways to donate to me =(
