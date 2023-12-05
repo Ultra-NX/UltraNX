@@ -24,7 +24,7 @@
 1. **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Пакет разгона от Meha/hanai3Bi, открытые исходники гарантируют надежность и отсутствие скрытых гадостей. Вовремя обновляется для поддержки новых возможностей Атмосферы. Используется модифицированный loader.kip от B3711, в котором больше таблиц андервольта CPU (6 уровней против 4х).
    - Временно используется оригинал от Meha.
 1. **Установленные пейлоады**:
-   * [Lockpick_RCM](https://codeberg.org/rashevskyv/kefir) - Программа для снятия ключей консоли.
+   * [Lockpick_RCM](https://codeberg.org/rashevskyv/kefir) - Программа для [снятия ключей консоли](https://switch.customfw.xyz/backup-nand#%D1%87%D0%B0%D1%81%D1%82%D1%8C-iii---%D0%B4%D0%B0%D0%BC%D0%BF%D0%B8%D0%BC-%D0%BA%D0%BB%D1%8E%D1%87%D0%B8).
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - Низкоуровневый файловый менеджер для работы с системой.
 1. **Установленные Homebrew**
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
