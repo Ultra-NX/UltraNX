@@ -2,6 +2,7 @@
 # BID: D9BA7DB72FFAFECD
 # Thanks to Hazerou for finding offsets
 # Game speed is tied to framerate, no proper support for anything between 30 and 60. 
+# Game crashes at 2nd or 3rd frame if you try to force triple buffer.
 
 unsafeCheck: true
 

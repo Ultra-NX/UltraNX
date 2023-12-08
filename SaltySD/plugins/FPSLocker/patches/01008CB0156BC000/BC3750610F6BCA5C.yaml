@@ -1,0 +1,132 @@
+# The Legend of Heroes: Trails into Reverie 1.0.3
+# BID: BC3750610F6BCA5C
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Read FPS lock time to MAIN+0x7A52500
+  -
+    type: bytes
+    main_offset: 0x8142C
+    value_type: uint32
+    value:
+      - 0xB003CE88
+      - 0xB9450108
+  -
+    type: bytes
+    main_offset: 0x81460
+    value_type: uint32
+    value:
+      - 0xB003CE89
+      - 0xB9450129
+  # Default value
+  -
+    type: bytes
+    main_offset: 0x7A52500
+    value_type: float
+    value: 0.0333333333
+  # Write game's loop time as float to MAIN+0x7A52504
+  -
+    type: bytes
+    main_offset: 0x81434
+    value_type: uint32
+    value: 0x94339A8B
+  -
+    type: bytes
+    main_offset: 0xD67E60
+    value_type: uint32
+    value: 
+      - 0x1E227821
+      - 0xF0036754
+      - 0xBD050681
+      - 0xD65F03C0
+  - # Read lowest timing float factor from MAIN+0x7A52504
+    type: bytes
+    main_offset: 0x814D0
+    value_type: uint32
+    value:
+      - 0xB003CE8B
+      - 0xB945056B
+  - # Default value
+    type: bytes
+    main_offset: 0x7A52504
+    value_type: float
+    value: 0.0333333333
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: float
+    value: 0.0666666666
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: float
+    value: 0.05
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: float
+    value: 0.04
+  -
+    type: block
+    what: timing
+30FPS:
+  - # default value
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: float
+    value: 0.0333333333
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: float
+    value: 0.028571428
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: float
+    value: 0.025
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: float
+    value: 0.0222222222
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: float
+    value: 0.02
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: float
+    value: 0.0181818181
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: float
+    value: 0.0166666666

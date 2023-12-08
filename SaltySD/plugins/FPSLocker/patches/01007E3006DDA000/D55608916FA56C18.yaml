@@ -2,6 +2,7 @@
 # BID: D55608916FA56C18
 # Thanks to Kirby567Fan for finding offsets
 # Game is using fake double buffer
+# Game crashes at 2nd or 3rd frame if you try to force triple buffer.
 
 unsafeCheck: true
 

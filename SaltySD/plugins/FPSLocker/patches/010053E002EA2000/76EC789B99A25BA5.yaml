@@ -1,0 +1,74 @@
+# FATE/EXTELLA 1.0.0
+# BID: 76EC789B99A25BA5
+# REF: aql::GraphicsContext::initialize
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Remove double buffer
+  -
+    type: bytes
+    main_offset: 0x55DFDC
+    value_type: uint32
+    value: 0xD2800068
+15FPS:
+  # DUMMY
+  -
+    type: write
+    address: [MAIN, 0x25CCF00]
+    value_type: uint8
+    value: 0
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x25CCF00]
+    value_type: uint8
+    value: 0
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x25CCF00]
+    value_type: uint8
+    value: 0
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x25CCF00]
+    value_type: uint8
+    value: 0
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x25CCF00]
+    value_type: uint8
+    value: 0
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x25CCF00]
+    value_type: uint8
+    value: 0
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x25CCF00]
+    value_type: uint8
+    value: 0
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x25CCF00]
+    value_type: uint8
+    value: 0
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x25CCF00]
+    value_type: uint8
+    value: 0
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x25CCF00]
+    value_type: uint8
+    value: 0

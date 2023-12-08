@@ -48,5 +48,5 @@ X0100964012528000
 0100BDB01A0E6000
 
 ;Company of Heroes Collection
-;1.5_66915 crash on boot
+;1.5_66915 crashes
 0100ABD0156F8000

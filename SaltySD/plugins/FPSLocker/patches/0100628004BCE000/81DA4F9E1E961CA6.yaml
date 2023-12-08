@@ -1,0 +1,81 @@
+# Nights Of Azure 2: Bride of the New Moon 1.0.1
+# BID: 81DA4F9E1E961CA6
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Remove double buffer
+  -
+    type: bytes
+    main_offset: 0x7E4ED8
+    value_type: uint32
+    value: 0x9409328A
+  -
+    type: bytes
+    main_offset: 0xA31900
+    value_type: uint32
+    value:
+      - 0x52800076
+      - 0xB9000836
+      - 0x17FFFB2E
+15FPS:
+  # DUMMY
+  -
+    type: write
+    address: [MAIN, 0x13E5400]
+    value_type: uint8
+    value: 0
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x13E5400]
+    value_type: uint8
+    value: 0
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x13E5400]
+    value_type: uint8
+    value: 0
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x13E5400]
+    value_type: uint8
+    value: 0
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x13E5400]
+    value_type: uint8
+    value: 0
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x13E5400]
+    value_type: uint8
+    value: 0
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x13E5400]
+    value_type: uint8
+    value: 0
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x13E5400]
+    value_type: uint8
+    value: 0
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x13E5400]
+    value_type: uint8
+    value: 0
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x13E5400]
+    value_type: uint8
+    value: 0

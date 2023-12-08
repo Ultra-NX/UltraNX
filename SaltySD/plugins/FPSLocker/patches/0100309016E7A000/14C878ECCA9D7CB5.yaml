@@ -1,4 +1,4 @@
-# Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles 1.52
+# Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles 1.53
 # BID: 14C878ECCA9D7CB5
 
 unsafeCheck: true
@@ -15,7 +15,7 @@ unsafeCheck: true
     # bOptimizeAnimBlueprintMemberVariableAccess |= 2
     # bCanBlueprintsTickByDefault |= 1
     value: 7
-  # Disable internal flag that ties 3D game speed to FixedFrameRate value
+  # Disable CustomTimeStep
   -
     type: write
     address: [MAIN, 0xB314540, 0x810]
@@ -37,7 +37,7 @@ unsafeCheck: true
     address: [MAIN, 0xB314540, 0x7F8]
     value_type: uint32
     value: 7
-  # Untie game speed from framerate
+  # CustomTimeStep
   -
     type: write
     address: [MAIN, 0xB314540, 0x810]
@@ -59,7 +59,7 @@ unsafeCheck: true
     address: [MAIN, 0xB314540, 0x7F8]
     value_type: uint32
     value: 7
-  # Untie game speed from framerate
+  # CustomTimeStep
   -
     type: write
     address: [MAIN, 0xB314540, 0x810]
@@ -81,7 +81,7 @@ unsafeCheck: true
     address: [MAIN, 0xB314540, 0x7F8]
     value_type: uint32
     value: 7
-  # Untie game speed from framerate (default is 1)
+  # CustomTimeStep (by default it's 1)
   -
     type: write
     address: [MAIN, 0xB314540, 0x810]
@@ -100,7 +100,7 @@ unsafeCheck: true
     address: [MAIN, 0xB314540, 0x7F8]
     value_type: uint32
     value: 7
-  # Untie game speed from framerate
+  # CustomTimeStep
   -
     type: write
     address: [MAIN, 0xB314540, 0x810]
@@ -122,7 +122,7 @@ unsafeCheck: true
     address: [MAIN, 0xB314540, 0x7F8]
     value_type: uint32
     value: 7
-  # Untie game speed from framerate
+  # CustomTimeStep
   -
     type: write
     address: [MAIN, 0xB314540, 0x810]
@@ -144,7 +144,7 @@ unsafeCheck: true
     address: [MAIN, 0xB314540, 0x7F8]
     value_type: uint32
     value: 7
-  # Untie game speed from framerate
+  # CustomTimeStep
   -
     type: write
     address: [MAIN, 0xB314540, 0x810]
@@ -166,7 +166,7 @@ unsafeCheck: true
     address: [MAIN, 0xB314540, 0x7F8]
     value_type: uint32
     value: 7
-  # Untie game speed from framerate
+  # CustomTimeStep
   -
     type: write
     address: [MAIN, 0xB314540, 0x810]
@@ -188,7 +188,7 @@ unsafeCheck: true
     address: [MAIN, 0xB314540, 0x7F8]
     value_type: uint32
     value: 7
-  # Untie game speed from framerate
+  # CustomTimeStep
   -
     type: write
     address: [MAIN, 0xB314540, 0x810]
@@ -210,7 +210,7 @@ unsafeCheck: true
     address: [MAIN, 0xB314540, 0x7F8]
     value_type: uint32
     value: 7
-  # Untie game speed from framerate
+  # CustomTimeStep
   -
     type: write
     address: [MAIN, 0xB314540, 0x810]

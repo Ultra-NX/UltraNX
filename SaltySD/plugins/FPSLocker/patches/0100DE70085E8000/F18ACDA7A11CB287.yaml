@@ -1,0 +1,88 @@
+# Outlast 2 1.0.0
+# BID: F18ACDA7A11CB287
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Remove double buffer
+  -
+    type: bytes
+    main_offset: 0xF45DFC
+    value_type: uint32
+    value: 0xF1000F5F
+  -
+    type: bytes
+    main_offset: 0xF45E64
+    value_type: uint32
+    value: 0x52800061
+  -
+    type: bytes
+    main_offset: 0xF461D4
+    value_type: uint32
+    value: 0xF1000F5F
+  -
+    type: bytes
+    main_offset: 0xF4623C
+    value_type: uint32
+    value: 0x52800061
+15FPS:
+  # DUMMY
+  -
+    type: write
+    address: [MAIN, 0x408B900]
+    value_type: uint8
+    value: 0
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x408B900]
+    value_type: uint8
+    value: 0
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x408B900]
+    value_type: uint8
+    value: 0
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x408B900]
+    value_type: uint8
+    value: 0
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x408B900]
+    value_type: uint8
+    value: 0
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x408B900]
+    value_type: uint8
+    value: 0
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x408B900]
+    value_type: uint8
+    value: 0
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x408B900]
+    value_type: uint8
+    value: 0
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x408B900]
+    value_type: uint8
+    value: 0
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x408B900]
+    value_type: uint8
+    value: 0

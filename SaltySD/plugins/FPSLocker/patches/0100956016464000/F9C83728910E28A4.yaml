@@ -1,4 +1,4 @@
-# Kao the Kangaroo 1.5
+# Kao the Kangaroo EU 1.5
 # BID: F9C83728910E28A4
 
 unsafeCheck: true
@@ -15,10 +15,13 @@ unsafeCheck: true
     type: write
     address: [MAIN, 0x71C39F0, 0]
     value_type: float
-    value: [15, 15]
+    value: [0, 0]
+  # r.VSync (disabling it improves performance, by default it's enabled)
   -
-    type: block
-    what: timing
+    type: write
+    address: [MAIN, 0x696CDD8, 0]
+    value_type: int32
+    value: [0, 0]
 20FPS:
   # r.DynamicRes.FrameTimeBudget
   -
@@ -31,10 +34,13 @@ unsafeCheck: true
     type: write
     address: [MAIN, 0x71C39F0, 0]
     value_type: float
-    value: [20, 20]
+    value: [0, 0]
+  # r.VSync
   -
-    type: block
-    what: timing
+    type: write
+    address: [MAIN, 0x696CDD8, 0]
+    value_type: int32
+    value: [0, 0]
 25FPS:
   # r.DynamicRes.FrameTimeBudget
   -
@@ -48,6 +54,12 @@ unsafeCheck: true
     address: [MAIN, 0x71C39F0, 0]
     value_type: float
     value: [25, 25]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x696CDD8, 0]
+    value_type: int32
+    value: [0, 0]
   -
     type: block
     what: timing
@@ -64,6 +76,12 @@ unsafeCheck: true
     address: [MAIN, 0x71C39F0, 0]
     value_type: float
     value: [0, 0]
+  # r.VSync (default is 1)
+  -
+    type: write
+    address: [MAIN, 0x696CDD8, 0]
+    value_type: int32
+    value: [0, 0]
 35FPS:
   # r.DynamicRes.FrameTimeBudget
   -
@@ -77,6 +95,12 @@ unsafeCheck: true
     address: [MAIN, 0x71C39F0, 0]
     value_type: float
     value: [35, 35]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x696CDD8, 0]
+    value_type: int32
+    value: [0, 0]
   -
     type: block
     what: timing
@@ -93,6 +117,12 @@ unsafeCheck: true
     address: [MAIN, 0x71C39F0, 0]
     value_type: float
     value: [40, 40]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x696CDD8, 0]
+    value_type: int32
+    value: [0, 0]
   -
     type: block
     what: timing
@@ -109,6 +139,12 @@ unsafeCheck: true
     address: [MAIN, 0x71C39F0, 0]
     value_type: float
     value: [45, 45]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x696CDD8, 0]
+    value_type: int32
+    value: [0, 0]
   -
     type: block
     what: timing
@@ -125,6 +161,12 @@ unsafeCheck: true
     address: [MAIN, 0x71C39F0, 0]
     value_type: float
     value: [50, 50]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x696CDD8, 0]
+    value_type: int32
+    value: [0, 0]
   -
     type: block
     what: timing
@@ -141,6 +183,12 @@ unsafeCheck: true
     address: [MAIN, 0x71C39F0, 0]
     value_type: float
     value: [55, 55]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x696CDD8, 0]
+    value_type: int32
+    value: [0, 0]
   -
     type: block
     what: timing
@@ -156,4 +204,10 @@ unsafeCheck: true
     type: write
     address: [MAIN, 0x71C39F0, 0]
     value_type: float
+    value: [0, 0]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x696CDD8, 0]
+    value_type: int32
     value: [0, 0]

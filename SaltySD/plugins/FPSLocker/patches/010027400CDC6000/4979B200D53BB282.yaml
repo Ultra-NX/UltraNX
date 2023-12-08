@@ -1,6 +1,6 @@
 # Divinity Original Sin 2 1.0.10
 # BID: 4979B200D53BB282
-# Game is using double buffer, nvnWindowBuilderSetTextures has hardcoded values.
+# Game is using double buffer, buffers are not allocated in loop.
 # So it's not possible to get stable FPS lock between 30 and 60.
 
 unsafeCheck: true

@@ -1,0 +1,81 @@
+# Thirsty Suitors NS27619.127559
+# BID: 9DD9149968A0B8D3
+
+# Values found by referencing DynamicResolution::DetermineResolutionScale function
+
+unsafeCheck: false
+
+15FPS:
+  # Dynamic resolution targets (max ms, optimal ms, min ms, crit ms)
+  # max ms = 0.925 * (1000/FPS)
+  # optimal ms = 0.9 * (1000/FPS)
+  # min ms = 0.875 * (1000/FPS)
+  # cris min ms = 0.85 * (1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x4E1BF70, 0x7B0, 0x7F0, 0x20, 0x30]
+    value_type: float
+    value: [61.6667, 60, 58.3333, 56.6667]
+20FPS:
+  # Dynamic resolution targets (max ms, optimal ms, min ms, crit ms)
+  -
+    type: write
+    address: [MAIN, 0x4E1BF70, 0x7B0, 0x7F0, 0x20, 0x30]
+    value_type: float
+    value: [46.25, 45, 43.75, 42.5]
+25FPS:
+  # Dynamic resolution targets (max ms, optimal ms, min ms, crit ms)
+  -
+    type: write
+    address: [MAIN, 0x4E1BF70, 0x7B0, 0x7F0, 0x20, 0x30]
+    value_type: float
+    value: [37, 36, 35, 34]
+30FPS:
+  # Dynamic resolution targets (max ms, optimal ms, min ms, crit ms) (default values)
+  -
+    type: write
+    address: [MAIN, 0x4E1BF70, 0x7B0, 0x7F0, 0x20, 0x30]
+    value_type: float
+    value: [30.8333, 30, 29.1667, 28.3333]
+35FPS:
+  # Dynamic resolution targets (max ms, optimal ms, min ms, crit ms)
+  -
+    type: write
+    address: [MAIN, 0x4E1BF70, 0x7B0, 0x7F0, 0x20, 0x30]
+    value_type: float
+    value: [26.4286, 25.7143, 25, 24.2857]
+40FPS:
+  # Dynamic resolution targets (max ms, optimal ms, min ms, crit ms)
+  -
+    type: write
+    address: [MAIN, 0x4E1BF70, 0x7B0, 0x7F0, 0x20, 0x30]
+    value_type: float
+    value: [23.125, 22.5, 21.875, 21.25]
+45FPS:
+  # Dynamic resolution targets (max ms, optimal ms, min ms, crit ms)
+  -
+    type: write
+    address: [MAIN, 0x4E1BF70, 0x7B0, 0x7F0, 0x20, 0x30]
+    value_type: float
+    value: [20.5556, 20, 19.4444, 18.8889]
+50FPS:
+  # Dynamic resolution targets (max ms, optimal ms, min ms, crit ms)
+  -
+    type: write
+    address: [MAIN, 0x4E1BF70, 0x7B0, 0x7F0, 0x20, 0x30]
+    value_type: float
+    value: [18.5, 18, 17.5, 17]
+55FPS:
+  # Dynamic resolution targets (max ms, optimal ms, min ms, crit ms)
+  -
+    type: write
+    address: [MAIN, 0x4E1BF70, 0x7B0, 0x7F0, 0x20, 0x30]
+    value_type: float
+    value: [16.8182, 16.3636, 15.9091, 15.4545]
+60FPS:
+  # Dynamic resolution targets (max ms, optimal ms, min ms, crit ms)
+  -
+    type: write
+    address: [MAIN, 0x4E1BF70, 0x7B0, 0x7F0, 0x20, 0x30]
+    value_type: float
+    value: [15.4167, 15, 14.5833, 14.1667]

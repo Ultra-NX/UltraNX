@@ -1,0 +1,75 @@
+# Neptunia x SENRAN KAGURA: Ninja Wars 1.0.0
+# BID: FB827BF029E0778A
+
+unsafeCheck: true
+
+15FPS:
+  # 30FPS lock bool
+  -
+    type: write
+    address: [MAIN, 0x9E8D10, 8, 0x6C]
+    value_type: int32
+    value: 1
+20FPS:
+  # 30FPS lock bool
+  -
+    type: write
+    address: [MAIN, 0x9E8D10, 8, 0x6C]
+    value_type: int32
+    value: 1
+25FPS:
+  # 30FPS lock bool
+  -
+    type: write
+    address: [MAIN, 0x9E8D10, 8, 0x6C]
+    value_type: int32
+    value: 1
+30FPS:
+  # 30FPS lock bool (default value)
+  -
+    type: write
+    address: [MAIN, 0x9E8D10, 8, 0x6C]
+    value_type: int32
+    value: 1
+35FPS:
+  # 30FPS lock bool
+  -
+    type: write
+    address: [MAIN, 0x9E8D10, 8, 0x6C]
+    value_type: int32
+    value: 0
+40FPS:
+  # 30FPS lock bool
+  -
+    type: write
+    address: [MAIN, 0x9E8D10, 8, 0x6C]
+    value_type: int32
+    value: 0
+45FPS:
+  # 30FPS lock bool
+  -
+    type: write
+    address: [MAIN, 0x9E8D10, 8, 0x6C]
+    value_type: int32
+    value: 0
+50FPS:
+  # 30FPS lock bool
+  -
+    type: write
+    address: [MAIN, 0x9E8D10, 8, 0x6C]
+    value_type: int32
+    value: 0
+55FPS:
+  # 30FPS lock bool
+  -
+    type: write
+    address: [MAIN, 0x9E8D10, 8, 0x6C]
+    value_type: int32
+    value: 0
+60FPS:
+  # 30FPS lock bool
+  -
+    type: write
+    address: [MAIN, 0x9E8D10, 8, 0x6C]
+    value_type: int32
+    value: 0

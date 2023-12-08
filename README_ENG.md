@@ -20,6 +20,7 @@
 
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, custom firmware for the Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Custom Nintendo Switch graphical bootloader, firmware patcher, toolkit and more.
+1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Package for Ultra Paw (fork of Ultrahand), which allows you to fine-tune the OC parameters for your console. In case of unstable overclocking, or if you want to increase the performance of your console, Ultra Tuner is your indispensable assistant.
 1. **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Overclocking package by Meha/hanai3Bi, open source guarantees reliability and no hidden nasties. Updated in time to support new Atmosphere features. Uses modified loader.kip from B3711, which has more CPU undervolt tables (6 levels vs. 4x).
    - The original from Meha is temporarily used.
 1. **Installed Payloads**:
