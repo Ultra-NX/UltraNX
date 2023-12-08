@@ -49,6 +49,8 @@
    * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
    * [SysDVR](https://github.com/exelix11/SysDVR) - A program and module for streaming video from a console to a PC or other devices.
    * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP server running in background.
+   * [sys-con](https://github.com/cathery/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
+   * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console via bluetooth.
    * [Observer-Tool](https://github.com/rkuchkarov/Observer-Tool) - An overlay with the most detailed display of system statistics, similar to Afterburner on PC.
    * **`MemToolkitNX`** - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking.
    * **`RaytracingNX`** - CPU benchmark.

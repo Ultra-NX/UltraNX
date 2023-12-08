@@ -50,6 +50,8 @@
    * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
    * [SysDVR](https://github.com/exelix11/SysDVR) - Программа и модуль для трансляции видео с консоли на ПК или другие устройства.
    * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP сервер, работающий на фоне.
+   * [sys-con](https://github.com/cathery/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
+   * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
    * [Observer-Tool](https://github.com/rkuchkarov/Observer-Tool) - Оверлей с максимально подробным отображением статистики системы, напоминает Afterburner на PC.
    * **`MemToolkitNX`** - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU.
    * **`RaytracingNX`** - Бенчмарк цпу.
