@@ -48,7 +48,7 @@
    * [ReverseNX Tool](https://github.com/masagrator/ReverseNX-Tool) - Программа для управления ReverseNX.
    * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Программа для сброса контроллера батареи. Не используйте просто так!
    * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
-   * [SysDVR](https://github.com/exelix11/SysDVR) - Программа и модуль для трансляции видео с консоли на ПК или другие устройства.
+   * [SysDVR-conf](https://github.com/exelix11/SysDVR) - Программа для установки/удаления dvr патчей для игр. Патчи включают возможность записи в тех играх, где она отключена, но ломают некоторые другие игры, например "Ведьмак 3".
    * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP сервер, работающий на фоне.
    * [sys-con](https://github.com/cathery/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
