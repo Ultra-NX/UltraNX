@@ -47,7 +47,7 @@
    * [ReverseNX Tool](https://github.com/masagrator/ReverseNX-Tool) - ReverseNX control program.
    * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Program to reset the battery controller. Do not use unnecessarily!
    * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
-   * [SysDVR](https://github.com/exelix11/SysDVR) - A program and module for streaming video from a console to a PC or other devices.
+   * [SysDVR-conf](https://github.com/exelix11/SysDVR) - A program to install/uninstall dvr patches for games. Patches enable recording in games where it is disabled, but break some other games like "The Witcher 3".
    * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP server running in background.
    * [sys-con](https://github.com/cathery/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console via bluetooth.
