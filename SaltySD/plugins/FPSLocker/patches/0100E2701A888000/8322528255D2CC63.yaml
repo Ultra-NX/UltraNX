@@ -1,0 +1,182 @@
+# Trine 5: A Clockwork Conspiracy 1.0.5
+# BID: 8322528255D2CC63
+# To update dynamic resolution offsets look at fb::renderer::ResolutionScaler::update
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Change double buffer to triple buffer
+  -
+    type: bytes
+    main_offset: 0x138A024
+    value_type: uint32
+    value: 0x52800068
+  # Allow changing dynamic resolution timings
+  # Max - changed address to MAIN + 0x7D05200
+  -
+    type: bytes
+    main_offset: 0x25992CC
+    value_type: uint32
+    value: 
+      - 0x9002BB68
+      - 0xD001C236
+      - 0xFD410102
+  # Min - changed address to MAIN + 0x7D05208
+  -
+    type: bytes
+    main_offset: 0x2599344
+    value_type: uint32
+    value: 
+    - 0x9002BB6A
+    - 0xFD410545
+  -
+    type: bytes
+    main_offset: 0x2599380
+    value_type: uint32
+    value: 0x9002BB6A
+  -
+    type: bytes
+    main_offset: 0x2599390
+    value_type: uint32
+    value: 0xFD410546
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x7D05200
+    value_type: double
+    value: 34.0
+  -
+    type: bytes
+    main_offset: 0x7D05208
+    value_type: double
+    value: 32.0
+15FPS:
+  # Max Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05200]
+    value_type: double
+    value: 68.0
+  # Min Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05208]
+    value_type: double
+    value: 64.0
+20FPS:
+  # Max Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05200]
+    value_type: double
+    value: 51.0
+  # Min Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05208]
+    value_type: double
+    value: 48.0
+25FPS:
+  # Max Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05200]
+    value_type: double
+    value: 40.8
+  # Min Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05208]
+    value_type: double
+    value: 38.4
+30FPS:
+  # Max Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05200]
+    value_type: double
+    value: 34.0
+  # Min Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05208]
+    value_type: double
+    value: 32.0
+35FPS:
+  # Max Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05200]
+    value_type: double
+    value: 29.14
+  # Min Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05208]
+    value_type: double
+    value: 27.42
+40FPS:
+  # Max Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05200]
+    value_type: double
+    value: 25.5
+  # Min Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05208]
+    value_type: double
+    value: 24.0
+45FPS:
+  # Max Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05200]
+    value_type: double
+    value: 22.66
+  # Min Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05208]
+    value_type: double
+    value: 21.33
+50FPS:
+  # Max Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05200]
+    value_type: double
+    value: 20.4
+  # Min Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05208]
+    value_type: double
+    value: 19.2
+55FPS:
+  # Max Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05200]
+    value_type: double
+    value: 18.54
+  # Min Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05208]
+    value_type: double
+    value: 17.45
+60FPS:
+  # Max Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05200]
+    value_type: double
+    value: 17.0
+  # Min Dynamic Resolution Timing
+  -
+    type: write
+    address: [MAIN, 0x7D05208]
+    value_type: double
+    value: 16.0

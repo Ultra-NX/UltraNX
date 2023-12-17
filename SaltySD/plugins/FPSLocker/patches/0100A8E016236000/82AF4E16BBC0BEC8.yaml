@@ -1,11 +1,134 @@
 # Kirby's Dream Buffet 1.0.0
 # BID: 82AF4E16BBC0BEC8
 # Thanks to Hazerou for finding offsets
-# Game is using fake double buffer.
-# Game crashes at 2nd or 3rd frame if you try to force triple buffer.
+# Game was patched to use triple buffer, and to avoid flickering with some 2D transparent elements, I have disabled transparency in them.
+# Issue with flickering exists because game is hardcoded to only register 2 textures into texturepool and 2 samplers into samplerpool for framebuffers.
 
 unsafeCheck: true
 
+MASTER_WRITE:
+  # Remove double buffer
+  -
+    type: bytes
+    main_offset: 0x861208
+    value_type: uint32
+    value: 0x52800069
+  # Fix helper functions to properly copy third buffer address to stack
+  -
+    type: bytes
+    main_offset: 0x8612DC
+    value_type: uint32
+    value: 0x52800062
+  -
+    type: bytes
+    main_offset: 0x8654D8
+    value_type: uint32
+    value:
+      - 0xD10183FF
+      - 0xA9027BFD
+      - 0x910083FD
+      - 0xF9001BF7
+      - 0xA90457F6
+      - 0xA9054FF4
+      - 0xA9017FFF
+  -
+    type: bytes
+    main_offset: 0x86550C
+    value_type: uint32
+    value: 0x52800062
+  -
+    type: bytes
+    main_offset: 0x8655B8
+    value_type: uint32
+    value:
+      - 0xA9002BE8
+      - 0x97FFE69B
+      - 0xA9454FF4
+      - 0xF9401BF7
+      - 0xA94457F6
+      - 0xA9427BFD
+      - 0x910183FF
+  -
+    type: bytes
+    main_offset: 0x793298
+    value_type: uint32
+    value:
+      - 0xD10143FF
+      - 0xA9027BFD
+      - 0x910083FD
+      - 0xA90357F6
+      - 0xA9044FF4
+  -
+    type: bytes
+    main_offset: 0x7932E0
+    value_type: uint32
+    value: 0xA9017FFF
+  -
+    type: bytes
+    main_offset: 0x7932EC
+    value_type: uint32
+    value: 0x52800062
+  -
+    type: bytes
+    main_offset: 0x793310
+    value_type: uint32
+    value:
+      - 0xA9444FF4
+      - 0xA94357F6
+      - 0xA9427BFD
+      - 0x910143FF
+  -
+    type: bytes
+    main_offset: 0x876B00
+    value_type: uint32
+    value:
+      - 0x910043E1
+      - 0x910043F7
+  -
+    type: bytes
+    main_offset: 0x876B14
+    value_type: uint32
+    value: 
+      - 0x52800062
+      - 0xA9017FFF
+  -
+    type: bytes
+    main_offset: 0x8CFC44
+    value_type: uint32
+    value:
+      - 0x910003E1
+      - 0x52800062
+  -
+    type: bytes
+    main_offset: 0x8CFC5C
+    value_type: uint32
+    value: 0x910003FA
+  -
+    type: bytes
+    main_offset: 0x876B14
+    value_type: uint32
+    value: 0x52800062
+  -
+    type: bytes
+    main_offset: 0x8612DC
+    value_type: uint32
+    value: 0x52800062
+  -
+    type: bytes
+    main_offset: 0x876A64
+    value_type: uint32
+    value: 0x52800062
+  # Disable transparency for some 2D elements to avoid issues with flickering at triple buffer
+  -
+    type: bytes
+    main_offset: 0x7BFB00
+    value_type: uint32
+    value:
+      - 0xD2802049
+      - 0xB948494A
+      - 0xD37DF14C
+      - 0x9120A114
+      - 0xF9000289
 15FPS:
   # Interval
   -

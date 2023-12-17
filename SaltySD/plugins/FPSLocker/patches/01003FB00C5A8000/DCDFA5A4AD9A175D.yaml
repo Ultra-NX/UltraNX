@@ -1,10 +1,96 @@
 # Super Kirby Clash 1.0.1
 # BID: DCDFA5A4AD9A175D
-# Thanks to Kirby567Fan for finding offsets
-# Game is using fake double buffer
+# Thanks to Kirby567Fan for finding offset of interval
 
 unsafeCheck: true
 
+MASTER_WRITE:
+  # Block game from updating interval
+  -
+    type: bytes
+    main_offset: 0x7264
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x721C
+    value_type: uint32
+    value: 0xD503201F
+  # Remove double buffer
+  -
+    type: bytes
+    main_offset: 0xC5B08
+    value_type: uint32
+    value: 
+      - 0x52800068
+  -
+    type: bytes
+    main_offset: 0xC5BB0
+    value_type: uint32
+    value: 
+      - 0x52800062
+  -
+    type: bytes
+    main_offset: 0xC5720
+    value_type: uint32
+    value: 
+      - 0xD10143FF
+      - 0xA90257F6
+      - 0xA9034FF4
+      - 0xA9047BFD
+      - 0x910103FD
+  -
+    type: bytes
+    main_offset: 0xC5744
+    value_type: uint32
+    value: 
+      - 0xA9017FFF
+  -
+    type: bytes
+    main_offset: 0xC5758
+    value_type: uint32
+    value: 
+      - 0x52800062
+  -
+    type: bytes
+    main_offset: 0xC5780
+    value_type: uint32
+    value: 
+      - 0xA9447BFD
+      - 0xA9434FF4
+      - 0xA94257F6
+      - 0x910143FF
+  -
+    type: bytes
+    main_offset: 0xC57A0
+    value_type: uint32
+    value: 
+      - 0xD10143FF
+      - 0xA901D7FF
+      - 0xA9034FF4
+      - 0xA9047BFD
+      - 0x910103FD
+  -
+    type: bytes
+    main_offset: 0xC57CC
+    value_type: uint32
+    value: 
+      - 0x52800062
+  -
+    type: bytes
+    main_offset: 0xC57E4
+    value_type: uint32
+    value: 
+      - 0xF90003E8
+  -
+    type: bytes
+    main_offset: 0xC580C
+    value_type: uint32
+    value: 
+      - 0xA9447BFD
+      - 0xF94013F5
+      - 0xA9434FF4
+      - 0x910143FF
 15FPS:
   # Interval
   -
