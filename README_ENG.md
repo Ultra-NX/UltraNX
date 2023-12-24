@@ -53,9 +53,6 @@
    * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console via bluetooth.
    * [Observer-Tool](https://github.com/rkuchkarov/Observer-Tool) - An overlay with the most detailed display of system statistics, similar to Afterburner on PC.
    * **`MemToolkitNX`** - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking.
-   * **`RaytracingNX`** - CPU benchmark.
-   * **`stress-nx`** - Stress test/benchmark CPU.
-   * **`mhz`** - A program that shows the real maximum CPU frequency.
 
 
 ## License

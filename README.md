@@ -54,9 +54,6 @@
    * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
    * [Observer-Tool](https://github.com/rkuchkarov/Observer-Tool) - Оверлей с максимально подробным отображением статистики системы, напоминает Afterburner на PC.
    * **`MemToolkitNX`** - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU.
-   * **`RaytracingNX`** - Бенчмарк цпу.
-   * **`stress-nx`** - Стресс-тест/бенчмарк цпу.
-   * **`mhz`** - Программа показывающая честную максимальную частоту цпу.
 
 
 ## Лицензии
