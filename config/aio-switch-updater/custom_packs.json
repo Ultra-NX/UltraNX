@@ -1,7 +1,6 @@
 {
   "ams": {
-    "[PACK] Ultra 2.0 Prerelease": "https://github.com/Ultra-NX/Ultra-Resources/raw/main/Ultra.zip",
-    "[PACK] Ultra 1.5.3": "https://github.com/Ultra-NX/Ultra/releases/latest/download/Ultra.zip"
+    "[PACK] Ultra-NX": "https://github.com/Ultra-NX/Ultra/releases/latest/download/Ultra.zip"
   },
   "misc": {
     "Brick Code": "https://github.com/Ultra-NX/Ultra-Resources/raw/main/brick.zip",
