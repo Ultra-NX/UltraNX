@@ -1,0 +1,197 @@
+# Fire Emblem Engage 2.0.0
+# BID: 8C08B9719E085F91
+# Game has many things hardcoded to vSyncCount, so if game can't remain FPS target that is rounded up to 60/30/20/15, some elements are slowed down.
+# Thanks to ~systemdev for figuring out basic of patching this game.
+
+unsafeCheck: false
+
+15FPS:
+  # UnityEngine.QualitySettings::vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    value_type: uint32
+    value: 4
+  # Internal vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x62035A0]
+    value_type: uint32
+    value: 4
+  # App.HubUtil_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    value_type: float
+    value: 0.28
+20FPS:
+  # UnityEngine.QualitySettings::vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    value_type: uint32
+    value: 3
+  # Internal vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x62035A0]
+    value_type: uint32
+    value: 3
+  # App.HubUtil_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    value_type: float
+    value: 0.21
+25FPS:
+  # UnityEngine.QualitySettings::vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    value_type: uint32
+    value: 2
+  # Internal vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x62035A0]
+    value_type: uint32
+    value: 2
+  # App.HubUtil_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    value_type: float
+    value: 0.168
+30FPS:
+  # UnityEngine.QualitySettings::vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    value_type: uint32
+    value: 2
+  # Internal vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x62035A0]
+    value_type: uint32
+    value: 2
+  # App.HubUtil_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    value_type: float
+    value: 0.14
+35FPS:
+  # UnityEngine.QualitySettings::vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    value_type: uint32
+    value: 1
+  # Internal vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x62035A0]
+    value_type: uint32
+    value: 1
+  # App.HubUtil_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    value_type: float
+    value: 0.12
+40FPS:
+  # UnityEngine.QualitySettings::vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    value_type: uint32
+    value: 1
+  # Internal vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x62035A0]
+    value_type: uint32
+    value: 1
+  # App.HubUtil_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    value_type: float
+    value: 0.105
+45FPS:
+  # UnityEngine.QualitySettings::vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    value_type: uint32
+    value: 1
+  # Internal vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x62035A0]
+    value_type: uint32
+    value: 1
+  # App.HubUtil_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    value_type: float
+    value: 0.0933
+50FPS:
+  # UnityEngine.QualitySettings::vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    value_type: uint32
+    value: 1
+  # Internal vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x62035A0]
+    value_type: uint32
+    value: 1
+  # App.HubUtil_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    value_type: float
+    value: 0.084
+55FPS:
+  # UnityEngine.QualitySettings::vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    value_type: uint32
+    value: 1
+  # Internal vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x62035A0]
+    value_type: uint32
+    value: 1
+  # App.HubUtil_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    value_type: float
+    value: 0.0763
+60FPS:
+  # UnityEngine.QualitySettings::vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    value_type: uint32
+    value: 1
+  # Internal vSyncCount
+  -
+    type: write
+    address: [MAIN, 0x62035A0]
+    value_type: uint32
+    value: 1
+  # App.HubUtil_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    value_type: float
+    value: 0.07

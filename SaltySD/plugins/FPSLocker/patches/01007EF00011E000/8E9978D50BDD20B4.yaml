@@ -1,0 +1,316 @@
+# The Legend of Zelda: Breath of the Wild 1.6.0
+# BID: 8E9978D50BDD20B4
+# Time Struct pointer: *(MAIN+0x2D1E170), global speed offset: 0x30
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Remove double buffer
+  -
+    type: bytes
+    main_offset: 0xE557D4
+    value_type: uint32
+    value: 0x52800029
+  -
+    type: bytes
+    main_offset: 0xE557E0
+    value_type: uint32
+    value: 
+      - 0x3902F6A9
+      - 0x52800069
+      - 0xD503201F
+  # Block updating time struct when in menus
+  -
+    type: bytes
+    main_offset: 0xF8BA58
+    value_type: uint32
+    value: 0xD503201F
+  # Change pointer of GPU time factor for DR calculations to MAIN + 0x2D65C80
+  -
+    type: bytes
+    main_offset: 0x150AB50
+    value_type: uint32
+    value: 
+      - 0xF000C2C8
+      - 0xBD4C8101
+  # Default DR GPU time factor
+  -
+    type: bytes
+    main_offset: 0x2D65C80
+    value_type: float
+    value: 0.001
+  # Pass Global Engine Speed to UI speed
+  -
+    type: bytes
+    main_offset: 0x18522EC
+    value_type: uint32
+    value: 
+     - 0xD503201F
+     - 0xD503201F
+     - 0xD503201F
+     - 0xD503201F
+     - 0xD503201F
+     - 0xBC5FC100
+  # Pass Global Engine Speed to some other speed
+  -
+    type: bytes
+    main_offset: 0x1821568
+    value_type: uint32
+    value: 
+     - 0xD503201F
+     - 0xD503201F
+     - 0xD503201F
+     - 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1821588
+    value_type: uint32
+    value: 0xBC5FC100
+  # Fix weird ragdolls physics calculation
+  -
+    type: bytes
+    main_offset: 0x1618480
+    value_type: uint32
+    value: 0x1E2E1009
+  # Fix Thunderblight Ganon positioning (some of its animations got broken, but at least it's now beatable)
+  -
+    type: bytes
+    main_offset: 0x18B8DD4
+    value_type: uint32
+    value:
+      - 0x9421C3B4
+      - 0xD503201F
+      - 0xD503201F
+  # CODE CAVE
+  -
+    type: bytes
+    main_offset: 0x2129BA4
+    value_type: uint32
+    value: 
+      - 0xF90003E1
+      - 0xD63F0100
+      - 0x97FFF935
+      - 0x97FFF99C
+      - 0x900061E1
+      - 0xF9464422
+      - 0xF9064420
+      - 0xCB020000
+      - 0x528502A2
+      - 0x72A00FE2
+      - 0x52881541
+      - 0x72A07F21
+      - 0xEB01001F
+      - 0x5400018D
+      - 0xAA0103E0
+      - 0x1E601000
+      - 0x1E630001
+      - 0x1E630022
+      - 0x1E621821
+      - 0x1E610800
+      - 0xB0005FA0
+      - 0xF940B800
+      - 0x1E624000
+      - 0xBD003000
+      - 0x14000015
+      - 0xEB02001F
+      - 0x54FFFEAA
+      - 0xAA0203E0
+      - 0x17FFFFF3
+      - 0xBC68D920
+      - 0xB0005FA9
+      - 0xF940B929
+      - 0xBD403121
+      - 0x1E210800
+      - 0x17B054DA
+      - 0x97FFF99C
+      - 0x900061E0
+      - 0x52800021
+      - 0xB90C9001
+      - 0x17BA1888
+      - 0x97FFF997
+      - 0x900061E0
+      - 0x52800041
+      - 0xB90C9001
+      - 0x17BA1677
+      - 0x900061E0
+      - 0xB94C9000
+      - 0x340000E0
+      - 0x370800E0
+      - 0xF94003E0
+      - 0x12800021
+      - 0xD0006028
+      - 0xF9406908
+      - 0xD63F0100
+      - 0x17C494D4
+      - 0x900061E1
+      - 0xB94C9421
+      - 0xF94003E0
+      - 0xD0006028
+      - 0xF9406908
+      - 0xD63F0100
+      - 0x900061E0
+      - 0xB90C901F
+      - 0x17C494CB
+      - 0xF94077E8
+      - 0xCB0803C8
+      - 0xD28DA100
+      - 0xF2A00060
+      - 0xEB08001F
+      - 0x540000A0
+      - 0xF0005FA8
+      - 0xF9479508
+      - 0xBD406501
+      - 0xD65F03C0
+      - 0x90002728
+      - 0xBD478901
+      - 0xD65F03C0
+  # Connect dynamic speed to game's code
+  -
+    type: bytes
+    main_offset: 0x124EFC8
+    value_type: uint32
+    value: 0x143B6AF7
+  # Connect fixing aiming to game's code
+  -
+    type: bytes
+    main_offset: 0xD3EF90
+    value_type: uint32
+    value: 0x144FAB22
+  # Connect AMV FPS locking
+  -
+    type: bytes
+    main_offset: 0xFAFE5C
+    value_type: uint32
+    value: 0x1445E775
+  -
+    type: bytes
+    main_offset: 0xFAF62C
+    value_type: uint32
+    value: 0x1445E986
+  # Default interval
+  -
+    type: bytes
+    main_offset: 0x2D65C94
+    value_type: int32
+    value: -2
+15FPS:
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x2D65C80]
+    value_type: float
+    value: 0.0005
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x2D65C94]
+    value_type: int32
+    value: -4
+20FPS:
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x2D65C80]
+    value_type: float
+    value: 0.000667
+  -
+    type: write
+    address: [MAIN, 0x2D65C94]
+    value_type: int32
+    value: -3
+25FPS:
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x2D65C80]
+    value_type: float
+    value: 0.000834
+  -
+    type: write
+    address: [MAIN, 0x2D65C94]
+    value_type: int32
+    value: -2
+30FPS:
+  # DR GPU Time Factor (default value)
+  -
+    type: write
+    address: [MAIN, 0x2D65C80]
+    value_type: float
+    value: 0.001
+  -
+    type: write
+    address: [MAIN, 0x2D65C94]
+    value_type: int32
+    value: -2
+35FPS:
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x2D65C80]
+    value_type: float
+    value: 0.00117
+  -
+    type: write
+    address: [MAIN, 0x2D65C94]
+    value_type: int32
+    value: -1
+40FPS:
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x2D65C80]
+    value_type: float
+    value: 0.00134
+  -
+    type: write
+    address: [MAIN, 0x2D65C94]
+    value_type: int32
+    value: -1
+45FPS:
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x2D65C80]
+    value_type: float
+    value: 0.0015
+  -
+    type: write
+    address: [MAIN, 0x2D65C94]
+    value_type: int32
+    value: -1
+50FPS:
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x2D65C80]
+    value_type: float
+    value: 0.00167
+  -
+    type: write
+    address: [MAIN, 0x2D65C94]
+    value_type: int32
+    value: -1
+55FPS:
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x2D65C80]
+    value_type: float
+    value: 0.00184
+  -
+    type: write
+    address: [MAIN, 0x2D65C94]
+    value_type: int32
+    value: -1
+60FPS:
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x2D65C80]
+    value_type: float
+    value: 0.002
+  -
+    type: write
+    address: [MAIN, 0x2D65C94]
+    value_type: int32
+    value: -1

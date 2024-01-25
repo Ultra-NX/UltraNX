@@ -1,0 +1,78 @@
+# Sonic Frontiers 1.4.1
+# BID: D7A05D106FF46FC0
+
+# FPS Lock is used to determine dynamic resolution timing too
+# Turn off Window Sync for better performance
+
+unsafeCheck: true
+
+15FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x4CA3F20, 0x14]
+    value_type: float
+    value: 15
+20FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x4CA3F20, 0x14]
+    value_type: float
+    value: 20
+25FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x4CA3F20, 0x14]
+    value_type: float
+    value: 25
+30FPS:
+  # Internal FPS Lock (default value)
+  -
+    type: write
+    address: [MAIN, 0x4CA3F20, 0x14]
+    value_type: float
+    value: 30
+35FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x4CA3F20, 0x14]
+    value_type: float
+    value: 35
+40FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x4CA3F20, 0x14]
+    value_type: float
+    value: 40
+45FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x4CA3F20, 0x14]
+    value_type: float
+    value: 45
+50FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x4CA3F20, 0x14]
+    value_type: float
+    value: 50
+55FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x4CA3F20, 0x14]
+    value_type: float
+    value: 55
+60FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x4CA3F20, 0x14]
+    value_type: float
+    value: 0

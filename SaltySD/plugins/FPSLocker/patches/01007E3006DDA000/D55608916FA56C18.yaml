@@ -1,11 +1,98 @@
 # Kirby Star Allies 4.0.0
 # BID: D55608916FA56C18
-# Thanks to Kirby567Fan for finding offsets
-# Game is using fake double buffer
-# Game crashes at 2nd or 3rd frame if you try to force triple buffer.
+# Thanks to Kirby567Fan for finding offsets of interval
 
 unsafeCheck: true
 
+MASTER_WRITE:
+  # Remove double buffer
+  -
+    type: bytes
+    main_offset: 0x6DBE0
+    value_type: uint32
+    value: 0x52800068
+  # Fix helper functions to not corrupt stack
+  -
+    type: bytes
+    main_offset: 0x6DC88
+    value_type: uint32
+    value: 0x52800062
+  -
+    type: bytes
+    main_offset: 0x6D85C
+    value_type: uint32
+    value:
+      - 0xD10103FF
+      - 0xA9024FF4
+      - 0xA9037BFD
+      - 0x9100C3FD
+  -
+    type: bytes
+    main_offset: 0x6D880
+    value_type: uint32
+    value: 0x52800062
+  -
+    type: bytes
+    main_offset: 0x6D894
+    value_type: uint32
+    value:
+      - 0xA9437BFD
+      - 0xA9424FF4
+      - 0x910103FF
+  -
+    type: bytes
+    main_offset: 0x6D8A4
+    value_type: uint32
+    value:
+      - 0xD10143FF
+      - 0xA90257F6
+      - 0xA9034FF4
+      - 0xA9047BFD
+      - 0x910103FD
+  -
+    type: bytes
+    main_offset: 0x6D8DC
+    value_type: uint32
+    value: 0x52800062
+  -
+    type: bytes
+    main_offset: 0x6D904
+    value_type: uint32
+    value:
+      - 0xA9447BFD
+      - 0xA9434FF4
+      - 0xA94257F6
+      - 0x910143FF
+  -
+    type: bytes
+    main_offset: 0x6D918
+    value_type: uint32
+    value:
+      - 0xD10143FF
+      - 0xA901D7FF
+      - 0xA9034FF4
+      - 0xA9047BFD
+      - 0x910103FD
+  -
+    type: bytes
+    main_offset: 0x6D940
+    value_type: uint32
+    value: 0x52800062
+  -
+    type: bytes
+    main_offset: 0x6D984
+    value_type: uint32
+    value:
+      - 0xA9447BFD
+      - 0xF94013F5
+      - 0xA9434FF4
+      - 0x910143FF
+  # Block updating interval
+  -
+    type: bytes
+    main_offset: 0x5A4C
+    value_type: uint32
+    value: 0xD503201F
 15FPS:
   # Interval
   -

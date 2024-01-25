@@ -32,12 +32,12 @@
    * [DBI](https://github.com/rashevskyv/dbi) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль. Если вам нужна другая локализация - в [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater) есть выбор из EN-RU-PTBR-ZHCN.
 1. **Установленные модули**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины. Не совместим с 32-х битными играми (список на гитхабе проекта).
-   * [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Переодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
+   * [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Периодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/WerWolv/nx-ovlloader/) - С помощью этого модуля осуществляется переключение установленных модулей.
    * [sys-patch](https://github.com/ITotalJustice/sys-patch/) - Создает/обновляет патчи при запуске системы. Не заменяет сигпатчи, но избавляет от регулярного ручного обновления патчей системы.
    * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), форк [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
      - **`Ultra-Overlay`**, мод [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках.
-     - [Ultra Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), форк [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Настроить внешность Micro-оверлея можно в Updater.
+     - [Ultra Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Настроить внешность Micro-оверлея можно в Updater.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов.
      - [ReverseNX-RT](https://github.com/masagrator/ReverseNX-RT) - Оверлей для управления ReverseNX.
