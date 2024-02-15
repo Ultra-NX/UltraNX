@@ -1,0 +1,91 @@
+# Farming Simulator 23 Nintendo Switch Edition 1.5.0.0
+# BID: 17F37A56B17DD9CC
+
+unsafeCheck: true
+
+15FPS:
+  # Internal FPS lock
+  -
+    type: write
+    address: [MAIN, 0xFAD7AC]
+    value_type: float
+    value: 15
+  -
+    type: block
+    what: timing
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0xFAD7AC]
+    value_type: float
+    value: 20
+  -
+    type: block
+    what: timing
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0xFAD7AC]
+    value_type: float
+    value: 25
+  -
+    type: block
+    what: timing
+30FPS:
+  # default value
+  -
+    type: write
+    address: [MAIN, 0xFAD7AC]
+    value_type: float
+    value: 30
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0xFAD7AC]
+    value_type: float
+    value: 35
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0xFAD7AC]
+    value_type: float
+    value: 40
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0xFAD7AC]
+    value_type: float
+    value: 45
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0xFAD7AC]
+    value_type: float
+    value: 50
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0xFAD7AC]
+    value_type: float
+    value: 55
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0xFAD7AC]
+    value_type: float
+    value: 60

@@ -1,7 +1,7 @@
 # Spyro Reignited Trilogy 1.01
 # BID: D2775FAFCF4835CB
 
-unsafeCheck: true
+unsafeCheck: false
 
 15FPS:
   # Disable bSmoothFrameRate and bUseFixedFrameRate to untie game speed from framerate

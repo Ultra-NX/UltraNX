@@ -1,0 +1,202 @@
+# Jojo's Bizarre Adventure: All-Star Battle R 2.3.3
+# BID: 3D4E3A9252AA6C63
+# There are small issues with animations in cutscenes at higher framerates
+
+unsafeCheck: true
+
+15FPS:
+  # Internal FPS Lock, pointer ref: 00 01 40 F9 E5 03 04 2A
+  -
+    type: write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: 4
+  # Game Speed, pointer ref: F3 03 00 AA 20 00 80 52 F4 03 01 AA
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: 4
+  # UI Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: 15
+  -
+    type: block
+    what: timing
+20FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: 3
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: 3
+  # UI Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: 20
+  -
+    type: block
+    what: timing
+25FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: 2
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: 2
+  # UI Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: 25
+30FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: 2
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: 2
+  # UI Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: 30
+35FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: 1
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: 1
+  # UI Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: 35
+40FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: 1
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: 1
+  # UI Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: 40
+45FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: 1
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: 1
+  # UI Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: 45
+50FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: 1
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: 1
+  # UI Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: 50
+55FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: 1
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: 1
+  # UI Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: 55
+60FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: 1
+  # Game Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: 1
+  # UI Speed
+  -
+    type: write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: 60

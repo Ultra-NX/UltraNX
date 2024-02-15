@@ -1,7 +1,7 @@
 # Dark Souls Remastered 1.0.3
 # BID: DF3766A2BB651A3E
 
-unsafeCheck: true
+unsafeCheck: false
 
 MASTER_WRITE:
   # Redirect FPS target to MAIN+0x55E9A00

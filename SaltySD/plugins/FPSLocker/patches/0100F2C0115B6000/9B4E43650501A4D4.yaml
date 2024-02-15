@@ -1,0 +1,275 @@
+# The Legend of Zelda: Tears of The Kingdom 1.2.1
+# BID: 9B4E43650501A4D4
+
+Addons:
+  - atmosphere/contents/0100F2C0115B6000/exefs/main.npdm
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Remove double buffer
+  -
+    type: bytes
+    main_offset: 0x21BE6D0
+    value_type: uint32
+    value: 
+      - 0x52800021
+      - 0x52800068
+      - 0x39029661
+  # CODE CAVE
+  - 
+    type: bytes
+    main_offset: 0x2B19A50
+    value_type: uint32
+    value: 
+      - 0xD63F0100
+      - 0x97FFF72F
+      - 0xB000E081
+      - 0xF9455828
+      - 0xF9055820
+      - 0xB5000048
+      - 0x17E5BF5A
+      - 0xCB080000
+      - 0x97FFF820
+      - 0x528502A2
+      - 0x72A00FE2
+      - 0x52881541
+      - 0x72A07F21
+      - 0xEB01001F
+      - 0x9A80C020
+      - 0xEB02001F
+      - 0x9A80B040
+      - 0x1E630000
+      - 0x52800042
+      - 0x1AC20821
+      - 0x1E630021
+      - 0x1E611800
+      - 0xB000E081
+      - 0x1E624000
+      - 0xBD0AB820
+      - 0x14000008
+      - 0xB000E081
+      - 0xB90ABC22
+      - 0x178E31AD
+      - 0x52800042
+      - 0xB000E081
+      - 0xB90ABC22
+      - 0x17FFFF0C
+      - 0xB94ABC22
+      - 0x34000102
+      - 0xF85F0260
+      - 0x7100045F
+      - 0x540000CC
+      - 0x12800021
+      - 0xF000DAA8
+      - 0xF9451508
+      - 0xD63F0100
+      - 0x17E5BF36
+      - 0xB000E082
+      - 0xB94AC041
+      - 0xB90AC05F
+      - 0xF000DAA8
+      - 0xF9451508
+      - 0xD63F0100
+      - 0x17E5BF2F
+      - 0x52800022
+      - 0x17FFFFE7
+      - 0x1E202048
+      - 0x54000041
+      - 0x1E2E1000
+      - 0x1E222808
+      - 0x1E202028
+      - 0x1770F360
+      - 0xB000E081
+      - 0xBD4AB821
+      - 0xBD4C5400
+      - 0x1E210800
+      - 0xD65F03C0
+  # Connect game speed to code cave's calculation
+  -
+    type: bytes
+    main_offset: 0x24897CC
+    value_type: uint32
+    value: 0x141A40A1
+  # Lock prerendered cutscenes to 30 FPS and unlock after while reading expected interval from MAIN + 0x472AAC0
+  -
+    type: bytes
+    main_offset: 0x2484F30
+    value_type: uint32
+    value: 0x941A52FA
+  -
+    type: bytes
+    main_offset: 0xEA42E8
+    value_type: uint32
+    value: 0x1471D5F7
+  # Adjust DR timing to FPS target by reading factor from MAIN + 0x472AAC4
+  -
+    type: bytes
+    main_offset: 0x972C14
+    value_type: uint32
+    value:
+      - 0x9001EDC8
+      - 0xBD4AC501
+  # Read game's speed from bss caved game speed at MAIN + 0x472AAB8
+  -
+    type: bytes
+    main_offset: 0x7EDE7C
+    value_type: uint32
+    value: 
+      - 0xB001F9E1
+      - 0x1E27D001
+      - 0xBD4AB820
+      - 0xD503201F
+      - 0xF001F228
+      - 0xAA0003F3
+      - 0x1E211801
+      - 0xD503201F
+  # Fix black background for D-pad menu
+  -
+    type: bytes
+    main_offset: 0x7568B0
+    value_type: uint32
+    value: 0x148F0C9C
+  # Fix vertical aiming speed for Ultrahand (thanks to Last Breath for pointer)
+  -
+    type: bytes
+    main_offset: 0x1D48D40
+    value_type: uint32
+    value: 0x9437437E
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x472AAB8
+    value_type: float
+    value: 1.0
+  -
+    type: bytes
+    main_offset: 0x472AAC0
+    value_type: int32
+    value: -2
+  -
+    type: bytes
+    main_offset: 0x472AAC4
+    value_type: float
+    value: 0.001
+15FPS:
+  # Set default interval to use by patch when exiting prerender cutscene
+  -
+    type: write
+    address: [MAIN, 0x472AAC0]
+    value_type: int32
+    value: -4
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x472AAC4]
+    value_type: float
+    value: 0.0005
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x472AAC0]
+    value_type: int32
+    value: -3
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x472AAC4]
+    value_type: float
+    value: 0.000667
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x472AAC0]
+    value_type: int32
+    value: -2
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x472AAC4]
+    value_type: float
+    value: 0.000834
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x472AAC0]
+    value_type: int32
+    value: -2
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x472AAC4]
+    value_type: float
+    value: 0.001
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x472AAC0]
+    value_type: int32
+    value: -1
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x472AAC4]
+    value_type: float
+    value: 0.00117
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x472AAC0]
+    value_type: int32
+    value: -1
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x472AAC4]
+    value_type: float
+    value: 0.00134
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x472AAC0]
+    value_type: int32
+    value: -1
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x472AAC4]
+    value_type: float
+    value: 0.0015
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x472AAC0]
+    value_type: int32
+    value: -1
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x472AAC4]
+    value_type: float
+    value: 0.00167
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x472AAC0]
+    value_type: int32
+    value: -1
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x472AAC4]
+    value_type: float
+    value: 0.00184
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x472AAC0]
+    value_type: int32
+    value: -1
+  # DR GPU Time Factor
+  -
+    type: write
+    address: [MAIN, 0x472AAC4]
+    value_type: float
+    value: 0.002

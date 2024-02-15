@@ -204,7 +204,7 @@ unsafeCheck: true
     type: write
     address: [MAIN, 0x59FDD30, 0]
     value_type: float
-    value: [0, 0]
+    value: [60, 60]
   # r.VSync
   -
     type: write
