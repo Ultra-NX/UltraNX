@@ -1,0 +1,75 @@
+# The Forest Quartet 4.0.2
+# BID: 47A022F858BA09B1
+
+unsafeCheck: false
+
+15FPS:
+  # DynamicResolution_TypeInfo (MAX = 0.96 * (1000/FPS), MIN = 0.9375 * (1000/FPS)), min range 0.75
+  -
+    type: write
+    address: [MAIN, 0x4B320A0, 0xB8, 0]
+    value_type: double
+    value: [64, 62.5]
+20FPS:
+  # DynamicResolution_TypeInfo 
+  -
+    type: write
+    address: [MAIN, 0x4B320A0, 0xB8, 0]
+    value_type: double
+    value: [48, 46.875]
+25FPS:
+  # DynamicResolution_TypeInfo 
+  -
+    type: write
+    address: [MAIN, 0x4B320A0, 0xB8, 0]
+    value_type: double
+    value: [38.4, 37.5]
+30FPS:
+  # DynamicResolution_TypeInfo (default values)
+  -
+    type: write
+    address: [MAIN, 0x4B320A0, 0xB8, 0]
+    value_type: double
+    value: [32, 31.25]
+35FPS:
+  # DynamicResolution_TypeInfo 
+  -
+    type: write
+    address: [MAIN, 0x4B320A0, 0xB8, 0]
+    value_type: double
+    value: [27.43, 26.68]
+40FPS:
+  # DynamicResolution_TypeInfo 
+  -
+    type: write
+    address: [MAIN, 0x4B320A0, 0xB8, 0]
+    value_type: double
+    value: [24, 23.25]
+45FPS:
+  # DynamicResolution_TypeInfo 
+  -
+    type: write
+    address: [MAIN, 0x4B320A0, 0xB8, 0]
+    value_type: double
+    value: [21.33, 20.58]
+50FPS:
+  # DynamicResolution_TypeInfo 
+  -
+    type: write
+    address: [MAIN, 0x4B320A0, 0xB8, 0]
+    value_type: double
+    value: [19.2, 18.45]
+55FPS:
+  # DynamicResolution_TypeInfo 
+  -
+    type: write
+    address: [MAIN, 0x4B320A0, 0xB8, 0]
+    value_type: double
+    value: [17.45, 16.7]
+60FPS:
+  # DynamicResolution_TypeInfo 
+  -
+    type: write
+    address: [MAIN, 0x4B320A0, 0xB8, 0]
+    value_type: double
+    value: [16, 15.25]

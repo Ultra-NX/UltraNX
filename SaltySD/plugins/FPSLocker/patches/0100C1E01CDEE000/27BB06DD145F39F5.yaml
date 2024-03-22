@@ -1,0 +1,138 @@
+# Raccoo Venture 1.0.3
+# BID: 27BB06DD145F39F5
+
+unsafeCheck: true
+
+15FPS:
+  # _UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x3482FB0, 0xB8, 0]
+    value_type: int32
+    value: 1
+  # maxFixedDeltaTime, ref: UnityEngine.Time::get_timeScale
+  -
+    type: write
+    address: [MAIN, 0x38D2780, 0x100]
+    value_type: float
+    value: 0.0666666666
+  -
+    type: block
+    what: timing
+20FPS:
+  # _UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x3482FB0, 0xB8, 0]
+    value_type: int32
+    value: 1
+  # maxFixedDeltaTime
+  -
+    type: write
+    address: [MAIN, 0x38D2780, 0x100]
+    value_type: float
+    value: 0.0666666666
+25FPS:
+  # _UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x3482FB0, 0xB8, 0]
+    value_type: int32
+    value: 1
+  # maxFixedDeltaTime
+  -
+    type: write
+    address: [MAIN, 0x38D2780, 0x100]
+    value_type: float
+    value: 0.0666666666
+30FPS:
+  # _UnityEngine.Rendering.OnDemandRendering_TypeInfo (by default it's 2, but this will be locked to nvn interval by FPSLocker when active)
+  -
+    type: write
+    address: [MAIN, 0x3482FB0, 0xB8, 0]
+    value_type: int32
+    value: 1
+  # maxFixedDeltaTime (default value)
+  -
+    type: write
+    address: [MAIN, 0x38D2780, 0x100]
+    value_type: float
+    value: 0.0333333333
+35FPS:
+  # _UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x3482FB0, 0xB8, 0]
+    value_type: int32
+    value: 1
+  # maxFixedDeltaTime
+  -
+    type: write
+    address: [MAIN, 0x38D2780, 0x100]
+    value_type: float
+    value: 0.0666666666
+40FPS:
+  # _UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x3482FB0, 0xB8, 0]
+    value_type: int32
+    value: 1
+  # maxFixedDeltaTime
+  -
+    type: write
+    address: [MAIN, 0x38D2780, 0x100]
+    value_type: float
+    value: 0.0666666666
+45FPS:
+  # _UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x3482FB0, 0xB8, 0]
+    value_type: int32
+    value: 1
+  # maxFixedDeltaTime
+  -
+    type: write
+    address: [MAIN, 0x38D2780, 0x100]
+    value_type: float
+    value: 0.0666666666
+50FPS:
+  # _UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x3482FB0, 0xB8, 0]
+    value_type: int32
+    value: 1
+  # maxFixedDeltaTime
+  -
+    type: write
+    address: [MAIN, 0x38D2780, 0x100]
+    value_type: float
+    value: 0.0666666666
+55FPS:
+  # _UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x3482FB0, 0xB8, 0]
+    value_type: int32
+    value: 1
+  # maxFixedDeltaTime
+  -
+    type: write
+    address: [MAIN, 0x38D2780, 0x100]
+    value_type: float
+    value: 0.0666666666
+60FPS:
+  # _UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x3482FB0, 0xB8, 0]
+    value_type: int32
+    value: 1
+  # maxFixedDeltaTime
+  -
+    type: write
+    address: [MAIN, 0x38D2780, 0x100]
+    value_type: float
+    value: 0.0666666666

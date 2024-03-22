@@ -1,0 +1,75 @@
+# PowerWash Simulator 1.7.0
+# BID: 8EACFE3E9E92B0FE
+
+unsafeCheck: false
+
+15FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo (don't block FPSlocker internal lock because game's lock is kinda shit)
+  -
+    type: write
+    address: [MAIN, 0x5F1DC68, 0xB8, 0, 0x28]
+    value_type: int32
+    value: 15
+20FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F1DC68, 0xB8, 0, 0x28]
+    value_type: int32
+    value: 20
+25FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F1DC68, 0xB8, 0, 0x28]
+    value_type: int32
+    value: 25
+30FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo (default)
+  -
+    type: write
+    address: [MAIN, 0x5F1DC68, 0xB8, 0, 0x28]
+    value_type: int32
+    value: 30
+35FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F1DC68, 0xB8, 0, 0x28]
+    value_type: int32
+    value: 35
+40FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F1DC68, 0xB8, 0, 0x28]
+    value_type: int32
+    value: 40
+45FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F1DC68, 0xB8, 0, 0x28]
+    value_type: int32
+    value: 45
+50FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F1DC68, 0xB8, 0, 0x28]
+    value_type: int32
+    value: 50
+55FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F1DC68, 0xB8, 0, 0x28]
+    value_type: int32
+    value: 55
+60FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x5F1DC68, 0xB8, 0, 0x28]
+    value_type: int32
+    value: 60

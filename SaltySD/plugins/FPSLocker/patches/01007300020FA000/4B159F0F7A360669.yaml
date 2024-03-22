@@ -21,13 +21,12 @@ MASTER_WRITE:
     main_offset: 0x91DCAC
     value_type: uint32
     value: 0x52A7E008
-  # Block cutscenes from having speed fixed to 30 FPS, now they are fixed to time of last frame before cutscene
+  # Block cutscenes from having speed fixed to 30 FPS
   -
     type: bytes
-    main_offset: 0x91DC48
+    main_offset: 0x91DC10
     value_type: uint32
     value: 
-      - 0xD503201F
       - 0xD503201F
 15FPS:
   -

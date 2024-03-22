@@ -1,0 +1,87 @@
+# No Man's Sky 4.5.0
+# BID: BCC5B216CC47134F
+
+unsafeCheck: true
+
+MASTER_WRITE:
+# Redirect DR frametime target to MAIN+0x4A35400
+  -
+    type: bytes
+    main_offset: 0x1E10DEC
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1E10DF8
+    value_type: uint32
+    value: 
+      - 0xB0016132
+      - 0xB9400408
+      - 0xBD44024B
+  # default value
+  -
+    type: bytes
+    main_offset: 0x4A35400
+    value_type: float
+    value: 33.3333333333
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x4A35400]
+    value_type: float
+    value: 66.6666666666
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x4A35400]
+    value_type: float
+    value: 50
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x4A35400]
+    value_type: float
+    value: 40
+30FPS:
+  # default value
+  -
+    type: write
+    address: [MAIN, 0x4A35400]
+    value_type: float
+    value: 33.3333333333
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x4A35400]
+    value_type: float
+    value: 28.5714
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x4A35400]
+    value_type: float
+    value: 25
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x4A35400]
+    value_type: float
+    value: 22.2222222222
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x4A35400]
+    value_type: float
+    value: 20
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x4A35400]
+    value_type: float
+    value: 18.1818181818
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x4A35400]
+    value_type: float
+    value: 16.6666666666

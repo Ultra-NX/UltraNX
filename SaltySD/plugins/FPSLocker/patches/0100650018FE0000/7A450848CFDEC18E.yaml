@@ -1,0 +1,245 @@
+# Kingdom Come: Deliverance - Royal Edition 1.9.6H
+# BID: 7A450848CFDEC18E
+# Some prerendered cutscenes are still pushed at 30 FPS
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Block updating DR timings, REF: 00 01 27 1E 48 40 A8 52
+  -
+    type: bytes
+    main_offset: 0x1CA806C
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1CA8074
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1CA8094
+    value_type: uint32
+    value: 
+      - 0xD503201F
+      - 0xD503201F
+  # Write default DR timings
+  -
+    type: bytes
+    main_offset: 0x56FF9C8
+    value_type: float
+    value: [32.5, 30.5, 31.5, 28.5, 33.5]
+15FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x56FD1C8]
+    value_type: int32
+    value: 15
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x5704028]
+    value_type: float
+    value: 0.022
+  # DR timings
+  -
+    type: write
+    address: [MAIN, 0x56FF9C8]
+    value_type: float
+    value: [65, 61, 63, 57, 67]
+  -
+    type: block
+    what: timing
+20FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x56FD1C8]
+    value_type: int32
+    value: 20
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x5704028]
+    value_type: float
+    value: 0.022
+  # DR timings
+  -
+    type: write
+    address: [MAIN, 0x56FF9C8]
+    value_type: float
+    value: [48.75, 45.75, 47.25, 42.75, 50.25]
+  -
+    type: block
+    what: timing
+25FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x56FD1C8]
+    value_type: int32
+    value: 25
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x5704028]
+    value_type: float
+    value: 0.022
+  # DR timings
+  -
+    type: write
+    address: [MAIN, 0x56FF9C8]
+    value_type: float
+    value: [39, 36.6, 37.8, 34.2, 40.2]
+  -
+    type: block
+    what: timing
+30FPS:
+  # sys_MaxFPS (default value)
+  -
+    type: write
+    address: [MAIN, 0x56FD1C8]
+    value_type: int32
+    value: 30
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x5704028]
+    value_type: float
+    value: 0.022
+  # DR timings (default values)
+  -
+    type: write
+    address: [MAIN, 0x56FF9C8]
+    value_type: float
+    value: [32.5, 30.5, 31.5, 28.5, 33.5]
+35FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x56FD1C8]
+    value_type: int32
+    value: 35
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x5704028]
+    value_type: float
+    value: 0.022
+  # DR timings
+  -
+    type: write
+    address: [MAIN, 0x56FF9C8]
+    value_type: float
+    value: [27.8571, 26.1429, 27, 24.4286, 28.7143]
+  -
+    type: block
+    what: timing
+40FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x56FD1C8]
+    value_type: int32
+    value: 40
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x5704028]
+    value_type: float
+    value: 0.022
+  # DR timings
+  -
+    type: write
+    address: [MAIN, 0x56FF9C8]
+    value_type: float
+    value: [24.375, 22.875, 23.625, 21.375, 25.125]
+  -
+    type: block
+    what: timing
+45FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x56FD1C8]
+    value_type: int32
+    value: 45
+  # Renderer thread delay (default value)
+  -
+    type: write
+    address: [MAIN, 0x5704028]
+    value_type: float
+    value: 0.022
+  # DR timings
+  -
+    type: write
+    address: [MAIN, 0x56FF9C8]
+    value_type: float
+    value: [21.6667, 20.3333, 21, 19, 22.3333]
+  -
+    type: block
+    what: timing
+50FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x56FD1C8]
+    value_type: int32
+    value: 50
+  # Renderer thread delay
+  -
+    type: write
+    address: [MAIN, 0x5704028]
+    value_type: float
+    value: 0.015
+  # DR timings
+  -
+    type: write
+    address: [MAIN, 0x56FF9C8]
+    value_type: float
+    value: [19.5, 18.3, 18.9, 17.1, 20.1]
+  -
+    type: block
+    what: timing
+55FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x56FD1C8]
+    value_type: int32
+    value: 55
+  # Renderer thread delay
+  -
+    type: write
+    address: [MAIN, 0x5704028]
+    value_type: float
+    value: 0.015
+  # DR timings
+  -
+    type: write
+    address: [MAIN, 0x56FF9C8]
+    value_type: float
+    value: [17.7273, 16.6364, 17.1818, 15.5455, 18.2727]
+  -
+    type: block
+    what: timing
+60FPS:
+  # sys_MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x56FD1C8]
+    value_type: int32
+    value: 60
+  # Renderer thread delay
+  -
+    type: write
+    address: [MAIN, 0x5704028]
+    value_type: float
+    value: 0.015
+  # DR timings
+  -
+    type: write
+    address: [MAIN, 0x56FF9C8]
+    value_type: float
+    value: [16.25, 15.25, 15.75, 14.25, 16.75]

@@ -1,0 +1,82 @@
+# Fate/Samurai Remnant 1.1.4
+# BID: FBF410FC5DD41876
+
+unsafeCheck: true
+
+# Disable setting double buffer, REF: 28 63 A8 9B B8 5F 6E 29 2B F7 01 51 B9 83 57 B8
+MASTER_WRITE:
+  -
+    type: bytes
+    main_offset: 0x5DB12C
+    value_type: uint32
+    value: 0x52800079
+15FPS:
+  # interval, REF: 29 00 80 52 16 00 08 8B 08 A0 8C 52 28 00 A0 72
+  -
+    type: write
+    address: [MAIN, 0x33B46C0]
+    value_type: int32
+    value: 4
+20FPS:
+  # interval
+  -
+    type: write
+    address: [MAIN, 0x33B46C0]
+    value_type: int32
+    value: 3
+25FPS:
+  # interval
+  -
+    type: write
+    address: [MAIN, 0x33B46C0]
+    value_type: int32
+    value: 2
+30FPS:
+  # interval (default value)
+  -
+    type: write
+    address: [MAIN, 0x33B46C0]
+    value_type: int32
+    value: 2
+35FPS:
+  # interval
+  -
+    type: write
+    address: [MAIN, 0x33B46C0]
+    value_type: int32
+    value: 1
+40FPS:
+  # interval
+  -
+    type: write
+    address: [MAIN, 0x33B46C0]
+    value_type: int32
+    value: 1
+45FPS:
+  # interval
+  -
+    type: write
+    address: [MAIN, 0x33B46C0]
+    value_type: int32
+    value: 1
+50FPS:
+  # interval
+  -
+    type: write
+    address: [MAIN, 0x33B46C0]
+    value_type: int32
+    value: 1
+55FPS:
+  # interval
+  -
+    type: write
+    address: [MAIN, 0x33B46C0]
+    value_type: int32
+    value: 1
+60FPS:
+  # interval
+  -
+    type: write
+    address: [MAIN, 0x33B46C0]
+    value_type: int32
+    value: 1

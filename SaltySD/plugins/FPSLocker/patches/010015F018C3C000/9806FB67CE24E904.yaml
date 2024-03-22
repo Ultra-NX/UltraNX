@@ -1,0 +1,75 @@
+# From Space 1.3.480
+# BID: 9806FB67CE24E904
+
+unsafeCheck: true
+
+15FPS:
+  # UnityEngine.Application::targetFrameRate (to adjust Dynamic Resolution)
+  -
+    type: write
+    address: [MAIN, 0x6F3F760]
+    value_type: int32
+    value: 15
+20FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: write
+    address: [MAIN, 0x6F3F760]
+    value_type: int32
+    value: 20
+25FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: write
+    address: [MAIN, 0x6F3F760]
+    value_type: int32
+    value: 25
+30FPS:
+  # UnityEngine.Application::targetFrameRate (default value)
+  -
+    type: write
+    address: [MAIN, 0x6F3F760]
+    value_type: int32
+    value: 30
+35FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: write
+    address: [MAIN, 0x6F3F760]
+    value_type: int32
+    value: 35
+40FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: write
+    address: [MAIN, 0x6F3F760]
+    value_type: int32
+    value: 40
+45FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: write
+    address: [MAIN, 0x6F3F760]
+    value_type: int32
+    value: 45
+50FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: write
+    address: [MAIN, 0x6F3F760]
+    value_type: int32
+    value: 50
+55FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: write
+    address: [MAIN, 0x6F3F760]
+    value_type: int32
+    value: 55
+60FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: write
+    address: [MAIN, 0x6F3F760]
+    value_type: int32
+    value: 60

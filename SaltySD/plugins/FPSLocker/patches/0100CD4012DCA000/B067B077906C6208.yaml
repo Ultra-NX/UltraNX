@@ -1,0 +1,112 @@
+# 三國志14 with 威力加強版 1.0.10
+# BID: B067B077906C6208
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect adjusting game speed to FPS Lock stored in MAIN + 0x2B92800, REF: 20 79 68 BC 01 10 2E 1E 00 D8 21 7E
+  -
+    type: bytes
+    main_offset: 0xB8ED98
+    value_type: uint32
+    value:
+      - 0x90010029
+      - 0x91200129
+  # Redirect FPS Lock to MAIN + 0x2B92800, REF: C8 32 40 B9 E8 C2 00 B9
+  -
+    type: bytes
+    main_offset: 0x89668C
+    value_type: uint32
+    value:
+      - 0x900117E8
+      - 0xB9480108
+  # Default FPS Targets
+  -
+    type: bytes
+    main_offset: 0x2B92800
+    value_type: uint32
+    value: [30, 60]
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B92800]
+    value_type: uint32
+    value: 15
+  -
+    type: block
+    what: timing
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B92800]
+    value_type: uint32
+    value: 20
+  -
+    type: block
+    what: timing
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B92800]
+    value_type: uint32
+    value: 25
+  -
+    type: block
+    what: timing
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B92800]
+    value_type: uint32
+    value: 30
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B92800]
+    value_type: uint32
+    value: 35
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B92800]
+    value_type: uint32
+    value: 40
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B92800]
+    value_type: uint32
+    value: 45
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B92800]
+    value_type: uint32
+    value: 50
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B92800]
+    value_type: uint32
+    value: 55
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x2B92800]
+    value_type: uint32
+    value: 60

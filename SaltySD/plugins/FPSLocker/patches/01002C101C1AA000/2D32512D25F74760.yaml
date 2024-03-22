@@ -1,0 +1,82 @@
+# Expeditions: A Mudrunner Game 1.3.0.0
+# BID: 2D32512D25F74760
+# REF: 01 04 0C 5E 00 10 2E 1E
+
+unsafeCheck: true
+
+MASTER_WRITE:
+# Redirect DR frametime target to MAIN+0x356AA00
+  -
+    type: bytes
+    main_offset: 0x1650D90
+    value_type: uint32
+    value: 
+      - 0xD000F8CC
+      - 0xB94A018C
+  # default value
+  -
+    type: bytes
+    main_offset: 0x356AA00
+    value_type: float
+    value: 33.3333333333
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x356AA00]
+    value_type: float
+    value: 66.6666666666
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x356AA00]
+    value_type: float
+    value: 50
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x356AA00]
+    value_type: float
+    value: 40
+30FPS:
+  # default value
+  -
+    type: write
+    address: [MAIN, 0x356AA00]
+    value_type: float
+    value: 33.3333333333
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x356AA00]
+    value_type: float
+    value: 28.5714
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x356AA00]
+    value_type: float
+    value: 25
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x356AA00]
+    value_type: float
+    value: 22.2222222222
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x356AA00]
+    value_type: float
+    value: 20
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x356AA00]
+    value_type: float
+    value: 18.1818181818
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x356AA00]
+    value_type: float
+    value: 16.6666666666

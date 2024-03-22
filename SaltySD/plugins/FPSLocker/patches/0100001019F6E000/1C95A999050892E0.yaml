@@ -1,0 +1,213 @@
+# Horizon Chase 2 1.5.5
+# BID: 1C95A999050892E0
+
+unsafeCheck: true
+
+15FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6F91398, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x778C8A8, 0]
+    value_type: float
+    value: [15, 15]
+  # r.DynamicRes.FrameTimeBudget = 0.978 * (1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x775ECE8, 0]
+    value_type: float
+    value: [65.2, 65.2]
+20FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6F91398, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x778C8A8, 0]
+    value_type: float
+    value: [20, 20]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x775ECE8, 0]
+    value_type: float
+    value: [48.9, 48.9]
+25FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6F91398, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x778C8A8, 0]
+    value_type: float
+    value: [25, 25]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x775ECE8, 0]
+    value_type: float
+    value: [39.12, 39.12]
+  -
+    type: block
+    what: timing
+30FPS:
+  # r.VSync (default value is 1)
+  -
+    type: write
+    address: [MAIN, 0x6F91398, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS (default value is 30)
+  -
+    type: write
+    address: [MAIN, 0x778C8A8, 0]
+    value_type: float
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget (by default it's 16.3)
+  -
+    type: write
+    address: [MAIN, 0x775ECE8, 0]
+    value_type: float
+    value: [32.6, 32.6]
+35FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6F91398, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x778C8A8, 0]
+    value_type: float
+    value: [35, 35]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x775ECE8, 0]
+    value_type: float
+    value: [27.942, 27.942]
+  -
+    type: block
+    what: timing
+40FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6F91398, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x778C8A8, 0]
+    value_type: float
+    value: [40, 40]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x775ECE8, 0]
+    value_type: float
+    value: [24.45, 24.45]
+  -
+    type: block
+    what: timing
+45FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6F91398, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x778C8A8, 0]
+    value_type: float
+    value: [45, 45]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x775ECE8, 0]
+    value_type: float
+    value: [21.733, 21.733]
+  -
+    type: block
+    what: timing
+50FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6F91398, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x778C8A8, 0]
+    value_type: float
+    value: [50, 50]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x775ECE8, 0]
+    value_type: float
+    value: [19.56, 19.56]
+  -
+    type: block
+    what: timing
+55FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6F91398, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x778C8A8, 0]
+    value_type: float
+    value: [55, 55]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x775ECE8, 0]
+    value_type: float
+    value: [17.781, 17.781]
+  -
+    type: block
+    what: timing
+60FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6F91398, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x778C8A8, 0]
+    value_type: float
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget (default value)
+  -
+    type: write
+    address: [MAIN, 0x775ECE8, 0]
+    value_type: float
+    value: [16.3, 16.3]

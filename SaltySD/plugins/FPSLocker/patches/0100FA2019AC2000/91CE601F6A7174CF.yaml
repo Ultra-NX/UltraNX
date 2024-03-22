@@ -1,0 +1,75 @@
+# TT Isle of Man: Ride on the Edge 3 1.7.0
+# BID: 91CE601F6A7174CF
+
+unsafeCheck: true
+
+15FPS:
+  # OptimalFrameDuration_ms = (1000/FPS) - (0.07 * (1000/30)
+  -
+    type: write
+    address: [MAIN, 0x2CB575C]
+    value_type: float
+    value: 64.333333
+20FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2CB575C]
+    value_type: float
+    value: 47.666666
+25FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2CB575C]
+    value_type: float
+    value: 37.666666
+30FPS:
+  # OptimalFrameDuration_ms (default value)
+  -
+    type: write
+    address: [MAIN, 0x2CB575C]
+    value_type: float
+    value: 31
+35FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2CB575C]
+    value_type: float
+    value: 26.238095
+40FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2CB575C]
+    value_type: float
+    value: 22.666666
+45FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2CB575C]
+    value_type: float
+    value: 19.888888
+50FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2CB575C]
+    value_type: float
+    value: 17.666666
+55FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2CB575C]
+    value_type: float
+    value: 15.848484
+60FPS:
+  # OptimalFrameDuration_ms
+  -
+    type: write
+    address: [MAIN, 0x2CB575C]
+    value_type: float
+    value: 14.333333

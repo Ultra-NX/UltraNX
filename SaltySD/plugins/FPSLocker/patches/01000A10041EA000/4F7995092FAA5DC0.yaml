@@ -1,0 +1,135 @@
+# The Elder Scrolls V: Skyrim 1.1.392.3925134
+# BID: 4F7995092FAA5DC0
+
+unsafeCheck: true
+
+15FPS:
+  # Dynamic Resolution Frame Time Min = 0.9 * (1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: 60
+  # Dynamic Resolution Frame Time Max = 0.99 * (1000/FPS)
+  -
+    type: write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: 66
+20FPS:
+  # Dynamic Resolution Frame Time Min
+  -
+    type: write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: 45
+  # Dynamic Resolution Frame Time Max
+  -
+    type: write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: 49.5
+25FPS:
+  # Dynamic Resolution Frame Time Min
+  -
+    type: write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: 36
+  # Dynamic Resolution Frame Time Max
+  -
+    type: write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: 39.6
+30FPS:
+  # Dynamic Resolution Frame Time Min (default value)
+  -
+    type: write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: 30
+  # Dynamic Resolution Frame Time Max (default value)
+  -
+    type: write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: 33
+35FPS:
+  # Dynamic Resolution Frame Time Min
+  -
+    type: write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: 25.71
+  # Dynamic Resolution Frame Time Max
+  -
+    type: write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: 28.28
+40FPS:
+  # Dynamic Resolution Frame Time Min
+  -
+    type: write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: 22.5
+  # Dynamic Resolution Frame Time Max
+  -
+    type: write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: 24.75
+45FPS:
+  # Dynamic Resolution Frame Time Min
+  -
+    type: write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: 20
+  # Dynamic Resolution Frame Time Max
+  -
+    type: write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: 22
+50FPS:
+  # Dynamic Resolution Frame Time Min
+  -
+    type: write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: 18
+  # Dynamic Resolution Frame Time Max
+  -
+    type: write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: 19.8
+55FPS:
+  # Dynamic Resolution Frame Time Min
+  -
+    type: write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: 16.36
+  # Dynamic Resolution Frame Time Max
+  -
+    type: write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: 18
+60FPS:
+  # Dynamic Resolution Frame Time Min
+  -
+    type: write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: 15
+  # Dynamic Resolution Frame Time Max
+  -
+    type: write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: 16.5

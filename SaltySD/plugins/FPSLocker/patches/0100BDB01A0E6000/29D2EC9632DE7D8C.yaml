@@ -1,0 +1,93 @@
+# EA SPORTS FC 24 1.56.a976
+# BID: 29D2EC9632DE7D8C
+
+unsafeCheck: true
+
+15FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0xCD73E20, 8]
+    value_type: double
+    value: 15
+20FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0xCD73E20, 8]
+    value_type: double
+    value: 20
+25FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0xCD73E20, 8]
+    value_type: double
+    value: 25
+  -
+    type: block
+    what: timing
+30FPS:
+  # Internal FPS Lock (default value is 30)
+  -
+    type: write
+    address: [MAIN, 0xCD73E20, 8]
+    value_type: double
+    value: 30
+35FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0xCD73E20, 8]
+    value_type: double
+    value: 35
+  -
+    type: block
+    what: timing
+40FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0xCD73E20, 8]
+    value_type: double
+    value: 40
+  -
+    type: block
+    what: timing
+45FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0xCD73E20, 8]
+    value_type: double
+    value: 45
+  -
+    type: block
+    what: timing
+50FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0xCD73E20, 8]
+    value_type: double
+    value: 50
+  -
+    type: block
+    what: timing
+55FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0xCD73E20, 8]
+    value_type: double
+    value: 55
+  -
+    type: block
+    what: timing
+60FPS:
+  # Internal FPS Lock
+  -
+    type: write
+    address: [MAIN, 0xCD73E20, 8]
+    value_type: double
+    value: 60

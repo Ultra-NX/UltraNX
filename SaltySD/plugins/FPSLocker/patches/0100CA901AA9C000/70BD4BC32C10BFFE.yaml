@@ -1,0 +1,259 @@
+# Penny's Big Breakaway 1.1.0
+# BID: 70BD4BC32C10BFFE
+# Game is using double buffer, setting anything between 30 and 60 FPS is unsupported. nvnTextures are stored inside struct with hardcoded size, so adding third entry corrupts struct.
+# For anything else than 30 and 60 FPS we lack Game speed multiplier for 3D objects without skeletons (like coins)
+# Thanks to Hazerou for finding addresses of first two entries
+# Reference nnMain to find function with argument w0 = 0x3C
+
+unsafeCheck: true
+
+15FPS:
+  # bool changing game speed to match 30 FPS
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1F]
+    value_type: uint8
+    value: 1
+  # FPS Target (dunno what it's used for)
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1C]
+    value_type: uint16
+    value: 15
+  # Game Speed multiplier #1
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x28]
+    value_type: float
+    value: 2
+  # Game Speed multiplier #2
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x30]
+    value_type: float
+    value: 2
+20FPS:
+  # bool changing game speed to match 30 FPS
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1F]
+    value_type: uint8
+    value: 1
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1C]
+    value_type: uint16
+    value: 20
+  # Game Speed multiplier #1
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x28]
+    value_type: float
+    value: 1.5
+  # Game Speed multiplier #2
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x30]
+    value_type: float
+    value: 1.5
+25FPS:
+  # bool changing game speed to match 30 FPS
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1F]
+    value_type: uint8
+    value: 1
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1C]
+    value_type: uint16
+    value: 25
+  # Game Speed multiplier #1
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x28]
+    value_type: float
+    value: 1.2
+  # Game Speed multiplier #2
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x30]
+    value_type: float
+    value: 1.2
+30FPS:
+  # bool changing game speed to match 30 FPS (default value)
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1F]
+    value_type: uint8
+    value: 1
+  # FPS Target (default value)
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1C]
+    value_type: uint16
+    value: 30
+  # Game Speed multiplier #1 (default value)
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x28]
+    value_type: float
+    value: 1
+  # Game Speed multiplier #2 (default value)
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x30]
+    value_type: float
+    value: 1
+35FPS:
+  # bool changing game speed to match 30 FPS
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1F]
+    value_type: uint8
+    value: 0
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1C]
+    value_type: uint16
+    value: 35
+  # Game Speed multiplier #1
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x28]
+    value_type: float
+    value: 1.7142
+  # Game Speed multiplier #2
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x30]
+    value_type: float
+    value: 1.7142
+40FPS:
+  # bool changing game speed to match 30 FPS
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1F]
+    value_type: uint8
+    value: 0
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1C]
+    value_type: uint16
+    value: 40
+  # Game Speed multiplier #1
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x28]
+    value_type: float
+    value: 1.5
+  # Game Speed multiplier #2
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x30]
+    value_type: float
+    value: 1.5
+45FPS:
+  # bool changing game speed to match 30 FPS
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1F]
+    value_type: uint8
+    value: 0
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1C]
+    value_type: uint16
+    value: 45
+  # Game Speed multiplier #1
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x28]
+    value_type: float
+    value: 1.3333333333
+  # Game Speed multiplier #2
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x30]
+    value_type: float
+    value: 1.3333333333
+50FPS:
+  # bool changing game speed to match 30 FPS
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1F]
+    value_type: uint8
+    value: 0
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1C]
+    value_type: uint16
+    value: 50
+  # Game Speed multiplier #1
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x28]
+    value_type: float
+    value: 1.2
+  # Game Speed multiplier #2
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x30]
+    value_type: float
+    value: 1.2
+55FPS:
+  # bool changing game speed to match 30 FPS
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1F]
+    value_type: uint8
+    value: 0
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1C]
+    value_type: uint16
+    value: 55
+  # Game Speed multiplier #1
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x28]
+    value_type: float
+    value: 1.0909090909
+  # Game Speed multiplier #2
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x30]
+    value_type: float
+    value: 1.0909090909
+60FPS:
+  # bool changing game speed to match 30 FPS
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1F]
+    value_type: uint8
+    value: 0
+  # FPS Target
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x1C]
+    value_type: uint16
+    value: 60
+  # Game Speed multiplier #1
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x28]
+    value_type: float
+    value: 1
+  # Game Speed multiplier #2
+  -
+    type: write
+    address: [MAIN, 0xFE5B20, 0x30]
+    value_type: float
+    value: 1
