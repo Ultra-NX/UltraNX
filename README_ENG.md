@@ -21,13 +21,14 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, custom firmware for the Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Custom Nintendo Switch graphical bootloader, firmware patcher, toolkit and more.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Package for Ultra Paw (fork of Ultrahand), which allows you to fine-tune the OC parameters for your console. In case of unstable overclocking, or if you want to increase the performance of your console, Ultra Tuner is your indispensable assistant.
-1. **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Overclocking package by Meha/hanai3Bi, open source guarantees reliability and no hidden nasties. Updated in time to support new Atmosphere features. Uses modified loader.kip from B3711, which has more CPU undervolt tables (6 levels vs. 4x).
+1. **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Overclocking package by Meha/hanai3Bi, open source guarantees reliability and no hidden nasties. Updated in time to support new Atmosphere features.
    - The original from Meha is temporarily used.
 1. **Installed Payloads**:
    * [Lockpick_RCM](https://codeberg.org/rashevskyv/kefir) - Program for dumping console keys.
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - A low-level file manager for working with the system.
 1. **Installed Homebrew**
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Program to update Ultra to the current version, as well as to download cheats.
+   * [Daybreak](https://codeberg.org/rashevskyv/kefir) - A program for updating OS.
    * [DBI](https://github.com/rashevskyv/dbi) - The best file manager, save manager and program installer on the console. If you need a different localization - Updater has a choice of EN-RU-PTBR-ZHCN.
 1. **Installed Modules**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins. Not compatible with 32-bit games (list on the project's github).
@@ -36,13 +37,12 @@
    * [sys-patch](https://github.com/ITotalJustice/sys-patch/) - Creates/updates patches at system startup. Does not replace sigpatches, but saves from regular manual updating of system patches.
    * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), a fork of [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
      - **`Ultra-Overlay`**, a mod of [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources.
-     - [Ultra Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You can customize Micro-overlay appearance in Updater.
+     - [Ultra Status Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Updater.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - An overlay for using cheats.
      - [ReverseNX-RT](https://github.com/masagrator/ReverseNX-RT) - ReverseNX control overlay.
      - [Sysmodules](https://github.com/WerWolv/ovl-sysmodules/) - Overlay for enabling and disabling installed system modules.
 1. **Available for download via [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
-   * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere/tree/master/troposphere/daybreak) - A program for updating OS.
    * [Linkalho](https://github.com/rdmrocha/linkalho) - Account linking program.
    * [ReverseNX Tool](https://github.com/masagrator/ReverseNX-Tool) - ReverseNX control program.
    * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Program to reset the battery controller. Do not use unnecessarily!
@@ -50,7 +50,7 @@
    * [SysDVR-conf](https://github.com/exelix11/SysDVR) - A program to install/uninstall dvr patches for games. Patches enable recording in games where it is disabled, but break some other games like "The Witcher 3".
    * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP server running in background.
    * [sys-con](https://github.com/cathery/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
-   * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console via bluetooth.
+   * [Mission Control](https://codeberg.org/rashevskyv/kefir) - A module that allows you to connect almost any gamepads to the console via bluetooth.
    * [Observer-Tool](https://github.com/rkuchkarov/Observer-Tool) - An overlay with the most detailed display of system statistics, similar to Afterburner on PC.
    * **`MemToolkitNX`** - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking.
 
@@ -68,12 +68,12 @@ Listed below are the licenses of those programs that have been modified specific
 
 ## Credits 
 
+* hanai3Bi/Meha
+* ppkantorski/b0rd2dEAth
 * Cooler3D
 * Efosamark
 * rashevskyv/хНЯ
 * snupt/Catcher In The Grain Field
-* ppkantorski/b0rd2dEAth
-* hanai3Bi/Meha
 * 4PDA
 #### And also - a special thanks to the administration and members of Ultra Group
 
