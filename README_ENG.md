@@ -72,8 +72,14 @@ Listed below are the licenses of those programs that have been modified specific
 * ppkantorski/b0rd2dEAth
 * Cooler3D
 * Efosamark
-* rashevskyv/хНЯ
+* rashevskyvv/хНЯ
 * snupt/Catcher In The Grain Field
+* IrneRacoonovich/Irene
+* kapez92/Kir Kapez
+* postcanonical/andrej
+* fufanchik/fufa
+* i3sey
+* @takoe_vot_imya
 * 4PDA
 #### And also - a special thanks to the administration and members of Ultra Group
 
