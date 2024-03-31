@@ -6,6 +6,8 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
+### [Ultra 2.1](https://github.com/Ultra-NX/Ultra/releases/tag/2.1-R1) Поддерживает HOS 18 и все ревизии консолей
+
 ## Особенности Ultra
 
 * Предварительно настроенный OC-Suite с пресетами.
@@ -24,7 +26,7 @@
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Пакет для Ultra Paw (форка Ultrahand), позволяющий произвести тонкую настройку параметров под свою консоль. В случае нестабильной работы разгона, или при желании увеличить производительность консоли, Ultra Tuner - Ваш незаменимый помощник.
 1. **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Пакет разгона от Meha/hanai3Bi, открытые исходники гарантируют надежность и отсутствие скрытых гадостей. Вовремя обновляется для поддержки новых возможностей Атмосферы.
 1. **Установленные пейлоады**:
-   * [Lockpick_RCM](https://codeberg.org/rashevskyv/kefir) - Программа для снятия ключей консоли.
+   * [Lockpick_RCM](https://sigmapatches.su) - Программа для снятия ключей консоли.
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - Низкоуровневый файловый менеджер для работы с системой.
 1. **Установленные Homebrew**
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
@@ -34,7 +36,6 @@
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины. Не совместим с 32-х битными играми (список на гитхабе проекта).
    * [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Периодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/WerWolv/nx-ovlloader/) - С помощью этого модуля осуществляется переключение установленных модулей.
-   * [sys-patch](https://github.com/ITotalJustice/sys-patch/) - Создает/обновляет патчи при запуске системы. Не заменяет сигпатчи, но избавляет от регулярного ручного обновления патчей системы.
    * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), форк [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
      - **`Ultra-Overlay`**, мод [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках.
      - [Ultra Status Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Updater.
@@ -71,7 +72,6 @@
 * hanai3Bi/Meha
 * ppkantorski/b0rd2dEAth
 * Cooler3D
-* Efosamark
 * rashevskyv/хНЯ
 * snupt/Catcher In The Grain Field
 * 4PDA

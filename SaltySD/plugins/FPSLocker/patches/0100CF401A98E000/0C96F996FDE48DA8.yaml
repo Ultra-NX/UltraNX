@@ -1,0 +1,87 @@
+# Contra: Operation Galuga 1.0.876634
+# BID: 0C96F996FDE48DA8
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect DR Timing target to MAIN + 0x6D89A00, REF: 61 36 40 BD 60 3E 40 BD
+  -
+    type: bytes
+    main_offset: 0x3550208
+    value_type: uint32
+    value: 0x944C93BB
+  -
+    type: bytes
+    main_offset: 0x48750F4
+    value_type: uint32
+    value:
+      - 0x900128A8
+      - 0xBD4A0100
+      - 0xBD003E60
+      - 0xD65F03C0
+  # Default value
+  -
+    type: bytes
+    main_offset: 0x6D89A00
+    value_type: float
+    value: 33.3333333333 
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x6D89A00]
+    value_type: float
+    value: 66.6666666666
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x6D89A00]
+    value_type: float
+    value: 50
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x6D89A00]
+    value_type: float
+    value: 40
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x6D89A00]
+    value_type: float
+    value: 33.3333333333
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x6D89A00]
+    value_type: float
+    value: 28.5714
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x6D89A00]
+    value_type: float
+    value: 25
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x6D89A00]
+    value_type: float
+    value: 22.2222222222
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x6D89A00]
+    value_type: float
+    value: 20
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x6D89A00]
+    value_type: float
+    value: 18.1818181818
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x6D89A00]
+    value_type: float
+    value: 16.6666666666

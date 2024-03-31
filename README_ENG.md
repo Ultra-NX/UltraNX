@@ -6,6 +6,8 @@
 
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
+### [Ultra 2.1](https://github.com/Ultra-NX/Ultra/releases/tag/2.1-R1) Supports HOS 18 and all console revisions
+
 ## Features of Ultra
 
 * Pre-configured OC-Suite with presets.
@@ -24,7 +26,7 @@
 1. **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Overclocking package by Meha/hanai3Bi, open source guarantees reliability and no hidden nasties. Updated in time to support new Atmosphere features.
    - The original from Meha is temporarily used.
 1. **Installed Payloads**:
-   * [Lockpick_RCM](https://codeberg.org/rashevskyv/kefir) - Program for dumping console keys.
+   * [Lockpick_RCM](https://sigmapatches.su) - Program for dumping console keys.
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - A low-level file manager for working with the system.
 1. **Installed Homebrew**
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Program to update Ultra to the current version, as well as to download cheats.
@@ -34,7 +36,6 @@
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins. Not compatible with 32-bit games (list on the project's github).
    * [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Module responsible for overclocking CPU, memory and GPU - for better performance. I change versions from different authors from time to time. Original authors: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/WerWolv/nx-ovlloader/) - This module is used to switch the installed modules.
-   * [sys-patch](https://github.com/ITotalJustice/sys-patch/) - Creates/updates patches at system startup. Does not replace sigpatches, but saves from regular manual updating of system patches.
    * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), a fork of [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
      - **`Ultra-Overlay`**, a mod of [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources.
      - [Ultra Status Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Updater.
@@ -71,7 +72,6 @@ Listed below are the licenses of those programs that have been modified specific
 * hanai3Bi/Meha
 * ppkantorski/b0rd2dEAth
 * Cooler3D
-* Efosamark
 * rashevskyv/хНЯ
 * snupt/Catcher In The Grain Field
 * 4PDA

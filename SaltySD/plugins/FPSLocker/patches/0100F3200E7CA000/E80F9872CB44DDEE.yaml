@@ -1,0 +1,90 @@
+# The Settlers: New Allies 1.0.6
+# BID: E80F9872CB44DDEE
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect FPS Lock to float MAIN+B760200, frametime and DR target to float MAIN+B760204
+  # REF: 08 14 40 BD 00 10 2E 1E 00 18 28 1E
+  -
+    type: bytes
+    main_offset: 0x36A3F8
+    value_type: uint32
+    value: 
+      - 0xD0059FA8
+      - 0xBD420100
+      - 0xBD420508
+  # REF: 00 14 40 BD 09 10 2E 1E (1 instruction before that)
+  -
+    type: bytes
+    main_offset: 0x34A2524
+    value_type: uint32
+    value: 
+      - 0xD00415E0
+      - 0xBD420400
+  # Default values
+  -
+    type: bytes
+    main_offset: 0xB760200
+    value_type: float
+    value: [30, 0.0333333333]
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0xB760200]
+    value_type: float
+    value: [15, 0.0666666666]
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0xB760200]
+    value_type: float
+    value: [20, 0.05]
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0xB760200]
+    value_type: float
+    value: [25, 0.04]
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0xB760200]
+    value_type: float
+    value: [30, 0.0333333333]
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0xB760200]
+    value_type: float
+    value: [35, 0.028571]
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0xB760200]
+    value_type: float
+    value: [40, 0.025]
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0xB760200]
+    value_type: float
+    value: [45, 0.0222222222]
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0xB760200]
+    value_type: float
+    value: [50, 0.02]
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0xB760200]
+    value_type: float
+    value: [55, 0.0181818181]
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0xB760200]
+    value_type: float
+    value: [60, 0.0166666666]

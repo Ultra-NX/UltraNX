@@ -1,0 +1,228 @@
+# ROMANCE OF THE THREE KINGDOMS XIV 1.0.10
+# BID: 1A971CC40B6D5B3F
+# Cursor speed is tied to framerate, main menu animations speed is not adjusted properly in range from 35 to 55 FPS
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect adjusting game speed to FPS Lock stored in MAIN + 0x2BFB700, REF: 20 79 68 BC 01 10 2E 1E 00 D8 21 7E
+  -
+    type: bytes
+    main_offset: 0xB8F528
+    value_type: uint32
+    value:
+      - 0x90010369
+      - 0x911C0129
+  # Redirect FPS Lock to MAIN + 0x2BFB700, REF: C8 32 40 B9 E8 C2 00 B9
+  -
+    type: bytes
+    main_offset: 0x8966BC
+    value_type: uint32
+    value:
+      - 0xB0011B28
+      - 0xB9470108
+  # Redirect game speed to MAIN + 0x2BFB708, REF: 00 28 21 1E 00 A0 00 BD C0 03 5F D6
+  -
+    type: bytes
+    main_offset: 0x1109040
+    value_type: uint32
+    value:
+      - 0xD000D788
+      - 0xBD40A000
+      - 0xBD470901
+  # Default FPS Targets
+  -
+    type: bytes
+    main_offset: 0x2BFB700
+    value_type: uint32
+    value: [30, 60]
+  # Default game speed
+  -
+    type: bytes
+    main_offset: 0x2BFB708
+    value_type: float
+    value: 0.0333333333
+15FPS:
+  -
+    type: write
+    address: [MAIN, 0x2BFB700]
+    value_type: uint32
+    value: 15
+  - # Adjust max delta for menus, 0 - 30 FPS, 1 - 60 FPS, REF: 20 79 68 BC 01 10 2E 1E 00 D8 21 7E
+    type: write
+    address: [MAIN, 0x254D2A0]
+    value_type: uint32
+    value: 0
+  -
+    type: write
+    address: [MAIN, 0x2BFB708]
+    value_type: float
+    value: 0.0666666666
+  -
+    type: block
+    what: timing
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x2BFB700]
+    value_type: uint32
+    value: 20
+  -
+    type: write
+    address: [MAIN, 0x254D2A0]
+    value_type: uint32
+    value: 0
+  -
+    type: write
+    address: [MAIN, 0x2BFB708]
+    value_type: float
+    value: 0.05
+  -
+    type: block
+    what: timing
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x2BFB700]
+    value_type: uint32
+    value: 25
+  -
+    type: write
+    address: [MAIN, 0x254D2A0]
+    value_type: uint32
+    value: 0
+  -
+    type: write
+    address: [MAIN, 0x2BFB708]
+    value_type: float
+    value: 0.04
+  -
+    type: block
+    what: timing
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x2BFB700]
+    value_type: uint32
+    value: 30
+  -
+    type: write
+    address: [MAIN, 0x254D2A0]
+    value_type: uint32
+    value: 0
+  -
+    type: write
+    address: [MAIN, 0x2BFB708]
+    value_type: float
+    value: 0.0333333333
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x2BFB700]
+    value_type: uint32
+    value: 35
+  -
+    type: write
+    address: [MAIN, 0x254D2A0]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x2BFB708]
+    value_type: float
+    value: 0.0285714
+  -
+    type: block
+    what: timing
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x2BFB700]
+    value_type: uint32
+    value: 40
+  -
+    type: write
+    address: [MAIN, 0x254D2A0]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x2BFB708]
+    value_type: float
+    value: 0.025
+  -
+    type: block
+    what: timing
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x2BFB700]
+    value_type: uint32
+    value: 45
+  -
+    type: write
+    address: [MAIN, 0x254D2A0]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x2BFB708]
+    value_type: float
+    value: 0.0222222222
+  -
+    type: block
+    what: timing
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x2BFB700]
+    value_type: uint32
+    value: 50
+  -
+    type: write
+    address: [MAIN, 0x254D2A0]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x2BFB708]
+    value_type: float
+    value: 0.02
+  -
+    type: block
+    what: timing
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x2BFB700]
+    value_type: uint32
+    value: 55
+  -
+    type: write
+    address: [MAIN, 0x254D2A0]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x2BFB708]
+    value_type: float
+    value: 0.0181818181
+  -
+    type: block
+    what: timing
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x2BFB700]
+    value_type: uint32
+    value: 60
+  -
+    type: write
+    address: [MAIN, 0x254D2A0]
+    value_type: uint32
+    value: 1
+  -
+    type: write
+    address: [MAIN, 0x2BFB708]
+    value_type: float
+    value: 0.0166666666
