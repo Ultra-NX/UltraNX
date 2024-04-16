@@ -23,8 +23,7 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, custom firmware for the Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Custom Nintendo Switch graphical bootloader, firmware patcher, toolkit and more.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Package for Ultra Paw (fork of Ultrahand), which allows you to fine-tune the OC parameters for your console. In case of unstable overclocking, or if you want to increase the performance of your console, Ultra Tuner is your indispensable assistant.
-1. **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Overclocking package by Meha/hanai3Bi, open source guarantees reliability and no hidden nasties. Updated in time to support new Atmosphere features.
-   - The original from Meha is temporarily used.
+1. **`OC-Switchcraft`**, a fork of **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - The overclocked atmosphere loader by B3711, allows you to squeeze the power of the Xbox One out of the N.Switch. Updated in time to support new Atmosphere features.
 1. **Installed Payloads**:
    * [Lockpick_RCM](https://sigmapatches.su) - Program for dumping console keys.
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - A low-level file manager for working with the system.
@@ -35,7 +34,7 @@
 1. **Installed Modules**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins. Not compatible with 32-bit games (list on the project's github).
    * [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Module responsible for overclocking CPU, memory and GPU - for better performance. I change versions from different authors from time to time. Original authors: Meha/hanai3Bi, lineon, p-sam.
-   * [nx-ovlloader](https://github.com/WerWolv/nx-ovlloader/) - This module is used to switch the installed modules.
+   * [nx-ovlloader](https://github.com/zdm65477730/nx-ovlloader/) - This module is used to switch the installed modules.
    * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), a fork of [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
      - **`Ultra-Overlay`**, a mod of [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources.
      - [Ultra Status Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Updater.
@@ -49,7 +48,7 @@
    * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Program to reset the battery controller. Do not use unnecessarily!
    * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
    * [SysDVR-conf](https://github.com/exelix11/SysDVR) - A program to install/uninstall dvr patches for games. Patches enable recording in games where it is disabled, but break some other games like "The Witcher 3".
-   * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP server running in background.
+   * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP server running in background.
    * [sys-con](https://github.com/cathery/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
    * [Mission Control](https://codeberg.org/rashevskyv/kefir) - A module that allows you to connect almost any gamepads to the console via bluetooth.
    * [Observer-Tool](https://github.com/rkuchkarov/Observer-Tool) - An overlay with the most detailed display of system statistics, similar to Afterburner on PC.
@@ -79,6 +78,11 @@ Listed below are the licenses of those programs that have been modified specific
 
 ## Support
 
-If you liked the results of my labors and you wanted to thank me - I would be very grateful.            
+If you like the project and you have a desire to support me with a penny - I will be very grateful.
+I have no other income at the moment, so any monetary help is very valuable to me.            
 You can do this via @wallet telegram, on my @redraz account            
-I am from Russia, so there are no other convenient ways to donate me =(
+```
+TON:  UQDioCnnPI5sk4KvxWzfPWsWbAyWCkzwhaYjy8Qpg2QwWMiL
+BTC:  1HsC4z8X1YkZzcSKZz1t7MXRa7rPi8qChV
+USDT: TQi3qLVrNGcr6avfVQBXRjpPTyvp5JZ7i2
+```

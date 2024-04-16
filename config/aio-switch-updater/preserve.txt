@@ -1,3 +1,4 @@
 /switch/DBI/
 /bootloader/nyx.ini
 /config/sys-clk/
+/config/sys-patch/

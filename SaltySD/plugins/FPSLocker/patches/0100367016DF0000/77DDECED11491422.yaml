@@ -1,0 +1,84 @@
+# Hammerwatch 2 1.0.2
+# BID: 77DDECED11491422
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Rewrite "v_fps_limit 30" to 62
+  -
+    type: bytes
+    main_offset: 0x805B29
+    value_type: uint16
+    value: 0x3236
+  # Change egl Interval to lock game by default to 30 FPS
+  -
+    type: bytes
+    main_offset: 0x1461C8
+    value_type: uint32
+    value: 0x52800041
+  -
+    type: bytes
+    main_offset: 0x1461F0
+    value_type: uint32
+    value: 0x52800041
+15FPS:
+  # DUMMY
+  -
+    type: write
+    address: [MAIN, 0x17F2AC8]
+    value_type: uint8
+    value: 0
+20FPS:
+  -
+    type: write
+    address: [MAIN, 0x17F2AC8]
+    value_type: uint8
+    value: 0
+25FPS:
+  -
+    type: write
+    address: [MAIN, 0x17F2AC8]
+    value_type: uint8
+    value: 0
+30FPS:
+  -
+    type: write
+    address: [MAIN, 0x17F2AC8]
+    value_type: uint8
+    value: 0
+35FPS:
+  -
+    type: write
+    address: [MAIN, 0x17F2AC8]
+    value_type: uint8
+    value: 0
+40FPS:
+  -
+    type: write
+    address: [MAIN, 0x17F2AC8]
+    value_type: uint8
+    value: 0
+45FPS:
+  -
+    type: write
+    address: [MAIN, 0x17F2AC8]
+    value_type: uint8
+    value: 0
+50FPS:
+  -
+    type: write
+    address: [MAIN, 0x17F2AC8]
+    value_type: uint8
+    value: 0
+55FPS:
+  -
+    type: write
+    address: [MAIN, 0x17F2AC8]
+    value_type: uint8
+    value: 0
+60FPS:
+  -
+    type: write
+    address: [MAIN, 0x17F2AC8]
+    value_type: uint8
+    value: 0

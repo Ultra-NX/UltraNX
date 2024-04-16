@@ -1,0 +1,279 @@
+# Jujutsu Kaisen Cursed Clash US 1.0.2
+# BID: EA01C4BA969E8159
+
+unsafeCheck: true
+
+15FPS:
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) rounded to 2 decimals
+  -
+    type: write
+    address: [MAIN, 0x8014A48, 0]
+    value_type: float
+    value: [66.66, 66.66]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8057F50, 0]
+    value_type: float
+    value: [15, 15]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73990C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80577A8, 0x9C4]
+    value_type: uint32
+    value: 7
+  -
+    type: block
+    what: timing
+20FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x8014A48, 0]
+    value_type: float
+    value: [50, 50]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8057F50, 0]
+    value_type: float
+    value: [20, 20]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73990C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80577A8, 0x9C4]
+    value_type: uint32
+    value: 7
+  -
+    type: block
+    what: timing
+25FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x8014A48, 0]
+    value_type: float
+    value: [40, 40]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8057F50, 0]
+    value_type: float
+    value: [25, 25]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73990C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80577A8, 0x9C4]
+    value_type: uint32
+    value: 7
+  -
+    type: block
+    what: timing
+30FPS:
+  # r.DynamicRes.FrameTimeBudget (default value)
+  -
+    type: write
+    address: [MAIN, 0x8014A48, 0]
+    value_type: float
+    value: [33.33, 33.33]
+  # t.MaxFPS (default value is 60)
+  -
+    type: write
+    address: [MAIN, 0x8057F50, 0]
+    value_type: float
+    value: [0, 0]
+  # r.VSync (default value is 1)
+  -
+    type: write
+    address: [MAIN, 0x73990C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80577A8, 0x9C4]
+    value_type: uint32
+    value: 7
+35FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x8014A48, 0]
+    value_type: float
+    value: [28.51, 28.51]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8057F50, 0]
+    value_type: float
+    value: [35, 35]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73990C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80577A8, 0x9C4]
+    value_type: uint32
+    value: 7
+  -
+    type: block
+    what: timing
+40FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x8014A48, 0]
+    value_type: float
+    value: [25, 25]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8057F50, 0]
+    value_type: float
+    value: [40, 40]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73990C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80577A8, 0x9C4]
+    value_type: uint32
+    value: 7
+  -
+    type: block
+    what: timing
+45FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x8014A48, 0]
+    value_type: float
+    value: [22.22, 22.22]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8057F50, 0]
+    value_type: float
+    value: [45, 45]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73990C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80577A8, 0x9C4]
+    value_type: uint32
+    value: 7
+  -
+    type: block
+    what: timing
+50FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x8014A48, 0]
+    value_type: float
+    value: [20, 20]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8057F50, 0]
+    value_type: float
+    value: [50, 50]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73990C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80577A8, 0x9C4]
+    value_type: uint32
+    value: 7
+  -
+    type: block
+    what: timing
+55FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x8014A48, 0]
+    value_type: float
+    value: [18.18, 18.18]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8057F50, 0]
+    value_type: float
+    value: [55, 55]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73990C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80577A8, 0x9C4]
+    value_type: uint32
+    value: 7
+  -
+    type: block
+    what: timing
+60FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: write
+    address: [MAIN, 0x8014A48, 0]
+    value_type: float
+    value: [16.66, 16.66]
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x8057F50, 0]
+    value_type: float
+    value: [0, 0]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73990C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80577A8, 0x9C4]
+    value_type: uint32
+    value: 7

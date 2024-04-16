@@ -24,7 +24,7 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, кастомная прошивка для Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Пользовательский графический загрузчик Nintendo Switch, патчер прошивки, инструментарий и многое другое.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Пакет для Ultra Paw (форка Ultrahand), позволяющий произвести тонкую настройку параметров под свою консоль. В случае нестабильной работы разгона, или при желании увеличить производительность консоли, Ultra Tuner - Ваш незаменимый помощник.
-1. **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Пакет разгона от Meha/hanai3Bi, открытые исходники гарантируют надежность и отсутствие скрытых гадостей. Вовремя обновляется для поддержки новых возможностей Атмосферы.
+1. **`OC-Switchcraft`**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Лоадер атмосферы с разгоном от B3711, позволяет выжать из N.Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
 1. **Установленные пейлоады**:
    * [Lockpick_RCM](https://sigmapatches.su) - Программа для снятия ключей консоли.
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - Низкоуровневый файловый менеджер для работы с системой.
@@ -35,7 +35,7 @@
 1. **Установленные модули**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины. Не совместим с 32-х битными играми (список на гитхабе проекта).
    * [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Периодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
-   * [nx-ovlloader](https://github.com/WerWolv/nx-ovlloader/) - С помощью этого модуля осуществляется переключение установленных модулей.
+   * [nx-ovlloader](https://github.com/zdm65477730/nx-ovlloader/) - С помощью этого модуля осуществляется переключение установленных модулей.
    * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), форк [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
      - **`Ultra-Overlay`**, мод [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках.
      - [Ultra Status Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Updater.
@@ -49,7 +49,7 @@
    * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Программа для сброса контроллера батареи. Не используйте просто так!
    * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
    * [SysDVR-conf](https://github.com/exelix11/SysDVR) - Программа для установки/удаления dvr патчей для игр. Патчи включают возможность записи в тех играх, где она отключена, но ломают некоторые другие игры, например "Ведьмак 3".
-   * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP сервер, работающий на фоне.
+   * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий на фоне.
    * [sys-con](https://github.com/cathery/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
    * [Mission Control](https://codeberg.org/rashevskyv/kefir) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
    * [Observer-Tool](https://github.com/rkuchkarov/Observer-Tool) - Оверлей с максимально подробным отображением статистики системы, напоминает Afterburner на PC.
@@ -69,18 +69,27 @@
 
 ## Благодарности 
 
-* hanai3Bi/Meha
-* ppkantorski/b0rd2dEAth
+* Meha
+* B3711
+* ppkantorski
 * Cooler3D
-* rashevskyv/хНЯ
-* snupt/Catcher In The Grain Field
+* rashevskyv
+* snupt
 * 4PDA
 #### А так же - отдельная благодарность администрации и участникам Ultra Group
 
 ## Поддержка
 
-Если вам понравились результаты моих стараний, и у вас появилось желание закинуть мне на шаурму - я буду очень благодарен.
-* Сделать это можно через @wallet telegram, на мой аккаунт @redraz
-* Либо через Сбер: 2202200513345833
-* Так же по QR через Tinkoff            
+Если вам нравится проект, и у вас появилось желание поддержать меня копеечкой - я буду очень благодарен.
+У меня в данный момент нет других заработков, так что любая денежная помощь очень ценна для меня.            
+
+### Tinkoff QR
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Tinkoff%20small.png)
+```
+TON:  UQDioCnnPI5sk4KvxWzfPWsWbAyWCkzwhaYjy8Qpg2QwWMiL
+BTC:  1HsC4z8X1YkZzcSKZz1t7MXRa7rPi8qChV
+USDT: TQi3qLVrNGcr6avfVQBXRjpPTyvp5JZ7i2
+
+Сбербанк: 2202200513345833
+Tinkoff:  2200700170486970
+```

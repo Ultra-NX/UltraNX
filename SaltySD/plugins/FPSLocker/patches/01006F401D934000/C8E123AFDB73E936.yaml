@@ -1,0 +1,159 @@
+# Twilight Survivors 0.2
+# BID: C8E123AFDB73E936
+
+unsafeCheck: true
+
+15FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x6483898, 0]
+    value_type: float
+    value: [15, 15]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5C870A8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
+20FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x6483898, 0]
+    value_type: float
+    value: [20, 20]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5C870A8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
+25FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x6483898, 0]
+    value_type: float
+    value: [25, 25]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5C870A8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
+30FPS:
+  # t.MaxFPS (default value)
+  -
+    type: write
+    address: [MAIN, 0x6483898, 0]
+    value_type: float
+    value: [0, 0]
+  # r.VSync (default is 1)
+  -
+    type: write
+    address: [MAIN, 0x5C870A8, 0]
+    value_type: uint32
+    value: [0, 0]
+35FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x6483898, 0]
+    value_type: float
+    value: [35, 35]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5C870A8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
+40FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x6483898, 0]
+    value_type: float
+    value: [40, 40]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5C870A8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
+45FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x6483898, 0]
+    value_type: float
+    value: [45, 45]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5C870A8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
+50FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x6483898, 0]
+    value_type: float
+    value: [50, 50]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5C870A8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
+55FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x6483898, 0]
+    value_type: float
+    value: [55, 55]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5C870A8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
+60FPS:
+  # t.MaxFPS
+  -
+    type: write
+    address: [MAIN, 0x6483898, 0]
+    value_type: float
+    value: [0, 0]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5C870A8, 0]
+    value_type: uint32
+    value: [0, 0]
