@@ -35,6 +35,7 @@
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins. Not compatible with 32-bit games (list on the project's github).
    * [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Module responsible for overclocking CPU, memory and GPU - for better performance. I change versions from different authors from time to time. Original authors: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/zdm65477730/nx-ovlloader/) - This module is used to switch the installed modules.
+   * [sys-patch](https://sigmapatches.su) - Patches the system to run unsigned software instead of sigpatches.
    * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), a fork of [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
      - **`Ultra-Overlay`**, a mod of [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources.
      - [Ultra Status Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Updater.

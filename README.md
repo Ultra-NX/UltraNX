@@ -36,6 +36,7 @@
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины. Не совместим с 32-х битными играми (список на гитхабе проекта).
    * [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Периодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/zdm65477730/nx-ovlloader/) - С помощью этого модуля осуществляется переключение установленных модулей.
+   * [sys-patch](https://sigmapatches.su) - Патчит систему на работу неподписанного софта вместо сигпатчей.
    * [Ultra Paw Overlay](https://github.com/Ultra-NX/Ultra-Paw-Overlay), форк [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
      - **`Ultra-Overlay`**, мод [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках.
      - [Ultra Status Monitor](https://github.com/Ultra-NX/Ultra-Status-Monitor), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Updater.
