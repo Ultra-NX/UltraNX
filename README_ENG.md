@@ -10,7 +10,7 @@
 
 ## Features of Ultra
 
-* Pre-configured OC-Suite with presets.
+* Pre-configured OC Switchcraft (Successor to OC-Suite) with presets.
 * The best overclocking customizer for Switch - Ultra-Tuner, that allows you to customize overclocking right from the console. It was the first, and remains unique.
 * The CFW is as light as possible. There are no unnecessary things in it, only minimum necessary for overclocking and comfortable use.
 * Modular design. A minimum of applications/plugins/overlays are included, but you can always add more via the bundled Updater.
