@@ -2,7 +2,7 @@
 
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Ultra.png)
 
-### [English Readme](README_ENG.md) | [Telegram group](https://t.me/UltraNX)
+### [Russian Readme](README.md) | [Telegram group](https://t.me/UltraNX)
 
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
@@ -69,11 +69,12 @@ Listed below are the licenses of those programs that have been modified specific
 
 ## Credits 
 
-* hanai3Bi/Meha
-* ppkantorski/b0rd2dEAth
+* Meha
+* B3711
+* ppkantorski
 * Cooler3D
-* rashevskyv/хНЯ
-* snupt/Catcher In The Grain Field
+* rashevskyv
+* snupt
 * 4PDA
 #### And also - a special thanks to the administration and members of Ultra Group
 
@@ -81,7 +82,6 @@ Listed below are the licenses of those programs that have been modified specific
 
 If you like the project and you have a desire to support me with a penny - I will be very grateful.
 I have no other income at the moment, so any monetary help is very valuable to me.            
-You can do this via @wallet telegram, on my @redraz account            
 ```
 TON:  UQDioCnnPI5sk4KvxWzfPWsWbAyWCkzwhaYjy8Qpg2QwWMiL
 BTC:  1HsC4z8X1YkZzcSKZz1t7MXRa7rPi8qChV
