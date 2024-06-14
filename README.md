@@ -6,7 +6,7 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [Ultra 2.1](https://github.com/Ultra-NX/Ultra/releases/latest) Поддерживает HOS 18.0.1 и все ревизии консолей
+### [Ultra 2.2](https://github.com/Ultra-NX/Ultra-Resources/releases/download/Test/Ultra.zip) Поддерживает HOS 18.1.0 и все ревизии консолей
 
 ## Особенности Ultra
 
