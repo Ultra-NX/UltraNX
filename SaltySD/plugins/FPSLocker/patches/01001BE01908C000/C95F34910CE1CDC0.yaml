@@ -1,0 +1,32 @@
+# Hot Wheels Unleashed 2 1.0.9
+# BID: C95F34910CE1CDC0
+
+# It is recommended to disable FSR. When FSR is enabled,
+# Dynamic Resolution is also disabled and it has worse performance
+# at higher FPS, and quality wise it compares to dynamic resolution
+# set to lowest res
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
+  -
+    type: evaluate_write
+    address: [MAIN, 0xB58F090, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xB633E08, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0xAD75A78, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

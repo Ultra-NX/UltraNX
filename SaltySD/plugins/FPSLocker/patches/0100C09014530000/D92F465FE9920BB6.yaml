@@ -19,73 +19,10 @@ MASTER_WRITE:
     main_offset: 0x5E9AFF0
     value_type: float
     value: 28
-15FPS:
+ALL_FPS:
   # DynamicResolution.Settings$$get_TargetFPS
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x5E9AFF0]
     value_type: float
-    value: 15
-20FPS:
-  # DynamicResolution.Settings$$get_TargetFPS
-  -
-    type: write
-    address: [MAIN, 0x5E9AFF0]
-    value_type: float
-    value: 20
-25FPS:
-  # DynamicResolution.Settings$$get_TargetFPS
-  -
-    type: write
-    address: [MAIN, 0x5E9AFF0]
-    value_type: float
-    value: 25
-30FPS:
-  # DynamicResolution.Settings$$get_TargetFPS (default is 28)
-  -
-    type: write
-    address: [MAIN, 0x5E9AFF0]
-    value_type: float
-    value: 30
-35FPS:
-  # DynamicResolution.Settings$$get_TargetFPS
-  -
-    type: write
-    address: [MAIN, 0x5E9AFF0]
-    value_type: float
-    value: 35
-40FPS:
-  # DynamicResolution.Settings$$get_TargetFPS
-  -
-    type: write
-    address: [MAIN, 0x5E9AFF0]
-    value_type: float
-    value: 40
-45FPS:
-  # DynamicResolution.Settings$$get_TargetFPS
-  -
-    type: write
-    address: [MAIN, 0x5E9AFF0]
-    value_type: float
-    value: 45
-50FPS:
-  # DynamicResolution.Settings$$get_TargetFPS
-  -
-    type: write
-    address: [MAIN, 0x5E9AFF0]
-    value_type: float
-    value: 50
-55FPS:
-  # DynamicResolution.Settings$$get_TargetFPS
-  -
-    type: write
-    address: [MAIN, 0x5E9AFF0]
-    value_type: float
-    value: 55
-60FPS:
-  # DynamicResolution.Settings$$get_TargetFPS
-  -
-    type: write
-    address: [MAIN, 0x5E9AFF0]
-    value_type: float
-    value: 60
+    value: FPS_TARGET

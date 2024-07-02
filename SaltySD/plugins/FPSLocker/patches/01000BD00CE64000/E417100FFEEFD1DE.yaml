@@ -3,157 +3,19 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   # r.DynResTargetFPS
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x71A31F8, 0]
     value_type: int32
-    value: [15, 15]
+    value: [FPS_TARGET, FPS_TARGET]
   # t.MaxFPS
   -
     type: write
     address: [MAIN, 0x71B2BD0, 0]
     value_type: float
-    value: [15, 15]
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
   -
     type: block
     what: timing
-20FPS:
-  # r.DynResTargetFPS
-  -
-    type: write
-    address: [MAIN, 0x71A31F8, 0]
-    value_type: int32
-    value: [20, 20]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x71B2BD0, 0]
-    value_type: float
-    value: [20, 20]
-  -
-    type: block
-    what: timing
-25FPS:
-  # r.DynResTargetFPS
-  -
-    type: write
-    address: [MAIN, 0x71A31F8, 0]
-    value_type: int32
-    value: [25, 25]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x71B2BD0, 0]
-    value_type: float
-    value: [25, 25]
-  -
-    type: block
-    what: timing
-30FPS:
-  # r.DynResTargetFPS (default value)
-  -
-    type: write
-    address: [MAIN, 0x71A31F8, 0]
-    value_type: int32
-    value: [30, 30]
-  # t.MaxFPS (default value)
-  -
-    type: write
-    address: [MAIN, 0x71B2BD0, 0]
-    value_type: float
-    value: [0, 0]
-35FPS:
-  # r.DynResTargetFPS
-  -
-    type: write
-    address: [MAIN, 0x71A31F8, 0]
-    value_type: int32
-    value: [35, 35]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x71B2BD0, 0]
-    value_type: float
-    value: [35, 35]
-  -
-    type: block
-    what: timing
-40FPS:
-  # r.DynResTargetFPS
-  -
-    type: write
-    address: [MAIN, 0x71A31F8, 0]
-    value_type: int32
-    value: [40, 40]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x71B2BD0, 0]
-    value_type: float
-    value: [40, 40]
-  -
-    type: block
-    what: timing
-45FPS:
-  # r.DynResTargetFPS
-  -
-    type: write
-    address: [MAIN, 0x71A31F8, 0]
-    value_type: int32
-    value: [45, 45]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x71B2BD0, 0]
-    value_type: float
-    value: [45, 45]
-  -
-    type: block
-    what: timing
-50FPS:
-  # r.DynResTargetFPS
-  -
-    type: write
-    address: [MAIN, 0x71A31F8, 0]
-    value_type: int32
-    value: [50, 50]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x71B2BD0, 0]
-    value_type: float
-    value: [50, 50]
-  -
-    type: block
-    what: timing
-55FPS:
-  # r.DynResTargetFPS
-  -
-    type: write
-    address: [MAIN, 0x71A31F8, 0]
-    value_type: int32
-    value: [55, 55]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x71B2BD0, 0]
-    value_type: float
-    value: [55, 55]
-  -
-    type: block
-    what: timing
-60FPS:
-  # r.DynResTargetFPS
-  -
-    type: write
-    address: [MAIN, 0x71A31F8, 0]
-    value_type: int32
-    value: [60, 60]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x71B2BD0, 0]
-    value_type: float
-    value: [0, 0]

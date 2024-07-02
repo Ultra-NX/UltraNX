@@ -73,63 +73,9 @@ MASTER_WRITE:
     main_offset: 0x4113D10
     value_type: float
     value: 0.0324675
-15FPS:
+ALL_FPS:
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x4113D00]
     value_type: float
-    value: [0.068, 0.056, 0.057971, 0.0526316, 0.064935]
-20FPS:
-  -
-    type: write
-    address: [MAIN, 0x4113D00]
-    value_type: float
-    value: [0.051, 0.042, 0.04347825, 0.0394737, 0.04870125]
-25FPS:
-  -
-    type: write
-    address: [MAIN, 0x4113D00]
-    value_type: float
-    value: [0.0408, 0.0336, 0.0347826, 0.03157896, 0.038961]
-30FPS:
-  - # default values
-    type: write
-    address: [MAIN, 0x4113D00]
-    value_type: float
-    value: [0.034, 0.028, 0.0289855, 0.0263158, 0.0324675]
-35FPS:
-  -
-    type: write
-    address: [MAIN, 0x4113D00]
-    value_type: float
-    value: [0.02914286, 0.024, 0.02484471, 0.0225564, 0.02782929]
-40FPS:
-  -
-    type: write
-    address: [MAIN, 0x4113D00]
-    value_type: float
-    value: [0.0255, 0.021, 0.02173913, 0.01973685, 0.02435063]
-45FPS:
-  -
-    type: write
-    address: [MAIN, 0x4113D00]
-    value_type: float
-    value: [0.02266667, 0.01866667, 0.01932367, 0.01754387, 0.021645]
-50FPS:
-  -
-    type: write
-    address: [MAIN, 0x4113D00]
-    value_type: float
-    value: [0.0204, 0.0168, 0.0173913, 0.01578948, 0.0194805]
-55FPS:
-  -
-    type: write
-    address: [MAIN, 0x4113D00]
-    value_type: float
-    value: [0.01854545, 0.01527273, 0.01581027, 0.01435407, 0.01770955]
-60FPS:
-  -
-    type: write
-    address: [MAIN, 0x4113D00]
-    value_type: float
-    value: [0.017, 0.014, 0.01449275, 0.0131579, 0.01623375]
+    value: ["(1 / FPS_TARGET) * 1.02", "(1 / FPS_TARGET) * 0.84", "(1 / FPS_TARGET) * 0.87", "(1 / FPS_TARGET) * 0.79", "(1 / FPS_TARGET) * 0.974"]

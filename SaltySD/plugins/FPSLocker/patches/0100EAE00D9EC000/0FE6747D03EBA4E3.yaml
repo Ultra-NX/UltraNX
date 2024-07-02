@@ -1,0 +1,19 @@
+# Ghostbusters: The Video Game Remastered 1.2
+# BID: 0FE6747D03EBA4E3
+# Main menu still renders 3D objects at 30 FPS (possibly it's prerendered?)
+
+unsafeCheck: true
+
+ALL_FPS:
+  # FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5271FE8, 0x10A0]
+    value_type: float
+    value: "TruncDec(1 / FPS_TARGET, 3) - 0.001"
+  # Dynamic Resolution Timing
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5307044]
+    value_type: float
+    value: ["0.975 * FRAMETIME_TARGET", "0.87 * FRAMETIME_TARGET", "0.9225 * FRAMETIME_TARGET"]

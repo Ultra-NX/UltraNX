@@ -1,0 +1,34 @@
+# Hitman: Blood Money - Reprisal 1.2_71586
+# BID: 59AF76C13F680B7C
+# Fix aiming speed by tweaking it in game settings
+# Videos / prerendered cutscenes are played at 30 FPS
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Block FPS lock being constantly updated
+  -
+    type: bytes
+    main_offset: 0x27CE38
+    value_type: uint32
+    value: 0xD503201F
+ALL_FPS:
+  # Internal FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1D608B8, 0x10]
+    value_type: uint32
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1D608B8, 0x40]
+    value_type: uint32
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1D608B8, 0x70]
+    value_type: uint32
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

@@ -1,7 +1,6 @@
 # Kirby and the Forgotten Land 1.0.0
 # BID: D9BA7DB72FFAFECD
 # Thanks to Hazerou for finding interval offsets
-# Game speed is tied to framerate, no proper support for anything between 30 and 60 FPS
 
 unsafeCheck: false
 
@@ -73,139 +72,16 @@ MASTER_WRITE:
       - 0x91208114
       - 0xD37DF14C
       - 0xF9000289
-15FPS:
-  # Interval
+ALL_FPS:
+  # Interval (Setting it to 0 unlocks framerate and sets dynamic game speed)
   -
     type: write
     address: [MAIN, 0xA72628, 0x50]
     value_type: int32
-    value: 4
+    value: 0
   # Dynamic Resolution GPU Frametiming Max / Min (Max = 1.95 * (30/FPS), Min = 1.7 * (30/FPS))
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
     value_type: float
-    value: [3.9, 3.4]
-  -
-    type: block
-    what: timing
-20FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0xA72628, 0x50]
-    value_type: int32
-    value: 3
-  # Dynamic Resolution GPU Frametiming
-  -
-    type: write
-    address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
-    value_type: float
-    value: [2.925, 2.55]
-  -
-    type: block
-    what: timing
-25FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0xA72628, 0x50]
-    value_type: int32
-    value: 2
-  # Dynamic Resolution GPU Frametiming
-  -
-    type: write
-    address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
-    value_type: float
-    value: [2.34, 2.04]
-30FPS:
-  # Interval (default value)
-  -
-    type: write
-    address: [MAIN, 0xA72628, 0x50]
-    value_type: int32
-    value: 2
-  # Dynamic Resolution GPU Frametiming (default values)
-  -
-    type: write
-    address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
-    value_type: float
-    value: [1.95, 1.7]
-35FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0xA72628, 0x50]
-    value_type: int32
-    value: 1
-  # Dynamic Resolution GPU Frametiming
-  -
-    type: write
-    address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
-    value_type: float
-    value: [1.67, 1.45]
-40FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0xA72628, 0x50]
-    value_type: int32
-    value: 1
-  # Dynamic Resolution GPU Frametiming
-  -
-    type: write
-    address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
-    value_type: float
-    value: [1.4625, 1.275]
-45FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0xA72628, 0x50]
-    value_type: int32
-    value: 1
-  # Dynamic Resolution GPU Frametiming
-  -
-    type: write
-    address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
-    value_type: float
-    value: [1.3, 1.13]
-50FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0xA72628, 0x50]
-    value_type: int32
-    value: 1
-  # Dynamic Resolution GPU Frametiming
-  -
-    type: write
-    address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
-    value_type: float
-    value: [1.17, 1.02]
-55FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0xA72628, 0x50]
-    value_type: int32
-    value: 1
-  # Dynamic Resolution GPU Frametiming
-  -
-    type: write
-    address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
-    value_type: float
-    value: [1.06, 0.92]
-60FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0xA72628, 0x50]
-    value_type: int32
-    value: 1
-  # Dynamic Resolution GPU Frametiming
-  -
-    type: write
-    address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
-    value_type: float
-    value: [0.975, 0.85]
+    value: ["(30 / FPS_TARGET) * 1.95", "(30 / FPS_TARGET) * 1.7"]

@@ -1,0 +1,13 @@
+# Ancient Weapon Holly 1.7.0
+# BID: BF3F18101CBCFB33
+
+unsafeCheck: true
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  # Required for main character to not have jittery movement
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5538B20, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

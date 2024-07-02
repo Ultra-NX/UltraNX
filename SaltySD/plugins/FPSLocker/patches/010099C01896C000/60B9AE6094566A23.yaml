@@ -3,7 +3,7 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   # r.VSync
   -
     type: write
@@ -12,148 +12,10 @@ unsafeCheck: true
     value: [0, 0]
   # t.MaxFPS
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x7AE9F08, 0]
     value_type: float
-    value: [15, 15]
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
   -
     type: block
     what: timing
-20FPS:
-  # r.VSync
-  -
-    type: write
-    address: [MAIN, 0x72ED6D8, 0]
-    value_type: int32
-    value: [0, 0]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x7AE9F08, 0]
-    value_type: float
-    value: [20, 20]
-  -
-    type: block
-    what: timing
-25FPS:
-  # r.VSync
-  -
-    type: write
-    address: [MAIN, 0x72ED6D8, 0]
-    value_type: int32
-    value: [0, 0]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x7AE9F08, 0]
-    value_type: float
-    value: [25, 25]
-  -
-    type: block
-    what: timing
-30FPS:
-  # r.VSync (default value is 1, but it's crippling performance for no benefit)
-  -
-    type: write
-    address: [MAIN, 0x72ED6D8, 0]
-    value_type: int32
-    value: [0, 0]
-  # t.MaxFPS (default value)
-  -
-    type: write
-    address: [MAIN, 0x7AE9F08, 0]
-    value_type: float
-    value: [0, 0]
-35FPS:
-  # r.VSync
-  -
-    type: write
-    address: [MAIN, 0x72ED6D8, 0]
-    value_type: int32
-    value: [0, 0]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x7AE9F08, 0]
-    value_type: float
-    value: [35, 35]
-  -
-    type: block
-    what: timing
-40FPS:
-  # r.VSync
-  -
-    type: write
-    address: [MAIN, 0x72ED6D8, 0]
-    value_type: int32
-    value: [0, 0]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x7AE9F08, 0]
-    value_type: float
-    value: [40, 40]
-  -
-    type: block
-    what: timing
-45FPS:
-  # r.VSync
-  -
-    type: write
-    address: [MAIN, 0x72ED6D8, 0]
-    value_type: int32
-    value: [0, 0]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x7AE9F08, 0]
-    value_type: float
-    value: [45, 45]
-  -
-    type: block
-    what: timing
-50FPS:
-  # r.VSync
-  -
-    type: write
-    address: [MAIN, 0x72ED6D8, 0]
-    value_type: int32
-    value: [0, 0]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x7AE9F08, 0]
-    value_type: float
-    value: [50, 50]
-  -
-    type: block
-    what: timing
-55FPS:
-  # r.VSync
-  -
-    type: write
-    address: [MAIN, 0x72ED6D8, 0]
-    value_type: int32
-    value: [0, 0]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x7AE9F08, 0]
-    value_type: float
-    value: [55, 55]
-  -
-    type: block
-    what: timing
-60FPS:
-  # r.VSync
-  -
-    type: write
-    address: [MAIN, 0x72ED6D8, 0]
-    value_type: int32
-    value: [0, 0]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x7AE9F08, 0]
-    value_type: float
-    value: [0, 0]

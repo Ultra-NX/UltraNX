@@ -1,0 +1,13 @@
+# DAVE THE DIVER 1.0.2.812
+# BID: 2E3EAEB4B6834BEF
+
+unsafeCheck: true
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  # Required for different refresh rates to not jitter
+  -
+    type: evaluate_write
+    address: [MAIN, 0x94E3C00, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

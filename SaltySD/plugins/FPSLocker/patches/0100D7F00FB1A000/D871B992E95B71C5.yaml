@@ -3,100 +3,13 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   # FPS lock
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0xCFA0F8, 0x4C]
     value_type: float
-    value: 15
+    value: FPS_LOCK_TARGET
   -
     type: block
     what: timing
-20FPS:
-  # FPS lock
-  -
-    type: write
-    address: [MAIN, 0xCFA0F8, 0x4C]
-    value_type: float
-    value: 20
-  -
-    type: block
-    what: timing
-25FPS:
-  # FPS lock
-  -
-    type: write
-    address: [MAIN, 0xCFA0F8, 0x4C]
-    value_type: float
-    value: 25
-  -
-    type: block
-    what: timing
-30FPS:
-  # FPS lock (default)
-  -
-    type: write
-    address: [MAIN, 0xCFA0F8, 0x4C]
-    value_type: float
-    value: 30
-  -
-    type: block
-    what: timing
-35FPS:
-  # FPS lock
-  -
-    type: write
-    address: [MAIN, 0xCFA0F8, 0x4C]
-    value_type: float
-    value: 35
-  -
-    type: block
-    what: timing
-40FPS:
-  # FPS lock
-  -
-    type: write
-    address: [MAIN, 0xCFA0F8, 0x4C]
-    value_type: float
-    value: 40
-  -
-    type: block
-    what: timing
-45FPS:
-  # FPS lock
-  -
-    type: write
-    address: [MAIN, 0xCFA0F8, 0x4C]
-    value_type: float
-    value: 45
-  -
-    type: block
-    what: timing
-50FPS:
-  # FPS lock
-  -
-    type: write
-    address: [MAIN, 0xCFA0F8, 0x4C]
-    value_type: float
-    value: 50
-  -
-    type: block
-    what: timing
-55FPS:
-  # FPS lock
-  -
-    type: write
-    address: [MAIN, 0xCFA0F8, 0x4C]
-    value_type: float
-    value: 55
-  -
-    type: block
-    what: timing
-60FPS:
-  # FPS lock
-  -
-    type: write
-    address: [MAIN, 0xCFA0F8, 0x4C]
-    value_type: float
-    value: 60

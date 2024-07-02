@@ -1,73 +1,10 @@
-# SENRAN KAGURA Peach Ball
+# SENRAN KAGURA Peach Ball 1.0.0
 # BID: 31CDAD67EA25CC16
 
 unsafeCheck: true
 
-15FPS:
-  # CRendSpanMgr:[SpanType_30FPS]
-  -
-    type: write
-    address: [MAIN, 0x62D8CC]
-    value_type: int32
-    value: 1
-20FPS:
-  # CRendSpanMgr:[SpanType_30FPS]
-  -
-    type: write
-    address: [MAIN, 0x62D8CC]
-    value_type: int32
-    value: 1
-25FPS:
-  # CRendSpanMgr:[SpanType_30FPS]
-  -
-    type: write
-    address: [MAIN, 0x62D8CC]
-    value_type: int32
-    value: 1
-30FPS:
-  # CRendSpanMgr:[SpanType_30FPS]
-  -
-    type: write
-    address: [MAIN, 0x62D8CC]
-    value_type: int32
-    value: 1
-35FPS:
-  # CRendSpanMgr:[SpanType_60FPS]
-  -
-    type: write
-    address: [MAIN, 0x62D8CC]
-    value_type: int32
-    value: 0
-40FPS:
-  # CRendSpanMgr:[SpanType_60FPS]
-  -
-    type: write
-    address: [MAIN, 0x62D8CC]
-    value_type: int32
-    value: 0
-45FPS:
-  # CRendSpanMgr:[SpanType_60FPS]
-  -
-    type: write
-    address: [MAIN, 0x62D8CC]
-    value_type: int32
-    value: 0
-50FPS:
-  # CRendSpanMgr:[SpanType_60FPS]
-  -
-    type: write
-    address: [MAIN, 0x62D8CC]
-    value_type: int32
-    value: 0
-55FPS:
-  # CRendSpanMgr:[SpanType_60FPS]
-  -
-    type: write
-    address: [MAIN, 0x62D8CC]
-    value_type: int32
-    value: 0
-60FPS:
-  # CRendSpanMgr:[SpanType_60FPS]
+ALL_FPS:
+  # CRendSpanMgr:[SpanType_30FPS] = 1, CRendSpanMgr:[SpanType_60FPS] = 0
   -
     type: write
     address: [MAIN, 0x62D8CC]

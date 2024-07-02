@@ -28,63 +28,9 @@ MASTER_WRITE:
     value_type: uint32
     value: 
       - 0xD503201F
-15FPS:
+ALL_FPS:
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0xCCB7AF0, 0x420]
     value_type: uint32
-    value: 3
-20FPS:
-  -
-    type: write
-    address: [MAIN, 0xCCB7AF0, 0x420]
-    value_type: uint32
-    value: 2
-25FPS:
-  -
-    type: write
-    address: [MAIN, 0xCCB7AF0, 0x420]
-    value_type: uint32
-    value: 1
-30FPS:
-  -
-    type: write
-    address: [MAIN, 0xCCB7AF0, 0x420]
-    value_type: uint32
-    value: 1
-35FPS:
-  -
-    type: write
-    address: [MAIN, 0xCCB7AF0, 0x420]
-    value_type: uint32
-    value: 0
-40FPS:
-  -
-    type: write
-    address: [MAIN, 0xCCB7AF0, 0x420]
-    value_type: uint32
-    value: 0
-45FPS:
-  -
-    type: write
-    address: [MAIN, 0xCCB7AF0, 0x420]
-    value_type: uint32
-    value: 0
-50FPS:
-  -
-    type: write
-    address: [MAIN, 0xCCB7AF0, 0x420]
-    value_type: uint32
-    value: 0
-55FPS:
-  -
-    type: write
-    address: [MAIN, 0xCCB7AF0, 0x420]
-    value_type: uint32
-    value: 0
-60FPS:
-  -
-    type: write
-    address: [MAIN, 0xCCB7AF0, 0x420]
-    value_type: uint32
-    value: 0
+    value: "VSYNC_TARGET - 1"

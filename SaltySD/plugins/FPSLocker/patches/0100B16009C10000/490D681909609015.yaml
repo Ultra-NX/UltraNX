@@ -3,7 +3,7 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   # Disable bSmoothFrameRate and bUseFixedFrameRate to untie game speed from framerate
   -
     type: write
@@ -17,148 +17,10 @@ unsafeCheck: true
     value: 7
   # t.MaxFPS
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x5CCEBA8, 0]
     value_type: float
-    value: [15, 15]
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
   -
     type: block
     what: timing
-20FPS:
-  # Disable bSmoothFrameRate and bUseFixedFrameRate
-  -
-    type: write
-    address: [MAIN, 0x5CCE320, 0x750]
-    value_type: uint32
-    value: 7
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x5CCEBA8, 0]
-    value_type: float
-    value: [20, 20]
-  -
-    type: block
-    what: timing
-25FPS:
-  # Disable bSmoothFrameRate and bUseFixedFrameRate
-  -
-    type: write
-    address: [MAIN, 0x5CCE320, 0x750]
-    value_type: uint32
-    value: 7
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x5CCEBA8, 0]
-    value_type: float
-    value: [25, 25]
-  -
-    type: block
-    what: timing
-30FPS:
-  # Disable bSmoothFrameRate and bUseFixedFrameRate
-  -
-    type: write
-    address: [MAIN, 0x5CCE320, 0x750]
-    value_type: uint32
-    value: 7
-  # t.MaxFPS (default value)
-  -
-    type: write
-    address: [MAIN, 0x5CCEBA8, 0]
-    value_type: float
-    value: [0, 0]
-35FPS:
-  # Disable bSmoothFrameRate and bUseFixedFrameRate
-  -
-    type: write
-    address: [MAIN, 0x5CCE320, 0x750]
-    value_type: uint32
-    value: 7
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x5CCEBA8, 0]
-    value_type: float
-    value: [35, 35]
-  -
-    type: block
-    what: timing
-40FPS:
-  # Disable bSmoothFrameRate and bUseFixedFrameRate
-  -
-    type: write
-    address: [MAIN, 0x5CCE320, 0x750]
-    value_type: uint32
-    value: 7
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x5CCEBA8, 0]
-    value_type: float
-    value: [40, 40]
-  -
-    type: block
-    what: timing
-45FPS:
-  # Disable bSmoothFrameRate and bUseFixedFrameRate
-  -
-    type: write
-    address: [MAIN, 0x5CCE320, 0x750]
-    value_type: uint32
-    value: 7
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x5CCEBA8, 0]
-    value_type: float
-    value: [45, 45]
-  -
-    type: block
-    what: timing
-50FPS:
-  # Disable bSmoothFrameRate and bUseFixedFrameRate
-  -
-    type: write
-    address: [MAIN, 0x5CCE320, 0x750]
-    value_type: uint32
-    value: 7
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x5CCEBA8, 0]
-    value_type: float
-    value: [50, 50]
-  -
-    type: block
-    what: timing
-55FPS:
-  # Disable bSmoothFrameRate and bUseFixedFrameRate
-  -
-    type: write
-    address: [MAIN, 0x5CCE320, 0x750]
-    value_type: uint32
-    value: 7
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x5CCEBA8, 0]
-    value_type: float
-    value: [55, 55]
-  -
-    type: block
-    what: timing
-60FPS:
-  # Disable bSmoothFrameRate and bUseFixedFrameRate
-  -
-    type: write
-    address: [MAIN, 0x5CCE320, 0x750]
-    value_type: uint32
-    value: 7
-  # t.MaxFPS (default value)
-  -
-    type: write
-    address: [MAIN, 0x5CCEBA8, 0]
-    value_type: float
-    value: [0, 0]

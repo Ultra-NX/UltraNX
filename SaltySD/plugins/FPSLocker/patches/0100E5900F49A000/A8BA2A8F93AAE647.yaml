@@ -18,64 +18,10 @@ MASTER_WRITE:
     main_offset: 0x72C6500
     value_type: float
     value: 41
-15FPS:
+ALL_FPS:
+  # Game's priority is resolution over framerate with factor 1.23, I am changing that to 0.97
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x72C6500]
     value_type: float
-    value: 65.6666
-20FPS:
-  -
-    type: write
-    address: [MAIN, 0x72C6500]
-    value_type: float
-    value: 49
-25FPS:
-  -
-    type: write
-    address: [MAIN, 0x72C6500]
-    value_type: float
-    value: 39
-30FPS:
-  # Default is 41, but it sucks
-  -
-    type: write
-    address: [MAIN, 0x72C6500]
-    value_type: float
-    value: 32.3333
-35FPS:
-  -
-    type: write
-    address: [MAIN, 0x72C6500]
-    value_type: float
-    value: 27.5714
-40FPS:
-  -
-    type: write
-    address: [MAIN, 0x72C6500]
-    value_type: float
-    value: 24
-45FPS:
-  -
-    type: write
-    address: [MAIN, 0x72C6500]
-    value_type: float
-    value: 21.2222
-50FPS:
-  -
-    type: write
-    address: [MAIN, 0x72C6500]
-    value_type: float
-    value: 19
-55FPS:
-  -
-    type: write
-    address: [MAIN, 0x72C6500]
-    value_type: float
-    value: 17.1818
-60FPS:
-  -
-    type: write
-    address: [MAIN, 0x72C6500]
-    value_type: float
-    value: 15.5
+    value: "0.97 * FRAMETIME_TARGET"

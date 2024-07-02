@@ -1,0 +1,33 @@
+# Jujutsu Kaisen Cursed Clash EUR 1.1.0
+# BID: 95761555A341B190
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) rounded to 2 decimals
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8036A48, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8079F50, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73BB0C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x80797A8, 0x9C4]
+    value_type: uint32
+    value: 7
+  -
+    type: block
+    what: timing

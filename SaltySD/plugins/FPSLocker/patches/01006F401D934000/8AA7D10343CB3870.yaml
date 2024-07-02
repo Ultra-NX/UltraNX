@@ -1,0 +1,21 @@
+# Twilight Survivors 0.22.2
+# BID: 8AA7D10343CB3870
+
+unsafeCheck: true
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6495898, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5C99348, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

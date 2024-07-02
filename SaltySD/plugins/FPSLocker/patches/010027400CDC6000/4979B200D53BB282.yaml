@@ -1,7 +1,7 @@
 # Divinity Original Sin 2 1.0.10
 # BID: 4979B200D53BB282
 # Game is using double buffer, buffers are not allocated in loop.
-# So it's not possible to get stable FPS lock between 30 and 60.
+# So it's not possible to get stable FPS lock between 30 and 60 without changing refresh rate.
 
 unsafeCheck: true
 
@@ -20,73 +20,10 @@ MASTER_WRITE:
     main_offset: 0x32C6D00
     value_type: double
     value: 1000000
-15FPS:
+ALL_FPS:
   # GPU Frametime divider = (30/FPS) * 1000000
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x32C6D00]
     value_type: double
-    value: 2000000
-20FPS:
-  # GPU Frametime divider
-  -
-    type: write
-    address: [MAIN, 0x32C6D00]
-    value_type: double
-    value: 1500000
-25FPS:
-  # GPU Frametime divider
-  -
-    type: write
-    address: [MAIN, 0x32C6D00]
-    value_type: double
-    value: 1200000
-30FPS:
-  # GPU Frametime divider (default value)
-  -
-    type: write
-    address: [MAIN, 0x32C6D00]
-    value_type: double
-    value: 1000000
-35FPS:
-  # GPU Frametime divider
-  -
-    type: write
-    address: [MAIN, 0x32C6D00]
-    value_type: double
-    value: 857142
-40FPS:
-  # GPU Frametime divider
-  -
-    type: write
-    address: [MAIN, 0x32C6D00]
-    value_type: double
-    value: 750000
-45FPS:
-  # GPU Frametime divider
-  -
-    type: write
-    address: [MAIN, 0x32C6D00]
-    value_type: double
-    value: 666666
-50FPS:
-  # GPU Frametime divider
-  -
-    type: write
-    address: [MAIN, 0x32C6D00]
-    value_type: double
-    value: 600000
-55FPS:
-  # GPU Frametime divider
-  -
-    type: write
-    address: [MAIN, 0x32C6D00]
-    value_type: double
-    value: 545454
-60FPS:
-  # GPU Frametime divider
-  -
-    type: write
-    address: [MAIN, 0x32C6D00]
-    value_type: double
-    value: 500000
+    value: "(30 / FPS_TARGET) * 1000000"

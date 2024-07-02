@@ -4,133 +4,16 @@
 
 unsafeCheck: true
 
-15FPS:
-  # Dynamic Resolution Frame Target Max in ms
+ALL_FPS:
+  # Dynamic Resolution Frame Target Max in ms (default is 38, so resolution is a priority over framerate)
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
     value_type: float
-    value: 66.6
-  # Dynamic Resolution Frame Target Min in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
-    value_type: float
-    value: 64
-20FPS:
-  # Dynamic Resolution Frame Target Max in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
-    value_type: float
-    value: 50
-  # Dynamic Resolution Frame Target Min in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
-    value_type: float
-    value: 48
-25FPS:
-  # Dynamic Resolution Frame Target Max in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
-    value_type: float
-    value: 40
-  # Dynamic Resolution Frame Target Min in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
-    value_type: float
-    value: 38
-30FPS:
-  # Dynamic Resolution Frame Target Max in ms (default is 38)
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
-    value_type: float
-    value: 33.3
+    value: "TruncDec(FRAMETIME_TARGET, 1)"
   # Dynamic Resolution Frame Target Min in ms (default is 33)
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
     value_type: float
-    value: 31
-35FPS:
-  # Dynamic Resolution Frame Target Max in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
-    value_type: float
-    value: 28.5
-  # Dynamic Resolution Frame Target Min in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
-    value_type: float
-    value: 26
-40FPS:
-  # Dynamic Resolution Frame Target Max in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
-    value_type: float
-    value: 25
-  # Dynamic Resolution Frame Target Min in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
-    value_type: float
-    value: 23
-45FPS:
-  # Dynamic Resolution Frame Target Max in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
-    value_type: float
-    value: 22.2
-  # Dynamic Resolution Frame Target Min in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
-    value_type: float
-    value: 20
-50FPS:
-  # Dynamic Resolution Frame Target Max in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
-    value_type: float
-    value: 20
-  # Dynamic Resolution Frame Target Min in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
-    value_type: float
-    value: 18
-55FPS:
-  # Dynamic Resolution Frame Target Max in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
-    value_type: float
-    value: 18.1
-  # Dynamic Resolution Frame Target Min in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
-    value_type: float
-    value: 16
-60FPS:
-  # Dynamic Resolution Frame Target Max in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
-    value_type: float
-    value: 16.6
-  # Dynamic Resolution Frame Target Min in ms
-  -
-    type: write
-    address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
-    value_type: float
-    value: 14
+    value: "0.96 * FRAMETIME_TARGET"

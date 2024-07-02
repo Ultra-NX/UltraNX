@@ -3,70 +3,15 @@
 
 unsafeCheck: true
 
-# For 15-20 FPS use internal FPS lock, for 25-30 set default value
-15FPS:
+ALL_FPS:
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x13BFDA0]
     value_type: int32
-    value: [4, 4]
+    value: [VSYNC_TARGET, VSYNC_TARGET]
+  # UI Speed (mm::mtl::PtrSingleton<layer::LayerManager>::sys(void)::s_instance)
   -
-    type: block
-    what: timing
-20FPS:
-  -
-    type: write
-    address: [MAIN, 0x13BFDA0]
-    value_type: int32
-    value: [3, 3]
-  -
-    type: block
-    what: timing
-25FPS:
-  -
-    type: write
-    address: [MAIN, 0x13BFDA0]
-    value_type: int32
-    value: [2, 2]
-30FPS:
-  -
-    type: write
-    address: [MAIN, 0x13BFDA0]
-    value_type: int32
-    value: [2, 2]
-35FPS:
-  -
-    type: write
-    address: [MAIN, 0x13BFDA0]
-    value_type: int32
-    value: [1, 1]
-40FPS:
-  -
-    type: write
-    address: [MAIN, 0x13BFDA0]
-    value_type: int32
-    value: [1, 1]
-45FPS:
-  -
-    type: write
-    address: [MAIN, 0x13BFDA0]
-    value_type: int32
-    value: [1, 1]
-50FPS:
-  -
-    type: write
-    address: [MAIN, 0x13BFDA0]
-    value_type: int32
-    value: [1, 1]
-55FPS:
-  -
-    type: write
-    address: [MAIN, 0x13BFDA0]
-    value_type: int32
-    value: [1, 1]
-60FPS:
-  -
-    type: write
-    address: [MAIN, 0x13BFDA0]
-    value_type: int32
-    value: [1, 1]
+    type: evaluate_write
+    address: [MAIN, 0x14016D8, 0x70]
+    value_type: float
+    value: "1 / FPS_TARGET"

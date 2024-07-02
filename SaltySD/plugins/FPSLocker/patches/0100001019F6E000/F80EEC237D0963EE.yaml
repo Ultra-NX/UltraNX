@@ -1,0 +1,27 @@
+# Horizon Chase 2 1.6.3
+# BID: F80EEC237D0963EE
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x8325D00, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8B13A30, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.DynamicRes.FrameTimeBudget = 0.978 * (1000/FPS)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8AEE598, 0]
+    value_type: float
+    value: ["TruncDec(0.978 * FRAMETIME_TARGET, 1)", "TruncDec(0.978 * FRAMETIME_TARGET, 1)"]
+  -
+    type: block
+    what: timing

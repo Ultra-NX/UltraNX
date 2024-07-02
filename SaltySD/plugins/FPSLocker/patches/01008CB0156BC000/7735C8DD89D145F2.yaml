@@ -1,0 +1,85 @@
+# The Legend of Heroes: Trails into Reverie 1.0.4
+# BID: 7735C8DD89D145F2
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Force FPS lock to 60
+  -
+    type: bytes
+    main_offset: 0x81AB0
+    value_type: uint32
+    value: 0x72A79108
+  # Force refreshing camera to 60 Hz
+  -
+    type: bytes
+    main_offset: 0x81AE4
+    value_type: uint32
+    value: 0x72A79109
+  # Properly scale frametime for FPS drops
+  -
+    type: bytes
+    main_offset: 0x81AEC
+    value_type: uint32
+    value: 0x72B7910A
+# Read actual frametime instead of hardcoded 1/30
+  # Store actual frametime as float in seconds to MAIN+0x7A52478
+  # It sets minimum delta to 1/60 and maximum delta to 1/15
+  -
+    type: bytes
+    main_offset: 0x8192C
+    value_type: uint32
+    value: 0x14339A82
+  -
+    type: bytes
+    main_offset: 0xD682D0
+    value_type: uint32
+    value:
+      - 0xD0000CE9
+      - 0xBD4F0121
+      - 0xBD4E0922
+      - 0x97FFF941
+      - 0xD0036749
+      - 0xF942392A
+      - 0xF9023920
+      - 0xCB0A000A
+      - 0x9E230143
+      - 0x528F8009
+      - 0x72A97249
+      - 0x1E270124
+      - 0x1E241864
+      - 0xD0036749
+      - 0x1E212080
+      - 0x54000068
+      - 0x1E204024
+      - 0x14000004
+      - 0x1E222080
+      - 0x5400004B
+      - 0x1E204044
+      - 0xBD047924
+      - 0x52835E08
+      - 0xAA1403E0
+      - 0x17CC6580
+      - 0xAA0003F4
+      - 0x17FFFFE6
+  # Read actual frametime as float in seconds from MAIN+0x7A52478
+  -
+    type: bytes
+    main_offset: 0x81B50
+    value_type: uint32
+    value:
+      - 0xB003CE8B
+      - 0xB944796B
+  # Default value
+  -
+    type: bytes
+    main_offset: 0x7A52478
+    value_type: float
+    value: 0.033333333333
+ALL_FPS:
+  # DUMMY
+  -
+    type: write
+    address: [MAIN, 0x7A52500]
+    value_type: uint8
+    value: 0

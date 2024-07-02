@@ -1,0 +1,21 @@
+# Grounded 1.05
+# BID: 6C91A8A476E70C5D
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget = (1000/FPS) cutted to 1 decimal
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8DE73D8, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8E0D520, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

@@ -3,157 +3,19 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   # r.DynamicRes.FrameTimeBudget ((1000/FPS) * 0.969)
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x8549648, 0]
     value_type: float
-    value: [64.6, 64.6]
+    value: ["0.969 * FRAMETIME_TARGET", "0.969 * FRAMETIME_TARGET"]
   # t.MaxFPS
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x8577218, 0]
     value_type: float
-    value: [15, 15]
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
   -
     type: block
     what: timing
-20FPS:
-  # r.DynamicRes.FrameTimeBudget
-  -
-    type: write
-    address: [MAIN, 0x8549648, 0]
-    value_type: float
-    value: [48.45, 48.45]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8577218, 0]
-    value_type: float
-    value: [20, 20]
-  -
-    type: block
-    what: timing
-25FPS:
-  # r.DynamicRes.FrameTimeBudget
-  -
-    type: write
-    address: [MAIN, 0x8549648, 0]
-    value_type: float
-    value: [38.76, 38.76]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8577218, 0]
-    value_type: float
-    value: [25, 25]
-  -
-    type: block
-    what: timing
-30FPS:
-  # r.DynamicRes.FrameTimeBudget (default value)
-  -
-    type: write
-    address: [MAIN, 0x8549648, 0]
-    value_type: float
-    value: [32.3, 32.3]
-  # t.MaxFPS (default value)
-  -
-    type: write
-    address: [MAIN, 0x8577218, 0]
-    value_type: float
-    value: [0, 0]
-35FPS:
-  # r.DynamicRes.FrameTimeBudget
-  -
-    type: write
-    address: [MAIN, 0x8549648, 0]
-    value_type: float
-    value: [27.6857, 27.6857]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8577218, 0]
-    value_type: float
-    value: [35, 35]
-  -
-    type: block
-    what: timing
-40FPS:
-  # r.DynamicRes.FrameTimeBudget
-  -
-    type: write
-    address: [MAIN, 0x8549648, 0]
-    value_type: float
-    value: [24.225, 24.225]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8577218, 0]
-    value_type: float
-    value: [40, 40]
-  -
-    type: block
-    what: timing
-45FPS:
-  # r.DynamicRes.FrameTimeBudget
-  -
-    type: write
-    address: [MAIN, 0x8549648, 0]
-    value_type: float
-    value: [21.53, 21.53]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8577218, 0]
-    value_type: float
-    value: [45, 45]
-  -
-    type: block
-    what: timing
-50FPS:
-  # r.DynamicRes.FrameTimeBudget
-  -
-    type: write
-    address: [MAIN, 0x8549648, 0]
-    value_type: float
-    value: [19.38, 19.38]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8577218, 0]
-    value_type: float
-    value: [50, 50]
-  -
-    type: block
-    what: timing
-55FPS:
-  # r.DynamicRes.FrameTimeBudget
-  -
-    type: write
-    address: [MAIN, 0x8549648, 0]
-    value_type: float
-    value: [17.61, 17.61]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8577218, 0]
-    value_type: float
-    value: [55, 55]
-  -
-    type: block
-    what: timing
-60FPS:
-  # r.DynamicRes.FrameTimeBudget
-  -
-    type: write
-    address: [MAIN, 0x8549648, 0]
-    value_type: float
-    value: [16.15, 16.15]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8577218, 0]
-    value_type: float
-    value: [0, 0]

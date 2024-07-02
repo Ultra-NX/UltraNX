@@ -6,73 +6,10 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   # Interval
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x8C4534]
     value_type: int32
-    value: 4
-20FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0x8C4534]
-    value_type: int32
-    value: 3
-25FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0x8C4534]
-    value_type: int32
-    value: 2
-30FPS:
-  # Interval (default value in gameplay)
-  -
-    type: write
-    address: [MAIN, 0x8C4534]
-    value_type: int32
-    value: 2
-35FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0x8C4534]
-    value_type: int32
-    value: 1
-40FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0x8C4534]
-    value_type: int32
-    value: 1
-45FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0x8C4534]
-    value_type: int32
-    value: 1
-50FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0x8C4534]
-    value_type: int32
-    value: 1
-55FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0x8C4534]
-    value_type: int32
-    value: 1
-60FPS:
-  # Interval
-  -
-    type: write
-    address: [MAIN, 0x8C4534]
-    value_type: int32
-    value: 1
+    value: VSYNC_TARGET

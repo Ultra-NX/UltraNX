@@ -10,62 +10,8 @@ MASTER_WRITE:
     main_offset: 0xEA22EC
     value_type: uint32
     value: 0xB20007E8
-15FPS:
+ALL_FPS:
   # DUMMY
-  -
-    type: write
-    address: [MAIN, 0xA7FA900]
-    value_type: uint8
-    value: 0
-20FPS:
-  -
-    type: write
-    address: [MAIN, 0xA7FA900]
-    value_type: uint8
-    value: 0
-25FPS:
-  -
-    type: write
-    address: [MAIN, 0xA7FA900]
-    value_type: uint8
-    value: 0
-30FPS:
-  -
-    type: write
-    address: [MAIN, 0xA7FA900]
-    value_type: uint8
-    value: 0
-35FPS:
-  -
-    type: write
-    address: [MAIN, 0xA7FA900]
-    value_type: uint8
-    value: 0
-40FPS:
-  -
-    type: write
-    address: [MAIN, 0xA7FA900]
-    value_type: uint8
-    value: 0
-45FPS:
-  -
-    type: write
-    address: [MAIN, 0xA7FA900]
-    value_type: uint8
-    value: 0
-50FPS:
-  -
-    type: write
-    address: [MAIN, 0xA7FA900]
-    value_type: uint8
-    value: 0
-55FPS:
-  -
-    type: write
-    address: [MAIN, 0xA7FA900]
-    value_type: uint8
-    value: 0
-60FPS:
   -
     type: write
     address: [MAIN, 0xA7FA900]

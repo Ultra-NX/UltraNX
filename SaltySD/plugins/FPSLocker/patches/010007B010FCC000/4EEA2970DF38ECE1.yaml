@@ -3,73 +3,10 @@
 
 unsafeCheck: true
 
-15FPS:
-  # Dynamic Resolution frame time target = (32.3/(1000/30)) * (1000/FPS)
-  -
-    type: write
-    address: [MAIN, 0x2D7A974]
-    value_type: float
-    value: 64.6
-20FPS:
+ALL_FPS:
   # Dynamic Resolution frame time target
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x2D7A974]
     value_type: float
-    value: 48.45
-25FPS:
-  # Dynamic Resolution frame time target
-  -
-    type: write
-    address: [MAIN, 0x2D7A974]
-    value_type: float
-    value: 38.76
-30FPS:
-  # Dynamic Resolution frame time target (default value)
-  -
-    type: write
-    address: [MAIN, 0x2D7A974]
-    value_type: float
-    value: 32.3
-35FPS:
-  # Dynamic Resolution frame time target
-  -
-    type: write
-    address: [MAIN, 0x2D7A974]
-    value_type: float
-    value: 27.68
-40FPS:
-  # Dynamic Resolution frame time target
-  -
-    type: write
-    address: [MAIN, 0x2D7A974]
-    value_type: float
-    value: 24.225
-45FPS:
-  # Dynamic Resolution frame time target
-  -
-    type: write
-    address: [MAIN, 0x2D7A974]
-    value_type: float
-    value: 21.53
-50FPS:
-  # Dynamic Resolution frame time target
-  -
-    type: write
-    address: [MAIN, 0x2D7A974]
-    value_type: float
-    value: 19.38
-55FPS:
-  # Dynamic Resolution frame time target
-  -
-    type: write
-    address: [MAIN, 0x2D7A974]
-    value_type: float
-    value: 17.61
-60FPS:
-  # Dynamic Resolution frame time target
-  -
-    type: write
-    address: [MAIN, 0x2D7A974]
-    value_type: float
-    value: 16.15
+    value: "0.969 * FRAMETIME_TARGET"

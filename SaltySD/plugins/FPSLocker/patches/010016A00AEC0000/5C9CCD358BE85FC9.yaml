@@ -4,61 +4,7 @@
 
 unsafeCheck: true
 
-15FPS:
-  -
-    type: write
-    address: [MAIN, 0x3AF80, -0x931F4]
-    value_type: int32
-    value: 2
-20FPS:
-  -
-    type: write
-    address: [MAIN, 0x3AF80, -0x931F4]
-    value_type: int32
-    value: 2
-25FPS:
-  -
-    type: write
-    address: [MAIN, 0x3AF80, -0x931F4]
-    value_type: int32
-    value: 2
-30FPS:
-  -
-    type: write
-    address: [MAIN, 0x3AF80, -0x931F4]
-    value_type: int32
-    value: 2
-35FPS:
-  -
-    type: write
-    address: [MAIN, 0x3AF80, -0x931F4]
-    value_type: int32
-    value: 1
-40FPS:
-  -
-    type: write
-    address: [MAIN, 0x3AF80, -0x931F4]
-    value_type: int32
-    value: 1
-45FPS:
-  -
-    type: write
-    address: [MAIN, 0x3AF80, -0x931F4]
-    value_type: int32
-    value: 1
-50FPS:
-  -
-    type: write
-    address: [MAIN, 0x3AF80, -0x931F4]
-    value_type: int32
-    value: 1
-55FPS:
-  -
-    type: write
-    address: [MAIN, 0x3AF80, -0x931F4]
-    value_type: int32
-    value: 1
-60FPS:
+ALL_FPS:
   -
     type: write
     address: [MAIN, 0x3AF80, -0x931F4]

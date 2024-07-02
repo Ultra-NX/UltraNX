@@ -4,87 +4,12 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x80C9F0]
     value_type: float
-    value: 0.06666666666
+    value: "1 / FPS_TARGET"
   -
     type: block
     what: timing
-20FPS:
-  -
-    type: write
-    address: [MAIN, 0x80C9F0]
-    value_type: float
-    value: 0.05
-  -
-    type: block
-    what: timing
-25FPS:
-  -
-    type: write
-    address: [MAIN, 0x80C9F0]
-    value_type: float
-    value: 0.04
-  -
-    type: block
-    what: timing
-30FPS:
-  -
-    type: write
-    address: [MAIN, 0x80C9F0]
-    value_type: float
-    value: 0.03333333333
-35FPS:
-  -
-    type: write
-    address: [MAIN, 0x80C9F0]
-    value_type: float
-    value: 0.02857142857
-  -
-    type: block
-    what: timing
-40FPS:
-  -
-    type: write
-    address: [MAIN, 0x80C9F0]
-    value_type: float
-    value: 0.025
-  -
-    type: block
-    what: timing
-45FPS:
-  -
-    type: write
-    address: [MAIN, 0x80C9F0]
-    value_type: float
-    value: 0.022222222222
-  -
-    type: block
-    what: timing
-50FPS:
-  -
-    type: write
-    address: [MAIN, 0x80C9F0]
-    value_type: float
-    value: 0.02
-  -
-    type: block
-    what: timing
-55FPS:
-  -
-    type: write
-    address: [MAIN, 0x80C9F0]
-    value_type: float
-    value: 0.0181818181818
-  -
-    type: block
-    what: timing
-60FPS:
-  -
-    type: write
-    address: [MAIN, 0x80C9F0]
-    value_type: float
-    value: 0.016666666666

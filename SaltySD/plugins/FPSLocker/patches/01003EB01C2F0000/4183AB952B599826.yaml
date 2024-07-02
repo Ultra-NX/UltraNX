@@ -1,0 +1,39 @@
+# MEGATON MUSASHI W: WIRED 3.1.0
+# BID: 4183AB952B599826
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect reading DR timing in DynamicResolution::UpdateResolution() to MAIN + 0xC8C2F00
+  # only for handheld (default handheld: 31.25 ms, docked: 46.875 ms - probably to block DR from working without disabling it)
+  -
+    type: bytes
+    main_offset: 0x74BF438
+    value_type: uint32
+    value: 
+      - 0xF002A008
+      - 0xB94F0108
+  # Default handheld value
+  -
+    type: bytes
+    main_offset: 0xC8C2F00
+    value_type: uint32
+    value: 600000
+ALL_FPS:
+  # fixedDeltaTime = 1/FPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xC841820, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  - # maximumDeltaTime = 1/15 (with this setting game will slow down below 15 FPS instead of 30 FPS)
+    type: write
+    address: [MAIN, 0xC841820, 0x100]
+    value_type: float
+    value: 0.0666666666
+  # Dynamic Resolution Timing = (0.9375/FPS) * 19200000
+  -
+    type: evaluate_write
+    address: [MAIN, 0xC8C2F00]
+    value_type: uint32
+    value: "(0.9375 / FPS_TARGET) * 19200000"

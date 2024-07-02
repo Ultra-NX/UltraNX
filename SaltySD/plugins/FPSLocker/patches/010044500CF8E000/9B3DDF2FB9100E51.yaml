@@ -1,161 +1,23 @@
 # Hellblade: Senua's Sacrifice 1.1.0
 # BID: 9B3DDF2FB9100E51
 
-unsafeCheck: true
+unsafeCheck: false
 
-15FPS:
+ALL_FPS:
   # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN)
   # MAX = (1/FPS) * 0.95
   # MIN = (1/FPS) * 0.9
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x520BBE0, 0x40]
     value_type: float
-    value: [0.0633333333, 0.06]
+    value: ["(1 / FPS_TARGET) * 0.95", "(1 / FPS_TARGET) * 0.9"]
   # t.MaxFPS
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x521F7A0, 0]
     value_type: float
-    value: [15, 15]
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
   -
     type: block
     what: timing
-20FPS:
-  # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN)
-  -
-    type: write
-    address: [MAIN, 0x520BBE0, 0x40]
-    value_type: float
-    value: [0.0475, 0.045]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x521F7A0, 0]
-    value_type: float
-    value: [20, 20]
-  -
-    type: block
-    what: timing
-25FPS:
-  # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN)
-  -
-    type: write
-    address: [MAIN, 0x520BBE0, 0x40]
-    value_type: float
-    value: [0.038, 0.036]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x521F7A0, 0]
-    value_type: float
-    value: [25, 25]
-  -
-    type: block
-    what: timing
-30FPS:
-  # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN) (default value)
-  -
-    type: write
-    address: [MAIN, 0x520BBE0, 0x40]
-    value_type: float
-    value: [0.0316666666, 0.03]
-  # t.MaxFPS (default value)
-  -
-    type: write
-    address: [MAIN, 0x521F7A0, 0]
-    value_type: float
-    value: [0, 0]
-35FPS:
-  # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN)
-  -
-    type: write
-    address: [MAIN, 0x520BBE0, 0x40]
-    value_type: float
-    value: [0.0271428571, 0.0257142857]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x521F7A0, 0]
-    value_type: float
-    value: [35, 35]
-  -
-    type: block
-    what: timing
-40FPS:
-  # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN)
-  -
-    type: write
-    address: [MAIN, 0x520BBE0, 0x40]
-    value_type: float
-    value: [0.02375, 0.0225]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x521F7A0, 0]
-    value_type: float
-    value: [40, 40]
-  -
-    type: block
-    what: timing
-45FPS:
-  # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN)
-  -
-    type: write
-    address: [MAIN, 0x520BBE0, 0x40]
-    value_type: float
-    value: [0.0211111111, 0.02]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x521F7A0, 0]
-    value_type: float
-    value: [45, 45]
-  -
-    type: block
-    what: timing
-50FPS:
-  # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN)
-  -
-    type: write
-    address: [MAIN, 0x520BBE0, 0x40]
-    value_type: float
-    value: [0.019, 0.018]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x521F7A0, 0]
-    value_type: float
-    value: [50, 50]
-  -
-    type: block
-    what: timing
-55FPS:
-  # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN)
-  -
-    type: write
-    address: [MAIN, 0x520BBE0, 0x40]
-    value_type: float
-    value: [0.0172727272, 0.0163636363]
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x521F7A0, 0]
-    value_type: float
-    value: [55, 55]
-  -
-    type: block
-    what: timing
-60FPS:
-  # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN)
-  -
-    type: write
-    address: [MAIN, 0x520BBE0, 0x40]
-    value_type: float
-    value: [0.0158333333, 0.015]
-  # t.MaxFPS (default value)
-  -
-    type: write
-    address: [MAIN, 0x521F7A0, 0]
-    value_type: float
-    value: [0, 0]

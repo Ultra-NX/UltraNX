@@ -3,73 +3,10 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   # Dynamic Resolution FPS Target
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x179EF64]
     value_type: float
-    value: 15
-20FPS:
-  # Dynamic Resolution FPS Target
-  -
-    type: write
-    address: [MAIN, 0x179EF64]
-    value_type: float
-    value: 20
-25FPS:
-  # Dynamic Resolution FPS Target
-  -
-    type: write
-    address: [MAIN, 0x179EF64]
-    value_type: float
-    value: 25
-30FPS:
-  # Dynamic Resolution FPS Target (default value)
-  -
-    type: write
-    address: [MAIN, 0x179EF64]
-    value_type: float
-    value: 30
-35FPS:
-  # Dynamic Resolution FPS Target
-  -
-    type: write
-    address: [MAIN, 0x179EF64]
-    value_type: float
-    value: 35
-40FPS:
-  # Dynamic Resolution FPS Target
-  -
-    type: write
-    address: [MAIN, 0x179EF64]
-    value_type: float
-    value: 40
-45FPS:
-  # Dynamic Resolution FPS Target
-  -
-    type: write
-    address: [MAIN, 0x179EF64]
-    value_type: float
-    value: 45
-50FPS:
-  # Dynamic Resolution FPS Target
-  -
-    type: write
-    address: [MAIN, 0x179EF64]
-    value_type: float
-    value: 50
-55FPS:
-  # Dynamic Resolution FPS Target
-  -
-    type: write
-    address: [MAIN, 0x179EF64]
-    value_type: float
-    value: 55
-60FPS:
-  # Dynamic Resolution FPS Target
-  -
-    type: write
-    address: [MAIN, 0x179EF64]
-    value_type: float
-    value: 60
+    value: FPS_TARGET

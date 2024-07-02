@@ -3,73 +3,10 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   # Dynamic resolution FPS factor (0.989 * FPS)
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x17321D8]
     value_type: float
-    value: 14.835
-20FPS:
-  # Dynamic resolution FPS factor
-  -
-    type: write
-    address: [MAIN, 0x17321D8]
-    value_type: float
-    value: 19.78
-25FPS:
-  # Dynamic resolution FPS factor
-  -
-    type: write
-    address: [MAIN, 0x17321D8]
-    value_type: float
-    value: 24.725
-30FPS:
-  # Dynamic resolution FPS factor (default)
-  -
-    type: write
-    address: [MAIN, 0x17321D8]
-    value_type: float
-    value: 29.67
-35FPS:
-  # Dynamic resolution FPS factor
-  -
-    type: write
-    address: [MAIN, 0x17321D8]
-    value_type: float
-    value: 34.615
-40FPS:
-  # Dynamic resolution FPS factor
-  -
-    type: write
-    address: [MAIN, 0x17321D8]
-    value_type: float
-    value: 39.56
-45FPS:
-  # Dynamic resolution FPS factor
-  -
-    type: write
-    address: [MAIN, 0x17321D8]
-    value_type: float
-    value: 44.505
-50FPS:
-  # Dynamic resolution FPS factor
-  -
-    type: write
-    address: [MAIN, 0x17321D8]
-    value_type: float
-    value: 49.45
-55FPS:
-  # Dynamic resolution FPS factor
-  -
-    type: write
-    address: [MAIN, 0x17321D8]
-    value_type: float
-    value: 54.395
-60FPS:
-  # Dynamic resolution FPS factor
-  -
-    type: write
-    address: [MAIN, 0x17321D8]
-    value_type: float
-    value: 59.34
+    value: "0.989 * FPS_TARGET"

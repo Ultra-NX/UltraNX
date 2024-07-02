@@ -1,0 +1,34 @@
+# Neptunia: Sisters VS Sisters 1.0.0
+# BID: 3565E26E8827C846
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect DR timing range to MAIN + 0x86B9F00
+  -
+    type: bytes
+    main_offset: 0x3DC5E90
+    value_type: uint32
+    value:
+      - 0x900247A8
+      - 0xB94F0108
+  -
+    type: bytes
+    main_offset: 0x3DC5EFC
+    value_type: uint32
+    value:
+      - 0x900247A8
+      - 0xB94F0508    
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x86B9F00
+    value_type: float
+    value: [33.33, 28.57]  
+ALL_FPS:
+  # DR timing
+  -
+    type: evaluate_write
+    address: [MAIN, 0x86B9F00]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(1000 / (FPS_TARGET + 5), 2)"]

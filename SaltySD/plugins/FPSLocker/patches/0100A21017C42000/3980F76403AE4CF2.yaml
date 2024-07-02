@@ -1,0 +1,80 @@
+# Another Crab's Treasure 1.0.101.1
+# BID: 3980F76403AE4CF2
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect updating various deltas to read frametime target from UnityEngine.Application::targetFrameRate, REF: 08 10 91 52 08 A1 A7 72
+  -
+    type: bytes
+    main_offset: 0x18A98F0
+    value_type: uint32
+    value:
+     - 0xF001EB68
+     - 0xB944E908
+     - 0x1E230101
+     - 0x1E2E1000
+     - 0x1E211800
+  -
+    type: bytes
+    main_offset: 0x18A61B8
+    value_type: uint32
+    value:
+     - 0xD001EB88
+     - 0xB944E908
+     - 0x1E230101
+     - 0x1E2E1000
+     - 0x1E211800
+  # Redirect Dynamic Resolution GPU Timing target in DynamicResolutionScaler::Update to MAIN+0x5A8D908
+  -
+    type: bytes
+    main_offset: 0x1B06D44
+    value_type: uint32
+    value:
+     - 0xF001FC28
+     - 0xF9448508
+     - 0xD503201F
+     - 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1B06DC4
+    value_type: uint32
+    value:
+     - 0xF001FC28
+     - 0xF9448508
+     - 0xBD402A60
+     - 0xD503201F
+     - 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1B06E38
+    value_type: uint32
+    value:
+     - 0xF001FC28
+     - 0xF9448508
+     - 0xD503201F
+     - 0xD503201F
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x56184E8
+    value_type: uint32
+    value: 30
+  -
+    type: bytes
+    main_offset: 0x5A8D908
+    value_type: double
+    value: 28.57142857142857
+ALL_FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: evaluate_write
+    address: [MAIN, 0x56184E8]
+    value_type: uint32
+    value: FPS_TARGET
+  # GPU Timing Target
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5A8D908]
+    value_type: double
+    value: "1 / (FPS_TARGET + 5)"

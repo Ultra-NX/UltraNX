@@ -1,0 +1,19 @@
+# Fate/Samurai Remnant 1.3.1
+# BID: 8D6606B544CBCBC8
+
+unsafeCheck: true
+
+# Disable setting double buffer, REF: 28 63 A8 9B B8 5F 6E 29 2B F7 01 51 B9 83 57 B8
+MASTER_WRITE:
+  -
+    type: bytes
+    main_offset: 0x5DB12C
+    value_type: uint32
+    value: 0x52800079
+ALL_FPS:
+  # interval, REF: 29 00 80 52 16 00 08 8B 08 A0 8C 52 28 00 A0 72
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3412388]
+    value_type: int32
+    value: VSYNC_TARGET

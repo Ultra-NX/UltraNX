@@ -12,73 +12,10 @@ MASTER_WRITE:
     main_offset: 0xAD40FC
     value_type: uint32
     value: 0x52800068
-15FPS:
+ALL_FPS:
   # FPS target (FPS * 2)
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x1C38C28, 0x1C]
     value_type: float
-    value: 30
-20FPS:
-  # FPS target
-  -
-    type: write
-    address: [MAIN, 0x1C38C28, 0x1C]
-    value_type: float
-    value: 40
-25FPS:
-  # FPS target
-  -
-    type: write
-    address: [MAIN, 0x1C38C28, 0x1C]
-    value_type: float
-    value: 50
-30FPS:
-  # FPS target (default value)
-  -
-    type: write
-    address: [MAIN, 0x1C38C28, 0x1C]
-    value_type: float
-    value: 60
-35FPS:
-  # FPS target
-  -
-    type: write
-    address: [MAIN, 0x1C38C28, 0x1C]
-    value_type: float
-    value: 70
-40FPS:
-  # FPS target
-  -
-    type: write
-    address: [MAIN, 0x1C38C28, 0x1C]
-    value_type: float
-    value: 80
-45FPS:
-  # FPS target
-  -
-    type: write
-    address: [MAIN, 0x1C38C28, 0x1C]
-    value_type: float
-    value: 90
-50FPS:
-  # FPS target
-  -
-    type: write
-    address: [MAIN, 0x1C38C28, 0x1C]
-    value_type: float
-    value: 100
-55FPS:
-  # FPS target
-  -
-    type: write
-    address: [MAIN, 0x1C38C28, 0x1C]
-    value_type: float
-    value: 110
-60FPS:
-  # FPS target
-  -
-    type: write
-    address: [MAIN, 0x1C38C28, 0x1C]
-    value_type: float
-    value: 120
+    value: "FPS_TARGET * 2"

@@ -3,73 +3,10 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   # fixedDeltaTime = 1/FPS
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x60E4E60, 0x48]
     value_type: float
-    value: 0.0666666666
-20FPS:
-  # fixedDeltaTime
-  -
-    type: write
-    address: [MAIN, 0x60E4E60, 0x48]
-    value_type: float
-    value: 0.05
-25FPS:
-  # fixedDeltaTime
-  -
-    type: write
-    address: [MAIN, 0x60E4E60, 0x48]
-    value_type: float
-    value: 0.04
-30FPS:
-  # fixedDeltaTime (default value)
-  -
-    type: write
-    address: [MAIN, 0x60E4E60, 0x48]
-    value_type: float
-    value: 0.0333333333
-35FPS:
-  # fixedDeltaTime
-  -
-    type: write
-    address: [MAIN, 0x60E4E60, 0x48]
-    value_type: float
-    value: 0.0285714
-40FPS:
-  # fixedDeltaTime
-  -
-    type: write
-    address: [MAIN, 0x60E4E60, 0x48]
-    value_type: float
-    value: 0.025
-45FPS:
-  # fixedDeltaTime
-  -
-    type: write
-    address: [MAIN, 0x60E4E60, 0x48]
-    value_type: float
-    value: 0.0222222222
-50FPS:
-  # fixedDeltaTime
-  -
-    type: write
-    address: [MAIN, 0x60E4E60, 0x48]
-    value_type: float
-    value: 0.02
-55FPS:
-  # fixedDeltaTime
-  -
-    type: write
-    address: [MAIN, 0x60E4E60, 0x48]
-    value_type: float
-    value: 0.0181818181
-60FPS:
-  # fixedDeltaTime
-  -
-    type: write
-    address: [MAIN, 0x60E4E60, 0x48]
-    value_type: float
-    value: 0.0166666666
+    value: "1 / FPS_TARGET"

@@ -1,0 +1,12 @@
+# EA SPORTS FC 24 1.59.1a28
+# BID: EC2417892C9BCC7E
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Internal FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0xCDEAE20, 8]
+    value_type: double
+    value: FPS_LOCK_TARGET

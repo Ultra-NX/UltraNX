@@ -70,114 +70,14 @@ MASTER_WRITE:
     main_offset: 0x5FBAF28
     value_type: float
     value: 33
-15FPS:
+ALL_FPS:
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x5FBAF20]
     value_type: uint32
-    value: 4
+    value: VSYNC_TARGET
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x5FBAF28]
     value_type: float
-    value: 16.5
-20FPS:
-  -
-    type: write
-    address: [MAIN, 0x5FBAF20]
-    value_type: uint32
-    value: 3
-  -
-    type: write
-    address: [MAIN, 0x5FBAF28]
-    value_type: float
-    value: 22
-25FPS:
-  -
-    type: write
-    address: [MAIN, 0x5FBAF20]
-    value_type: uint32
-    value: 2
-  -
-    type: write
-    address: [MAIN, 0x5FBAF28]
-    value_type: float
-    value: 27.5
-30FPS:
-  - # Default in races
-    type: write
-    address: [MAIN, 0x5FBAF20]
-    value_type: uint32
-    value: 2
-  -
-    type: write
-    address: [MAIN, 0x5FBAF28]
-    value_type: float
-    value: 33
-35FPS:
-  -
-    type: write
-    address: [MAIN, 0x5FBAF20]
-    value_type: uint32
-    value: 1
-  -
-    type: write
-    address: [MAIN, 0x5FBAF28]
-    value_type: float
-    value: 38.5
-40FPS:
-  -
-    type: write
-    address: [MAIN, 0x5FBAF20]
-    value_type: uint32
-    value: 1
-  -
-    type: write
-    address: [MAIN, 0x5FBAF28]
-    value_type: float
-    value: 44
-45FPS:
-  -
-    type: write
-    address: [MAIN, 0x5FBAF20]
-    value_type: uint32
-    value: 1
-  -
-    type: write
-    address: [MAIN, 0x5FBAF28]
-    value_type: float
-    value: 49.5
-50FPS:
-  -
-    type: write
-    address: [MAIN, 0x5FBAF20]
-    value_type: uint32
-    value: 1
-  -
-    type: write
-    address: [MAIN, 0x5FBAF28]
-    value_type: float
-    value: 55
-55FPS:
-  -
-    type: write
-    address: [MAIN, 0x5FBAF20]
-    value_type: uint32
-    value: 1
-  -
-    type: write
-    address: [MAIN, 0x5FBAF28]
-    value_type: float
-    value: 60.5
-60FPS:
-  # Default for menus
-  -
-    type: write
-    address: [MAIN, 0x5FBAF20]
-    value_type: uint32
-    value: 1
-  -
-    type: write
-    address: [MAIN, 0x5FBAF28]
-    value_type: float
-    value: 66
+    value: "1.1 * FPS_TARGET"

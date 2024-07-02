@@ -28,59 +28,7 @@ MASTER_WRITE:
     main_offset: 0xC3C0A50
     value_type: float
     value: [24, 31]
-15FPS:
-  # g_video_swap_mode
-  -
-    type: write
-    address: [MAIN, 0xAA62FF0]
-    value_type: int32
-    value: 3
-  # Min + max dynamic resolution timing in ms
-  -
-    type: write
-    address: [MAIN, 0xC3C0A50]
-    value_type: float
-    value: [48, 62]
-20FPS:
-  # g_video_swap_mode
-  -
-    type: write
-    address: [MAIN, 0xAA62FF0]
-    value_type: int32
-    value: 3
-  # Min + max dynamic resolution timing in ms
-  -
-    type: write
-    address: [MAIN, 0xC3C0A50]
-    value_type: float
-    value: [36, 46.5]
-25FPS:
-  # g_video_swap_mode
-  -
-    type: write
-    address: [MAIN, 0xAA62FF0]
-    value_type: int32
-    value: 3
-  # Min + max dynamic resolution timing in ms
-  -
-    type: write
-    address: [MAIN, 0xC3C0A50]
-    value_type: float
-    value: [28.8, 37.2]
-30FPS:
-  # g_video_swap_mode
-  -
-    type: write
-    address: [MAIN, 0xAA62FF0]
-    value_type: int32
-    value: 3
-  # Min + max dynamic resolution timing in ms (default for 30 FPS)
-  -
-    type: write
-    address: [MAIN, 0xC3C0A50]
-    value_type: float
-    value: [24, 31]
-35FPS:
+ALL_FPS:
   # g_video_swap_mode
   -
     type: write
@@ -89,72 +37,7 @@ MASTER_WRITE:
     value: 2
   # Min + max dynamic resolution timing in ms
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0xC3C0A50]
     value_type: float
-    value: [20.57, 26.57]
-40FPS:
-  # g_video_swap_mode
-  -
-    type: write
-    address: [MAIN, 0xAA62FF0]
-    value_type: int32
-    value: 2
-  # Min + max dynamic resolution timing in ms
-  -
-    type: write
-    address: [MAIN, 0xC3C0A50]
-    value_type: float
-    value: [18, 23.25]
-45FPS:
-  # g_video_swap_mode
-  -
-    type: write
-    address: [MAIN, 0xAA62FF0]
-    value_type: int32
-    value: 2
-  # Min + max dynamic resolution timing in ms
-  -
-    type: write
-    address: [MAIN, 0xC3C0A50]
-    value_type: float
-    value: [16, 20.67]
-50FPS:
-  # g_video_swap_mode
-  -
-    type: write
-    address: [MAIN, 0xAA62FF0]
-    value_type: int32
-    value: 2
-  # Min + max dynamic resolution timing in ms
-  -
-    type: write
-    address: [MAIN, 0xC3C0A50]
-    value_type: float
-    value: [14.4, 18.6]
-55FPS:
-  # g_video_swap_mode
-  -
-    type: write
-    address: [MAIN, 0xAA62FF0]
-    value_type: int32
-    value: 2
-  # Min + max dynamic resolution timing in ms
-  -
-    type: write
-    address: [MAIN, 0xC3C0A50]
-    value_type: float
-    value: [13.09, 16.9]
-60FPS:
-  # g_video_swap_mode
-  -
-    type: write
-    address: [MAIN, 0xAA62FF0]
-    value_type: int32
-    value: 2
-  # Min + max dynamic resolution timing in ms (default for 60 FPS)
-  -
-    type: write
-    address: [MAIN, 0xC3C0A50]
-    value_type: float
-    value: [12, 15.5]
+    value: ["0.72 * FRAMETIME_TARGET", "0.93 * FRAMETIME_TARGET"]

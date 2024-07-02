@@ -3,97 +3,13 @@
 
 unsafeCheck: true
 
-15FPS:
+ALL_FPS:
   # t.MaxFPS
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x8082C68, 0]
     value_type: float
-    value: [15, 15]
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
   -
     type: block
     what: timing
-20FPS:
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8082C68, 0]
-    value_type: float
-    value: [20, 20]
-  -
-    type: block
-    what: timing
-25FPS:
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8082C68, 0]
-    value_type: float
-    value: [25, 25]
-  -
-    type: block
-    what: timing
-30FPS:
-  # t.MaxFPS (default value)
-  -
-    type: write
-    address: [MAIN, 0x8082C68, 0]
-    value_type: float
-    value: [0, 0]
-35FPS:
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8082C68, 0]
-    value_type: float
-    value: [35, 35]
-  -
-    type: block
-    what: timing
-40FPS:
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8082C68, 0]
-    value_type: float
-    value: [40, 40]
-  -
-    type: block
-    what: timing
-45FPS:
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8082C68, 0]
-    value_type: float
-    value: [45, 45]
-  -
-    type: block
-    what: timing
-50FPS:
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8082C68, 0]
-    value_type: float
-    value: [50, 50]
-  -
-    type: block
-    what: timing
-55FPS:
-  # t.MaxFPS
-  -
-    type: write
-    address: [MAIN, 0x8082C68, 0]
-    value_type: float
-    value: [55, 55]
-  -
-    type: block
-    what: timing
-60FPS:
-  # t.MaxFPS (we want to set above 60 so NVN will deal with lock without UE4 trying to do it)
-  -
-    type: write
-    address: [MAIN, 0x8082C68, 0]
-    value_type: float
-    value: [100, 100]
