@@ -16,9 +16,9 @@
 * Лучший кастомизатор разгона для Свитч - [Ultra-Tuner](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Ultra-Tuner), позволяющий настраивать разгон прямо с консоли. Был первым, и остается неповторимым.
 * Сборка максимально легкая и не нагруженная. В ней нет лишнего, минимум необходимый для разгона и комфортного использования.
 * Модульная конструкция. В составе минимум приложений/плагинов/оверлеев, но вы всегда можете поставить еще через комплектный [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater).
-* Выбор пресета работы системы охлаждения, либо шумно но холодно, либо тихо но горячо.
-* Кастомный Ultra Monitor c FPS и системными метриками.
-* Регулярные обновления, и активное коммьюнити.
+* Кастомная настройка работы системы охлаждения, и пресеты на выбор.
+* Кастомный Status Monitor c FPS и системными метриками.
+* Регулярные обновления, и активное комьюнити.
 * Подробная [Wiki](https://github.com/Ultra-NX/Ultra/wiki) в которой есть ответы почти на все вопросы.
 
 
@@ -27,7 +27,7 @@
 
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, кастомная прошивка для Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Пользовательский графический загрузчик Nintendo Switch, патчер прошивки, инструментарий и многое другое.
-1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Пакет для Ultra Paw (форка Ultrahand), позволяющий произвести тонкую настройку параметров под свою консоль. В случае нестабильной работы разгона, или при желании увеличить производительность консоли, Ultra Tuner - Ваш незаменимый помощник.
+1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Пакет для Ultrahand, позволяющий произвести тонкую настройку параметров под свою консоль. В случае нестабильной работы разгона, или при желании увеличить производительность консоли, Ultra Tuner - Ваш незаменимый помощник.
 1. **[OC-Switchcraft](https://discord.com/channels/854839758815363072/1173171845139288114/1253645315429371978)**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Лоадер атмосферы с разгоном от B3711, позволяет выжать из N.Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
 
 
@@ -38,7 +38,7 @@
 
 1. **Установленные Homebrew**
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
-   * [Daybreak](https://codeberg.org/rashevskyv/kefir) - Программа для обновления системного ПО.
+   * [Daybreak](https://github.com/rashevskyv/kefir/releases/latest) - Программа для обновления системного ПО.
    * [DBI](https://github.com/rashevskyv/dbi) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль. Если вам нужна другая локализация - в [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater) есть выбор из EN-RU-PTBR-ZHCN.
 
 
@@ -57,7 +57,6 @@
 
 
 1. **Доступные для скачивания через [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
-*
    * Homebrews:
       * [Linkalho](https://github.com/rdmrocha/linkalho) - Программа для привязки аккаунта.
       * [Tinfoil](https://tinfoil.io) - Установщик и каталог игр.
@@ -66,12 +65,10 @@
       * [ReverseNX Tool](https://github.com/masagrator/ReverseNX-Tool) - Программа для управления ReverseNX.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Программа для сброса контроллера батареи. Не используйте просто так!
       * **`MemToolkitNX`** - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU.
-*
    * Overlays:
       * [MasterVolume](https://github.com/averne/MasterVolume) - Регулировка глобальной громкости, позволяет поднять громкость выше максимума. Использовать аккуратно!
       * [Fizeau](https://github.com/averne/Fizeau) - Модуль для изменения цветового профиля экрана.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.
-*
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Патчи для FPSLocker, что бы не качать отдельно патч для каждой игры через оверлей.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.

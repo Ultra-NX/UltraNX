@@ -16,8 +16,8 @@
 * The best overclocking customizer for Switch - Ultra-Tuner, that allows you to customize overclocking right from the console. It was the first, and remains unique.
 * The CFW is as light as possible. There are no unnecessary things in it, only minimum necessary for overclocking and comfortable use.
 * Modular design. A minimum of applications/plugins/overlays are included, but you can always add more via the bundled Updater.
-* Choice of cooling system preset, either noisy but cold or quiet but hot.
-* Custom Ultra Monitor with FPS and system metrics.
+* Manual adjustment of cooling system curves, and presets.
+* Custom Status Monitor with FPS and system metrics.
 * Regular updates, and an active community.
 
 
@@ -26,7 +26,7 @@
 
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, custom firmware for the Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Custom Nintendo Switch graphical bootloader, firmware patcher, toolkit and more.
-1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Package for Ultra Paw (fork of Ultrahand), which allows you to fine-tune the OC parameters for your console. In case of unstable overclocking, or if you want to increase the performance of your console, Ultra Tuner is your indispensable assistant.
+1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Package for Ultrahand, which allows you to fine-tune the OC parameters for your console. In case of unstable overclocking, or if you want to increase the performance of your console, Ultra Tuner is your indispensable assistant.
 1. **[OC-Switchcraft](https://discord.com/channels/854839758815363072/1173171845139288114/1253645315429371978)**, a fork of **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - The overclocked atmosphere loader by B3711, allows you to squeeze the power of the Xbox One out of the N.Switch. Updated in time to support new Atmosphere features.
 
 
@@ -37,7 +37,7 @@
 
 1. **Installed Homebrew**
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Program to update Ultra to the current version, as well as to download cheats.
-   * [Daybreak](https://codeberg.org/rashevskyv/kefir) - A program for updating OS.
+   * [Daybreak](https://github.com/rashevskyv/kefir/releases/latest) - A program for updating OS.
    * [DBI](https://github.com/rashevskyv/dbi) - The best file manager, save manager and program installer on the console. If you need a different localization - Updater has a choice of EN-RU-PTBR-ZHCN.
 
 
