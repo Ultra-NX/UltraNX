@@ -1,0 +1,28 @@
+# GRIP 1.0.8
+# BID: ACF717E72EA920C2
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Remove double buffer (nvn.NumBufferedFrames)
+  -
+    type: bytes
+    main_offset: 0x4F3245C
+    value_type: uint32
+    value: 3
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5042FC8, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x58ECCE8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

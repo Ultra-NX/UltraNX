@@ -1,0 +1,21 @@
+# Cassette Beasts 1.6.3
+# BID: 58C1B2EA8257D5F1
+
+unsafeCheck: true
+
+ALL_FPS:
+  # physics/common/physics_fps
+  -
+    type: evaluate_write
+    address: [MAIN, 0x33E4B78, 0x24]
+    value_type: int32
+    value: FPS_LOCK_TARGET
+  # debug/settings/fps/force_fps
+  -
+    type: evaluate_write
+    address: [MAIN, 0x33E4B78, 0x30]
+    value_type: int32
+    value: FPS_LOCK_TARGET
+  -
+    type: block
+    what: timing
