@@ -57,7 +57,7 @@
 
 1. **Available for download via [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
    * Homebrews:
-      * [Linkalho](https://github.com/rdmrocha/linkalho) - Account linking program.
+      * [Linkalho](https://www.gamebrew.org/wiki/Linkalho_Switch) - Account linking program.
       * [Tinfoil](https://tinfoil.io) - Installer and game store.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Searching and installing themes on Switch.

@@ -58,7 +58,7 @@
 
 1. **Доступные для скачивания через [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
    * Homebrews:
-      * [Linkalho](https://github.com/rdmrocha/linkalho) - Программа для привязки аккаунта.
+      * [Linkalho](https://www.gamebrew.org/wiki/Linkalho_Switch) - Программа для привязки аккаунта.
       * [Tinfoil](https://tinfoil.io) - Установщик и каталог игр.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Поиск и установка тем на свитч.
