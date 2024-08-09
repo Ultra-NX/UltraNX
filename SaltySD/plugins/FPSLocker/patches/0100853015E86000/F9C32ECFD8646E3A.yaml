@@ -1,0 +1,32 @@
+# No Man's Sky 5.0.2
+# BID: F9C32ECFD8646E3A
+
+unsafeCheck: true
+
+MASTER_WRITE:
+# Redirect DR frametime target to MAIN+0x484FF00
+  -
+    type: bytes
+    main_offset: 0x1ED9498
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1ED94A4
+    value_type: uint32
+    value: 
+      - 0xD0014BB2
+      - 0xB9400408
+      - 0xBD4F0240
+  # default value
+  -
+    type: bytes
+    main_offset: 0x484FF00
+    value_type: float
+    value: 33.3333333333
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x484FF00]
+    value_type: float
+    value: FRAMETIME_TARGET

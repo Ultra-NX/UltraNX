@@ -1,0 +1,27 @@
+# Immortals Fenyx Rising 1.3.4
+# BID: 70F3F6751D73C644
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Game switches resolution to 13/15 of normal resolution when moving camera with right stick and game cannot handle target FPS
+  # Redirect reading DR time target to MAIN + 0xA7E4F00
+  -
+    type: bytes
+    main_offset: 0x15A9F10
+    value_type: uint32
+    value: 
+      - 0xF00491C8
+      - 0xBD4F0101
+  # Default value
+  -
+    type: bytes
+    main_offset: 0xA7E4F00
+    value_type: float
+    value: 33.3333333333
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0xA7E4F00]
+    value_type: float
+    value: FRAMETIME_TARGET

@@ -1,0 +1,47 @@
+# NieR:Automata The End of YoRHa Edition AS 1.0.2
+# BID: 992787E2B5425994
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect DR timings to MAIN + 0x2BE8F00, [Bad, Optimal, Good]
+  -
+    type: bytes
+    main_offset: 0x9C07A4
+    value_type: uint32
+    value: 
+      - 0x9001114C
+      - 0xBD4F0183
+  -
+    type: bytes
+    main_offset: 0x9C07F4
+    value_type: uint32
+    value: 
+      - 0x9001114C
+      - 0xB94F058C
+  -
+    type: bytes
+    main_offset: 0x9C0844
+    value_type: uint32
+    value: 
+      - 0x1E20CC83
+      - 0x9001114C
+      - 0xBD4F0580
+      - 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x9C0868
+    value_type: uint32
+    value: 0xBD4F0980
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x2BE8F00
+    value_type: float
+    value: [45, 32.01, 30]
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2BE8F00]
+    value_type: float
+    value: ["1.35 * FRAMETIME_TARGET", "0.9603 * FRAMETIME_TARGET", "0.9 * FRAMETIME_TARGET"]

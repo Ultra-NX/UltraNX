@@ -1,0 +1,13 @@
+# DC Super Hero Girls: Teen Power 1.0.1
+# BID: BC714E2D7D32AB41
+# Game stores textures inside fixed size class, so it's hard to get triple buffer
+
+unsafeCheck: false
+
+ALL_FPS:
+  # Max time delta
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1225EC8, 0x1C]
+    value_type: float
+    value: ["(1 / FPS_TARGET) - 0.0001"]

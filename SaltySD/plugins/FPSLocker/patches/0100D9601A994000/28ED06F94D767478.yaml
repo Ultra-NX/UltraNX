@@ -1,0 +1,27 @@
+# ONE PIECE ODYSSEY Deluxe Edition US/EU/JP 1.0.0
+# BID: 28ED06F94D767478
+
+unsafeCheck: false
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7F82CC0, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7728420, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x7FA6300, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

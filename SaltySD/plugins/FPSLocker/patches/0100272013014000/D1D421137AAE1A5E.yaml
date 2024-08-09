@@ -1,0 +1,18 @@
+# Airhead 1.0.0
+# BID: D1D421137AAE1A5E
+
+unsafeCheck: true
+
+ALL_FPS:
+  # maxFixedDeltaTime, ref: UnityEngine.Time::get_timeScale
+  -
+    type: write
+    address: [MAIN, 0x49617C0, 0x100]
+    value_type: float
+    value: 0.0666666666
+  # fixedDeltaTime
+  -
+    type: evaluate_write
+    address: [MAIN, 0x49617C0, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

@@ -1,0 +1,13 @@
+# The Legend of Heroes: Trails through Daybreak 1.0.1
+# BID: 43D0D0D68A22E370
+# Thanks to Stevens for figuring out how FPS Lock is applied
+
+unsafeCheck: true
+
+ALL_FPS:
+  # REF: 68 EA 50 B9 E0 03 1F 2A 7F B2 00 F9
+  -
+    type: evaluate_write
+    address: [MAIN, 0x548B80, 0x34]
+    value_type: uint32
+    value: FPS_LOCK_TARGET

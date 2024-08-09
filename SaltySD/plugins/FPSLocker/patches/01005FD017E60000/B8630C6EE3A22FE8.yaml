@@ -1,0 +1,32 @@
+# Warhammer 40,000: Boltgun 1.0.0.6
+# BID: B8630C6EE3A22FE8
+
+unsafeCheck: false
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate to unlock framerate
+  -
+    type: write
+    address: [MAIN, 0x63A69F8, 0x7A4]
+    value_type: uint32
+    # Default is 0x47, bUseFixedFrameRate |= 0x40 
+    # By writing 7 we are making sure that other flags are maintained: 
+    # bAllowMultiThreadedAnimationUpdate |= 4
+    # bOptimizeAnimBlueprintMemberVariableAccess |= 2
+    # bCanBlueprintsTickByDefault |= 1
+    value: 7
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6379638, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x63A7318, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing
