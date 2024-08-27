@@ -1,7 +1,7 @@
 # Batman: Arkham Asylum 1.0.1
 # BID: 621EE66A6743D750
 
-unsafeCheck: false
+unsafeCheck: true
 
 ALL_FPS:
   # Bool Lock FPS, ref: LDR S0, [X0,#0x758]

@@ -1,0 +1,44 @@
+# Sherlock Holmes: Crimes and Punishments 1.0.0
+# BID: 789C2939A757C0CD
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect Dynamic Resolution timings to MAIN + 0x23774F00
+  # 38.0
+  -
+    type: bytes
+    main_offset: 0xF57294
+    value_type: uint32
+    value:
+      - 0xB01140E9
+      - 0x1E210800
+      - 0xBD4F0121
+  # 32.0
+  -
+    type: bytes
+    main_offset: 0xF572B8
+    value_type: uint32
+    value:
+      - 0xBD4F0521
+      - 0xD503201F
+  # Default values:
+  -
+    type: bytes
+    main_offset: 0x23774F00
+    value_type: float
+    value: [38.0, 32.0]
+ALL_FPS:
+  # UGameEngine::GetMaxTickRate()
+  # Bool Lock FPS
+  -
+    type: write
+    address: [MAIN, 0x2E61108]
+    value_type: uint8
+    value: 0
+  # Dynamic Resolution
+  -
+    type: evaluate_write
+    address: [MAIN, 0x23774F00]
+    value_type: float
+    value: ["(38.0 / (1000/30)) * FRAMETIME_TARGET", "(32.0 / (1000/30)) * FRAMETIME_TARGET"]

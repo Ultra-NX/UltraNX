@@ -1,0 +1,67 @@
+# Sherlock Holmes: The Devil's Daughter 1.0.0
+# BID: 2B37ED2A971948F3
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect Dynamic Resolution timings to MAIN + 0x3189F00
+  # 38.0
+  -
+    type: bytes
+    main_offset: 0xFFEAFC
+    value_type: uint32
+    value:
+      - 0xF0010C4A
+      - 0xBD4F0141
+  # 22.0
+  -
+    type: bytes
+    main_offset: 0xFFEB0C
+    value_type: uint32
+    value:
+      - 0xBD4F0541
+  # 43.5 
+  -
+    type: bytes
+    main_offset: 0xFFEAD4
+    value_type: uint32
+    value:
+      - 0xF0010C4A
+      - 0xBD4F0941
+  # 58.0
+  -
+    type: bytes
+    main_offset: 0xFFEAE4
+    value_type: uint32
+    value:
+      - 0xF0010C4A
+      - 0xBD4F0D41
+  # 47.0 | 34.0
+  -
+    type: bytes
+    main_offset: 0xFFEB20
+    value_type: uint32
+    value:
+      - 0xF0010C4B
+      - 0xBD4F1161
+      - 0xB94F156C
+  # Default values:
+  -
+    type: bytes
+    main_offset: 0x3189F00
+    value_type: float
+    value: [38.0, 22.0, 43.5, 58.0, 47.0, 34.0]
+ALL_FPS:
+  # UGameEngine::GetMaxTickRate()
+  # Bool Lock FPS
+  -
+    type: write
+    address: [MAIN, 0x30D1B7C]
+    value_type: uint8
+    value: 0
+  # Dynamic Resolution
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3189F00]
+    value_type: float
+    value: ["(38.0 / (1000/30)) * FRAMETIME_TARGET", "(22.0 / (1000/30)) * FRAMETIME_TARGET", "(43.5 / (1000/30)) * FRAMETIME_TARGET", "(58.0 / (1000/30)) * FRAMETIME_TARGET", "(47.0 / (1000/30)) * FRAMETIME_TARGET", "(34.0 / (1000/30)) * FRAMETIME_TARGET"]

@@ -2,7 +2,8 @@
 
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Ultra.png)
 
-### [Russian Readme](README.md) | [Telegram group](https://t.me/UltraNX)
+# [Russian Readme](README.md)
+### [Telegram group](https://t.me/UltraNX) - Don't be afraid to write in English, we will understand everything and answer you!
 
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
@@ -27,11 +28,11 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, custom firmware for the Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Custom Nintendo Switch graphical bootloader, firmware patcher, toolkit and more.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Package for Ultrahand, which allows you to fine-tune the OC parameters for your console. In case of unstable overclocking, or if you want to increase the performance of your console, Ultra Tuner is your indispensable assistant.
-1. **[OC-Switchcraft](https://discord.com/channels/854839758815363072/1173171845139288114/1253645315429371978)**, a fork of **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - The overclocked atmosphere loader by B3711, allows you to squeeze the power of the Xbox One out of the N.Switch. Updated in time to support new Atmosphere features.
+1. **[OC-Switchcraft](https://github.com/halop/OC_Toolkit_SC_EOS)**, a fork of **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Atmosphere Loader with overclocking from B3711, allows you to reach from N.Switch power 1/2 Xbox One. Updated in time to support new Atmosphere features.
 
 
 1. **Installed Payloads**:
-   * [Lockpick_RCM](https://sigmapatches.su) - Program for dumping console keys.
+   * [Lockpick_RCM](https://www.gamebrew.org/wiki/Lockpick_RCM_Switch) - Program for dumping console keys.
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - A low-level file manager for working with the system.
 
 
@@ -43,11 +44,11 @@
 
 1. **Installed Modules**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins. Not compatible with 32-bit games (list on the project's github).
-   * [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Module responsible for overclocking CPU, memory and GPU - for better performance. I change versions from different authors from time to time. Original authors: Meha/hanai3Bi, lineon, p-sam.
-   * [nx-ovlloader](https://github.com/zdm65477730/nx-ovlloader/) - This module is used to switch the installed modules.
-   * [sys-patch](https://sigmapatches.su) - Patches the system to run unsigned software instead of sigpatches.
+   * [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Module responsible for overclocking CPU, memory and GPU - for better performance. I change versions from different authors from time to time. Original authors: Meha/hanai3Bi, lineon, p-sam.
+   * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - This module is used to switch the installed modules.
+   * [sys-patch](https://www.gamebrew.org/wiki/Sys-patch_Switch) - Patches the system to run unsigned software instead of sigpatches.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
-     - **`Ultra-Overlay`**, a mod of [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources.
+     - **`Ultra-Overlay`**, a mod of [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources (Since they're closed).
      - [Status Monitor](https://github.com/Ultra-NX/Status-Monitor-Overlay), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Updater.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - An overlay for using cheats.
@@ -97,8 +98,8 @@ Listed below are the licenses of those programs that have been modified specific
   * [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)
   * [Status-Monitor-Overlay](https://github.com/masagrator/Status-Monitor-Overlay)
 
-[CC-BY-NC-4.0 License](https://github.com/ppkantorski/Ultrahand-Overlay/blob/main/LICENSE)
-  * [Ultrahand-Overlay](https://github.com/ppkantorski/Ultrahand-Overlay)
+[MIT License](https://github.com/masagrator/FPSLocker/blob/main/LICENSE)
+  * [FPSLocker](https://github.com/masagrator/FPSLocker)
 
 
 

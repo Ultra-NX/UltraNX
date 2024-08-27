@@ -2,7 +2,9 @@
 
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Ultra.png)
 
-### [English Readme](README_ENG.md) | [Группа в телеграме](https://t.me/UltraNX) | [Wiki](https://github.com/Ultra-NX/Ultra/wiki)
+# [English Readme](README_ENG.md)
+
+### [Группа в телеграме](https://t.me/UltraNX) | [Wiki](https://github.com/Ultra-NX/Ultra/wiki)
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
@@ -28,11 +30,11 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, кастомная прошивка для Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Пользовательский графический загрузчик Nintendo Switch, патчер прошивки, инструментарий и многое другое.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Пакет для Ultrahand, позволяющий произвести тонкую настройку параметров под свою консоль. В случае нестабильной работы разгона, или при желании увеличить производительность консоли, Ultra Tuner - Ваш незаменимый помощник.
-1. **[OC-Switchcraft](https://discord.com/channels/854839758815363072/1173171845139288114/1253645315429371978)**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Лоадер атмосферы с разгоном от B3711, позволяет выжать из N.Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
+1. **[OC-Switchcraft](https://github.com/halop/OC_Toolkit_SC_EOS)**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Лоадер атмосферы с разгоном от B3711, позволяет выжать из N.Switch мощность 1/2 Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
 
 
 1. **Установленные пейлоады**:
-   * [Lockpick_RCM](https://sigmapatches.su) - Программа для снятия ключей консоли.
+   * [Lockpick_RCM](https://www.gamebrew.org/wiki/Lockpick_RCM_Switch) - Программа для снятия ключей консоли.
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - Низкоуровневый файловый менеджер для работы с системой.
 
 
@@ -44,11 +46,11 @@
 
 1. **Установленные модули**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины. Не совместим с 32-х битными играми (список на гитхабе проекта).
-   * [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Периодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
-   * [nx-ovlloader](https://github.com/zdm65477730/nx-ovlloader/) - С помощью этого модуля осуществляется переключение установленных модулей.
-   * [sys-patch](https://sigmapatches.su) - Патчит систему на работу неподписанного софта вместо сигпатчей.
+   * [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Периодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
+   * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - С помощью этого модуля осуществляется переключение установленных модулей.
+   * [sys-patch](https://www.gamebrew.org/wiki/Sys-patch_Switch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
-     - **`Ultra-Overlay`**, мод [sys-clk](https://github.com/hanai3Bi/Switch-OC-Suite) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках.
+     - **`Ultra-Overlay`**, мод [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках (Так как они закрыты).
      - [Status Monitor](https://github.com/Ultra-NX/Status-Monitor-Overlay), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Updater.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов.
@@ -97,8 +99,8 @@
   * [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)
   * [Status-Monitor-Overlay](https://github.com/masagrator/Status-Monitor-Overlay)
 
-[CC-BY-NC-4.0 License](https://github.com/ppkantorski/Ultrahand-Overlay/blob/main/LICENSE)
-  * [Ultrahand-Overlay](https://github.com/ppkantorski/Ultrahand-Overlay)
+[MIT License](https://github.com/masagrator/FPSLocker/blob/main/LICENSE)
+  * [FPSLocker](https://github.com/masagrator/FPSLocker)
 
 
 

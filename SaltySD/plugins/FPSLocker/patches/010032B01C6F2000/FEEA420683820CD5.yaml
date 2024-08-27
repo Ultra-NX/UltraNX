@@ -1,0 +1,27 @@
+# DreadOut 2 0.7
+# BID: FEEA420683820CD5
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) rounded to one decimal
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6C69668, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6C96FF8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x649B0C8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

@@ -1,7 +1,7 @@
 # A Hat in Time 1.0.4
 # BID: 746F0D697EEEE2DD
 
-unsafeCheck: true
+unsafeCheck: false
 
 ALL_FPS:
   # MaxSmoothedFrameRate
