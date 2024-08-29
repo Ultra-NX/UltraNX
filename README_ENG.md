@@ -2,9 +2,8 @@
 
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Ultra.png)
 
-# [Russian Readme](README.md)
 ### [Telegram group](https://t.me/UltraNX) - Don't be afraid to write in English, we will understand everything and answer you!
-
+#
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
 ### [Ultra 2.2](https://github.com/Ultra-NX/Ultra/releases/latest) Supports HOS 18.1.0 and all console revisions
@@ -16,14 +15,17 @@
 * Pre-configured OC Switchcraft (Successor to OC-Suite) with presets.
 * The best overclocking customizer for Switch - Ultra-Tuner, that allows you to customize overclocking right from the console. It was the first, and remains unique.
 * The CFW is as light as possible. There are no unnecessary things in it, only minimum necessary for overclocking and comfortable use.
-* Modular design. A minimum of applications/plugins/overlays are included, but you can always add more via the bundled Updater.
+* Modular design. A minimum of applications/plugins/overlays are included, but you can always add more via the Ultra Tuner.
 * Manual adjustment of cooling system curves, and presets.
-* Custom Status Monitor with FPS and system metrics.
 * Regular updates, and an active community.
+* [Forks](https://github.com/Ultra-NX/Ultra-Resources/tree/main/patches) (own modifications) of programs and components needed for convenience, security and empowerment:
+   * Atmosphere fork with Ultra version in system information, and disabled reports, which usually clogs up the SD card, wastes its resource and breaks the file system.
+   * SaltyNX and FPSLocker forks, with support for changing screen refresh rate and with OLED support.
+   * Status Monitor fork with display of current voltages and unique Micro Overlay modules, whose presets can be changed via Ultra Tuner.
 
 
 
-## Composition of Ultra
+## Content of Ultra
 
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, custom firmware for the Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Custom Nintendo Switch graphical bootloader, firmware patcher, toolkit and more.
