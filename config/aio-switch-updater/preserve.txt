@@ -1,3 +1,11 @@
-/switch/DBI/
+/atmosphere/config/
+/bootloader/hekate_ipl.ini
 /bootloader/nyx.ini
 /config/sys-clk/
+/config/status-monitor/
+/config/tesla/
+/config/ultrahand/config.ini
+/config/ultrahand/theme.ini
+/config/ultrahand/overlays.ini
+/config/ultrahand/packages.ini
+/switch/DBI/

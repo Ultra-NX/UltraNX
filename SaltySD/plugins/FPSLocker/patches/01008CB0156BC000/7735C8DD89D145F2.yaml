@@ -1,5 +1,6 @@
 # The Legend of Heroes: Trails into Reverie 1.0.4
 # BID: 7735C8DD89D145F2
+# "Beyond the Reverie" dream has broken text fade effects above 30 FPS. 
 
 unsafeCheck: true
 

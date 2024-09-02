@@ -1,0 +1,20 @@
+# Lara Croft and the Temple of Osiris 1.1_65791
+# BID: F47C697C2B59443B
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Disable internal FPS lock
+  # EnableFramerateManager
+  -
+    type: bytes
+    main_offset: 0x1C3A941
+    value_type: uint8
+    value: 0x30
+ALL_FPS:
+  # DynamicResolutionScaling\FPSTarget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x41416F0, 0x28]
+    value_type: float
+    value: FPS_TARGET
