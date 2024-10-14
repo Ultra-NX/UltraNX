@@ -45,14 +45,14 @@
 1. **Установленные Homebrew**
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
    * [Daybreak](https://github.com/rashevskyv/kefir/releases/latest) - Программа для обновления системного ПО.
-   * [DBI](https://github.com/rashevskyv/dbi) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль. Если вам нужна другая локализация - в [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater) есть выбор из EN-RU-PTBR-ZHCN.
+   * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль. Если вам нужна другая локализация - в [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater) есть выбор из EN-RU-PTBR-ZHCN.
 
 
 1. **Установленные модули**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины. Не совместим с 32-х битными играми (список на гитхабе проекта).
    * [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Периодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - С помощью этого модуля осуществляется переключение установленных модулей.
-   * [sys-patch](https://www.gamebrew.org/wiki/Sys-patch_Switch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
+   * [sys-patch](https://github.com/tomvita/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
      - **`Ultra-Overlay`**, мод [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках (Так как они закрыты).
      - [Status Monitor](https://github.com/Ultra-NX/Status-Monitor-Overlay), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Updater.
