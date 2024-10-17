@@ -1,0 +1,27 @@
+# SOUTH PARK: SNOW DAY! 1.0.7
+# BID: DCBE53FDF98752AF
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x7E6D978, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 1 decimal
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8639488, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x865EEE8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

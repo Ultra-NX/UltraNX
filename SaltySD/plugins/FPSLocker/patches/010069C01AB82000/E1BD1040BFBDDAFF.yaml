@@ -1,0 +1,31 @@
+# SHIN MEGAMI TENSEI V: Vengeance 1.0.2 US/EUR
+# BID: E1BD1040BFBDDAFF
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Block from reapplying t.MaxFPS by game, REF: 01 E4 00 2F 00 AC 21 1E 08 00 40 F9 08 75 41 F9, nop BLR X8 after LDR X8, [X8,#0x2E8]
+  -
+    type: bytes
+    main_offset: 0x377EB30
+    value_type: uint32
+    value: 0xD503201F
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7AAABB8, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x726F260, 0]
+    value_type: uint32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7AD0858, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]

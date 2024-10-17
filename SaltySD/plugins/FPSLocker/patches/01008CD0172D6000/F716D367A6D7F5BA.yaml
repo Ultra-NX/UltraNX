@@ -1,0 +1,12 @@
+# Dredge 1.5.3
+# BID: F716D367A6D7F5BA
+
+unsafeCheck: true
+
+ALL_FPS:
+  # fixedDeltaTime = 1/FPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x625D1A0, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

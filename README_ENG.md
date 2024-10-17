@@ -6,7 +6,7 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [Ultra 2.2](https://github.com/Ultra-NX/Ultra/releases/latest) Supports HOS 18.1.0 and all console revisions
+### [Ultra 2.3](https://github.com/Ultra-NX/Ultra/releases/latest) Supports HOS 19.0.0 and all console revisions
 
 
 
@@ -34,13 +34,13 @@
 
 
 1. **Installed Payloads**:
-   * [Lockpick_RCM](https://www.gamebrew.org/wiki/Lockpick_RCM_Switch) - Program for dumping console keys.
+   * [Lockpick_RCM](https://gbatemp.net/download/lockpick_rcm-1-9-13-fw-19-zoria-source.38837/) - Program for dumping console keys.
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - A low-level file manager for working with the system.
 
 
 1. **Installed Homebrew**
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Program to update Ultra to the current version, as well as to download cheats.
-   * [Daybreak](https://github.com/rashevskyv/kefir/releases/latest) - A program for updating OS.
+   * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - A program for updating OS.
    * [DBI](https://github.com/rashevskyv/dbi) - The best file manager, save manager and program installer on the console. If you need a different localization - Updater has a choice of EN-RU-PTBR-ZHCN.
 
 
@@ -48,9 +48,10 @@
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins. Not compatible with 32-bit games (list on the project's github).
    * [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Module responsible for overclocking CPU, memory and GPU - for better performance. I change versions from different authors from time to time. Original authors: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - This module is used to switch the installed modules.
-   * [sys-patch](https://github.com/tomvita/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
+   * [sys-patch](https://github.com/impeeza/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
+   * [nim-prodinfo-blank-fix](https://github.com/fruityloops1/nim-prodinfo-blank-fix) - Fixes an atmosphere crash problem, when nulling the serial number.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
-     - **`Ultra-Overlay`**, a mod of [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources (Since they're closed).
+     - **`Ultra OC (sys-clk)`**, a mod of [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources (Since they're closed).
      - [Status Monitor](https://github.com/Ultra-NX/Status-Monitor-Overlay), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Updater.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - An overlay for using cheats.
@@ -60,15 +61,18 @@
 
 1. **Available for download via [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
    * Homebrews:
-      * [Linkalho](https://www.gamebrew.org/wiki/Linkalho_Switch) - Account linking program.
+      * [Linkalho](https://gbatemp.net/download/linkalho.38822/) - Account linking program.
       * [Tinfoil](https://tinfoil.io) - Installer and game store.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
+      * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - PSP emulator.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Searching and installing themes on Switch.
       * [ReverseNX Tool](https://github.com/masagrator/ReverseNX-Tool) - ReverseNX control program.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Program to reset the battery controller. Do not use unnecessarily!
       * **`MemToolkitNX`** - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking.
 
    * Overlays:
+      * [Tetris](https://github.com/ppkantorski/Tetris-Overlay/) - "That" game in the form of an overlay. Works only on the latest versions of Ultrahand.
+      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - An overlay that allows you to quickly disconnect/connect to a bluetooth headset.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Global volume control, allows you to raise the volume above the maximum. Use with care!
       * [Fizeau](https://github.com/averne/Fizeau) - Module for changing the screen color profile.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Overlay music player, works in background.
@@ -77,8 +81,7 @@
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Patches for FPSLocker, so you don't have to download a separate patch for each game through the overlay.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - SysDVR patches, work without the system module, activating background recording in games where it is initially prohibited.
       * [TriPlayer](https://github.com/DefenderOfHyrule/TriPlayer) - A homebrew music player that runs through the system module, and can minimize while running in the background.
-      * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console via bluetooth.
-      * [sys-con](https://github.com/o0Zz/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
+      * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console.
       * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP server running in background.
 
 
@@ -87,8 +90,7 @@
    * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
    * [Tinfoil](https://tinfoil.io) - Installer and game store.
    * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Searching and installing themes on Switch.
-   * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console via bluetooth.
-   * [sys-con](https://github.com/o0Zz/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
+   * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console.
 
 
 

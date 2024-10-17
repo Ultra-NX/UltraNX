@@ -1,0 +1,12 @@
+# SpongeBob SquarePants: The Patrick Star Game 1.0.1
+# BID: 8F3E77E1322E9F6F
+
+unsafeCheck: true
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6A1F1B8, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

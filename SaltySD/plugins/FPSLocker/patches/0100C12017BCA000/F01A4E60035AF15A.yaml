@@ -1,0 +1,27 @@
+# TRANSFORMERS: Galactic Trials 1.0.1
+# BID: F01A4E60035AF15A
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) rounded to 2 decimals
+  -
+    type: evaluate_write
+    address: [MAIN, 0x69DC198, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6A16580, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6217AA8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

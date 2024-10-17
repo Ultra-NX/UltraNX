@@ -1,0 +1,12 @@
+# Broken Roads 1.2.11059
+# BID: D84426C8D6B8D947
+
+unsafeCheck: false
+
+ALL_FPS:
+  # Kittehface.Framework20.ResolutionScaler_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x688C058, 0xB8, 0x10]
+    value_type: float
+    value: FRAMETIME_TARGET

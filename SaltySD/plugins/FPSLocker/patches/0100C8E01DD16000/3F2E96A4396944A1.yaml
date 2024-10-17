@@ -1,0 +1,21 @@
+# Europa 1.3.0
+# BID: 3F2E96A4396944A1
+
+unsafeCheck: true
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5FF8408, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x57F8EC8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

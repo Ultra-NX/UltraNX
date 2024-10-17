@@ -8,7 +8,7 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [Ultra 2.2](https://github.com/Ultra-NX/Ultra/releases/latest) Поддерживает HOS 18.1.0 и все ревизии консолей
+### [Ultra 2.3](https://github.com/Ultra-NX/Ultra/releases/latest) Поддерживает HOS 19.0.0 и все ревизии консолей
 
 
 
@@ -38,13 +38,13 @@
 
 
 1. **Установленные пейлоады**:
-   * [Lockpick_RCM](https://www.gamebrew.org/wiki/Lockpick_RCM_Switch) - Программа для снятия ключей консоли.
+   * [Lockpick_RCM](https://gbatemp.net/download/lockpick_rcm-1-9-13-fw-19-zoria-source.38837) - Программа для снятия ключей консоли.
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - Низкоуровневый файловый менеджер для работы с системой.
 
 
 1. **Установленные Homebrew**
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
-   * [Daybreak](https://github.com/rashevskyv/kefir/releases/latest) - Программа для обновления системного ПО.
+   * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - Программа для обновления системного ПО.
    * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль. Если вам нужна другая локализация - в [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater) есть выбор из EN-RU-PTBR-ZHCN.
 
 
@@ -52,9 +52,10 @@
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины. Не совместим с 32-х битными играми (список на гитхабе проекта).
    * [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Периодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - С помощью этого модуля осуществляется переключение установленных модулей.
-   * [sys-patch](https://github.com/tomvita/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
+   * [sys-patch](https://github.com/impeeza/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
+   * [nim-prodinfo-blank-fix](https://github.com/fruityloops1/nim-prodinfo-blank-fix) - Исправляет проблему краша атмосферы, при занулении серийного номера.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
-     - **`Ultra-Overlay`**, мод [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках (Так как они закрыты).
+     - **`Ultra OC (sys-clk)`**, мод [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках (Так как они закрыты).
      - [Status Monitor](https://github.com/Ultra-NX/Status-Monitor-Overlay), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Updater.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов.
@@ -64,14 +65,17 @@
 
 1. **Доступные для скачивания через [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
    * Homebrews:
-      * [Linkalho](https://www.gamebrew.org/wiki/Linkalho_Switch) - Программа для привязки аккаунта.
+      * [Linkalho](https://gbatemp.net/download/linkalho.38822) - Программа для привязки аккаунта.
       * [Tinfoil](https://tinfoil.io) - Установщик и каталог игр.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
+      * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - Эмулятор PSP.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Поиск и установка тем на свитч.
       * [ReverseNX Tool](https://github.com/masagrator/ReverseNX-Tool) - Программа для управления ReverseNX.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Программа для сброса контроллера батареи. Не используйте просто так!
       * **`MemToolkitNX`** - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU.
    * Overlays:
+      * [Tetris](https://github.com/ppkantorski/Tetris-Overlay) - Та самая игра в виде оверлея. Работает только на последних версиях Ultrahand.
+      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться/подключаться к bluetooth-гарнитуре.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Регулировка глобальной громкости, позволяет поднять громкость выше максимума. Использовать аккуратно!
       * [Fizeau](https://github.com/averne/Fizeau) - Модуль для изменения цветового профиля экрана.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.
@@ -79,8 +83,7 @@
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Патчи для FPSLocker, что бы не качать отдельно патч для каждой игры через оверлей.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
       * [TriPlayer](https://github.com/DefenderOfHyrule/TriPlayer) - Хоумбрю-музыкальный плеер, который работает через системный модуль, и может сворачиваться, работая в фоне.
-      * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
-      * [sys-con](https://github.com/o0Zz/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
+      * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли.
       * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий на фоне.
 
 
@@ -89,8 +92,7 @@
    * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
    * [Tinfoil](https://tinfoil.io) - Установщик и каталог игр.
    * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Поиск и установка тем на свитч.
-   * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
-   * [sys-con](https://github.com/o0Zz/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
+   * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли.
 
 
 
