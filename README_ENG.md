@@ -6,7 +6,7 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [Ultra 2.3](https://github.com/Ultra-NX/UltraNX/releases/tag/2.3-RC1) Supports HOS 19.0.0 and all console revisions
+### [Ultra 2.3](https://github.com/Ultra-NX/Ultra/releases/latest/) Supports HOS 19.0.0 and all console revisions
 
 
 
