@@ -1,0 +1,14 @@
+# Ys X: Nordics US/EU 1.0.2
+# BID: E5816E16CC5D72A5
+# Credits to StevensND for finding assembly instruction from which I have derived pointer address
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Used to set min delta timing for various parts of game + DR target
+  # REF: C9 03 80 52 C1 03 80 52 first ADRP above it
+  -
+    type: evaluate_write
+    address: [MAIN, 0xC4F758, 0x34]
+    value_type: uint32
+    value: FPS_TARGET

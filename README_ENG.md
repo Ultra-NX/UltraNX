@@ -21,6 +21,7 @@
 * [Forks](https://github.com/Ultra-NX/Ultra-Resources/tree/main/patches) (own modifications) of programs and components needed for convenience, security and empowerment:
    * Atmosphere fork with Ultra version in system information, and disabled reports, which usually clogs up the SD card, wastes its resource and breaks the file system.
    * SaltyNX and FPSLocker forks, with support for changing screen refresh rate and with OLED support.
+   * Mission Control fork, with the “easter egg” cut out, making the joycons yellow-blue.
    * Status Monitor fork with display of current voltages and unique Micro Overlay modules, whose presets can be changed via Ultra Tuner.
 
 
@@ -49,7 +50,6 @@
    * [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Module responsible for overclocking CPU, memory and GPU - for better performance. I change versions from different authors from time to time. Original authors: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - This module is used to switch the installed modules.
    * [sys-patch](https://github.com/impeeza/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
-   * [nim-prodinfo-blank-fix](https://github.com/fruityloops1/nim-prodinfo-blank-fix) - Fixes an atmosphere crash problem, when nulling the serial number.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
      - **`Ultra OC (sys-clk)`**, a mod of [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources (Since they're closed).
      - [Status Monitor](https://github.com/Ultra-NX/Status-Monitor-Overlay), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Updater.
@@ -81,16 +81,7 @@
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Patches for FPSLocker, so you don't have to download a separate patch for each game through the overlay.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - SysDVR patches, work without the system module, activating background recording in games where it is initially prohibited.
       * [TriPlayer](https://github.com/DefenderOfHyrule/TriPlayer) - A homebrew music player that runs through the system module, and can minimize while running in the background.
-      * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console.
       * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP server running in background.
-
-
-1. **Contents of the [Homebrews Pack](https://github.com/Ultra-NX/Ultra/releases/latest)**
-*
-   * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
-   * [Tinfoil](https://tinfoil.io) - Installer and game store.
-   * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Searching and installing themes on Switch.
-   * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console.
 
 
 

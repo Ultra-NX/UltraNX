@@ -1,9 +1,8 @@
 {
   "ams": {
-    "[PACK] Ultra-NX": "https://github.com/Ultra-NX/Ultra/releases/latest/download/Ultra.zip"
+    "[PACK] UltraNX": "https://github.com/Ultra-NX/Ultra/releases/latest/download/Ultra.zip"
   },
   "misc": {
-    "Homebrews Pack": "https://github.com/Ultra-NX/Ultra/releases/latest/download/Homebrews.Pack.zip",
     "Refresh AIO": "https://github.com/Ultra-NX/Ultra/releases/latest/download/AIO.zip"
   }
 }

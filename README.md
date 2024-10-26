@@ -25,6 +25,7 @@
 * [Форки](https://github.com/Ultra-NX/Ultra-Resources/tree/main/patches) (свои модификации) программ и компонентов, нужные для удобства, безопасности и расширения возможностей:
    * Форк Атмосферы с прописанной версией Ультры в информации о системе, и отключенными репортами, обычно засоряющими сд карту, тратящими ее ресурс и ломающими файловю систему.
    * Форки SaltyNX и FPSLocker, с поддержкой изменения частоты обновления экрана и с поддержкой OLED.
+   * Форк Mission Control, с вырезанной "пасхалкой", делающей джойконы жовто-блакитными.
    * Форк Status Monitor с отображением текущих вольтажей и уникальными модулями Микро Оверлея, пресеты которых можно менять через Ultra Tuner.
 
 
@@ -53,7 +54,6 @@
    * [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Периодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - С помощью этого модуля осуществляется переключение установленных модулей.
    * [sys-patch](https://github.com/impeeza/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
-   * [nim-prodinfo-blank-fix](https://github.com/fruityloops1/nim-prodinfo-blank-fix) - Исправляет проблему краша атмосферы, при занулении серийного номера.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
      - **`Ultra OC (sys-clk)`**, мод [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках (Так как они закрыты).
      - [Status Monitor](https://github.com/Ultra-NX/Status-Monitor-Overlay), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Updater.
@@ -83,16 +83,7 @@
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Патчи для FPSLocker, что бы не качать отдельно патч для каждой игры через оверлей.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
       * [TriPlayer](https://github.com/DefenderOfHyrule/TriPlayer) - Хоумбрю-музыкальный плеер, который работает через системный модуль, и может сворачиваться, работая в фоне.
-      * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли.
       * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий на фоне.
-
-
-1. **Содержимое [Homebrews Pack](https://github.com/Ultra-NX/Ultra/releases/latest)**
-*
-   * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
-   * [Tinfoil](https://tinfoil.io) - Установщик и каталог игр.
-   * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Поиск и установка тем на свитч.
-   * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли.
 
 
 
