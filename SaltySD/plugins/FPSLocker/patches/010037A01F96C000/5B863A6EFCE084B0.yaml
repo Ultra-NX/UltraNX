@@ -1,0 +1,12 @@
+# Shadows of the Damned: Hella Remastered 1.0.1
+# BID: 5B863A6EFCE084B0
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Bool Lock FPS, ref: LDR S0, [X0,#0x694]
+  -
+    type: write
+    address: [MAIN, 0x3A8A2F8]
+    value_type: uint32
+    value: 0

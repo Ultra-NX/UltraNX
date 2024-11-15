@@ -1,0 +1,77 @@
+# Tokyo Mirage Sessions #FE Encore 1.0.0
+# BID: 33463E11899166BB
+# What is still not adjusted: movement speed in cutscenes, 2D animations speed (it includes UI and 2D effects on 3D objects), none of them uses 1/30 nor 1/60 float
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Triple buffer
+  -
+    type: bytes
+    main_offset: 0x2F3CD8
+    value_type: uint32
+    value: 0xE3A01003
+  -
+    type: bytes
+    main_offset: 0x35C218
+    value_type: uint32
+    value: 0xE3A00003
+  -
+    type: bytes
+    main_offset: 0x35C2C0
+    value_type: uint32
+    value: 0xE3A02003
+  -
+    type: bytes
+    main_offset: 0x35C2D0
+    value_type: uint32
+    value: 0xE3A02003
+  # Code Cave, read speed from MAIN + 0x1B1CF00
+  # Animation speed
+  # Jump to MAIN + 0x4EFBE0
+  -
+    type: bytes
+    main_offset: 0x1CE4B4
+    value_type: uint32
+    value: 0xEA0C85C9
+  -
+    type: bytes
+    main_offset: 0x4EFBE0
+    value_type: uint32
+    value:
+      - 0xE28F0616
+      - 0xE30D1318
+      - 0xE0800001
+      - 0xE3A01802
+      - 0xE0800001
+      - 0xED909A00
+      - 0xEAF37A2E
+  # Movement speed
+  # Jump to MAIN + 0x4EFBFC
+  -
+    type: bytes
+    main_offset: 0x20B750
+    value_type: uint32
+    value: 0xEA0B9129
+  -
+    type: bytes
+    main_offset: 0x4EFBFC
+    value_type: uint32
+    value:
+      - 0xE28F0616
+      - 0xE30D62FC
+      - 0xE0800006
+      - 0xE3A06802
+      - 0xE0800006
+      - 0xED901A00
+      - 0xEAF46ECE
+    type: bytes
+    main_offset: 0x1B1CF00
+    value_type: float
+    value: 0.0333333333
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1B1CF00]
+    value_type: float
+    value: 1 / FPS_TARGET

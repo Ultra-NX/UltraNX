@@ -74,7 +74,7 @@
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Поиск и установка тем на свитч.
       * [ReverseNX Tool](https://github.com/masagrator/ReverseNX-Tool) - Программа для управления ReverseNX.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Программа для сброса контроллера батареи. Не используйте просто так!
-      * **`MemToolkitNX`** - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU.
+      * [MemToolkitNX](https://discord.com/channels/854839758815363072/1173171845139288114/1276196700750479480) - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU.
    * Overlays:
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay) - Та самая игра в виде оверлея. Работает только на последних версиях Ultrahand.
       * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться/подключаться к bluetooth-гарнитуре.
@@ -106,12 +106,12 @@
 
 ## Благодарности 
 
-* Meha
 * B3711
 * ppkantorski
-* Cooler3D
-* rashevskyv
+* Meha
+* duckbill
 * snupt
+* Cooler3D
 * 4PDA
 #### А так же - отдельная благодарность администрации и участникам Ultra Group
 
@@ -120,15 +120,17 @@
 ## Поддержка
 
 Если вам нравится проект, и у вас появилось желание поддержать меня копеечкой - я буду очень благодарен.
-У меня в данный момент нет других заработков, так что любая денежная помощь очень ценна для меня.            
-
-### Tinkoff QR
-![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Tinkoff%20small.png)
+У меня в данный момент нет других заработков, так что любая денежная помощь очень ценна для меня. 
 ```
 TON:  UQDioCnnPI5sk4KvxWzfPWsWbAyWCkzwhaYjy8Qpg2QwWMiL
 BTC:  1HsC4z8X1YkZzcSKZz1t7MXRa7rPi8qChV
 USDT: TQi3qLVrNGcr6avfVQBXRjpPTyvp5JZ7i2
 
-Сбербанк: 2202200513345833
-Tinkoff:  2200700170486970
-```
+СБП : +79168089980
+
+Альфа : 2200152336577997
+Tinkoff : 2200700170486970
+```           
+
+### Tinkoff QR
+![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Tinkoff%20small.png)

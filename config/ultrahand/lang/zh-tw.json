@@ -71,6 +71,7 @@
     "OVERLAY_VERSIONS": "插件的標簽",
     "PACKAGE_VERSIONS": "插件包的標簽",
     "OPAQUE_SCREENSHOTS": "不透明的截圖",
+    "PAGE_SWAP": "Page Swap",
     "ON": "啟用",
     "OFF": "停用",
     "PACKAGE_INFO": "插件包信息",

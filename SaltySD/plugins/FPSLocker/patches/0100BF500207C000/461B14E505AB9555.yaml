@@ -1,0 +1,34 @@
+# Bloodstained: Ritual of the Night 1.60
+# BID: 461B14E505AB9555
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Disable double buffer
+  -
+    type: bytes
+    main_offset: 0xB080C02
+    value_type: int8
+    value: 0x53
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0xCC20CC8, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
+  -
+    type: evaluate_write
+    address: [MAIN, 0xD450E90, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xD477F10, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

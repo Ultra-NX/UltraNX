@@ -1,0 +1,14 @@
+# 戦場のヴァルキュリア for Nintendo Switch 1.0.1
+# BID: A184B59D5091B68A
+# Main 2D Animations speed is still tied to framerate
+# Thanks to ~Arch for offset
+
+unsafeCheck: true
+
+ALL_FPS:
+  # 3D Game Speed
+  -
+    type: evaluate_write
+    address: [MAIN, 0x957E1C]
+    value_type: float
+    value: "60 / FPS_TARGET"

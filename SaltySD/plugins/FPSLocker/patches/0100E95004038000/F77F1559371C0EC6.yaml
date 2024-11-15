@@ -1,0 +1,127 @@
+# Xenoblade Chronicles 2 2.1.0
+# BID: F77F1559371C0EC6
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Dynamic speed
+  # Jump before pushing frame to the end of .plt, which is 0x8B3900 (backup: MOV W8, #0x21A0)
+  -
+    type: bytes
+    main_offset: 0x700164
+    value_type: uint32
+    value: 0x1406CDE7
+  # Game speed math, write data to unused .bss, tick at 0x15ECF00, game speed at tick at 0x15ECF08, take min delta from 0x15ECF10
+  -
+    type: bytes
+    main_offset: 0x8B3900
+    value_type: uint32
+    value: 
+      - 0x97FFFB80
+      - 0xB00069C2
+      - 0xF9478041
+      - 0xF9078040
+      - 0xB5000061
+      - 0x52843408
+      - 0x17F93214
+      - 0xCB010000
+      - 0x97FFFB7C
+      - 0x1E25D002
+      - 0x52807D01
+      - 0x9AC10800
+      - 0x9E220000
+      - 0x52848001
+      - 0x72A92E81
+      - 0x1E270021
+      - 0x14000018
+      - 0x900016E0
+      - 0xF9406800
+      - 0xB4FFFE40
+      - 0xBD007800
+      - 0xBD007C00
+      - 0xF0001B60
+      - 0xF9416400
+      - 0xBD008000
+      - 0xB00069C0
+      - 0xBD0F0800
+      - 0x17FFFFEA
+      - 0x1E2E1001
+      - 0x1E221822
+      - 0x1E222000
+      - 0x5400006B
+      - 0x1E204040
+      - 0x17FFFFF0
+      - 0xB00069C0
+      - 0xBD4F1002
+      - 0x1E222000
+      - 0x54FFFD88
+      - 0x1E204040
+      - 0x17FFFFEA
+      - 0x1E211800
+      - 0x17FFFFF3
+  # Patch wind speed to take game speed from MAIN + 0x15ECF08
+  -
+    type: bytes
+    main_offset: 0x747DD8
+    value_type: uint32
+    value:
+      - 0xB0007528
+      - 0xBD4F0906
+  # Redirect DR timing to MAIN + 0x15ECF18
+  -
+    type: bytes
+    main_offset: 0x6AA14C
+    value_type: uint32
+    value: 
+      - 0xD0007A08
+      - 0xBD4F1900
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x15ECF08
+    value_type: float
+    value: [0.0333333333, 0.0333333333, 0.0333333333, 0.0166666666]
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0xB74BF0]
+    value_type: uint32
+    value: ["VSYNC_TARGET", "VSYNC_TARGET"]
+  - 
+    type: evaluate_write
+    address: [MAIN, 0x15ECF10]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  - 
+    type: evaluate_write
+    address: [MAIN, 0x15ECF18]
+    value_type: float
+    value: "(1 / FPS_TARGET) / VSYNC_TARGET"
+  # Cutscenes in 30 FPS
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 1
+    compare_address: [MAIN, 0xBD7F40]
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 1
+    compare_address: [MAIN, 0xBD7F40]
+    address: [MAIN, 0x15ECF10]
+    value_type: float
+    value: 0.0333333333
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 1
+    compare_address: [MAIN, 0xBD7F40]
+    address: [MAIN, 0x15ECF18]
+    value_type: float
+    value: 0.0333333333

@@ -1,0 +1,12 @@
+# Good Job! 1.0.0
+# BID: 951D09EECE122A47
+
+unsafeCheck: true
+
+ALL_FPS:
+  # fixedDeltaTime
+  -
+    type: evaluate_write
+    address: [MAIN, 0x4D38EF8, 0x48]
+    value_type: float
+    value: 1 / FPS_TARGET

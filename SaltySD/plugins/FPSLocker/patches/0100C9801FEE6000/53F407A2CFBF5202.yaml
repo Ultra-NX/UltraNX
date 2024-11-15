@@ -1,0 +1,16 @@
+# Yakuza Kiwami 1.00
+# BID: 53F407A2CFBF5202
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Block cutscenes to 30 FPS to fix glitches, experimental
+  -
+    type: compare
+    compare_type: "!="
+    compare_value_type: uint64
+    compare_address: [MAIN, 0x2596E00]
+    compare_value: 0
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30

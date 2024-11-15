@@ -1,0 +1,22 @@
+# Ni no Kuni: Wrath of the White Witch 1.0.2
+# BID: C32B29CB5FBA96D9
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Game speed value
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2218B44, 0x20]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  # Play prerendered cutscenes only at 60 FPS
+  -
+    type: evaluate_compare
+    compare_address: [MAIN, 0x1728B58]
+    compare_type: "!="
+    compare_value_type: uint32
+    compare_value: 0
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 60

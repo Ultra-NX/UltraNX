@@ -1,0 +1,11 @@
+# Monster Hunter Generations Ultimate 1.4.0
+# BID: FB08F1D20FD1204F
+
+unsafeCheck: true
+
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x18A6210, 0x243C]
+    value_type: float
+    value: FPS_LOCK_TARGET

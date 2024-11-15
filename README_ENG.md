@@ -102,12 +102,12 @@ Listed below are the licenses of those programs that have been modified specific
 
 ## Credits 
 
-* Meha
 * B3711
 * ppkantorski
-* Cooler3D
-* rashevskyv
+* Meha
+* duckbill
 * snupt
+* Cooler3D
 * 4PDA
 #### And also - a special thanks to the administration and members of Ultra Group
 

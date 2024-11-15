@@ -1,0 +1,17 @@
+# LEGO City Undercover 1.0.3
+# BID: 32C590B064956546
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Block to 30 FPS when prerendered cutscene is played
+  # REF: LegoCutscenes::s_fmvCutsceneAudioInstance
+  -
+    type: compare
+    compare_address: [MAIN, 0x2590998]
+    compare_type: "!="
+    compare_value_type: uint64
+    compare_value: 0
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30

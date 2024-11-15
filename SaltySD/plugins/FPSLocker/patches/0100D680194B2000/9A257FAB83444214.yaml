@@ -1,0 +1,67 @@
+# Pikmin 2 1.1.0
+# BID: 9A257FAB83444214
+# Credits to Hazerou for finding offsets
+
+unsafeCheck: true
+
+ALL_FPS:
+  -
+    type: write
+    address: [MAIN, 0xC104B0, 0x28]
+    value_type: uint32
+    value: 1
+  # Block cutscenes to 30 FPS
+  -
+    type: evaluate_compare
+    compare_address: [MAIN, 0xC18080]
+    compare_type: "<="
+    compare_value_type: uint32
+    compare_value: 0x4B
+    address: [MAIN, 0xC0C040, 0xE0]
+    value_type: float
+    value: "1 / 30"
+  -
+    type: compare
+    compare_address: [MAIN, 0xC18080]
+    compare_type: "<="
+    compare_value_type: uint32
+    compare_value: 0x4B
+    address: [MAIN, 0xC0C040, 0x100]
+    value_type: float
+    value: 2
+  -
+    type: compare
+    compare_address: [MAIN, 0xC18080]
+    compare_type: "<="
+    compare_value_type: uint32
+    compare_value: 0x4B
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30
+  -
+    type: evaluate_compare
+    compare_address: [MAIN, 0xC18080]
+    compare_type: "<"
+    compare_value_type: uint32
+    compare_value: 0x49
+    address: [MAIN, 0xC0C040, 0xE0]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  -
+    type: evaluate_compare
+    compare_address: [MAIN, 0xC18080]
+    compare_type: "<"
+    compare_value_type: uint32
+    compare_value: 0x49
+    address: [MAIN, 0xC0C040, 0x100]
+    value_type: float
+    value: "60 / FPS_TARGET"
+  -
+    type: compare
+    compare_address: [MAIN, 0xC18080]
+    compare_type: "<"
+    compare_value_type: uint32
+    compare_value: 0x49
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 0

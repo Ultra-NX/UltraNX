@@ -1,0 +1,22 @@
+# Pikmin 1 1.1.0
+# BID: C32B29CB5FBA96D9
+# Credits to Hazerou for discovering offsets
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Block cutscenes to 30 FPS
+  -
+    type: compare
+    compare_address: [MAIN, 0x749A3C]
+    compare_type: "!="
+    compare_value_type: uint32
+    compare_value: 0
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7606A0]
+    value_type: uint32
+    value: VSYNC_TARGET

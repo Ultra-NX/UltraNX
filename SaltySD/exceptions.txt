@@ -14,10 +14,6 @@ X01003A400C3DA000
 ;1.1_46609 - 1.1.4_60709 crash on first loading
 010075D00E8BA000
 
-;Grandia Collection
-;Only launcher is 64-bit, games are 32-bit
-0100E0600BBC8000
-
 ;Immortals Fenyx Rising
 ;1.0.3, 1.3.4 crash
 01004A600EC0A000

@@ -1,0 +1,11 @@
+# Monster Hunter XX Nintendo Switch Ver. 1.5.1
+# BID: 9D4C86E6EF74504A
+
+unsafeCheck: true
+
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x214B898, 0x484C]
+    value_type: float
+    value: FPS_LOCK_TARGET

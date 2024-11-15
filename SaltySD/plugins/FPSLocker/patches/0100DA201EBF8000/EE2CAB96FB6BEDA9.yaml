@@ -1,0 +1,35 @@
+# Disney Epic Mickey: Rebrushed 1.0.3
+# BID: EE2CAB96FB6BEDA9
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Don't lock prerendered cutscenes to 30 FPS
+  # REF: C1 02 40 FD 29 08 60 1E 61 1E 40 FD / second result, search for LDRB W8, [X19,#0x30] above it
+  -
+    type: bytes
+    main_offset: 0xF6E9E8
+    value_type: uint32
+    value: 0x2A1F03E8
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6E34A58, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6E626F8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6665658, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
