@@ -1,0 +1,12 @@
+# EA SPORTS FC 25 1.75.48c1
+# BID: 25636E9F2595CFFD
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Internal FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0xCE06A68, 8]
+    value_type: double
+    value: FPS_TARGET

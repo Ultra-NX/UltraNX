@@ -8,17 +8,17 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x1D15228]
     value_type: int32
-    value: [FPS_LOCK_TARGET, "1"]
+    value: [FPS_LOCK_TARGET, VSYNC_TARGET]
   -
     type: evaluate_write
     address: [MAIN, 0x1D28CB8]
     value_type: float
     value: FPS_TARGET
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x2A88DC0]
     value_type: int32
-    value: 0
+    value: "VSYNC_TARGET - 1"
   -
     type: block
     what: timing

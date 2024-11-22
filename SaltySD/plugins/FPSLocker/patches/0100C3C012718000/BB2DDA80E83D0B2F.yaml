@@ -1,0 +1,27 @@
+# Grand Theft Auto III - Definitive Edition 1.0.8
+# BID: BB2DDA80E83D0B2F
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (Default is 36.5 ms)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x755F988, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7584640, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6DD2210, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

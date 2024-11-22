@@ -1,0 +1,33 @@
+# Poppy Playtime: Chapter 3 1.0.0.2
+# BID: 5AF163DEF288F098
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x778C438, 0xAA4]
+    value_type: int32
+    value: 6
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x676D6E8, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7754230, 0]
+    value_type: float
+    value: ["0.99 * FRAMETIME_TARGET", "0.99 * FRAMETIME_TARGET"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x778D990, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

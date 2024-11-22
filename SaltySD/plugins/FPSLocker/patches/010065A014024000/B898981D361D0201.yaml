@@ -1,0 +1,27 @@
+# Grand Theft Auto: San Andreas - Definitive Edition 1.0.8
+# BID: B898981D361D0201
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (Default is 36.5 ms)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x79B5988, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x79DA640, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x7228260, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

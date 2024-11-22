@@ -1,0 +1,21 @@
+# Life is Strange: Double Exposure 1.0.1
+# BID: C4DD7E5256163FF1
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x68FCE90, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x790A2E8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing
