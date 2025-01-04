@@ -84,8 +84,7 @@
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Патчи для FPSLocker, что бы не качать отдельно патч для каждой игры через оверлей.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
-      * [TriPlayer](https://github.com/DefenderOfHyrule/TriPlayer) - Хоумбрю-музыкальный плеер, который работает через системный модуль, и может сворачиваться, работая в фоне.
-      * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий на фоне.
+      * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP сервер, работающий на фоне.
 
 
 

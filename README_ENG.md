@@ -81,8 +81,7 @@
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Patches for FPSLocker, so you don't have to download a separate patch for each game through the overlay.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - SysDVR patches, work without the system module, activating background recording in games where it is initially prohibited.
-      * [TriPlayer](https://github.com/DefenderOfHyrule/TriPlayer) - A homebrew music player that runs through the system module, and can minimize while running in the background.
-      * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP server running in background.
+      * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP server running in background.
 
 
 
