@@ -1,6 +1,7 @@
-# Valkyria Chronicles 1.0.0
+# Valkyria Chronicles 1.0.0/1.0.1
 # BID: FE77FFB8CBFB3A5C
 # 2D Animations speed is still tied to framerate
+# Buffers info is passed to fixed size class, making triple buffer patch requires effort
 
 unsafeCheck: true
 

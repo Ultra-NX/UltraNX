@@ -95,8 +95,8 @@ MASTER_WRITE:
       - 0xF9464422
       - 0xF9064420
       - 0xCB020000
-      - 0x528502A2
-      - 0x72A00FE2
+      - 0xD503201F
+      - 0xB94D0822
       - 0x52881541
       - 0x72A07F21
       - 0xEB01001F
@@ -193,6 +193,12 @@ MASTER_WRITE:
     main_offset: 0x2D65C94
     value_type: int32
     value: -2
+  # Default min delta
+  -
+    type: bytes
+    main_offset: 0x2D65D08
+    value_type: int32
+    value: 33333333
 ALL_FPS:
   # DR GPU Time Factor
   -
@@ -200,13 +206,18 @@ ALL_FPS:
     address: [MAIN, 0x2D65C80]
     value_type: float
     value: "(FPS_TARGET / 30) * 0.001"
+  # Set Min delta
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2D65D08]
+    value_type: uint32
+    value: "FRAMETIME_TARGET * 1000000"
   # Default vsync
   -
     type: evaluate_write
     address: [MAIN, 0x2D65C94]
     value_type: int32
     value: "VSYNC_TARGET * -1"
-ALL_REFRESH_RATES:
   # Prerendered cutscenes must be played at 30 FPS
   -
     type: compare

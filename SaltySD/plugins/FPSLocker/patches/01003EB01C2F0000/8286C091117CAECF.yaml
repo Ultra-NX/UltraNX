@@ -1,0 +1,17 @@
+# MEGATON MUSASHI W: WIRED 3.2.0
+# BID: 8286C091117CAECF
+
+unsafeCheck: true
+
+ALL_FPS:
+  # fixedDeltaTime = 1/FPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xCAA1720, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  - # maximumDeltaTime = 1/15 (with this setting game will slow down below 15 FPS instead of 30 FPS)
+    type: write
+    address: [MAIN, 0xCAA1720, 0x100]
+    value_type: float
+    value: 0.0666666666

@@ -1,0 +1,30 @@
+# S.T.A.L.K.E.R.: Clear Sky 1.0.2
+# BID: 227837B490A51033
+
+unsafeCheck: true
+
+ALL_FPS:
+  # psLoadedFrameLimitFps
+  -
+    type: evaluate_write
+    address: [MAIN, 0x17D4774]
+    value_type: float
+    value: FPS_LOCK_TARGET
+  # psCurrentFrameLimitFps
+  -
+    type: evaluate_write
+    address: [MAIN, 0x17F18E8]
+    value_type: float
+    value: FPS_LOCK_TARGET
+  # psCurrentFrameLimitMs
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1A5F36C]
+    value_type: float
+    value: "1000 / FPS_LOCK_TARGET"
+  # ResolutionInfo::sDynresGPUBudgetMs
+  -
+    type: evaluate_write
+    address: [MAIN, 0x17D4750]
+    value_type: float
+    value: "0.99 * FRAMETIME_TARGET"

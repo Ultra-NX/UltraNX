@@ -1,0 +1,51 @@
+﻿# Momotaro Dentetsu: Showa, Heisei, Reiwa mo Teiban! Asia Edition 1.0.1
+# BID: B2D4462B71536EC6
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Remove double buffer
+  -
+    type: bytes
+    main_offset: 0x1B630
+    value_type: uint32
+    value: 0x52800061
+  -
+    type: bytes
+    main_offset: 0x5774C
+    value_type: uint32
+    value: 0x52800061
+ALL_FPS:
+  # REF: 20 59 60 BC
+  # Internal FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0xFF7090]
+    value_type: float
+    value: [FPS_TARGET, "60 / FPS_TARGET"]
+  # Blocking game to max 60 FPS because setting game speed ratio below 1 causes glitches
+  - 
+    type: evaluate_compare
+    compare_address: [MAIN, 0xFF7090]
+    compare_type: ">"
+    compare_value_type: float
+    compare_value: 60
+    address: [MAIN, 0xFF7090]
+    value_type: float
+    value: 60
+  - 
+    type: evaluate_compare
+    compare_address: [MAIN, 0xFF7090]
+    compare_type: "=="
+    compare_value_type: float
+    compare_value: 60
+    address: [MAIN, 0xFF7094]
+    value_type: float
+    value: 1
+  # Unknown value that is set based on FPS Lock function argument, 0 = 60 FPS, 1 = 30 FPS, 2 = 20 FPS, 3 = 15 FPS
+  # According to IDA is not used at all, but writing this anyway
+  -
+    type: evaluate_write
+    address: [MAIN, 0x10D8028]
+    value_type: uint32
+    value: "VSYNC_TARGET - 1"

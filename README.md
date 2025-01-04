@@ -71,8 +71,8 @@
       * [Tinfoil](https://tinfoil.io) - Установщик и каталог игр.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - Эмулятор PSP.
+      * [Moonlight Switch](https://github.com/XITRIX/Moonlight-Switch) - Клиент Moonlight, позволяет транслировать на консоль игры с PC.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Поиск и установка тем на свитч.
-      * [ReverseNX Tool](https://github.com/masagrator/ReverseNX-Tool) - Программа для управления ReverseNX.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Программа для сброса контроллера батареи. Не используйте просто так!
       * [MemToolkitNX](https://discord.com/channels/854839758815363072/1173171845139288114/1276196700750479480) - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU.
    * Overlays:

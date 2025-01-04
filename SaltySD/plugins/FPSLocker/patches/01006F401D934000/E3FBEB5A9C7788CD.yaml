@@ -1,0 +1,21 @@
+# Twilight Survivors 1.0.10
+# BID: E3FBEB5A9C7788CD
+
+unsafeCheck: true
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6583898, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5D87128, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

@@ -165,7 +165,7 @@ ALL_FPS:
     address: [MAIN, 0x472AAC4]
     value_type: float
     value: "(FPS_TARGET / 30) * 0.001"
-ALL_REFRESH_RATES:
+  # cutscenes must be played at 30 FPS
   -
     type: compare
     compare_address: [MAIN, 0x472AABC]

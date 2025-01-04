@@ -1,0 +1,80 @@
+# Another Crab's Treasure 1.0.103.9
+# BID: 01CBDFDED43B80F5
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect updating various deltas to read frametime target from UnityEngine.Application::targetFrameRate, REF: 08 10 91 52 08 A1 A7 72
+  -
+    type: bytes
+    main_offset: 0x18EB7C8
+    value_type: uint32
+    value: # 08 EA 01 D0 08 39 4B B9 01 01 23 1E 00 10 2e 1e 00 18 21 1e
+     - 0xD001EA08 # adrp x8, 0x562d000
+     - 0xB94B3908 # ldr w8, [x8, #0xb38]
+     - 0x1E230101 # ucvtf s1, w8
+     - 0x1E2E1000 # fmov s0, #1.00000000
+     - 0x1E211800 # fdiv s0, s0, s1
+  -
+    type: bytes
+    main_offset: 0x18EF310
+    value_type: uint32
+    value: # E8 E9 01 D0 08 39 4B B9 01 01 23 1E 00 10 2e 1e 00 18 21 1e
+     - 0xD001E9E8 # adrp x8, 0x562d000
+     - 0xB94B3908 # ldr w8, [x8, #0xb38]
+     - 0x1E230101 # ucvtf s1, w8
+     - 0x1E2E1000 # fmov s0, #1.00000000
+     - 0x1E211800 # fdiv s0, s0, s1
+  # Redirect Dynamic Resolution GPU Timing target in DynamicResolutionScaler::Update to MAIN+0x5AA3F08
+  -
+    type: bytes
+    main_offset: 0x3882694
+    value_type: uint32
+    value: # 08 11 01 B0 08 85 47 F9 1F 20 03 D5 1F 20 03 D5
+     - 0xB0011108 # adrp x8, #0x5aa3000
+     - 0xF9478508 # ldr x8, [x8, #0xf08]
+     - 0xD503201F # nop
+     - 0xD503201F # nop
+  -
+    type: bytes
+    main_offset: 0x3882714
+    value_type: uint32
+    value: # 08 11 01 B0 08 85 47 F9 60 2A 40 BD 1F 20 03 D5 1F 20 03 D5
+     - 0xB0011108 # adrp x8, #0x5aa3000
+     - 0xF9478508 # ldr x8, [x8, #0xf08]
+     - 0xBD402A60 # ldr s0, [x19, #0x28]
+     - 0xD503201F # nop
+     - 0xD503201F # nop
+  -
+    type: bytes
+    main_offset: 0x3882788
+    value_type: uint32
+    value: # 08 11 01 B0 08 85 47 F9 1F 20 03 D5 1F 20 03 D5
+     - 0xB0011108 # adrp x8, #0x5aa3000
+     - 0xF9478508 # ldr x8, [x8, #0xf08]
+     - 0xD503201F # nop
+     - 0xD503201F # nop
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x562DB38
+    value_type: uint32
+    value: 30
+  -
+    type: bytes
+    main_offset: 0x5AA3F08
+    value_type: double
+    value: 28.57142857142857
+ALL_FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: evaluate_write
+    address: [MAIN, 0x562DB38]
+    value_type: uint32
+    value: FPS_TARGET
+  # GPU Timing Target
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5AA3F08]
+    value_type: double
+    value: "1000 / (FPS_TARGET + 5)"

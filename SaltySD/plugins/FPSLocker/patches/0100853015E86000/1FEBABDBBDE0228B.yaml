@@ -1,0 +1,34 @@
+# No Man's Sky 5.2.9
+# BID: 1FEBABDBBDE0228B
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # REF: A8 AA 8A 52 A8 40 A8 72
+  # NOP "CMP W8, #0" before ref
+  -
+    type: bytes
+    main_offset: 0x1F9CEC8
+    value_type: uint32
+    value: 0xD503201F 
+  # Redirect DR frametime target to MAIN+0x4964F00
+  -
+    type: bytes
+    main_offset: 0x1F9CED4
+    value_type: uint32
+    value: # 52 4E 01 90 08 00 40 B9 40 02 4F BD
+      - 0x90014E52 # adrp x18, #0x4964000
+      - 0xB9400008 # ldr w8, [x0]
+      - 0xBD4F0240 # ldr s0, [x18, #0xf00]
+  # default value
+  -
+    type: bytes
+    main_offset: 0x4964F00
+    value_type: float
+    value: 33.3333333333
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x4964F00]
+    value_type: float
+    value: FRAMETIME_TARGET

@@ -77,4 +77,4 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x5A8D908]
     value_type: double
-    value: "1 / (FPS_TARGET + 5)"
+    value: "1000 / (FPS_TARGET + 5)"

@@ -1,0 +1,28 @@
+# SONIC X SHADOW GENERATIONS Launcher / SHADOW GENERATIONS 1.1.0
+# BID: C8CDBFD621A6B29B
+
+# FPS Lock is used to determine dynamic resolution timing too, but it doesn't work properly when setting higher FPS.
+# DR Timing Fix is applied for anything above 30 FPS as it seems to fix the most notorious issue - stucking at 360p.
+# Turn off Window Sync for better performance
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Internal FPS Lock
+  # REF: C8 AA 8A 52 A8 30 A8 72 first ADRP above it
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3EAB7B8, 0x14]
+    value_type: float
+    value: FPS_TARGET
+  # DR Timing fix, applied only for handheld
+  # Ref: 00 01 3F D6 B4 02 00 F9 E0 03 13 AA 01 3E 80 52 first ADRP above it
+  -
+    type: evaluate_compare
+    compare_address: [MAIN, 0x3EAB7E0, 0x18, 0x260, 0x24]
+    compare_value_type: float
+    compare_type: "=="
+    compare_value: -2.8
+    address: [MAIN, 0x3EAB7E0, 0x18, 0x260, 0x24]
+    value_type: float
+    value: ["-1.4 * VSYNC_TARGET", "-0.6 * VSYNC_TARGET", "0.025 * VSYNC_TARGET", "0.04 * VSYNC_TARGET", "0.05 * VSYNC_TARGET", "0.15 * VSYNC_TARGET"]

@@ -1,7 +1,7 @@
 # Stray 1.6.0
 # BID: 109D974E180A5AA1
 
-unsafeCheck: true
+unsafeCheck: false
 
 ALL_FPS:
   # Disable bUseFixedFrameRate

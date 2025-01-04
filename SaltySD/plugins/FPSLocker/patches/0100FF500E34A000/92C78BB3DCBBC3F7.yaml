@@ -1,7 +1,7 @@
 # Xenoblade Chronicles 1.1.2
 # BID: 92C78BB3DCBBC3F7
 
-unsafeCheck: true
+unsafeCheck: false
 
 ALL_FPS:
   -

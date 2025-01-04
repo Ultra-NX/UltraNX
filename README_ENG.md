@@ -68,7 +68,6 @@
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - PSP emulator.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Searching and installing themes on Switch.
-      * [ReverseNX Tool](https://github.com/masagrator/ReverseNX-Tool) - ReverseNX control program.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Program to reset the battery controller. Do not use unnecessarily!
       * **`MemToolkitNX`** - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking.
 

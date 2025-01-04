@@ -1,0 +1,13 @@
+# Card-en-Ciel 1.1.0
+# BID: 27AB93A086868C70
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Internal FPS Lock
+  # REF: look at nn::os::SleepThread() called in nnMain()
+  -
+    type: evaluate_write
+    address: [MAIN, 0x207F248, 0x5C]
+    value_type: float
+    value: 1 / FPS_LOCK_TARGET

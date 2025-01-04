@@ -1,0 +1,12 @@
+# MEGATON MUSASHI W: WIRED 3.2.3
+# BID: D152798E91A87AE7
+
+unsafeCheck: true
+
+ALL_FPS:
+  # fixedDeltaTime = 1/FPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xCAC9F20, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

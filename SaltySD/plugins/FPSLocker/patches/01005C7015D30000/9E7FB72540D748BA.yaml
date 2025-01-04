@@ -1,0 +1,21 @@
+# Tales of Kenzera: TAU 1.5.0
+# BID: 9E7FB72540D748BA
+
+unsafeCheck: true
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6917E78, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x611ADC8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

@@ -1,0 +1,14 @@
+# Card-en-Ciel 1.2.0
+# BID: 59C5C45EF17ACADA
+# Buffers are hardcoded line by line and put into fixed size heap allocation, so getting triple buffer requires effort
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Internal FPS Lock
+  # REF: look at nn::os::SleepThread() called in nnMain()
+  -
+    type: evaluate_write
+    address: [MAIN, 0x20F2248, 0x5C]
+    value_type: float
+    value: 1 / FPS_LOCK_TARGET

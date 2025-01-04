@@ -1,7 +1,7 @@
 # Xenoblade Chronicles 3 2.2.0
 # BID: 82D187FE9EF9BE92
 
-unsafeCheck: true
+unsafeCheck: false
 
 MASTER_WRITE:
   # Redirect DR frametime target reading to .bss code cave [MAIN, 0x236AB00]
@@ -72,35 +72,7 @@ ALL_FPS:
     compare_value: 0
     address: [MAIN, 0x236AB00]
     value_type: float
-    value: "(1 / 30) / 2"
-  -
-    type: evaluate_compare
-    compare_address: [MAIN, 0x1BA1A98]
-    compare_type: "!="
-    compare_value_type: int8
-    compare_value: 0
-    address: [MAIN, 0x1BA1A90, 128]
-    value_type: float
-    value: "(1 / 30) / 2"
-ALL_REFRESH_RATES:
-  -
-    type: compare
-    compare_address: [MAIN, 0x1BA1A98]
-    compare_type: "!="
-    compare_value_type: int8
-    compare_value: 0
-    address: [MAIN, 0x1B42DB0]
-    value_type: int32
-    value: [1, 1]
-  -
-    type: evaluate_compare
-    compare_address: [MAIN, 0x1BA1A98]
-    compare_type: "!="
-    compare_value_type: int8
-    compare_value: 0
-    address: [MAIN, 0x236AB00]
-    value_type: float
-    value: "1 / 30"
+    value: "((1 / 30) / 2) * 0.78"
   -
     type: evaluate_compare
     compare_address: [MAIN, 0x1BA1A98]

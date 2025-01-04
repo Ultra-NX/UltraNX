@@ -1,0 +1,12 @@
+# Shadowverse: Champion's Battle 1.3.0
+# BID: 1F936E043FB8C349
+
+unsafeCheck: true
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x64DB5C0, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

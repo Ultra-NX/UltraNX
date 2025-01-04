@@ -1,0 +1,17 @@
+# Yakuza Kiwami 1.01
+# BID: AE90FD64E7B2FE1E
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Block cutscenes to 30 FPS to fix glitches
+  # REF 6B 01 40 F9 2A 29 42 B9 69 B9 40 F9, any result, second LDR above (LDR X9)
+  -
+    type: compare
+    compare_type: "!="
+    compare_value_type: uint64
+    compare_address: [MAIN, 0x2597E00]
+    compare_value: 0
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30
