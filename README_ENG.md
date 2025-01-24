@@ -31,7 +31,7 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, custom firmware for the Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Custom Nintendo Switch graphical bootloader, firmware patcher, toolkit and more.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Package for Ultrahand, which allows you to fine-tune the OC parameters for your console. In case of unstable overclocking, or if you want to increase the performance of your console, Ultra Tuner is your indispensable assistant.
-1. **[OC-Switchcraft](https://github.com/halop/OC_Toolkit_SC_EOS)**, a fork of **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Atmosphere Loader with overclocking from B3711, allows you to reach from N.Switch power Xbox One. Updated in time to support new Atmosphere features.
+1. **[OC-Switchcraft](https://github.com/halop/OC-Switchcraft-EOS/releases)**, a fork of **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Atmosphere Loader with overclocking from B3711, allows you to reach from N.Switch power Xbox One. Updated in time to support new Atmosphere features.
 
 
 1. **Installed Payloads**:
@@ -63,18 +63,22 @@
 
 1. **Available for download via [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
    * Homebrews:
+      * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Here you can download a DBI with the desired language, or update an existing one.
       * [Linkalho](https://gbatemp.net/download/linkalho.38822/) - Account linking program.
       * [Tinfoil](https://tinfoil.io) - Installer and game store.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - PSP emulator.
+      * [Moonlight](https://github.com/XITRIX/Moonlight-Switch) - Moonlight client, allows to stream games from PC.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Searching and installing themes on Switch.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Program to reset the battery controller. Do not use unnecessarily!
-      * **`MemToolkitNX`** - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking.
+      * [MemToolkitNX](https://discord.com/channels/854839758815363072/1173171845139288114/1324099100202766408) - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking.
 
    * Overlays:
+      * [Status Monitor Ultra](https://github.com/Ultra-NX/Status-Monitor-Overlay) - Status Monitor fork for UltraNX, supports many Micro-overlay presets, and has a number of unique features.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay/) - "That" game in the form of an overlay. Works only on the latest versions of Ultrahand.
-      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - An overlay that allows you to quickly disconnect/connect to a bluetooth headset.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Global volume control, allows you to raise the volume above the maximum. Use with care!
+      * [NX-FanControl](https://github.com/Zathawo/NX-FanControl) - Module for manually adjusting the speed of the cooler. The changes are applied immediately, the module works from SOC temperature and not Skin temperature like Atmosphere.
+      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - An overlay that allows you to quickly disconnect/connect to a bluetooth headset.
       * [Fizeau](https://github.com/averne/Fizeau) - Module for changing the screen color profile.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Overlay music player, works in background.
 

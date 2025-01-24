@@ -35,7 +35,7 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, кастомная прошивка для Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Пользовательский графический загрузчик Nintendo Switch, патчер прошивки, инструментарий и многое другое.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Пакет для Ultrahand, позволяющий произвести тонкую настройку параметров под свою консоль. В случае нестабильной работы разгона, или при желании увеличить производительность консоли, Ultra Tuner - Ваш незаменимый помощник.
-1. **[OC-Switchcraft](https://github.com/halop/OC_Toolkit_SC_EOS)**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Лоадер атмосферы с разгоном от B3711, позволяет выжать из N.Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
+1. **[OC-Switchcraft](https://github.com/halop/OC-Switchcraft-EOS/releases)**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Лоадер атмосферы с разгоном от B3711, позволяет выжать из N.Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
 
 
 1. **Установленные пейлоады**:
@@ -46,7 +46,7 @@
 1. **Установленные Homebrew**
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
    * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - Программа для обновления системного ПО.
-   * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль. Если вам нужна другая локализация - в [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater) есть выбор из EN-RU-PTBR-ZHCN.
+   * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль. Если вам нужна другая локализация - в [Ultra Tuner](https://github.com/Ultra-NX/UltraNX/wiki/Tuner-RU#ultra-tuner) есть выбор из EN-RU-PTBR-ZHCN.
 
 
 1. **Установленные модули**
@@ -65,26 +65,31 @@
      - [Sysmodules](https://github.com/WerWolv/ovl-sysmodules/) - Оверлей для включения и отключения установленных системных модулей.
 
 
-1. **Доступные для скачивания через [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
+1. **Доступные для скачивания через [Ultra Tuner](https://github.com/Ultra-NX/UltraNX/wiki/Tuner-RU#ultra-tuner)**
    * Homebrews:
+      * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Здесь можно скачать DBI с нужным языком, или обновить имеющийся.
       * [Linkalho](https://gbatemp.net/download/linkalho.38822) - Программа для привязки аккаунта.
       * [Tinfoil](https://tinfoil.io) - Установщик и каталог игр.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - Эмулятор PSP.
-      * [Moonlight Switch](https://github.com/XITRIX/Moonlight-Switch) - Клиент Moonlight, позволяет транслировать на консоль игры с PC.
+      * [Moonlight](https://github.com/XITRIX/Moonlight-Switch) - Клиент Moonlight, позволяет транслировать на консоль игры с PC.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Поиск и установка тем на свитч.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Программа для сброса контроллера батареи. Не используйте просто так!
-      * [MemToolkitNX](https://discord.com/channels/854839758815363072/1173171845139288114/1276196700750479480) - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU.
+      * [MemToolkitNX](https://discord.com/channels/854839758815363072/1173171845139288114/1324099100202766408) - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU.
+
    * Overlays:
+      * [Status Monitor Ultra](https://github.com/Ultra-NX/Status-Monitor-Overlay) - Форк Status Monitor для UltraNX, поддерживает много пресетов Micro-оверлея, и обладает рядом уникальных фишек.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay) - Та самая игра в виде оверлея. Работает только на последних версиях Ultrahand.
-      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться/подключаться к bluetooth-гарнитуре.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Регулировка глобальной громкости, позволяет поднять громкость выше максимума. Использовать аккуратно!
+      * [NX-FanControl](https://github.com/Zathawo/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
+      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться/подключаться к bluetooth-гарнитуре.
       * [Fizeau](https://github.com/averne/Fizeau) - Модуль для изменения цветового профиля экрана.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.
+
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Патчи для FPSLocker, что бы не качать отдельно патч для каждой игры через оверлей.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
-      * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP сервер, работающий на фоне.
+      * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий на фоне.
 
 
 
