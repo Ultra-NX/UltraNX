@@ -1,0 +1,56 @@
+# SAMURAI WARRIORS 5 JAP / 戦国無双５ 1.03
+# BID: 9B7A3AC5AF1A3B0D
+
+unsafeCheck: true
+
+# Block updating FPS Lock
+MASTER_WRITE:
+  -
+    type: bytes
+    main_offset: 0x1240DFC
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1240E10
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1240E1C
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1240E24
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x1240E2C
+    value_type: uint32
+    value: 0xBD41F100
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1E761E0]
+    value_type: int32
+    value: VSYNC_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1E761E4]
+    value_type: float
+    value: FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1E761E8]
+    value_type: int32
+    value: [VSYNC_TARGET, FPS_LOCK_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1E761F0]
+    value_type: float
+    value: FPS_TARGET
+  -
+    type: block
+    what: timing

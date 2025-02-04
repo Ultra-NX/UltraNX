@@ -1,4 +1,4 @@
-# Triangle Strategy 1.1.0
+# Triangle Strategy 1.1.0/1.1.1
 # BID: 9CB4490E8A718BAE
 
 unsafeCheck: true
@@ -16,6 +16,12 @@ ALL_FPS:
     address: [MAIN, 0x74A1408, 0]
     value_type: float
     value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6CA6928, 0]
+    value_type: uint32
+    value: [0, 0]
   -
     type: block
     what: timing

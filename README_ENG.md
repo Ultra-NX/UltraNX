@@ -13,6 +13,7 @@
 ## Features of Ultra
 
 * Pre-configured OC Switchcraft (Successor to OC-Suite) with presets.
+* By default, there's already an undervolt that noticeably reduces the console's consumption, and a slight memory overclock that will make games smoother.
 * The best overclocking customizer for Switch - Ultra-Tuner, that allows you to customize overclocking right from the console. It was the first, and remains unique.
 * The CFW is as light as possible. There are no unnecessary things in it, only minimum necessary for overclocking and comfortable use.
 * Modular design. A minimum of applications/plugins/overlays are included, but you can always add more via the Ultra Tuner.
@@ -72,6 +73,7 @@
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Searching and installing themes on Switch.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Program to reset the battery controller. Do not use unnecessarily!
       * [MemToolkitNX](https://discord.com/channels/854839758815363072/1173171845139288114/1324099100202766408) - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking.
+      * [MemToolkitNX OLD](https://discord.com/channels/854839758815363072/1173171845139288114/1276196700750479480) - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking. The old version, which many people like better than the new one.
 
    * Overlays:
       * [Status Monitor Ultra](https://github.com/Ultra-NX/Status-Monitor-Overlay) - Status Monitor fork for UltraNX, supports many Micro-overlay presets, and has a number of unique features.
