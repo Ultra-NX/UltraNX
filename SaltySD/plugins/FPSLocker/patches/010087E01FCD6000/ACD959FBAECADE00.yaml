@@ -1,0 +1,12 @@
+# Cuisineer 2.0.27
+# BID: ACD959FBAECADE00
+
+unsafeCheck: true
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x525D5A0, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

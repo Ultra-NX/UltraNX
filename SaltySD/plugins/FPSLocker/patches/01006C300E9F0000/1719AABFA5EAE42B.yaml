@@ -1,4 +1,4 @@
-# DRAGON QUEST XI S: Echoes of an Elusive Age - Definitive Edition 1.0.3
+# DRAGON QUEST XI S: Echoes of an Elusive Age - Definitive Edition 1.0.3/1.0.4
 # BID: 1719AABFA5EAE42B
 
 unsafeCheck: true
@@ -34,6 +34,12 @@ ALL_FPS:
     address: [MAIN, 0x8501C48, 0]
     value_type: float
     value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x7879500, 0]
+    value_type: uint32
+    value: [0, 0]
   -
     type: block
     what: timing

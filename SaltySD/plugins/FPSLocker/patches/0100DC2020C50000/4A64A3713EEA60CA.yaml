@@ -1,0 +1,12 @@
+# Call of Sentinels 1.0.1.7
+# BID: 4A64A3713EEA60CA
+
+unsafeCheck: true
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6CA3940, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

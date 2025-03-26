@@ -1,0 +1,48 @@
+# Amber Isle 1.0.2
+# BID: D36459588F85315D
+
+unsafeCheck: true
+
+MASTER_WRITE:
+# Redirect all hardcoded doubles in DynamicResolutionHandler::Update to MAIN+0x9093F00
+  -
+    type: bytes
+    main_offset: 0x21FE24C
+    value_type: uint32
+    value: 
+      - 0xB00374A8 # adrp x8, #0x9093000
+      - 0xFD478100 # ldr d0, [x8, #0xf00]
+  -
+    type: bytes
+    main_offset: 0x21FE1F0
+    value_type: uint32
+    value: 
+      - 0xB00374A8 # adrp x8, #0x9093000
+      - 0xFD478101 # ldr d1, [x8, #0xf00]
+  -
+    type: bytes
+    main_offset: 0x21FE360
+    value_type: uint32
+    value: 
+      - 0xB00374A8 # adrp x8, #0x9093000
+      - 0xFD478100 # ldr d0, [x8, #0xf00]
+      - 0x1E614000 # fneg d0, d0
+  -
+    type: bytes
+    main_offset: 0x21FE5E4
+    value_type: uint32
+    value: 
+      - 0xB00374A8 # adrp x8, #0x9093000
+      - 0xFD478100 # ldr d0, [x8, #0xf00]
+  # default value
+  -
+    type: bytes
+    main_offset: 0x9093F00
+    value_type: double
+    value: 25.333333333333336
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9093F00]
+    value_type: double
+    value: "FRAMETIME_TARGET * 0.76"

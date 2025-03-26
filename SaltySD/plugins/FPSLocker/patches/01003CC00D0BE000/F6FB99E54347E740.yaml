@@ -1,0 +1,60 @@
+# Amnesia Collection 1.3.0
+# BID: F6FB99E54347E740
+# Double buffer is hardcoded line by line, it's hard to make it triple
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect FPS Lock and Dynamic Resolution target values to MAIN + 0x21036F00
+  -
+    type: bytes
+    main_offset: 0x13281C
+    value_type: uint32
+    value: 
+      - 0x90107828 # ADRP X8, 0x21036000
+      - 0xF9478108 # LDR X8, [X8, 0xF00]
+  -
+    type: bytes
+    main_offset: 0x3E324C
+    value_type: uint32
+    value: 
+      - 0xF0106288 # ADRP X8, 0x21036000
+      - 0xF9478108 # LDR X8, [X8, 0xF00]
+  # NOP updating Dynamic Resolution target value
+  -
+    type: bytes
+    main_offset: 0x2D94E8
+    value_type: uint32
+    value:
+      - 0xB0106AE9 # ADRP X9, 0x21036000
+      - 0xB94F0929 # LDR W9, [X9, 0xF08]
+  -
+    type: bytes
+    main_offset: 0x597C5C
+    value_type: uint32
+    value:
+      - 0xF01054E9 # ADRP X9, 0x21036000
+      - 0xB94F0929 # LDR W9, [X9, 0xF08]
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x21036F00
+    value_type: double
+    value: 0.03333333333333333
+  -
+    type: bytes
+    main_offset: 0x21036F08
+    value_type: float
+    value: 33.333333333333
+ALL_FPS:
+  # FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0x21036F00]
+    value_type: double
+    value: "1 / FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0x21036F08]
+    value_type: float
+    value: FRAMETIME_TARGET

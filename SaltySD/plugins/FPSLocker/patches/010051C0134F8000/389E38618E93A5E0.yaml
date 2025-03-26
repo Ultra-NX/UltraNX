@@ -1,7 +1,7 @@
 # DRAGON BALL Z: KARAKOT + A NEW POWER AWAKENS SET 1.51
 # BID: 389E38618E93A5E0
 
-unsafeCheck: true
+unsafeCheck: false
 
 ALL_FPS:
   # Disable bUseFixedFrameRate in cutscenes to unlock framerate

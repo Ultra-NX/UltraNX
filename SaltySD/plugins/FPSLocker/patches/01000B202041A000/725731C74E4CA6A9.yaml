@@ -1,0 +1,12 @@
+# DreadOut Remastered Collection 1.0.2
+# BID: 725731C74E4CA6A9
+
+unsafeCheck: false
+
+ALL_FPS:
+  # REF: DynamicResolution::.cctor
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3E01640, 0, 0xB8, 8]
+    value_type: double
+    value: [FPS_TARGET, FRAMETIME_TARGET]

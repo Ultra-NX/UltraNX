@@ -1,0 +1,27 @@
+# Nikoderiko: The Magical World 1.0.2
+# BID: 6CFA2609A2D00FA5
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x64D9928, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x65075E8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5D08BF8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

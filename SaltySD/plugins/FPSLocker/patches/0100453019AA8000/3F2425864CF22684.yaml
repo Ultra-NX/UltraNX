@@ -1,0 +1,374 @@
+# Xenoblade Chronicles X: Definitive Edition 1.0.1
+# BID: 3F2425864CF22684
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Dynamic speed mod for stuff like UI, lipsync, grass and rain
+  ## Redirect nvnQueuePresentTexture call to code cave at MAIN+0x1744D90
+  -
+    type: bytes
+    main_offset: 0x96ECD8
+    value_type: uint32
+    value: 0x1437582E
+  ## Code Cave (save floats for speed factor to MAIN+0x47CD268, frametime as FPS in MAIN+0x47CD26C, frametime in s in MAIN+0x47CD270)
+  -
+    type: bytes
+    main_offset: 0x1744D90
+    value_type: uint32
+    value:
+      - 0xD63F0100
+      - 0x97FFF52B
+      - 0xB0018448
+      - 0xF9413107
+      - 0xF9013100
+      - 0xB5000047
+      - 0x17C8A7CD
+      - 0xCB070000
+      - 0x97FFF528
+      - 0xB0018448
+      - 0xB9430101
+      - 0xEB00003F
+      - 0x5400004B
+      - 0xAA0103E0
+      - 0xD2881541
+      - 0xF2A07F21
+      - 0xEB00003F
+      - 0x5400004C
+      - 0xAA0103E0
+      - 0x9E630000
+      - 0xD00005A0
+      - 0xFD469C01
+      - 0x1E611800
+      - 0xD2807D00
+      - 0x9E630001
+      - 0x1E601821
+      - 0xB0018440
+      - 0x1E624021
+      - 0xBD026C01
+      - 0x1E27D002
+      - 0x1E211842
+      - 0xBD026802
+      - 0xD2807D01
+      - 0x9E630021
+      - 0x1E611801
+      - 0x1E624021
+      - 0xBD027001
+      - 0x17C8A7AE
+  ## Default values for code cave
+  -
+    type: bytes
+    main_offset: 0x47CD268
+    value_type: float
+    value: [1.0, 30.0, 0.033333333333]
+  -
+    type: bytes
+    main_offset: 0x47CD300
+    value_type: uint32
+    value: 33333333
+  ## Function 1 to speed factor // Usage unknown
+  -
+    type: bytes
+    main_offset: 0x2864C8
+    value_type: uint32
+    value:
+      - 0xF0022A35
+      - 0xF9470D00
+      - 0xBD426AAA
+  ## Function 2 to speed factor // Weather effects (rain, fog)
+  -
+    type: bytes
+    main_offset: 0x2892AC
+    value_type: uint32
+    value:
+      - 0x90022A20
+      - 0xF000D828
+      - 0xBD426801
+  ## Function 3 to speed factor // Usage unknown
+  -
+    type: bytes
+    main_offset: 0xA26D00
+    value_type: uint32
+    value:
+      - 0xF001ED20
+      - 0xBD426808
+  ## Function 4 to FPS // UI Speed
+  -
+    type: bytes
+    main_offset: 0xA2EE60
+    value_type: uint32
+    value:
+      - 0xF001ECE0
+      - 0x1E270100
+      - 0xBD426C00
+  ## Function 5 to FPS // Usage unknown
+  -
+    type: bytes
+    main_offset: 0x266E3C
+    value_type: uint32
+    value:
+      - 0xF0022B20
+      - 0x1E270100
+      - 0x7940D268
+      - 0xBD426C05
+  ## Function 6 to FPS
+  -
+    type: bytes
+    main_offset: 0x26D6D0
+    value_type: uint32
+    value:
+      - 0x90022B00
+      - 0xBD426C00
+      - 0x1E390000
+      - 0x528000C9
+      - 0x1AC90808
+  ## Function 7 to Frametime in s // Gameplay + cutscene speed
+  -
+    type: bytes
+    main_offset: 0x1E24E4
+    value_type: uint32
+    value: 0xF0022F49
+  -
+    type: bytes
+    main_offset: 0x1E24F8
+    value_type: uint32
+    value: 0xBD427120
+  # Adjust various elements related to fighting
+  -
+    type: bytes
+    main_offset: 0x1E8B08
+    value_type: uint32
+    value: 0x145570EB
+  ## Code cave
+  -
+    type: bytes
+    main_offset: 0x1744EB4
+    value_type: uint32
+    value:
+      - 0xB0018449
+      - 0xBD426920
+      - 0x17AA8F14
+  ## Fix gun speed
+  -
+    type: bytes
+    main_offset: 0x30F62C
+    value_type: uint32
+    value: 0xD503201F
+  # Redirect DR Target to MAIN+0x47CDF00
+  -
+    type: bytes
+    main_offset: 0x13B8DF4
+    value_type: uint32
+    value:
+      - 0xB001A0A8
+      - 0xBD4F0100
+  ## Default value
+  -
+    type: bytes
+    main_offset: 0x47CDF00
+    value_type: float
+    value: 0.01666666666
+  # Adjust camera speed rotation dynamically
+  ## Code cave
+  -
+    type: bytes
+    main_offset: 0x1744E48
+    value_type: uint32
+    value:
+      - 0xB0018448
+      - 0xBD426908
+      - 0x1E200900
+      - 0x1E202008
+      - 0x540000AA
+      - 0x1E214000
+      - 0x1E21C000
+      - 0x1E214000
+      - 0xD65F03C0
+      - 0x1E21C000
+      - 0xD65F03C0
+  ## Connect function 1
+  -
+    type: bytes
+    main_offset: 0x1E1360
+    value_type: uint32
+    value: 0x94558EBA
+  ## Connect function 2
+  -
+    type: bytes
+    main_offset: 0x1E1370
+    value_type: uint32
+    value: 0xAD7D03A1
+  -
+    type: bytes
+    main_offset: 0x1E137C
+    value_type: uint32
+    value: 0x94558EB3
+  # Force 1s sleep to synchronize audio if cutscene detected
+  ## Use function responsible for writing type of cutscene to write its ID if it's 8 or 16 (or 0 for any other) to MAIN+0x47CDFFF
+  -
+    type: bytes
+    main_offset: 0x2CFEB4
+    value_type: uint32
+    value: 0x1451D3F7
+  ### Code cave
+  -
+    type: bytes
+    main_offset: 0x1744E90
+    value_type: uint32
+    value:
+      - 0xB9002279
+      - 0x121D0720
+      - 0xB0018448
+      - 0x340000A0
+      - 0x393FFD00
+      - 0xD2994000
+      - 0xF2A77340
+      - 0x97FFF3D9
+      - 0x17AE2C02
+  ## "startEvent" to write uint8 1 to MAIN+0x47CDFFF
+  -
+    type: bytes
+    main_offset: 0x3ECFD8
+    value_type: uint32
+    value: 0x144D5FBF
+  ### Code cave
+  -
+    type: bytes
+    main_offset: 0x1744ED4
+    value_type: uint32
+    value:
+      - 0x910003FD
+      - 0xB0018448
+      - 0x52800020
+      - 0x393FFD00
+      - 0x17B2A03E
+  ## "endEvent" to write uint8 0 to MAIN+0x47CDFFF
+  -
+    type: bytes
+    main_offset: 0x3ED178
+    value_type: uint32
+    value: 0x144D5F42
+  ### Code cave
+  -
+    type: bytes
+    main_offset: 0x1744E80
+    value_type: uint32
+    value:
+      - 0x910003FD
+      - 0xB0018448
+      - 0x393FFD1F
+      - 0x17B2A0BC
+  # Adjust Field Action gauge bar speed
+  -
+    type: bytes
+    main_offset: 0xE5B00
+    value_type: uint32
+    value:
+      - 0x90023740
+      - 0xD000E3E9
+      - 0xBD426808
+  ## Fix for FN Site
+  -
+    type: bytes
+    main_offset: 0xE5558
+    value_type: uint32
+    value: 0x14597E34
+  ### Code cave
+  -
+    type: bytes
+    main_offset: 0x1744E28
+    value_type: uint32
+    value:
+      - 0xBD40D260
+      - 0xB0018440
+      - 0xBD426801
+      - 0x1E210800
+      - 0x17A681C9
+  # Fix long jump when not running
+  -
+    type: bytes
+    main_offset: 0x23EAD0
+    value_type: uint32
+    value: 0x145418DB
+  ## Code cave
+  -
+    type: bytes
+    main_offset: 0x1744E3C
+    value_type: uint32
+    value:
+      - 0x1E27D00B
+      - 0x1E2B296B
+      - 0x17ABE724
+  # Adjust QTE Speed 
+  ## Code cave
+  -
+    type: bytes
+    main_offset: 0x1744E74
+    value_type: uint32
+    value:
+      - 0xB0018454
+      - 0xBD426A81
+      - 0x17BA027E
+  ## Connect function
+  -
+    type: bytes
+    main_offset: 0x5C5870
+    value_type: uint32
+    value: 0x1445FD81
+  # Adjust Overdrive counter, Follow Ball speed
+  ## Code cave
+  -
+    type: bytes
+    main_offset: 0x1744EC0
+    value_type: uint32
+    value:
+      - 0xB0018440
+      - 0xBD427000
+      - 0xD65F03C0
+  ## Connect function
+  -
+    type: bytes
+    main_offset: 0x67354
+    value_type: uint32
+    value: 0x945B76DB
+ALL_FPS:
+  # FPS Target
+  -
+    type: evaluate_write
+    address: [MAIN, 0x47CD300]
+    value_type: uint32
+    value: "FRAMETIME_TARGET * 1000000"
+  # FPS Lock
+  # ref: 00 01 00 b9 2a 01 00 b9 c0 03 5f d6
+  -
+    type: write
+    address: [MAIN, 0x1DA33A0]
+    value_type: int32
+    value: [1, 1]
+  # DR Target
+  -
+    type: evaluate_write
+    address: [MAIN, 0x47CDF00]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  # Lock game to 30 FPS when complex/prerendered cutscene is played
+  ## Adjusts DR target
+  -
+    type: compare
+    compare_address: [MAIN, 0x47CDFFF]
+    compare_value_type: uint8
+    compare_type: "!="
+    compare_value: 0
+    address: [MAIN, 0x47CDF00]
+    value_type: float
+    value: 0.03333333333
+  ## Force OS to run at 60 Hz with interval 2
+  -
+    type: compare
+    compare_address: [MAIN, 0x47CDFFF]
+    compare_value_type: uint8
+    compare_type: "!="
+    compare_value: 0
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30

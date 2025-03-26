@@ -1,0 +1,12 @@
+# HEAVEN SEEKER ――The Savior of This Cruel World 1.0.5.130
+# BID: 21B3E4EA75F16551
+
+unsafeCheck: true
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime (default is 0.03268)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x97D4478, 0x48]
+    value_type: float
+    value: "(1 / FPS_TARGET) / 1.02"

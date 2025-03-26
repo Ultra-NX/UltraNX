@@ -1,0 +1,27 @@
+# Borderlands 3 1.0.3
+# BID: AFDEB128252898AC
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0xDD56640, 0]
+    value_type: float
+    value: ["0.969 * FRAMETIME_TARGET", "0.969 * FRAMETIME_TARGET"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xDD857C0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0xD0C52B8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

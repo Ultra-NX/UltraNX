@@ -1,0 +1,38 @@
+# REYNATIS (US/EU) 1.0.9
+# BID: C59C89CCDF382602
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect reading DR timing in DynamicResolution::LowerResSW() to MAIN + 0x7C0DF00
+  # REF: 01 f0 67 1e
+  -
+    type: bytes
+    main_offset: 0x391CEEC
+    value_type: uint32
+    value: # 941702B0 818247FD 1020611E 6922482D CD020054 6A6240BD
+      - 0xB0021794 # adrp x20, #0x7c0d000
+      - 0xFD478281 # ldr d1, [x20, #0xf00]
+      - 0x1E612010 # fcmpe d0, d1
+      - 0x2D482269 # ldp s9, s8, [x19, #0x40]
+      - 0x540002CD # b.le #0x391cf54
+      - 0xBD40626A # ldr s10, [x19, #0x60]
+  -
+    type: bytes
+    main_offset: 0x391CF54
+    value_type: uint32
+    value: 
+      - 0xFD478681 # ldr d1, [x20, #0xf08]
+  # Default handheld value
+  -
+    type: bytes
+    main_offset: 0x7C0DF00
+    value_type: double
+    value: [31, 29]
+ALL_FPS:
+  # Dynamic Resolution Timing
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7C0DF00]
+    value_type: double
+    value: ["0.93 * FRAMETIME_TARGET", "(0.93 * FRAMETIME_TARGET) - 2"]

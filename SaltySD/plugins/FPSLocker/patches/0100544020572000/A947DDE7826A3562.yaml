@@ -1,0 +1,13 @@
+# Atelier Yumia: The Alchemist of Memories & the Envisioned Land 1.0.1
+# BID: A947DDE7826A3562
+
+unsafeCheck: false
+
+ALL_FPS:
+  # Disable FPS Lock
+  # REF: 88 46 40 F9 03 11 40 F9, first ADRP+LDR above it
+  -
+    type: write
+    address: [MAIN, 0x2E8AB00, 0xE0, 0x284]
+    value_type: uint8
+    value: 0

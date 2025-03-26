@@ -1,0 +1,27 @@
+# GUNDAM BREAKER 4 1.11.0
+# BID: E82F8A34CCC706E7
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0xA03AD48, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xA0687E8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x986C958, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

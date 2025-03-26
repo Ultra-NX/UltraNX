@@ -1,0 +1,21 @@
+# Big Helmet Heroes 1.0.3
+# BID: 2CF926BBD5D1AB4D
+
+unsafeCheck: true
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7012260, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5BB0718, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

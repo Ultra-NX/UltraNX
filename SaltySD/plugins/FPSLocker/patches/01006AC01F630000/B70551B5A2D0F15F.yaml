@@ -1,0 +1,24 @@
+# Sword of the Necromancer: Resurrection 1.0.3
+# BID: B70551B5A2D0F15F
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7573E00, 0]
+    value_type: float
+    value: ["0.9 * FRAMETIME_TARGET", "0.9 * FRAMETIME_TARGET"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x75A8298, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6DCFCB8, 0]
+    value_type: int32
+    value: [0, 0]

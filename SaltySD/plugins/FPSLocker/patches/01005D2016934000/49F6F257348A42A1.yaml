@@ -1,0 +1,27 @@
+# Ghostbusters: Spirits Unleashed Ecto Edition 1.11.0
+# BID: 49F6F257348A42A1
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
+  -
+    type: evaluate_write
+    address: [MAIN, 0xBBFBF70, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xBC21B48, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0xB42B9B8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
