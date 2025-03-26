@@ -66,7 +66,6 @@
    * Homebrews:
       * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Here you can download a DBI with the desired language, or update an existing one.
       * [Linkalho](https://gbatemp.net/download/linkalho.38822/) - Account linking program.
-      * [Tinfoil](https://tinfoil.io) - Installer and game store.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - PSP emulator.
       * [Moonlight](https://github.com/XITRIX/Moonlight-Switch) - Moonlight client, allows to stream games from PC.
