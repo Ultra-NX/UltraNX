@@ -41,6 +41,7 @@
 
 
 1. **Installed Homebrew**
+   * [Sphaira](https://github.com/ITotalJustice/sphaira) - Modern Homebrew Menu, analogous to nx-hbmenu
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Program to update Ultra to the current version, as well as to download cheats.
    * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - A program for updating OS.
    * [DBI](https://github.com/rashevskyv/dbi) - The best file manager, save manager and program installer on the console. If you need a different localization - Updater has a choice of EN-RU-PTBR-ZHCN.
@@ -59,7 +60,7 @@
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - An overlay for using cheats.
      - [ReverseNX-RT](https://github.com/masagrator/ReverseNX-RT) - ReverseNX control overlay.
-     - [Sysmodules](https://github.com/WerWolv/ovl-sysmodules/) - Overlay for enabling and disabling installed system modules.
+     - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Overlay for enabling and disabling installed system modules.
 
 
 1. **Available for download via [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**

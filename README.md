@@ -45,6 +45,7 @@
 
 
 1. **Установленные Homebrew**
+   * [Sphaira](https://github.com/ITotalJustice/sphaira) - Современное Хоумбрю Меню, аналог nx-hbmenu
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
    * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - Программа для обновления системного ПО.
    * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль. Если вам нужна другая локализация - в [Ultra Tuner](https://github.com/Ultra-NX/UltraNX/wiki/Tuner-RU#ultra-tuner) есть выбор из EN-RU-PTBR-ZHCN.
@@ -63,7 +64,7 @@
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов.
      - [ReverseNX-RT](https://github.com/masagrator/ReverseNX-RT) - Оверлей для управления ReverseNX.
-     - [Sysmodules](https://github.com/WerWolv/ovl-sysmodules/) - Оверлей для включения и отключения установленных системных модулей.
+     - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Оверлей для включения и отключения установленных системных модулей.
 
 
 1. **Доступные для скачивания через [Ultra Tuner](https://github.com/Ultra-NX/UltraNX/wiki/Tuner-RU#ultra-tuner)**
