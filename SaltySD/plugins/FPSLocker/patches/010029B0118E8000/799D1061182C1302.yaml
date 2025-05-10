@@ -4,25 +4,40 @@
 
 unsafeCheck: true
 
+MASTER_WRITE:
+  # Remove FPS Lock
+  -
+    type: bytes
+    main_offset: 0x4835A4
+    value_type: uint32
+    value: 0xD503201F
 ALL_FPS:
+  # Switch game to 60 FPS mode
+  -
+    type: write
+    address: [MAIN, 0xF0043C]
+    value_type: uint32
+    value: 1
   # FPS Target
   -
     type: evaluate_write
     address: [MAIN, 0xED96A8, 0x30]
-    value_type: uint64
-    value: "(FRAMETIME_TARGET / 2) * 19200"
+    value_type: uint32
+    value: "19200000 / FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0xED96A8, 0x28]
+    value_type: uint32
+    value: "1920000 / FPS_TARGET"
   # FPS 2D Game Speed Target
   -
     type: evaluate_write
     address: [MAIN, 0xEFFC60, 0x30]
     value_type: float
-    value: "0.5 / FPS_TARGET"
+    value: "1 / FPS_TARGET"
   # FPS 3D Game Speed Target
   -
     type: evaluate_write
     address: [MAIN, 0xEFFC60, 0x50]
     value_type: float
-    value: "0.5 / FPS_TARGET"
-  -
-    type: block
-    what: timing
+    value: "1 / FPS_TARGET"

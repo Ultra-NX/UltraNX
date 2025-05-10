@@ -1,0 +1,27 @@
+# Breathedge 1.0.2
+# BID: B26DE1669B729335
+
+unsafeCheck: false
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x55CB668, 0x7F0]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x55CBDE0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x4E6A7B8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

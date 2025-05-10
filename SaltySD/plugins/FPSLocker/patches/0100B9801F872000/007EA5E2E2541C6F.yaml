@@ -1,0 +1,43 @@
+# FAIRY TAIL 2 1.4.2
+# BID: 007EA5E2E2541C6F
+
+unsafeCheck: false
+
+MASTER_WRITE:
+  # Redirect Dynamic Resolution target to MAIN+0x2C53F00
+  # REF: 6A C8 82 52
+  -
+    type: bytes
+    main_offset: 0x138238C
+    value_type: uint32
+    value: 
+      - 0xB000C68A # ADRP X10, 0x2c53000
+      - 0xB94F014A # LDR W10, [X10, 0xF00]
+  -
+    type: bytes
+    main_offset: 0x13823A8
+    value_type: uint32
+    value: 
+      - 0xB000C68A # ADRP X10, 0x2c53000
+      - 0xB94F054A # LDR W10, [X10, 0xF04]   
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x2C53F00
+    value_type: float
+    value: [0.043478, 0.037037]   
+ALL_FPS:
+  # FPS Lock
+  # REF: 1F 00 00 71 C8 03 80 52, first ADRP+ADD above it
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2C0B558, 0x170, 0x18C]
+    value_type: int32
+    value: FPS_LOCK_TARGET
+  # Dynamic Resolution Target
+  # Game proritizes resolution over framerate, I changed it to prefer framerate
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2C53F00]
+    value_type: float
+    value: ["1 / FPS_TARGET", "1 / (FPS_TARGET + 5)"]

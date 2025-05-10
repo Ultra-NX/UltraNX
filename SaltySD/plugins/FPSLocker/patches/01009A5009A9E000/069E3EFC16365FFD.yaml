@@ -1,0 +1,28 @@
+# Shining Resonance Refrain 1.0.1
+# BID: 069E3EFC16365FFD
+# Possible values to tweak if something happens: 0xFC0DE0 = 1.0, 0xFC0DD4 = 1.0, 0xFC0DD0 = 1.0, 0xFC0DCC = 1.0, 0xFC0DD8 - UI speed factor, don't change because it's dynamic
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Triple buffer
+  # REF: 28 60 81 52 E8 37 00 B9 E8 03 1F 32
+  -
+    type: bytes
+    main_offset: 0x3AE35C
+    value_type: uint32
+    value: 0x52800068
+ALL_FPS:
+  # Disable FPS Lock
+  # REF: C8 46 90 52 first ADRP + LDR + LDR above it
+  -
+    type: write
+    address: [MAIN, 0xFC0DC8]
+    value_type: uint32
+    value: 0
+  # Lipsync fix
+  -
+    type: evaluate_write
+    address: [MAIN, 0xFC0DDC]
+    value_type: float
+    value: "30.0 / FPS_TARGET"

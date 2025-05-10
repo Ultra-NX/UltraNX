@@ -1,0 +1,75 @@
+# WARRIORS: Abyss 1.2.1
+# BID: 293D73083149473E
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # REF: 09 49 A8 52 21 01 27 1E 00 20 21 1E
+  # Use FPS Target instead of vsync value for Dynamic Resolution max delta
+  -
+    type: bytes
+    main_offset: 0x6BD270
+    value_type: uint32
+    value:
+      - 0xB0004521 # ADRP X1, 0xF62000
+      - 0xBD44D821 # LDR S1, [X1, 0x4D8]
+  # Redirect DR Targets to MAIN+0x13F3F00
+  -
+    type: bytes
+    main_offset: 0x6BD314
+    value_type: uint32
+    value:
+      - 0xD00069A9 # ADRP X9, 0x13F3000
+      - 0xBD4F0121 # LDR S1, [X9, 0xF00]
+  -
+    type: bytes
+    main_offset: 0x6BD324
+    value_type: uint32
+    value:
+      - 0xD00069A9 # ADRP X9, 0x13F3000
+      - 0xBD4F0521 # LDR S1, [X9, 0xF04]
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x13F3F00
+    value_type: float
+    value: [50, 40]
+ALL_FPS:
+  # REF: 00 00 F0 42 78 00 00 00 00 00 F0 42 04 00 00 00
+  # FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0xF624E4]
+    value_type: uint32
+    value: "120 / FPS_LOCK_TARGET"
+  # Prevent from setting it as 0, otherwise game crashes
+  -
+    type: evaluate_compare
+    compare_address: [MAIN, 0xF624E4]
+    compare_type: "=="
+    compare_value_type: uint32
+    compare_value: 0
+    address: [MAIN, 0xF624E4]
+    value_type: uint32
+    value: 1
+  # Others
+  -
+    type: evaluate_write
+    address: [MAIN, 0xF624D8]
+    value_type: float
+    value: "FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0xF624DC]
+    value_type: uint32
+    value: "FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0xF624E0]
+    value_type: float
+    value: "FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0x13F3F00]
+    value_type: float
+    value: ["1.5 * FRAMETIME_TARGET", "1.2 * FRAMETIME_TARGET"]

@@ -1,0 +1,30 @@
+# S.T.A.L.K.E.R.: Call of Prypiat 1.0.3
+# BID: AD4CBC4878008E1E
+
+unsafeCheck: true
+
+ALL_FPS:
+  # psLoadedFrameLimitFps
+  -
+    type: evaluate_write
+    address: [MAIN, 0x17F9784]
+    value_type: float
+    value: FPS_LOCK_TARGET
+  # psCurrentFrameLimitFps
+  -
+    type: evaluate_write
+    address: [MAIN, 0x18168A0]
+    value_type: float
+    value: FPS_LOCK_TARGET
+  # psCurrentFrameLimitMs
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1A8490C]
+    value_type: float
+    value: "1000 / FPS_LOCK_TARGET"
+  # ResolutionInfo::sDynresGPUBudgetMs
+  -
+    type: evaluate_write
+    address: [MAIN, 0x17F9760]
+    value_type: float
+    value: "FRAMETIME_TARGET - (1/30)"

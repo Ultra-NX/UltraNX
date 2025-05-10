@@ -1,0 +1,54 @@
+# PROJECT ZERO: MAIDEN OF BLACK WATER 1.0.4
+# FATAL FRAME: MAIDEN OF BLACK WATER 1.0.4
+# BID: B38D51E0391187EC
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect min delta to MAIN + 0x1BC4FF0
+  # REF: 00 D9 21 7E 28 19 20 1E
+  -
+    type: bytes
+    main_offset: 0x39ABF8
+    value_type: uint32
+    value:
+     - 0xD000C15B # ADRP X27, 0x1BC4000
+     - 0xBD4FF368 # LDR S8, [X27, 0xFF0]
+  # Redirect FPS Lock to MAIN + 0x1BC4FF4
+  # REF: 69 AA 40 B9 0A 40 99 52
+  -
+    type: bytes
+    main_offset: 0x39B2D8
+    value_type: uint32
+    value:
+     - 0xB000C149 # ADRP X9, 0x1BC4000
+     - 0xB94FF529 # LDR W9, [X9, 0xFF4]
+     - 0xD503201F # NOP
+     - 0xD503201F # NOP
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x1BC4FF0
+    value_type: float
+    value: 0.0333333333
+  -
+    type: bytes
+    main_offset: 0x1BC4FF4
+    value_type: uint32
+    value: 33333333
+ALL_FPS:
+  # Min delta
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1BC4FF0]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  # FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1BC4FF4]
+    value_type: uint32
+    value: "1000000000 / FPS_TARGET"
+  -
+    type: block
+    what: timing

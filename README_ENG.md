@@ -6,7 +6,7 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [Ultra 2.3](https://github.com/Ultra-NX/Ultra/releases/latest/) Supports HOS 19.0.1 and all console revisions
+### [Ultra 2.4](https://github.com/Ultra-NX/Ultra/releases/latest/) Supports HOS 20.0.1 and all console revisions
 
 
 
@@ -36,7 +36,7 @@
 
 
 1. **Installed Payloads**:
-   * [Lockpick_RCM](https://gbatemp.net/download/lockpick_rcm-1-9-13-fw-19-zoria-source.38837/) - Program for dumping console keys.
+   * [Lockpick RCM](https://github.com/impeeza/Lockpick_RCMDecScots) - Program for dumping console keys.
    * [TegraExplorer](https://github.com/suchmememanyskill/TegraExplorer) - A low-level file manager for working with the system.
 
 

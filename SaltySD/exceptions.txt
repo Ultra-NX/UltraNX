@@ -50,3 +50,7 @@ X0100964012528000
 ;Donkey Kong Country: Tropical Freeze
 ;Crash at second level
 X0100C1F0051B6000
+
+;Death Road to Canada
+;1.0.8 crash
+X0100423009358000

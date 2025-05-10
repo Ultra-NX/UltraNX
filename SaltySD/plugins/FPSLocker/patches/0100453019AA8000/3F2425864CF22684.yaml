@@ -75,15 +75,6 @@ MASTER_WRITE:
       - 0xF0022A35
       - 0xF9470D00
       - 0xBD426AAA
-  ## Function 2 to speed factor // Weather effects (rain, fog)
-  -
-    type: bytes
-    main_offset: 0x2892AC
-    value_type: uint32
-    value:
-      - 0x90022A20
-      - 0xF000D828
-      - 0xBD426801
   ## Function 3 to speed factor // Usage unknown
   -
     type: bytes
@@ -207,57 +198,22 @@ MASTER_WRITE:
   ## Use function responsible for writing type of cutscene to write its ID if it's 8 or 16 (or 0 for any other) to MAIN+0x47CDFFF
   -
     type: bytes
-    main_offset: 0x2CFEB4
+    main_offset: 0x2FAC38
     value_type: uint32
-    value: 0x1451D3F7
+    value: 0x14512898
   ### Code cave
   -
     type: bytes
-    main_offset: 0x1744E90
+    main_offset: 0x1744E98
     value_type: uint32
     value:
-      - 0xB9002279
-      - 0x121D0720
-      - 0xB0018448
-      - 0x340000A0
-      - 0x393FFD00
+      - 0x52800094
+      - 0xD00045C0
+      - 0xB90AF414
       - 0xD2994000
       - 0xF2A77340
       - 0x97FFF3D9
-      - 0x17AE2C02
-  ## "startEvent" to write uint8 1 to MAIN+0x47CDFFF
-  -
-    type: bytes
-    main_offset: 0x3ECFD8
-    value_type: uint32
-    value: 0x144D5FBF
-  ### Code cave
-  -
-    type: bytes
-    main_offset: 0x1744ED4
-    value_type: uint32
-    value:
-      - 0x910003FD
-      - 0xB0018448
-      - 0x52800020
-      - 0x393FFD00
-      - 0x17B2A03E
-  ## "endEvent" to write uint8 0 to MAIN+0x47CDFFF
-  -
-    type: bytes
-    main_offset: 0x3ED178
-    value_type: uint32
-    value: 0x144D5F42
-  ### Code cave
-  -
-    type: bytes
-    main_offset: 0x1744E80
-    value_type: uint32
-    value:
-      - 0x910003FD
-      - 0xB0018448
-      - 0x393FFD1F
-      - 0x17B2A0BC
+      - 0x17AED763
   # Adjust Field Action gauge bar speed
   -
     type: bytes
@@ -308,7 +264,15 @@ MASTER_WRITE:
     value:
       - 0xB0018454
       - 0xBD426A81
-      - 0x17BA027E
+      - 0x1400001B
+  -
+    type: bytes
+    main_offset: 0x1744EE8
+    value_type: uint32
+    value:
+      - 0xBD412262
+      - 0x1E210841
+      - 0x17BA0261
   ## Connect function
   -
     type: bytes
@@ -331,6 +295,24 @@ MASTER_WRITE:
     main_offset: 0x67354
     value_type: uint32
     value: 0x945B76DB
+  # Fix fog speed
+  -
+    type: bytes
+    main_offset: 0x296640
+    value_type: uint32
+    value: 
+      - 0xF00229A8
+      - 0xBD426902
+      - 0x9452BA2B
+  ## Code cave
+  -
+    type: bytes
+    main_offset: 0x1744EF4
+    value_type: uint32
+    value: 
+      - 0x1E21C042
+      - 0x1F020020
+      - 0xD65F03C0
 ALL_FPS:
   # FPS Target
   -
@@ -355,20 +337,20 @@ ALL_FPS:
   ## Adjusts DR target
   -
     type: compare
-    compare_address: [MAIN, 0x47CDFFF]
-    compare_value_type: uint8
-    compare_type: "!="
-    compare_value: 0
+    compare_address: [MAIN, 0x1FFEAF4]
+    compare_value_type: uint32
+    compare_type: ">"
+    compare_value: 1
     address: [MAIN, 0x47CDF00]
     value_type: float
     value: 0.03333333333
   ## Force OS to run at 60 Hz with interval 2
   -
     type: compare
-    compare_address: [MAIN, 0x47CDFFF]
-    compare_value_type: uint8
-    compare_type: "!="
-    compare_value: 0
+    compare_address: [MAIN, 0x1FFEAF4]
+    compare_value_type: uint32
+    compare_type: ">"
+    compare_value: 1
     address: [MAIN]
     value_type: refresh_rate
     value: 30

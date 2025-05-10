@@ -8,4 +8,3 @@
 /config/ultrahand/theme.ini
 /config/ultrahand/overlays.ini
 /config/ultrahand/packages.ini
-/switch/DBI/

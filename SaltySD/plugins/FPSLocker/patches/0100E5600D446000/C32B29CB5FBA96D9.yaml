@@ -12,7 +12,7 @@ ALL_FPS:
     value: "1 / FPS_TARGET"
   # Play prerendered cutscenes only at 60 FPS
   -
-    type: evaluate_compare
+    type: compare
     compare_address: [MAIN, 0x1728B58]
     compare_type: "!="
     compare_value_type: uint32
