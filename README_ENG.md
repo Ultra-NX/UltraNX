@@ -44,7 +44,7 @@
    * [Sphaira](https://github.com/ITotalJustice/sphaira) - Modern Homebrew Menu, analogous to nx-hbmenu
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Program to update Ultra to the current version, as well as to download cheats.
    * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - A program for updating OS.
-   * [DBI](https://github.com/rashevskyv/dbi) - The best file manager, save manager and program installer on the console. If you need a different localization - Updater has a choice of EN-RU-PTBR-ZHCN.
+   * [DBI](https://github.com/rashevskyv/dbi) - The best file manager, save manager and program installer on the console.
 
 
 1. **Installed Modules**
@@ -65,7 +65,7 @@
 
 1. **Available for download via [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
    * Homebrews:
-      * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Here you can download a DBI with the desired language, or update an existing one.
+      * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Here you can download a DBI or update an existing one.
       * [Linkalho](https://gbatemp.net/download/linkalho.38822/) - Account linking program.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - PSP emulator.
