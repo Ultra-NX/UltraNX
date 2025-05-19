@@ -1,0 +1,27 @@
+# ぎゃる☆がん２ 1.0.4
+# BID: 62B7F19804BCB70E
+
+unsafeCheck: false
+
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x4346990, 0]
+    value_type: uint32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x44E6DA8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # Disable custom FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x44E6030, 0x764]
+    value_type: float
+    value: 0
+  -
+    type: block
+    what: timing

@@ -1,9 +1,10 @@
-/atmosphere/config/
+/atmosphere/config/system_settings.ini
 /bootloader/hekate_ipl.ini
 /bootloader/nyx.ini
-/config/sys-clk/
-/config/status-monitor/
-/config/tesla/
+/config/sys-clk/config.ini
+/config/status-monitor/config.ini
+/config/tesla/config.ini
+/config/sphaira/config.ini
 /config/ultrahand/config.ini
 /config/ultrahand/theme.ini
 /config/ultrahand/overlays.ini

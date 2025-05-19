@@ -1,0 +1,27 @@
+# Goat Simulator 3 1.0.7.7
+# BID: 504EBEAB62E802AD
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x99DC468, 0]
+    value_type: float
+    value: ["0.81 * FRAMETIME_TARGET", "0.81 * FRAMETIME_TARGET"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9A02290, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x920CBF8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

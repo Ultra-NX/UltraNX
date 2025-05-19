@@ -74,6 +74,7 @@
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Program to reset the battery controller. Do not use unnecessarily!
       * [MemToolkitNX](https://discord.com/channels/854839758815363072/1173171845139288114/1324099100202766408) - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking.
       * [MemToolkitNX OLD](https://discord.com/channels/854839758815363072/1173171845139288114/1276196700750479480) - Benchmark and Memory Tester. The result is highly dependent on CPU overclocking. The old version, which many people like better than the new one.
+      * [MicroMemBench](https://github.com/rashevskyv/4IFIR) - Benchmark. The result is highly dependent on CPU overclocking. A version from 4ifir that tests CPU Copy in real time, which allows you to quickly find out the result after changing timings.
 
    * Overlays:
       * [Status Monitor Ultra](https://github.com/Ultra-NX/Status-Monitor-Overlay) - Status Monitor fork for UltraNX, supports many Micro-overlay presets, and has a number of unique features.

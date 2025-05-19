@@ -1,0 +1,21 @@
+# The Bridge Curse - Road to Salvation 1.6.0.1
+# BID: F54FC539CAF24C64
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6560E98, 0]
+    value_type: uint32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6D5D3B8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

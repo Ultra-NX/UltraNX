@@ -1,0 +1,27 @@
+# Gal*Gun 2 1.0.4
+# BID: 9CDFB0CD24CAE030
+
+unsafeCheck: false
+
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x4346990, 0]
+    value_type: uint32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x44E6DA8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # Disable custom FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x44E6030, 0x764]
+    value_type: float
+    value: 0
+  -
+    type: block
+    what: timing

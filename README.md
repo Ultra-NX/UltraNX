@@ -78,6 +78,7 @@
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Программа для сброса контроллера батареи. Не используйте просто так!
       * [MemToolkitNX](https://discord.com/channels/854839758815363072/1173171845139288114/1324099100202766408) - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU.
       * [MemToolkitNX OLD](https://discord.com/channels/854839758815363072/1173171845139288114/1276196700750479480) - Бенчмарк и Тестер памяти. Результат сильно зависит от разгона CPU. Старая версия, которая многим нравится больше новой.
+      * [MicroMemBench](https://github.com/rashevskyv/4IFIR) - Бенчмарк. Результат сильно зависит от разгона CPU. Версия из Чифира которая в реальном времени тестирует CPU Copy, что позволяет быстро узнать результат после изменения таймингов.
 
    * Overlays:
       * [Status Monitor Ultra](https://github.com/Ultra-NX/Status-Monitor-Overlay) - Форк Status Monitor для UltraNX, поддерживает много пресетов Micro-оверлея, и обладает рядом уникальных фишек.
