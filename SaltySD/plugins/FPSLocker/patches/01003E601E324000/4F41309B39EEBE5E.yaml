@@ -1,0 +1,27 @@
+# DRAGON QUEST III HD-2D Remake 1.1.0
+# BID: 4F41309B39EEBE5E
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5AB93E8, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x62A5E28, 0]
+    value_type: float
+    value: [FRAMETIME_TARGET, FRAMETIME_TARGET]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x62D3B68, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

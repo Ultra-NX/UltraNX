@@ -1,0 +1,27 @@
+# Labirynth Of The Demon King 1.81
+# BID: DE26B43C3D21B3A3
+
+unsafeCheck: false
+
+ALL_FPS:
+  # Disable FixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x59ED248, 0x7A4]
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x59EDB68, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x57EEDA8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

@@ -1,0 +1,53 @@
+# 零 ～月蝕的假面～ 1.0.3
+# BID: A735894277FF90F3
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Redirect min delta to MAIN + 0x1FE0FF0
+  # REF: 00 D9 21 7E 28 19 20 1E
+  -
+    type: bytes
+    main_offset: 0x16D9B4
+    value_type: uint32
+    value:
+     - 0xF000F39B # ADRP X27, 0x1FE0000
+     - 0xBD4FF368 # LDR S8, [X27, 0xFF0]
+  # Redirect FPS Lock to MAIN + 0x1FE0FF4
+  # REF: 69 B2 40 B9 0A 40 99 52
+  -
+    type: bytes
+    main_offset: 0x16DDD0
+    value_type: uint32
+    value:
+     - 0xF000F389 # ADRP X9, 0x1FE0000
+     - 0xB94FF529 # LDR W9, [X9, 0xFF4]
+     - 0xD503201F # NOP
+     - 0xD503201F # NOP
+  # Default values
+  -
+    type: bytes
+    main_offset: 0x1FE0FF0
+    value_type: float
+    value: 0.0333333333
+  -
+    type: bytes
+    main_offset: 0x1FE0FF4
+    value_type: uint32
+    value: 33333333
+ALL_FPS:
+  # Min delta
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1FE0FF0]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  # FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1FE0FF4]
+    value_type: uint32
+    value: "1000000000 / FPS_TARGET"
+  -
+    type: block
+    what: timing

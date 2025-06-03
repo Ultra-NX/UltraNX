@@ -1,4 +1,9 @@
 [Location_0]
-Name=notUltraNX
+Name=notUltraNX RU
 Type=ApacheHTTP
 URL=https://dbi.ultranx.ru/
+
+[Location_1]
+Name=notUltraNX EN
+Type=ApacheHTTP
+URL=https://dbi.ultranx.ru/en/
