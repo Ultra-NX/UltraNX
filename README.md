@@ -48,7 +48,7 @@
    * [Sphaira](https://github.com/ITotalJustice/sphaira) - Современное Хоумбрю Меню, аналог nx-hbmenu
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
    * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - Программа для обновления системного ПО.
-   * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль.
+   * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль.
 
 
 1. **Установленные модули**
@@ -69,7 +69,7 @@
 
 1. **Доступные для скачивания через [Ultra Tuner](https://github.com/Ultra-NX/UltraNX/wiki/Tuner-RU#ultra-tuner)**
    * Homebrews:
-      * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Здесь можно скачать DBI или обновить имеющийся.
+      * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Здесь можно скачать DBI или обновить имеющийся.
       * [Linkalho](https://gbatemp.net/download/linkalho.38822) - Программа для привязки аккаунта.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - Эмулятор PSP.
