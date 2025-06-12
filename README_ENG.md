@@ -6,7 +6,7 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [Ultra 2.4|R2](https://github.com/Ultra-NX/UltraNX/releases) Supports HOS 20.1.1 and all console revisions
+### [Ultra 2.4|R2.1](https://github.com/Ultra-NX/UltraNX/releases) Supports HOS 20.1.1 and all console revisions
 
 
 
@@ -88,6 +88,7 @@
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Patches for FPSLocker, so you don't have to download a separate patch for each game through the overlay.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - SysDVR patches, work without the system module, activating background recording in games where it is initially prohibited.
+      * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - A package for downloading, installing, and managing mods for games.
       * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP server running in background.
 
 
@@ -123,7 +124,7 @@ Listed below are the licenses of those programs that have been modified specific
 If you like the project and you have a desire to support me with a penny - I will be very grateful.
 I have no other income at the moment, so any monetary help is very valuable to me.            
 ```
-TON:  UQDioCnnPI5sk4KvxWzfPWsWbAyWCkzwhaYjy8Qpg2QwWMiL
-BTC:  1HsC4z8X1YkZzcSKZz1t7MXRa7rPi8qChV
-USDT: TQi3qLVrNGcr6avfVQBXRjpPTyvp5JZ7i2
+TON:  UQA9My51bkGZHbYhbdRZfp6B60N7VJfsnKl0sakgw9YhAPct
+BTC:  18K6NN8NEavvMJL5Do3VTyJbL8NeZPHo93
+USDT TRC20: TUZ5szAmRsnvBuC4rFB8RaAoCbN6Ucy4sL
 ```

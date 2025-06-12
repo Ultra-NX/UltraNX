@@ -8,7 +8,7 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [Ultra 2.4|R2](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает HOS 20.1.1 и все ревизии консолей
+### [Ultra 2.4|R2.1](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает HOS 20.1.1 и все ревизии консолей
 
 
 
@@ -92,6 +92,7 @@
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Патчи для FPSLocker, что бы не качать отдельно патч для каждой игры через оверлей.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
+      * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - Пакет для скачивания, установки и управления модами для игр.
       * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий на фоне.
 
 
@@ -129,14 +130,15 @@
 Если вам нравится проект, и у вас появилось желание поддержать меня копеечкой - я буду очень благодарен.
 У меня в данный момент нет других заработков, так что любая денежная помощь очень ценна для меня. 
 ```
-TON:  UQDioCnnPI5sk4KvxWzfPWsWbAyWCkzwhaYjy8Qpg2QwWMiL
-BTC:  1HsC4z8X1YkZzcSKZz1t7MXRa7rPi8qChV
-USDT: TQi3qLVrNGcr6avfVQBXRjpPTyvp5JZ7i2
-
 СБП : +79168089980
 
 Альфа : 2200152336577997
 Tinkoff : 2200700170486970
+Сбер : 2202200513345833
+
+TON:  UQA9My51bkGZHbYhbdRZfp6B60N7VJfsnKl0sakgw9YhAPct
+BTC:  18K6NN8NEavvMJL5Do3VTyJbL8NeZPHo93
+USDT TRC20: TUZ5szAmRsnvBuC4rFB8RaAoCbN6Ucy4sL
 ```           
 
 ### Tinkoff QR
