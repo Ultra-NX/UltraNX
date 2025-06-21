@@ -1,4 +1,4 @@
-# Ultra-NX by **[redraz](https://github.com/redraz)**
+# UltraNX by **[redraz](https://github.com/redraz)**
 
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Ultra.png)
 
@@ -8,7 +8,7 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [Ultra 2.4|R2.1](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает HOS 20.1.1 и все ревизии консолей
+### [Ultra 2.4|R2.1](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает HOS 20.1.5 и все ревизии консолей
 
 
 
@@ -119,8 +119,6 @@
 * Meha
 * duckbill
 * snupt
-* Cooler3D
-* 4PDA
 #### А так же - отдельная благодарность администрации и участникам Ultra Group
 
 
