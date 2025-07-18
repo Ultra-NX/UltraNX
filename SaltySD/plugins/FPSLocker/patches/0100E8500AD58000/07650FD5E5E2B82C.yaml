@@ -1,0 +1,83 @@
+# 無双OROCHI３ 1.0.13
+# BID: 07650FD5E5E2B82C
+# Credits to Hazerou for figuring out the offset
+# Main offset stores address to start of .bss of NRO
+## REF: 02 00 00 00 3C 00 00 00
+
+unsafeCheck: true
+
+ALL_FPS:
+  # Without DLC Ultimate Edition installed
+  -
+    type: evaluate_compare
+    compare_value_type: uint64
+    compare_type: "=="
+    compare_value: 0x379B4590A7C2BC1F
+    compare_address: [MAIN, 0x3AF80, -0x1B80FC0]
+    address: [MAIN, 0x3AF80, -0x92BB8]
+    value_type: uint32
+    value: [VSYNC_TARGET, FPS_TARGET]
+  -
+    type: evaluate_compare
+    compare_value_type: uint64
+    compare_type: "=="
+    compare_value: 0x379B4590A7C2BC1F
+    compare_address: [MAIN, 0x3AF80, -0x1B80FC0]
+    address: [MAIN, 0x3AF80, -0x92BB0]
+    value_type: float
+    value: FPS_TARGET
+  -
+    type: evaluate_compare
+    compare_value_type: uint64
+    compare_type: "=="
+    compare_value: 0x379B4590A7C2BC1F
+    compare_address: [MAIN, 0x3AF80, -0x1B80FC0]
+    address: [MAIN, 0x3AF80, -0x92BAC]
+    value_type: uint32
+    value: [VSYNC_TARGET, FPS_TARGET]
+  -
+    type: evaluate_compare
+    compare_value_type: uint64
+    compare_type: "=="
+    compare_value: 0x379B4590A7C2BC1F
+    compare_address: [MAIN, 0x3AF80, -0x1B80FC0]
+    address: [MAIN, 0x3AF80, -0x92BA4]
+    value_type: float
+    value: FPS_TARGET
+  # With DLC Ultimate Edition installed
+  -
+    type: evaluate_compare
+    compare_value_type: uint64
+    compare_type: "!="
+    compare_value: 0x379B4590A7C2BC1F
+    compare_address: [MAIN, 0x3AF80, -0x1B80FC0]
+    address: [MAIN, 0x3AF80, -0x93480]
+    value_type: uint32
+    value: [VSYNC_TARGET, FPS_TARGET]
+  -
+    type: evaluate_compare
+    compare_value_type: uint64
+    compare_type: "!="
+    compare_value: 0x379B4590A7C2BC1F
+    compare_address: [MAIN, 0x3AF80, -0x1B80FC0]
+    address: [MAIN, 0x3AF80, -0x93478]
+    value_type: float
+    value: FPS_TARGET
+  -
+    type: evaluate_compare
+    compare_value_type: uint64
+    compare_type: "!="
+    compare_value: 0x379B4590A7C2BC1F
+    compare_address: [MAIN, 0x3AF80, -0x1B80FC0]
+    address: [MAIN, 0x3AF80, -0x93474]
+    value_type: uint32
+    value: [VSYNC_TARGET, FPS_TARGET]
+  -
+    type: evaluate_compare
+    compare_value_type: uint64
+    compare_type: "!="
+    compare_value: 0x379B4590A7C2BC1F
+    compare_address: [MAIN, 0x3AF80, -0x1B80FC0]
+    address: [MAIN, 0x3AF80, -0x9346C]
+    value_type: float
+    value: FPS_TARGET

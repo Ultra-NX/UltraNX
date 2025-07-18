@@ -1,0 +1,174 @@
+# The Legend of Zelda: Tears of The Kingdom 1.4.1
+# BID: 965EAB9CEB8EB867
+
+Addons:
+  - atmosphere/contents/0100F2C0115B6000/exefs/main.npdm
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Remove double buffer
+  ## REF: A0 2A 40 F9 61 A2 40 39
+  -
+    type: bytes
+    main_offset: 0xBC9088
+    value_type: uint32
+    value: 0x52800021
+  # Code Injected, $x1 + 0xD8 - last frametime without compensation long ticks, $x0 + 0x50 - fps target used for calculatuon int,
+  # $x0 + 0x24 - our fps target used for calculation but as float, originally is stored there 30 FPS int that seems to do nothing outside of this function
+  ## MAIN + 0x3ACAFFC = FPS target for reference
+  ## REF: nvnWindowSetPresentInterval
+  - 
+    type: bytes
+    main_offset: 0x38A3C4
+    value_type: uint32
+    value: 
+      - 0x9001BA02
+      - 0xBD4FFC49
+      - 0xAA0003F4
+      - 0xAA0103F5
+      - 0xF9406C20
+      - 0x94A066EA # BL nn::os::ConvertToTimeSpan(nn::os::Tick)
+      - 0x52994002
+      - 0x72A77342
+      - 0x1E220042
+      - 0x9E220001
+      - 0x1E211841
+      - 0x1E292020
+      - 0x1E21CD21
+      - 0x1E25D009
+      - 0x1E292020
+      - 0x1E21BD21
+      - 0x1E390022
+      - 0xB9005282
+      - 0xBD002681
+      - 0x1400002B
+  ## Use our fps target
+  ## REF: 60 52 42 BD 08 4E A8 52
+  -
+    type: bytes
+    main_offset: 0x389C8C
+    value_type: uint32
+    value: 0xBD422660
+  -
+    type: bytes
+    main_offset: 0x389CA4
+    value_type: uint32
+    value: 0xD503201F
+  ## REF: 14 01 40 F9 08 4E A8 52
+  -
+    type: bytes
+    main_offset: 0x4916DC
+    value_type: uint32
+    value: 0xBD4226C0
+  -
+    type: bytes
+    main_offset: 0x4916E8
+    value_type: uint32
+    value: 0xD503201F
+  # When prerendered cutscene is active write flag to MAIN + 0x3ACAFFB
+  ## REF: 68 52 40 79 08 01 19 32 68 52 00 79
+  -
+    type: bytes
+    main_offset: 0x2B23988
+    value_type: uint32
+    value: 0x97619AA3
+  ## REF: 68 52 40 79 08 79 18 12 68 52 00 79, inside call
+  -
+    type: bytes
+    main_offset: 0x2B211A0
+    value_type: uint32
+    value: 0x1761A4A1
+  ## CODE CAVE, offset +0x50 relative to start of previous code cave 
+  -
+    type: bytes
+    main_offset: 0x38A414
+    value_type: uint32
+    value: 
+      - 0x52800022
+      - 0x9001BA03
+      - 0x393FEC62
+      - 0x141ADBE3
+  ## CODE CAVE, offset +0x10 relative to start of previous code cave
+  -
+    type: bytes
+    main_offset: 0x38A424
+    value_type: uint32
+    value: 
+      - 0x9001BA03
+      - 0x393FEC60
+      - 0x14A06C69 # B nn::oe::SetUserInactivityDetectionTimeExtended(bool)
+  # Adjust DR timing to factor from MAIN + 0x3ACAFF4
+  # REF: 88 02 15 CB 00 01 23 9E
+  -
+    type: bytes
+    main_offset: 0x17AC04
+    value_type: uint32
+    value:
+      - 0x9001CA88
+      - 0xBD4FF501
+  # Fix black background for D-pad menu
+  ## REF: 21 03 5E BC
+  -
+    type: bytes
+    main_offset: 0x48DDD0
+    value_type: uint32
+    value: 
+      - 0x17FBF198
+      - 0x1E202008
+  ## CODE CAVE, offset +0xC relative to start of previous code cave
+  -
+    type: bytes
+    main_offset: 0x38A430
+    value_type: uint32
+    value:
+      - 0x1E202028
+      - 0x54000101
+      - 0x785FA328
+      - 0x7100151F
+      - 0x540000A1
+      - 0x785F8328
+      - 0x7100151F
+      - 0x54000041
+      - 0x1E2E1008
+      - 0x1F080409
+      - 0x14040E5F
+  # Default values
+  ## FPS Target
+  -
+    type: bytes
+    main_offset: 0x3ACAFFC
+    value_type: float
+    value: 30
+  ## Cutscene flag
+  -
+    type: bytes
+    main_offset: 0x3ACAFFB
+    value_type: uint8
+    value: 0
+  ## Dynamic Resolution timing factor
+  -
+    type: bytes
+    main_offset: 0x3ACAFF4
+    value_type: float
+    value: 0.001
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3ACAFFC]
+    value_type: float
+    value: FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3ACAFF4]
+    value_type: float
+    value: "0.001 * (FPS_TARGET / 30)"
+  -
+    type: compare
+    compare_address: [MAIN, 0x3ACAFFB]
+    compare_value_type: uint8
+    compare_value: 1
+    compare_type: "=="
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30

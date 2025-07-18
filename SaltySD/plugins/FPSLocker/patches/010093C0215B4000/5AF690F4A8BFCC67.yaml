@@ -1,0 +1,21 @@
+# The Hundred Line -Last Defense Academy- 1.0.6
+# BID: 5AF690F4A8BFCC67
+# Last found function with REF: FD 7B BE A9 F3 0B 00 F9 FD 03 00 91 E0 03 01 2A stores some code related to playing above 60 FPS. Look at it if someone will have an issue playing above 60 FPS.
+
+unsafeCheck: true
+
+ALL_FPS:
+  # FPS Lock
+  # REF: 1B 41 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0xC8CC78]
+    value_type: uint32
+    value: FRAMETIME_TARGET * 1000
+  # Unknown value, but set in the same function as FPS lock, so it may be important
+  # REF: 3C 00 00 00 01 00 00 00 00 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0xC8CC44]
+    value_type: uint32
+    value: FPS_TARGET

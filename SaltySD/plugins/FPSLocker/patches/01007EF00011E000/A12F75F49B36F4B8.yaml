@@ -1,0 +1,148 @@
+# The Legend of Zelda: Breath of the Wild 1.8.1
+# BID: A12F75F49B36F4B8
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Remove double buffer
+  ## REF: 61 F6 42 39
+  -
+    type: bytes
+    main_offset: 0xD80748
+    value_type: uint32
+    value: 0x52800021
+  # Change pointer of GPU time factor for DR calculations to MAIN + 0x1D36C80
+  ## REF: XREF 0x46823555, replace loading for 0.001
+  -
+    type: bytes
+    main_offset: 0xE6F140
+    value_type: uint32
+    value: 
+      - 0xF0007628
+      - 0xBD4FF501
+  # Dynamic speed
+  ## Replace nvnQueuePresentTexture call to code cave at MAIN+0x148D964
+  -
+    type: bytes
+    main_offset: 0xD874FC
+    value_type: uint32
+    value: 0x141C191A
+  ## Patch game speed function to use speed from MAIN+0x1D36FF0
+  -
+    type: bytes
+    main_offset: 0x14092A8
+    value_type: uint32
+    value: 0x14000003
+  -
+    type: bytes
+    main_offset: 0x14092CC
+    value_type: uint32
+    value:
+      - 0xB0004969
+      - 0xBD4FF121
+  ## Patch UI speed function to use speeed from MAIN+0x1D36FF0
+  -
+    type: bytes
+    main_offset: 0x116D0D8
+    value_type: uint32
+    value: 0xB0005E47
+  -
+    type: bytes
+    main_offset: 0x116D0E4
+    value_type: uint32
+    value: 0xBD4FF0E0
+  ## CODE CAVE
+  -
+    type: bytes
+    main_offset: 0x148D964
+    value_type: uint32
+    value:
+      - 0xD63F0100
+      - 0xD53BE022
+      - 0xB0004548
+      - 0xF947FD01
+      - 0xEB1F003F
+      - 0x54000061
+      - 0xF907FD02
+      - 0x17E3E6E0
+      - 0xCB010040
+      - 0x97FFFBB6 # BL nn::os::ConvertToTimeSpan(nn::os::Tick)
+      - 0x9E230000
+      - 0x52940AA0
+      - 0x72A03F80
+      - 0x1E230001
+      - 0x1E211800
+      - 0x1E201001
+      - 0x1E212000
+      - 0x5400004B
+      - 0x1E204020
+      - 0xB0004548
+      - 0xBD4FED01
+      - 0x1E212000
+      - 0x5400004C
+      - 0x1E204020
+      - 0xBD0FF100
+      - 0x17FFFFED
+      - 0xB0004540
+      - 0xB94FF000
+      - 0xD65F03C0
+      - 0xB0004547
+      - 0xB90FE8E1
+      - 0x17DDA966
+  # Signal Cutscenes playing
+  -
+    type: bytes
+    main_offset: 0xC00680
+    value_type: uint32
+    value: 0x942234D6
+  -
+    type: bytes
+    main_offset: 0xC00E40
+    value_type: uint32
+    value: 0x942232E6
+  # Default speed
+  -
+    type: bytes
+    main_offset: 0x1D36FF0
+    value_type: float
+    value: 1.0
+  -
+    type: bytes
+    main_offset: 0x1D36FEC
+    value_type: float
+    value: 1.0
+  # Default cutscene state
+  -
+    type: bytes
+    main_offset: 0x1D36FE8
+    value_type: uint8
+    value: 1
+  # Default DR factor
+  -
+    type: bytes
+    main_offset: 0x1D36FF4
+    value_type: float
+    value: 0.001
+ALL_FPS:
+  # Min Delta
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1D36FEC]
+    value_type: float
+    value: "30 / FPS_TARGET"
+  # DR factor
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1D36FF4]
+    value_type: float
+    value: "(FPS_TARGET / 30) * 0.001"
+  # Prerendered cutscenes must be played at 30 FPS
+  -
+    type: compare
+    compare_address: [MAIN, 0x1D36FE8]
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 0
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30

@@ -9,7 +9,7 @@ ALL_FPS:
     type: write
     address: [MAIN, 0x3482FB0, 0xB8, 0]
     value_type: int32
-    value: 1
+    value: -1
   # maxFixedDeltaTime, ref: UnityEngine.Time::get_timeScale
   -
     type: write

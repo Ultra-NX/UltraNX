@@ -9,4 +9,4 @@ ALL_FPS:
     type: write
     address: [MAIN, 0x481B2F8, 0xB8, 0]
     value_type: int32
-    value: 1
+    value: -1
