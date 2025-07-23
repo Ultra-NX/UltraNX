@@ -1,4 +1,4 @@
-# ABZU 1.0.0
+# ABZU 1.0.0/1.0.01
 # BID: 59719CFCD1671B98
 
 unsafeCheck: true
@@ -10,6 +10,12 @@ ALL_FPS:
     address: [MAIN, 0x6228EE0, 0]
     value_type: float
     value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5996FC0, 0]
+    value_type: uint32
+    value: [0, 0]
   -
     type: block
     what: timing

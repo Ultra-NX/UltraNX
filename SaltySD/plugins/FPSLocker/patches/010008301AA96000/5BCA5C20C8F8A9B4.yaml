@@ -1,0 +1,36 @@
+# Tiebreak+: Official Game of the ATP and WTA 1.2.0
+# BID: 5BCA5C20C8F8A9B4
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Triple buffer
+  # REF: 00 40 00 00 00 04 00 00 00 88 00 00 02 00 00 00
+  -
+    type: bytes
+    main_offset: 0x1A82EAC
+    value_type: uint32
+    value: 3
+  # Redirect Dynamic Resolution target reading to MAIN + 0x30C3F00
+  # REF: 28 11 91 52 08 A1 A7 72 03 01 27 1E
+  -
+    type: bytes
+    main_offset: 0x147B474
+    value_type: uint32
+    value:
+      - 0x9000E248 # ADRP X8, 0x30C3000
+      - 0xBD4F0103 # LDR S3, [X8, 0xF00]
+      - 0xD503201F # NOP
+  ## Default values
+  -
+    type: bytes
+    main_offset: 0x30C3F00
+    value_type: float
+    value: 0.03333333333
+ALL_FPS:
+  # Adjust Dynamic Resolution target, we are using this trick because function is overengineered and it's not easy to just use standard 1 / FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x30C3F00]
+    value_type: float
+    value: "0.8 / FPS_TARGET"

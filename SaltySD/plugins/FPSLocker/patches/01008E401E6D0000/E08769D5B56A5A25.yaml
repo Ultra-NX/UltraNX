@@ -1,4 +1,4 @@
-# The Smurfs - Dreams 1.0.2
+# The Smurfs - Dreams 1.0.2/1.0.3
 # BID: E08769D5B56A5A25
 
 unsafeCheck: true
@@ -10,12 +10,6 @@ ALL_FPS:
     address: [MAIN, 0x8321958, 0]
     value_type: int32
     value: [0, 0]
-  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
-  -
-    type: evaluate_write
-    address: [MAIN, 0x92DEDE8, 0]
-    value_type: float
-    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
   # t.MaxFPS
   -
     type: evaluate_write

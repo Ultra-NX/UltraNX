@@ -1,0 +1,170 @@
+# The Legend of Zelda: Tears of The Kingdom 1.4.0
+# BID: 6265F94D606242CE
+
+Addons:
+  - atmosphere/contents/0100F2C0115B6000/exefs/main.npdm
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Remove double buffer
+  ## REF: A0 2A 40 F9 61 A2 40 39
+  -
+    type: bytes
+    main_offset: 0xBD1F08
+    value_type: uint32
+    value: 0x52800021
+  # Code Injected, $x1 + 0xD8 - last frametime without compensation long ticks, $x0 + 0x50 - fps target used for calculatuon int,
+  # $x0 + 0x24 - our fps target used for calculation but as float, originally is stored there 30 FPS int that seems to do nothing outside of this function
+  ## MAIN + 0x3ACFFFC = FPS target for reference
+  ## REF: nvnWindowSetPresentInterval
+  - 
+    type: bytes
+    main_offset: 0x3E0F64
+    value_type: uint32
+    value: 
+      - 0xF001B762
+      - 0xBD4FFC49
+      - 0xAA0003F4
+      - 0xAA0103F5
+      - 0xF9406C20
+      - 0x949F20BE
+      - 0xF0014902
+      - 0xB9480842
+      - 0x1E220042
+      - 0x9E220001
+      - 0x1E211841
+      - 0x1E292020
+      - 0x1E21CD21
+      - 0x1E25D009
+      - 0x1E292020
+      - 0x1E21BD21
+      - 0x1E390022
+      - 0xB9005282
+      - 0xBD002681
+      - 0x1400002B
+  ## Use our fps target
+  -
+    type: bytes
+    main_offset: 0x3E082C
+    value_type: uint32
+    value: 0xBD422660
+  -
+    type: bytes
+    main_offset: 0x3E0844
+    value_type: uint32
+    value: 0xD503201F
+  -
+    type: bytes
+    main_offset: 0x4B4F8C
+    value_type: uint32
+    value: 0xBD4226C0
+  -
+    type: bytes
+    main_offset: 0x4B4F98
+    value_type: uint32
+    value: 0xD503201F
+  # When prerendered cutscene is active write flag to MAIN + 0x3ACFFFB
+  ## REF: 68 52 40 79 08 01 19 32 68 52 00 79
+  -
+    type: bytes
+    main_offset: 0x2B2A608
+    value_type: uint32
+    value: 0x9762DA6E
+  ## REF: 68 52 40 79 08 79 18 12 68 52 00 79
+  -
+    type: bytes
+    main_offset: 0x2B27E20
+    value_type: uint32
+    value: 0x1762E46C
+  ## CODE CAVE
+  -
+    type: bytes
+    main_offset: 0x3E0FC0
+    value_type: uint32
+    value: 
+      - 0x52800022
+      - 0xF001B763
+      - 0x393FEC62
+      - 0x14196AF3
+  -
+    type: bytes
+    main_offset: 0x3E0FD0
+    value_type: uint32
+    value: 
+      - 0xF001B763
+      - 0x393FEC60
+      - 0x149F263A
+  # Adjust DR timing to factor from MAIN + 0x3ACFFF4
+  # REF: 0x46823555
+  -
+    type: bytes
+    main_offset: 0x18CB20
+    value_type: uint32
+    value:
+      - 0xF001CA08
+      - 0xBD4FF501
+  # Fix black background for D-pad menu
+  -
+    type: bytes
+    main_offset: 0x5ECA90
+    value_type: uint32
+    value: 
+      - 0x17F7D153
+      - 0x1E202008
+  ## CODE CAVE
+  -
+    type: bytes
+    main_offset: 0x3E0FDC
+    value_type: uint32
+    value:
+      - 0x1E202028
+      - 0x54000101
+      - 0x785FA328
+      - 0x7100151F
+      - 0x540000A1
+      - 0x785F8328
+      - 0x7100151F
+      - 0x54000041
+      - 0x1E2E1008
+      - 0x1F080409
+      - 0x14082EA4
+  # Default values
+  ## FPS Target
+  -
+    type: bytes
+    main_offset: 0x3ACFFFC
+    value_type: float
+    value: 30
+  ## Cutscene flag
+  -
+    type: bytes
+    main_offset: 0x3ACFFFB
+    value_type: uint8
+    value: 0
+  ## Dynamic Resolution timing factor
+  -
+    type: bytes
+    main_offset: 0x3ACFFF4
+    value_type: float
+    value: 0.001
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3ACFFFC]
+    value_type: float
+    value: FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3ACFFF4]
+    value_type: float
+    value: "0.001 * (FPS_TARGET / 30)"
+  -
+    type: compare
+    compare_address: [MAIN, 0x3ACFFFB]
+    compare_value_type: uint8
+    compare_value: 1
+    compare_type: "=="
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30

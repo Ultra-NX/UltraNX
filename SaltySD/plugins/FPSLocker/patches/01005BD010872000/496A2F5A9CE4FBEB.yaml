@@ -1,0 +1,24 @@
+# 女神異聞錄５ 亂戰：魅影攻手 1.0.1
+# BID: 496A2F5A9CE4FBEB
+
+unsafeCheck: true
+
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1D11158]
+    value_type: int32
+    value: [FPS_LOCK_TARGET, VSYNC_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1D24BE8]
+    value_type: float
+    value: FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2A848D0]
+    value_type: int32
+    value: "VSYNC_TARGET - 1"
+  -
+    type: block
+    what: timing

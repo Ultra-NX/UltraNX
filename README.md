@@ -1,4 +1,4 @@
-# Ultra-NX by **[redraz](https://github.com/redraz)**
+# UltraNX by **[redraz](https://github.com/redraz)**
 
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Ultra.png)
 
@@ -8,7 +8,7 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [Ultra 2.4|R2](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает HOS 20.1.0 и все ревизии консолей
+### [Ultra 2.5|R1](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает HOS 20.2.0 и все ревизии консолей
 
 
 
@@ -48,7 +48,7 @@
    * [Sphaira](https://github.com/ITotalJustice/sphaira) - Современное Хоумбрю Меню, аналог nx-hbmenu
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
    * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - Программа для обновления системного ПО.
-   * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль.
+   * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль.
 
 
 1. **Установленные модули**
@@ -69,7 +69,7 @@
 
 1. **Доступные для скачивания через [Ultra Tuner](https://github.com/Ultra-NX/UltraNX/wiki/Tuner-RU#ultra-tuner)**
    * Homebrews:
-      * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Здесь можно скачать DBI или обновить имеющийся.
+      * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Здесь можно скачать DBI или обновить имеющийся.
       * [Linkalho](https://gbatemp.net/download/linkalho.38822) - Программа для привязки аккаунта.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - Эмулятор PSP.
@@ -92,6 +92,7 @@
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Патчи для FPSLocker, что бы не качать отдельно патч для каждой игры через оверлей.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
+      * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - Пакет для скачивания, установки и управления модами для игр.
       * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий на фоне.
 
 
@@ -118,8 +119,6 @@
 * Meha
 * duckbill
 * snupt
-* Cooler3D
-* 4PDA
 #### А так же - отдельная благодарность администрации и участникам Ultra Group
 
 
@@ -129,14 +128,15 @@
 Если вам нравится проект, и у вас появилось желание поддержать меня копеечкой - я буду очень благодарен.
 У меня в данный момент нет других заработков, так что любая денежная помощь очень ценна для меня. 
 ```
-TON:  UQDioCnnPI5sk4KvxWzfPWsWbAyWCkzwhaYjy8Qpg2QwWMiL
-BTC:  1HsC4z8X1YkZzcSKZz1t7MXRa7rPi8qChV
-USDT: TQi3qLVrNGcr6avfVQBXRjpPTyvp5JZ7i2
-
 СБП : +79168089980
 
 Альфа : 2200152336577997
 Tinkoff : 2200700170486970
+Сбер : 2202200513345833
+
+TON:  UQA9My51bkGZHbYhbdRZfp6B60N7VJfsnKl0sakgw9YhAPct
+BTC:  18K6NN8NEavvMJL5Do3VTyJbL8NeZPHo93
+USDT TRC20: TUZ5szAmRsnvBuC4rFB8RaAoCbN6Ucy4sL
 ```           
 
 ### Tinkoff QR

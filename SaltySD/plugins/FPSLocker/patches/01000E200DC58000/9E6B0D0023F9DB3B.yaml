@@ -1,0 +1,15 @@
+# OCTOPATH TRAVELER 歧路旅人 1.0.5
+# BID: 9E6B0D0023F9DB3B
+
+unsafeCheck: true
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x50B5698, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

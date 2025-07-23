@@ -1,0 +1,12 @@
+# PowerWash Simulator 1.11.0
+# BID: 561B0F485E699E4E
+
+unsafeCheck: false
+
+ALL_FPS:
+  # FuturLab.SingletonMonoBehaviour<FrameRateLimiter>_TypeInfo (don't block FPSlocker internal lock because game's lock is kinda shit)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x606A350, 0xB8, 0, 0x28]
+    value_type: int32
+    value: FPS_LOCK_TARGET

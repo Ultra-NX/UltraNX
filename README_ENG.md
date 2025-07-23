@@ -1,4 +1,4 @@
-# Ultra-NX by **[redraz](https://github.com/redraz)**
+# UltraNX by **[redraz](https://github.com/redraz)**
 
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Ultra.png)
 
@@ -6,7 +6,7 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [Ultra 2.4|R2](https://github.com/Ultra-NX/UltraNX/releases) Supports HOS 20.1.0 and all console revisions
+### [Ultra 2.5|R1](https://github.com/Ultra-NX/UltraNX/releases) Supports HOS 20.2.0 and all console revisions
 
 
 
@@ -44,7 +44,7 @@
    * [Sphaira](https://github.com/ITotalJustice/sphaira) - Modern Homebrew Menu, analogous to nx-hbmenu
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Program to update Ultra to the current version, as well as to download cheats.
    * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - A program for updating OS.
-   * [DBI](https://github.com/rashevskyv/dbi) - The best file manager, save manager and program installer on the console.
+   * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - The best file manager, save manager and program installer on the console.
 
 
 1. **Installed Modules**
@@ -65,7 +65,7 @@
 
 1. **Available for download via [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
    * Homebrews:
-      * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1120#entry86288632) - Here you can download a DBI or update an existing one.
+      * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Here you can download a DBI or update an existing one.
       * [Linkalho](https://gbatemp.net/download/linkalho.38822/) - Account linking program.
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - PSP emulator.
@@ -88,6 +88,7 @@
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Patches for FPSLocker, so you don't have to download a separate patch for each game through the overlay.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - SysDVR patches, work without the system module, activating background recording in games where it is initially prohibited.
+      * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - A package for downloading, installing, and managing mods for games.
       * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP server running in background.
 
 
@@ -112,8 +113,6 @@ Listed below are the licenses of those programs that have been modified specific
 * Meha
 * duckbill
 * snupt
-* Cooler3D
-* 4PDA
 #### And also - a special thanks to the administration and members of Ultra Group
 
 
@@ -123,7 +122,7 @@ Listed below are the licenses of those programs that have been modified specific
 If you like the project and you have a desire to support me with a penny - I will be very grateful.
 I have no other income at the moment, so any monetary help is very valuable to me.            
 ```
-TON:  UQDioCnnPI5sk4KvxWzfPWsWbAyWCkzwhaYjy8Qpg2QwWMiL
-BTC:  1HsC4z8X1YkZzcSKZz1t7MXRa7rPi8qChV
-USDT: TQi3qLVrNGcr6avfVQBXRjpPTyvp5JZ7i2
+TON:  UQA9My51bkGZHbYhbdRZfp6B60N7VJfsnKl0sakgw9YhAPct
+BTC:  18K6NN8NEavvMJL5Do3VTyJbL8NeZPHo93
+USDT TRC20: TUZ5szAmRsnvBuC4rFB8RaAoCbN6Ucy4sL
 ```
