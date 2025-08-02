@@ -6,11 +6,15 @@ unsafeCheck: true
 ALL_FPS:
   # Game speed value
   -
-    type: evaluate_write
+    type: evaluate_compare
+    compare_type: "=="
+    compare_value_type: uint32
+    compare_value: 2
+    compare_address: [MAIN, 0x2218B44, 0x10]
     address: [MAIN, 0x2218B44, 0x20]
     value_type: float
     value: "1 / FPS_TARGET"
-  # Play prerendered cutscenes only at 60 FPS
+  # Block prerendered cutscenes to 30 FPS
   -
     type: compare
     compare_address: [MAIN, 0x1728B58]

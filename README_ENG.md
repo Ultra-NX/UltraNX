@@ -21,9 +21,7 @@
 * Regular updates, and an active community.
 * [Forks](https://github.com/Ultra-NX/Ultra-Resources/tree/main/patches) (own modifications) of programs and components needed for convenience, security and empowerment:
    * Atmosphere fork with Ultra version in system information, and disabled reports, which usually clogs up the SD card, wastes its resource and breaks the file system.
-   * SaltyNX and FPSLocker forks, with support for changing screen refresh rate and with OLED support.
    * Mission Control fork, with the “easter egg” cut out, making the joycons yellow-blue.
-   * Status Monitor fork with display of current voltages and unique Micro Overlay modules, whose presets can be changed via Ultra Tuner.
 
 
 
@@ -49,17 +47,17 @@
 
 1. **Installed Modules**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins. Not compatible with 32-bit games (list on the project's github).
-   * [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Module responsible for overclocking CPU, memory and GPU - for better performance. I change versions from different authors from time to time. Original authors: Meha/hanai3Bi, lineon, p-sam.
+   * [sys-clk](https://github.com/ppkantorski/sys-clk) - Module responsible for overclocking CPU, memory and GPU - for better performance. I change versions from different authors from time to time. Original authors: Meha/hanai3Bi, lineon, p-sam.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - This module is used to switch the installed modules.
    * [sys-patch](https://github.com/impeeza/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console via bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
-     - **`Ultra OC (sys-clk)`**, a mod of [sys-clk](https://github.com/halop/OC_Toolkit_SC_EOS) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources (Since they're closed).
-     - [Status Monitor](https://github.com/Ultra-NX/Status-Monitor-Overlay), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Updater.
+     - **`Ultra OC (sys-clk)`**, a mod of [sys-clk](https://github.com/ppkantorski/sys-clk) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources (Since they're closed).
+     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Updater.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - An overlay for using cheats.
-     - [ReverseNX-RT](https://github.com/masagrator/ReverseNX-RT) - ReverseNX control overlay.
+     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - ReverseNX control overlay.
      - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Overlay for enabling and disabling installed system modules.
 
 
@@ -77,7 +75,7 @@
       * [MicroMemBench](https://github.com/rashevskyv/4IFIR) - Benchmark. The result is highly dependent on CPU overclocking. A version from 4ifir that tests CPU Copy in real time, which allows you to quickly find out the result after changing timings.
 
    * Overlays:
-      * [Status Monitor Ultra](https://github.com/Ultra-NX/Status-Monitor-Overlay) - Status Monitor fork for UltraNX, supports many Micro-overlay presets, and has a number of unique features.
+      * [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Status Monitor fork from kantorski.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay/) - "That" game in the form of an overlay. Works only on the latest versions of Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Global volume control, allows you to raise the volume above the maximum. Use with care!
       * [NX-FanControl](https://github.com/Zathawo/NX-FanControl) - Module for manually adjusting the speed of the cooler. The changes are applied immediately, the module works from SOC temperature and not Skin temperature like Atmosphere.

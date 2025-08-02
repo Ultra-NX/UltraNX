@@ -1,0 +1,27 @@
+# Expeditions: A Mudrunner Game 1.17.0.0
+# BID: 471546458FD9E43D
+# REF: 01 04 0C 5E 00 10 2E 1E
+
+unsafeCheck: true
+
+MASTER_WRITE:
+# Redirect DR frametime target to MAIN+0x36D4F00
+  -
+    type: bytes
+    main_offset: 0x17358B4
+    value_type: uint32
+    value: 
+      - 0xF000FCED # adrp x13, #0x36D4000
+      - 0xBD4F01A2 # ldr s2, [x13, #0xf00]
+  # default value
+  -
+    type: bytes
+    main_offset: 0x36D4F00
+    value_type: float
+    value: 33.3333333333
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x36D4F00]
+    value_type: float
+    value: FRAMETIME_TARGET

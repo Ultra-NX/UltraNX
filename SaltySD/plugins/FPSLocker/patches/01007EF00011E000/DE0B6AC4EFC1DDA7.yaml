@@ -11,14 +11,15 @@ MASTER_WRITE:
     main_offset: 0xD80748
     value_type: uint32
     value: 0x52800021
-  # Change pointer of GPU time factor for DR calculations to MAIN + 0x1D36C80
-  ## REF: XREF 0x46823555, replace loading for 0.001
+  # Change pointer of time factor for DR calculations to MAIN + 0x1D36FF4
+  ## REF: 01 01 27 1E 08 59 A8 52 03 08 21 1E, replace hardcoded 100.0 float
   -
     type: bytes
-    main_offset: 0xE6F140
+    main_offset: 0x1153314
     value_type: uint32
     value: 
-      - 0xF0007628
+      - 0xF0005F08
+      - 0x1E210803
       - 0xBD4FF501
   # Dynamic speed
   ## Replace nvnQueuePresentTexture call to code cave at MAIN+0x148D964
@@ -122,7 +123,7 @@ MASTER_WRITE:
     type: bytes
     main_offset: 0x1D36FF4
     value_type: float
-    value: 0.001
+    value: 100.0
 ALL_FPS:
   # Scrolling speed
   ## REF: 68 16 41 B9 D8 22 D5 1A
@@ -143,7 +144,7 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x1D36FF4]
     value_type: float
-    value: "(FPS_TARGET / 30) * 0.001"
+    value: "(FPS_TARGET / 30) * 100"
   # Prerendered cutscenes must be played at 30 FPS
   -
     type: compare

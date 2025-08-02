@@ -1,0 +1,27 @@
+# Romancing SaGa 2: Revenge of the Seven 1.1.0
+# BID: D7A32C718E9D6363
+
+unsafeCheck: true
+
+ALL_FPS:
+ # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6D25AE0, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7C01C70, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7C5A4C0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

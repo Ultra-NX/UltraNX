@@ -1,0 +1,57 @@
+# Resident Evil 1.0.0
+# BID: 6BEC9B23B09DF46C
+
+unsafeCheck: true
+
+MASTER_WRITE:
+  # Detect prerendered cutscenes
+  -
+    type: bytes
+    main_offset: 0xB1A810
+    value_type: uint32
+    value: 0x14005CF6
+  -
+    type: bytes
+    main_offset: 0xB31BE8
+    value_type: uint32
+    value:
+      - 0xF81E0FF3
+      - 0x52800021
+      - 0xD000CDB3
+      - 0xB90FF261
+      - 0xAA0003F3
+      - 0x52994000
+      - 0x72A77340
+      - 0xD4000161
+      - 0xAA1303E0
+      - 0x17FFA302
+  -
+    type: bytes
+    main_offset: 0xB1A9BC
+    value_type: uint32
+    value: 0x14005C95
+  -
+    type: bytes
+    main_offset: 0xB31C10
+    value_type: uint32
+    value:
+      - 0x2A1F03E1
+      - 0xD000CDA2
+      - 0xB90FF041
+      - 0x17FFCCA9
+ALL_FPS:
+  # Internal FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1EC6CF0, 0x4C]
+    value_type: float
+    value: "FPS_LOCK_TARGET"
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint32
+    compare_value: 1
+    compare_address: [MAIN, 0x24E7FF0]
+    address: [MAIN]
+    value_type: refresh_rate
+    value: 30

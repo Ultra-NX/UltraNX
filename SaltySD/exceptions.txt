@@ -24,7 +24,7 @@ X0100964012528000
 
 ;Olympic Games Tokyo 2020 – The Official Video Game
 ;1.0.0 crash on boot
-X010034B00E14C000
+010034B00E14C000
 
 ;Mario Strikers: Battle League
 ;1.0.0 crash on boot
