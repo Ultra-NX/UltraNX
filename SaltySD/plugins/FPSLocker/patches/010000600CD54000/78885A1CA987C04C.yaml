@@ -1,4 +1,4 @@
-# Rad Rogers: Radical Edition 1.2.0
+# Rad Rodgers: Radical Edition 1.2.0
 # BID: 78885A1CA987C04C
 
 unsafeCheck: true
@@ -13,3 +13,4 @@ ALL_FPS:
   -
     type: block
     what: timing
+

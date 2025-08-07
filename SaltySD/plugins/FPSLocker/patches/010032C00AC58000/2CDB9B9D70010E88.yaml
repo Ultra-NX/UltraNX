@@ -9,7 +9,8 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x24924D8, 0x504C]
     value_type: float
-    value: FPS_LOCK_TARGET
+    value: FPS_TARGET
   -
     type: block
     what: timing
+

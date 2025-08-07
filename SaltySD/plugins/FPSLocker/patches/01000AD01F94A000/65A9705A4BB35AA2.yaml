@@ -1,0 +1,27 @@
+# Tony Hawk's Pro Skater 3 + 4 1.05
+# BID: 65A9705A4BB35AA2
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x77DD4B8, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x780B6A0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x7006068, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

@@ -1,0 +1,28 @@
+# City of Brass 1.2.0
+# BID: 53116900DC7BBE11
+
+unsafeCheck: true
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6257960, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 4)", "TruncDec(FRAMETIME_TARGET, 4)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x627BE28, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5A2B258, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
+

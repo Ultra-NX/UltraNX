@@ -1,4 +1,4 @@
-# Achilles Legends Untold 1.0.1
+# Achilles Legends Untold 1.0.1/1.0.2
 # BID: BDDD7E8FA07C8C75
 
 unsafeCheck: true
@@ -21,4 +21,5 @@ ALL_FPS:
     type: write
     address: [MAIN, 0x6199738, 0]
     value_type: int32
+
     value: [0, 0]
