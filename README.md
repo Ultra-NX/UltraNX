@@ -8,8 +8,8 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [Ultra 2.5|R1](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает HOS 20.2.0
-### [Ultra 2.5|Pre2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.5-R2) Частично поддерживает HOS 20.3.0 (Только Safe Mode)
+### [Ultra 2.5|R2](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает HOS до 20.3.0 включительно
+
 
 
 
@@ -35,7 +35,7 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, кастомная прошивка для Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Пользовательский графический загрузчик Nintendo Switch, патчер прошивки, инструментарий и многое другое.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Пакет для Ultrahand, позволяющий произвести тонкую настройку параметров под свою консоль. В случае нестабильной работы разгона, или при желании увеличить производительность консоли, Ultra Tuner - Ваш незаменимый помощник.
-1. **[OC-Switchcraft](https://github.com/halop/OC-Switchcraft-EOS/releases)**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Лоадер атмосферы с разгоном от B3711, позволяет выжать из N.Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
+1. **[OC-Switchcraft](https://github.com/halop/OC-Switchcraft-EOS/releases)**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Лоадер Атмосферы с разгоном от B3711, позволяет выжать из Nintendo Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
 
 
 1. **Установленные пейлоады**:
@@ -57,19 +57,19 @@
    * [sys-patch](https://github.com/impeeza/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
-   * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
-     - **`Ultra OC (sys-clk)`**, мод [sys-clk](https://github.com/ppkantorski/sys-clk) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках (Так как они закрыты).
-     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Updater.
+   * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Также позволяет использовать самописные пакеты, например - Ultra Tuner.
+     - **`Ultra OC (sys-clk)`**, мод [sys-clk](https://github.com/ppkantorski/sys-clk) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках (так как они закрыты).
+     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей, позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Updater.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов.
-     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - Оверлей для управления ReverseNX.
+     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - Оверлей для управления ReverseNX. Позволяет менять режимы работы консоли (портативный/док-станция).
      - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Оверлей для включения и отключения установленных системных модулей.
 
 
 1. **Доступные для скачивания через [Ultra Tuner](https://github.com/Ultra-NX/UltraNX/wiki/Tuner-RU#ultra-tuner)**
    * Homebrews:
       * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Здесь можно скачать DBI или обновить имеющийся.
-      * [Linkalho](https://gbatemp.net/download/linkalho.38822) - Программа для привязки аккаунта.
+      * [Linkalho](https://gbatemp.net/download/linkalho.38822) - Программа для привязки аккаунта Nintendo без подключения к серверам (необходимо для некоторых игр).
       * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - Эмулятор PSP.
       * [Moonlight](https://github.com/XITRIX/Moonlight-Switch) - Клиент Moonlight, позволяет транслировать на консоль игры с PC.
@@ -83,16 +83,16 @@
       * [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Форк Status Monitor от kantorski.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay) - Та самая игра в виде оверлея. Работает только на последних версиях Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Регулировка глобальной громкости, позволяет поднять громкость выше максимума. Использовать аккуратно!
-      * [NX-FanControl](https://github.com/Zathawo/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
-      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться/подключаться к bluetooth-гарнитуре.
+      * [NX-FanControl](https://github.com/Zathawo/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC, а не Skin, как Атмосфера.
+      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться/подключаться к Bluetooth-гарнитуре.
       * [Fizeau](https://github.com/averne/Fizeau) - Модуль для изменения цветового профиля экрана.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.
 
    * Other:
-      * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Патчи для FPSLocker, что бы не качать отдельно патч для каждой игры через оверлей.
+      * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Все патчи для FPSLocker одним пакетом, чтобы не качать отдельно патч для каждой игры через оверлей.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
       * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - Пакет для скачивания, установки и управления модами для игр.
-      * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий на фоне.
+      * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий в фоне.
 
 
 
