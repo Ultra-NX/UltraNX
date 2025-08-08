@@ -8,15 +8,14 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [Ultra 2.5|R1](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает HOS 20.2.0
-### [Ultra 2.5|Pre2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.5-R2) Частично поддерживает HOS 20.3.0 (Только Safe Mode)
+### [Ultra 2.5|R2](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает HOS 20.3.0
 
 
 
 ## Особенности Ultra
 
-* Предварительно настроенный OC Switchcraft (Преемник OC-Suite) с пресетами.
-* По умолчанию уже есть андервольт, который заметно снижает потребление консоли, и небольшой разгон памяти, который сделает игры плавнее.
+* Предварительно настроенный OC Switchcraft (Преемник OC-Suite, аналог 4IFIR) с пресетами.
+* Небольшой андервольт (сниженные вольтажи) в стоке, что заметно снижает потребление консоли, и заметный разгон памяти, который сделает игры плавнее.
 * Лучший кастомизатор разгона для Свитч - [Ultra-Tuner](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Ultra-Tuner), позволяющий настраивать разгон прямо с консоли. Был первым, и остается неповторимым.
 * Сборка максимально легкая и не нагруженная. В ней нет лишнего, минимум необходимый для разгона и комфортного использования.
 * Модульная конструкция. В составе минимум приложений/плагинов/оверлеев, но вы всегда можете поставить еще через [Ultra Tuner](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater).
@@ -25,7 +24,7 @@
 * DBI с встроенным notUltraNX репозиторием игр, больше не нужно каждый раз искать новый шоп Тинфоила.
 * Подробная [Wiki](https://github.com/Ultra-NX/Ultra/wiki) в которой есть ответы почти на все вопросы.
 * [Форки](https://github.com/Ultra-NX/Ultra-Resources/tree/main/patches) (свои модификации) программ и компонентов, нужные для удобства, безопасности и расширения возможностей:
-   * Форк Атмосферы с прописанной версией Ультры в информации о системе, и отключенными репортами, обычно засоряющими сд карту, тратящими ее ресурс и ломающими файловую систему. Так же исправлена работа старых форвардеров (важно для хоумбрю игр/эмуляторов).
+   * Форк Атмосферы с прописанной версией Ультры в информации о системе, и отключенными репортами, обычно засоряющими сд карту, тратящими ее ресурс и ломающими файловую систему.
    * Форк Mission Control, с вырезанной "пасхалкой", делающей джойконы жовто-блакитными.
 
 
@@ -35,7 +34,7 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, кастомная прошивка для Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Пользовательский графический загрузчик Nintendo Switch, патчер прошивки, инструментарий и многое другое.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Пакет для Ultrahand, позволяющий произвести тонкую настройку параметров под свою консоль. В случае нестабильной работы разгона, или при желании увеличить производительность консоли, Ultra Tuner - Ваш незаменимый помощник.
-1. **[OC-Switchcraft](https://github.com/halop/OC-Switchcraft-EOS/releases)**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Лоадер атмосферы с разгоном от B3711, позволяет выжать из N.Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
+1. **[OC-Switchcraft](https://github.com/halop/OC-Switchcraft-EOS/releases)**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Загрузчик Атмосферы с разгоном от B3711 и Meha, позволяет выжать из N.Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
 
 
 1. **Установленные пейлоады**:
@@ -45,32 +44,32 @@
 
 1. **Установленные Homebrew**
    * [Sphaira](https://github.com/ITotalJustice/sphaira) - Современное Хоумбрю Меню, аналог nx-hbmenu
-   * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления Ultra до актуальной версии, а так же для скачивания читов.
-   * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - Программа для обновления системного ПО.
+   * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления UltraNX до актуальной версии, а так же для скачивания читов и HOS.
+   * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - Программа для обновления HOS (системного ПО).
    * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль.
 
 
 1. **Установленные модули**
-   * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины. Не совместим с 32-х битными играми (список на гитхабе проекта).
-   * [sys-clk](https://github.com/ppkantorski/sys-clk) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности. Периодически меняю версии от разных авторов. Оригинальные авторы: Meha/hanai3Bi, lineon, p-sam.
+   * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины.
+   * [sys-clk](https://github.com/ppkantorski/sys-clk) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - С помощью этого модуля осуществляется переключение установленных модулей.
    * [sys-patch](https://github.com/impeeza/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
-   * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Так же позволяет использовать самописные пакеты, например - Ultra Tuner.
+   * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Также позволяет использовать самописные пакеты, например - Ultra Tuner.
      - **`Ultra OC (sys-clk)`**, мод [sys-clk](https://github.com/ppkantorski/sys-clk) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках (Так как они закрыты).
-     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Updater.
+     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Tuner.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
-     - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов.
-     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - Оверлей для управления ReverseNX.
-     - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Оверлей для включения и отключения установленных системных модулей.
+     - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов, включая графические.
+     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - Оверлей для переключения запущенной игры в портатив\док, меняет настройки графики\разрешения в играх.
+     - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Оверлей для включения\отключения установленных системных модулей.
 
 
 1. **Доступные для скачивания через [Ultra Tuner](https://github.com/Ultra-NX/UltraNX/wiki/Tuner-RU#ultra-tuner)**
    * Homebrews:
       * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Здесь можно скачать DBI или обновить имеющийся.
-      * [Linkalho](https://gbatemp.net/download/linkalho.38822) - Программа для привязки аккаунта.
-      * [HB App Store](https://github.com/fortheusers/hb-appstore) - Бесплатный магазин для скачивания Homebrew приложений.
+      * [Linkalho](https://gbatemp.net/download/linkalho.38822) - Программа для привязки аккаунта. Без привязки не будут работать некоторые игры.
+      * [Sphaira](https://github.com/ITotalJustice/sphaira) - Здесь можно обновить Sphaira\обновить ее конфиг.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - Эмулятор PSP.
       * [Moonlight](https://github.com/XITRIX/Moonlight-Switch) - Клиент Moonlight, позволяет транслировать на консоль игры с PC.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Поиск и установка тем на свитч.
@@ -84,12 +83,12 @@
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay) - Та самая игра в виде оверлея. Работает только на последних версиях Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Регулировка глобальной громкости, позволяет поднять громкость выше максимума. Использовать аккуратно!
       * [NX-FanControl](https://github.com/Zathawo/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
-      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться/подключаться к bluetooth-гарнитуре.
+      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться\подключаться к bluetooth-гарнитуре.
       * [Fizeau](https://github.com/averne/Fizeau) - Модуль для изменения цветового профиля экрана.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.
 
    * Other:
-      * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Патчи для FPSLocker, что бы не качать отдельно патч для каждой игры через оверлей.
+      * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Пакет патчей для FPSLocker, позволяет обновить все патчи сразу, вместо скачивания по одному через оверлей FPSLocker'а. В Ультре по умолчанию всегда последние патчи, так что достаточно своевременно обновлять сборку.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
       * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - Пакет для скачивания, установки и управления модами для игр.
       * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий на фоне.
@@ -103,10 +102,6 @@
 
 [GPL 2.0](https://github.com/Atmosphere-NX/Atmosphere/blob/master/LICENSE): 
   * [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)
-  * [Status-Monitor-Overlay](https://github.com/masagrator/Status-Monitor-Overlay)
-
-[MIT License](https://github.com/masagrator/FPSLocker/blob/main/LICENSE)
-  * [FPSLocker](https://github.com/masagrator/FPSLocker)
 
 
 
@@ -127,10 +122,10 @@
 Если вам нравится проект, и у вас появилось желание поддержать меня копеечкой - я буду очень благодарен.
 У меня в данный момент нет других заработков, так что любая денежная помощь очень ценна для меня. 
 ```
-СБП : +79168089980
+СБП (Т-Банк): +79168089980
 
 Альфа : 2200152336577997
-Tinkoff : 2200700170486970
+Т-Банк : 2200700170486970
 Сбер : 2202200513345833
 
 TON:  UQA9My51bkGZHbYhbdRZfp6B60N7VJfsnKl0sakgw9YhAPct
@@ -138,5 +133,5 @@ BTC:  18K6NN8NEavvMJL5Do3VTyJbL8NeZPHo93
 USDT TRC20: TUZ5szAmRsnvBuC4rFB8RaAoCbN6Ucy4sL
 ```           
 
-### Tinkoff QR
+### Т-Банк QR
 ![](https://github.com/Ultra-NX/Ultra-Resources/raw/main/Tinkoff%20small.png)

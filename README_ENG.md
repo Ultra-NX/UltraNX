@@ -6,8 +6,7 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [Ultra 2.5|R1](https://github.com/Ultra-NX/UltraNX/releases) Supports HOS 20.2.0
-### [Ultra 2.5|Pre2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.5-R2) Partially supports HOS 20.3.0 (Safe Mode Only)
+### [Ultra 2.5|R2](https://github.com/Ultra-NX/UltraNX/releases) Supports HOS 20.3.0
 
 
 
@@ -31,7 +30,7 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, custom firmware for the Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Custom Nintendo Switch graphical bootloader, firmware patcher, toolkit and more.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Package for Ultrahand, which allows you to fine-tune the OC parameters for your console. In case of unstable overclocking, or if you want to increase the performance of your console, Ultra Tuner is your indispensable assistant.
-1. **[OC-Switchcraft](https://github.com/halop/OC-Switchcraft-EOS/releases)**, a fork of **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Atmosphere Loader with overclocking from B3711, allows you to reach from N.Switch power Xbox One. Updated in time to support new Atmosphere features.
+1. **[OC-Switchcraft](https://github.com/halop/OC-Switchcraft-EOS/releases)**, a fork of **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Atmosphere Loader with overclocking from B3711 & Meha, allows you to reach from N.Switch power Xbox One. Updated in time to support new Atmosphere features.
 
 
 1. **Installed Payloads**:
@@ -41,32 +40,32 @@
 
 1. **Installed Homebrew**
    * [Sphaira](https://github.com/ITotalJustice/sphaira) - Modern Homebrew Menu, analogous to nx-hbmenu
-   * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Program to update Ultra to the current version, as well as to download cheats.
-   * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - A program for updating OS.
+   * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Program to update Ultra to the current version, as well as to download cheats & HOS.
+   * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - A program for updating HOS.
    * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - The best file manager, save manager and program installer on the console.
 
 
 1. **Installed Modules**
-   * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins. Not compatible with 32-bit games (list on the project's github).
-   * [sys-clk](https://github.com/ppkantorski/sys-clk) - Module responsible for overclocking CPU, memory and GPU - for better performance. I change versions from different authors from time to time. Original authors: Meha/hanai3Bi, lineon, p-sam.
+   * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins.
+   * [sys-clk](https://github.com/ppkantorski/sys-clk) - Module responsible for overclocking CPU, memory and GPU - for better performance.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - This module is used to switch the installed modules.
    * [sys-patch](https://github.com/impeeza/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console via bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
      - **`Ultra OC (sys-clk)`**, a mod of [sys-clk](https://github.com/ppkantorski/sys-clk) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources (Since they're closed).
-     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Updater.
+     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Tuner.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - An overlay for using cheats.
-     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - ReverseNX control overlay.
-     - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Overlay for enabling and disabling installed system modules.
+     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - An overlay for switching a running game to a handheld\dock mode, which changes the graphics and resolution settings in games.
+     - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Overlay for enabling\disabling installed system modules.
 
 
 1. **Available for download via [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
    * Homebrews:
       * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Here you can download a DBI or update an existing one.
-      * [Linkalho](https://gbatemp.net/download/linkalho.38822/) - Account linking program.
-      * [HB App Store](https://github.com/fortheusers/hb-appstore) - A free store for downloading Homebrew apps.
+      * [Linkalho](https://gbatemp.net/download/linkalho.38822/) - Account linking program. Some games won't work without the link.
+      * [Sphaira](https://github.com/ITotalJustice/sphaira) - Here you can update Sphaira\update its config.
       * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - PSP emulator.
       * [Moonlight](https://github.com/XITRIX/Moonlight-Switch) - Moonlight client, allows to stream games from PC.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Searching and installing themes on Switch.
@@ -80,12 +79,12 @@
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay/) - "That" game in the form of an overlay. Works only on the latest versions of Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Global volume control, allows you to raise the volume above the maximum. Use with care!
       * [NX-FanControl](https://github.com/Zathawo/NX-FanControl) - Module for manually adjusting the speed of the cooler. The changes are applied immediately, the module works from SOC temperature and not Skin temperature like Atmosphere.
-      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - An overlay that allows you to quickly disconnect/connect to a bluetooth headset.
+      * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - An overlay that allows you to quickly disconnect\connect to a bluetooth headset.
       * [Fizeau](https://github.com/averne/Fizeau) - Module for changing the screen color profile.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Overlay music player, works in background.
 
    * Other:
-      * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Patches for FPSLocker, so you don't have to download a separate patch for each game through the overlay.
+      * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - The patch package for FPSLocker allows you to update all patches at once, instead of downloading one at a time through the FPSLocker overlay. UltraNX always has the latest patches by default, so it's enough to update the CFW in a timely manner.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - SysDVR patches, work without the system module, activating background recording in games where it is initially prohibited.
       * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - A package for downloading, installing, and managing mods for games.
       * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP server running in background.
@@ -98,10 +97,6 @@ Listed below are the licenses of those programs that have been modified specific
 
 [GPL 2.0](https://github.com/Atmosphere-NX/Atmosphere/blob/master/LICENSE): 
   * [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)
-  * [Status-Monitor-Overlay](https://github.com/masagrator/Status-Monitor-Overlay)
-
-[MIT License](https://github.com/masagrator/FPSLocker/blob/main/LICENSE)
-  * [FPSLocker](https://github.com/masagrator/FPSLocker)
 
 
 
