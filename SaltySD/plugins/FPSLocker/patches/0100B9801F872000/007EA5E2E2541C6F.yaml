@@ -7,19 +7,19 @@ MASTER_WRITE:
   # Redirect Dynamic Resolution target to MAIN+0x2C53F00
   # REF: 6A C8 82 52
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x138238C
-    value_type: uint32
-    value: 
-      - 0xB000C68A # ADRP X10, 0x2c53000
-      - 0xB94F014A # LDR W10, [X10, 0xF00]
+    instructions: [
+      [adrp, x10, 0x2c53000],
+      [ldr, w10, [x10, 0xf00]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x13823A8
-    value_type: uint32
-    value: 
-      - 0xB000C68A # ADRP X10, 0x2c53000
-      - 0xB94F054A # LDR W10, [X10, 0xF04]   
+    instructions: [
+      [adrp, x10, 0x2c53000],
+      [ldr, w10, [x10, 0xf04]]
+    ]
   # Default values
   -
     type: bytes
@@ -40,4 +40,5 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x2C53F00]
     value_type: float
+
     value: ["1 / FPS_TARGET", "1 / (FPS_TARGET + 5)"]

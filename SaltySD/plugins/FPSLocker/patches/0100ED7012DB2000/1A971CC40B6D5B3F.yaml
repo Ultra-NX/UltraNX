@@ -7,29 +7,29 @@ unsafeCheck: true
 MASTER_WRITE:
   # Redirect adjusting game speed to FPS Lock stored in MAIN + 0x2BFB700, REF: 20 79 68 BC 01 10 2E 1E 00 D8 21 7E
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xB8F528
-    value_type: uint32
-    value:
-      - 0x90010369
-      - 0x911C0129
+    instructions: [
+      [adrp, x9, 0x2bfb000],
+      [add, x9, x9, 0x700]
+    ]
   # Redirect FPS Lock to MAIN + 0x2BFB700, REF: C8 32 40 B9 E8 C2 00 B9
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x8966BC
-    value_type: uint32
-    value:
-      - 0xB0011B28
-      - 0xB9470108
+    instructions: [
+      [adrp, x8, 0x2bfb000],
+      [ldr, w8, [x8, 0x700]]
+    ]
   # Redirect game speed to MAIN + 0x2BFB708, REF: 00 28 21 1E 00 A0 00 BD C0 03 5F D6
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1109040
-    value_type: uint32
-    value:
-      - 0xD000D788
-      - 0xBD40A000
-      - 0xBD470901
+    instructions: [
+      [adrp, x8, 0x2bfb000],
+      [ldr, s0, [x0, 0xa0]],
+      [ldr, s1, [x8, 0x708]]
+    ]
   # Default FPS Targets
   -
     type: bytes
@@ -61,3 +61,4 @@ ALL_FPS:
   -
     type: block
     what: timing
+

@@ -8,10 +8,11 @@ unsafeCheck: true
 MASTER_WRITE:
   # Block FPS lock being constantly updated
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x27CE38
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
 ALL_FPS:
   # Internal FPS Lock
   -
@@ -32,3 +33,4 @@ ALL_FPS:
   -
     type: block
     what: timing
+

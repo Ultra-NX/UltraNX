@@ -9,126 +9,135 @@ unsafeCheck: true
 MASTER_WRITE:
   # Remove double buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x861208
-    value_type: uint32
-    value: 0x52800069
+    instructions: [
+      [mov, w9, 3]
+    ]
   # Fix helper functions to properly copy third buffer address to stack
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x8612DC
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x8654D8
-    value_type: uint32
-    value:
-      - 0xD10183FF
-      - 0xA9027BFD
-      - 0x910083FD
-      - 0xF9001BF7
-      - 0xA90457F6
-      - 0xA9054FF4
-      - 0xA9017FFF
+    instructions: [
+      [sub, sp, sp, 0x60],
+      [stp, x29, x30, [sp, 0x20]],
+      [add, x29, sp, 0x20],
+      [str, x23, [sp, 0x30]],
+      [stp, x22, x21, [sp, 0x40]],
+      [stp, x20, x19, [sp, 0x50]],
+      [stp, xzr, xzr, [sp, 0x10]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x86550C
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x8655B8
-    value_type: uint32
-    value:
-      - 0xA9002BE8
-      - 0x97FFE69B
-      - 0xA9454FF4
-      - 0xF9401BF7
-      - 0xA94457F6
-      - 0xA9427BFD
-      - 0x910183FF
+    instructions: [
+      [stp, x8, x10, [sp]],
+      [bl, 0x85f028],
+      [ldp, x20, x19, [sp, 0x50]],
+      [ldr, x23, [sp, 0x30]],
+      [ldp, x22, x21, [sp, 0x40]],
+      [ldp, x29, x30, [sp, 0x20]],
+      [add, sp, sp, 0x60]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x793298
-    value_type: uint32
-    value:
-      - 0xD10143FF
-      - 0xA9027BFD
-      - 0x910083FD
-      - 0xA90357F6
-      - 0xA9044FF4
+    instructions: [
+      [sub, sp, sp, 0x50],
+      [stp, x29, x30, [sp, 0x20]],
+      [add, x29, sp, 0x20],
+      [stp, x22, x21, [sp, 0x30]],
+      [stp, x20, x19, [sp, 0x40]],
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x7932E0
-    value_type: uint32
-    value: 0xA9017FFF
+    instructions: [
+      [stp, xzr, xzr, [sp, 0x10]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x7932EC
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x793310
-    value_type: uint32
-    value:
-      - 0xA9444FF4
-      - 0xA94357F6
-      - 0xA9427BFD
-      - 0x910143FF
+    instructions: [
+      [ldp, x20, x19, [sp, 0x40]],
+      [ldp, x22, x21, [sp, 0x30]],
+      [ldp, x29, x30, [sp, 0x20]],
+      [add, sp, sp, 0x50]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x876B00
-    value_type: uint32
-    value:
-      - 0x910043E1
-      - 0x910043F7
+    instructions: [
+      [add, x1, sp, 0x10],
+      [add, x23, sp, 0x10]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x876B14
-    value_type: uint32
-    value: 
-      - 0x52800062
-      - 0xA9017FFF
+    instructions: [
+      [mov, w2, 3],
+      [stp, xzr, xzr, [sp, 0x10]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x8CFC44
-    value_type: uint32
-    value:
-      - 0x910003E1
-      - 0x52800062
+    instructions: [
+      [mov, x1, sp],
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x8CFC5C
-    value_type: uint32
-    value: 0x910003FA
+    instructions: [
+      [mov, x26, sp]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x876B14
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x8612DC
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x876A64
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   # Disable transparency for some 2D elements to avoid issues with flickering at triple buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x7BFB00
-    value_type: uint32
-    value:
-      - 0xD2802049
-      - 0xB948494A
-      - 0xD37DF14C
-      - 0x9120A114
-      - 0xF9000289
+    instructions: [
+      [mov, x9, 0x102],
+      [ldr, w10, [x10, 0x848]],
+      [lsl, x12, x10, 3],
+      [add, x20, x8, 0x828],
+      [str, x9, [x20]]
+    ]
 ALL_FPS:
   # Interval
   -
@@ -136,3 +145,4 @@ ALL_FPS:
     address: [MAIN, 0xBEBFD8, 0]
     value_type: int32
     value: VSYNC_TARGET
+

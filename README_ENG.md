@@ -6,7 +6,7 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [Ultra 2.5|R2](https://github.com/Ultra-NX/UltraNX/releases) Supports all HOS, including 20.3.0
+### [Ultra 2.6|R1](https://github.com/Ultra-NX/UltraNX/releases) Supports all HOS, including 20.4.0
 
 
 
@@ -56,8 +56,8 @@
      - **`Ultra OC (sys-clk)`**, a mod of [sys-clk](https://github.com/ppkantorski/sys-clk) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources (Since they're closed).
      - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Tuner.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
-     - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - An overlay for using cheats.
-     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - An overlay for switching a running game to a handheld\dock mode, which changes the graphics and resolution settings in games.
+     - [EdiZon](https://github.com/ppkantorski/EdiZon-Overlay) - An overlay for using cheats.
+     - [ReverseNX-RT](https://github.com/masagrator/ReverseNX-RT) - An overlay for switching a running game to a handheld\dock mode, which changes the graphics and resolution settings in games.
      - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Overlay for enabling\disabling installed system modules.
 
 

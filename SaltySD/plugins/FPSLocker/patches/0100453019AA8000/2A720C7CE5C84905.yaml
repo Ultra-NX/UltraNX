@@ -7,54 +7,55 @@ MASTER_WRITE:
   # Dynamic speed mod for stuff like UI, lipsync, grass and rain
   ## Redirect nvnQueuePresentTexture call to code cave at MAIN+0x1735050
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x95EED8
-    value_type: uint32
-    value: 0x1437585E
+    instructions: [
+      [b, 0x1735050]
+    ]
   ## Code Cave (save floats for speed factor to MAIN+0x47BE268, frametime as FPS in MAIN+0x47BE26C, frametime in s in MAIN+0x47BE270)
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1735050
-    value_type: uint32
-    value:
-      - 0xD63F0100
-      - 0x97FFF52B
-      - 0xB0018448
-      - 0xF9413107
-      - 0xF9013100
-      - 0xB5000047
-      - 0x17C8A79D
-      - 0xCB070000
-      - 0x97FFF528
-      - 0xB0018448
-      - 0xB9430101
-      - 0xEB00003F
-      - 0x5400004B
-      - 0xAA0103E0
-      - 0xD2881541
-      - 0xF2A07F21
-      - 0xEB00003F
-      - 0x5400004C
-      - 0xAA0103E0
-      - 0x9E630000
-      - 0xD00005A0
-      - 0xFD46AC01
-      - 0x1E611800
-      - 0xD2807D00
-      - 0x9E630001
-      - 0x1E601821
-      - 0xB0018440
-      - 0x1E624021
-      - 0xBD026C01
-      - 0x1E27D002
-      - 0x1E211842
-      - 0xBD026802
-      - 0xD2807D01
-      - 0x9E630021
-      - 0x1E611801
-      - 0x1E624021
-      - 0xBD027001
-      - 0x17C8A77E
+    instructions: [
+      [blr, x8],
+      [bl, 0x1732500],
+      [adrp, x8, 0x47be000],
+      [ldr, x7, [x8, 0x260]],
+      [str, x0, [x8, 0x260]],
+      [cbnz, x7, +8],
+      [b, 0x95eedc],
+      [sub, x0, x0, x7],
+      [bl, 0x1732510],
+      [adrp, x8, 0x47be000],
+      [ldr, w1, [x8, 0x300]],
+      [cmp, x1, x0],
+      [b.lt, +8],
+      [mov, x0, x1],
+      [mov, x1, 0x40aa],
+      [movk, x1, 0x3f9, 16],
+      [cmp, x1, x0],
+      [b.gt, +8],
+      [mov, x0, x1],
+      [ucvtf, d0, x0],
+      [adrp, x0, 0x17eb000],
+      [ldr, d1, [x0, 0xd58]],
+      [fdiv, d0, d0, d1],
+      [mov, x0, 1000],
+      [ucvtf, d1, x0],
+      [fdiv, d1, d1, d0],
+      [adrp, x0, 0x47be000],
+      [fcvt, s1, d1],
+      [str, s1, [x0, 0x26c]],
+      [fmov, s2, 30.0],
+      [fdiv, s2, s2, s1],
+      [str, s2, [x0, 0x268]],
+      [mov, x1, 1000],
+      [ucvtf, d1, x1],
+      [fdiv, d1, d0, d1],
+      [fcvt, s1, d1],
+      [str, s1, [x0, 0x270]],
+      [b, 0x95eedc]
+    ]
   ## Default values for code cave
   -
     type: bytes
@@ -68,91 +69,95 @@ MASTER_WRITE:
     value: 33333333
   ## Function 1 to speed factor // Usage unknown
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x286968
-    value_type: uint32
-    value:
-      - 0x900229D5
-      - 0xF9470D00
-      - 0xBD426AAA
+    instructions: [
+      [adrp, x21, 0x47be000],
+      [ldr, x0, [x8, 0xe18]],
+      [ldr, s10, [x21, 0x268]]
+    ]
   ## Function 3 to speed factor // Usage unknown
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xA16F00
-    value_type: uint32
-    value:
-      - 0x9001ED40
-      - 0xBD426808
+    instructions: [
+      [adrp, x0, 0x47be000],
+      [ldr, s8, [x0, 0x268]]
+    ]
   ## Function 4 to FPS // UI Speed
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xA1F060
-    value_type: uint32
-    value:
-      - 0xF001ECE0
-      - 0x1E270100
-      - 0xBD426C00
+    instructions: [
+      [adrp, x0, 0x47be000],
+      [fmov, s0, w8],
+      [ldr, s0, [x0, 0x26c]]
+    ]
   ## Function 5 to FPS // Usage unknown
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2672DC
-    value_type: uint32
-    value:
-      - 0xF0022A20
-      - 0x1E270100
-      - 0x7940D268
-      - 0xBD426C05
+    instructions: [
+      [adrp, x0, 0x47ae000],
+      [fmov, s0, w8],
+      [ldrh, w8, [x19, 0x68]],
+      [ldr, s5, [x0, 0x26c]]
+    ]
   ## Function 6 to FPS
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x26DB70
-    value_type: uint32
-    value:
-      - 0xB0022A80
-      - 0xBD426C00
-      - 0x1E390000
-      - 0x528000C9
-      - 0x1AC90808
+    instructions: [
+      [adrp, x0, 0x47be000],
+      [ldr, s0, [x0, 0x26c]],
+      [fcvtzu, w0, s0],
+      [mov, w9, 6],
+      [udiv, w8, w0, w9]
+    ]
   ## Function 7 to Frametime in s // Gameplay + cutscene speed
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1E2924
-    value_type: uint32
-    value: 0x90022EE9
+    instructions: [
+      [adrp, x9, 0x47be000]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1E2938
-    value_type: uint32
-    value: 0xBD427120
+    instructions: [
+      [ldr, s0, [x9, 0x270]]
+    ]
   # Adjust various elements related to fighting
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1E8F48
-    value_type: uint32
-    value: 0x1455308B
+    instructions: [
+      [b, 0x1735174]
+    ]
   ## Code cave
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1735174
-    value_type: uint32
-    value:
-      - 0xB0018449
-      - 0xBD426920
-      - 0x17AACF74
+    instructions: [
+      [adrp, x9, 0x47be000],
+      [ldr, s0, [x9, 0x268]],
+      [b, 0x1e8f4c]
+    ]
   ## Fix gun speed
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x30FACC
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   # Redirect DR Target to MAIN+0x47BEF00
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x13A90B4
-    value_type: uint32
-    value:
-      - 0xB001A0A8
-      - 0xBD4F0100
+    instructions: [
+      [adrp, x8, 0x47be000],
+      [ldr, s0, [x8, 0xf00]]
+    ]
   ## Default value
   -
     type: bytes
@@ -162,157 +167,165 @@ MASTER_WRITE:
   # Adjust camera speed rotation dynamically
   ## Code cave
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1735108
-    value_type: uint32
-    value:
-      - 0xB0018448
-      - 0xBD426908
-      - 0x1E200900
-      - 0x1E202008
-      - 0x540000AA
-      - 0x1E214000
-      - 0x1E21C000
-      - 0x1E214000
-      - 0xD65F03C0
-      - 0x1E21C000
-      - 0xD65F03C0
+    instructions: [
+      [adrp, x8, 0x47be000],
+      [ldr, s8, [x8, 0x268]],
+      [fmul, s0, s8, s0],
+      [fcmp, s0, 0.0],
+      [b.ge, +20],
+      [fneg, s0, s0],
+      [fsqrt, s0, s0],
+      [fneg, s0, s0],
+      [ret],
+      [fsqrt, s0, s0],
+      [ret]
+    ]
   ## Connect function 1
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1E17A0
-    value_type: uint32
-    value: 0x94554E5A
+    instructions: [
+      [bl, 0x1735108]
+    ]
   ## Connect function 2
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1E17B0
-    value_type: uint32
-    value: 0xAD7D03A1
+    instructions: [
+      [ldp, q1, q0, [x29, -0x60]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1E17BC
-    value_type: uint32
-    value: 0x94554E53
+    instructions: [
+      [bl, 0x1735108]
+    ]
   # Force 1s sleep to synchronize audio if cutscene detected
   ## Use function responsible for writing type 4 of cutscene
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2FB0D8
-    value_type: uint32
-    value: 0x1450E820
+    instructions: [
+      [b, 0x1735158]
+    ]
   ### Code cave
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1735158
-    value_type: uint32
-    value:
-      - 0x52800094
-      - 0xD00045C0
-      - 0xB90AF414
-      - 0xD2994000
-      - 0xF2A77340
-      - 0x97FFF3D9
-      - 0x17AF17DB
+    instructions: [
+      [mov, w20, 4],
+      [adrp, x0, 0x1fef000],
+      [str, w20, [x0, 0xaf4]],
+      [mov, x0, 0xca00],
+      [movk, x0, 0x3b9a, 16],
+      [bl, 0x17320d0],
+      [b, 0x2fb0dc]
+    ]
   # Adjust Field Action gauge bar speed
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xE5E00
-    value_type: uint32
-    value:
-      - 0xB00236C0
-      - 0xF000E369
-      - 0xBD426808
+    instructions: [
+      [adrp, x0, 0x47be000],
+      [adrp, x9, 0x1d54000],
+      [ldr, s8, [x0, 0x268]]
+    ]
   ## Fix for FN Site
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xE5858
-    value_type: uint32
-    value: 0x14593E24
+    instructions: [
+      [b, 0x17350e8]
+    ]
   ### Code cave
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x17350E8
-    value_type: uint32
-    value:
-      - 0xBD40D260
-      - 0xB0018440
-      - 0xBD426801
-      - 0x1E210800
-      - 0x17A6C1D9
+    instructions: [
+      [ldr, s0, [x19, 0xd0]],
+      [adrp, x0, 0x47be000],
+      [ldr, s1, [x0, 0x268]],
+      [fmul, s0, s0, s1],
+      [b, 0xe585c]
+    ]
   # Fix long jump when not running
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x23EF70
-    value_type: uint32
-    value: 0x1453D863
+    instructions: [
+      [b, 0x17350fc]
+    ]
   ## Code cave
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x17350FC
-    value_type: uint32
-    value:
-      - 0x1E27D00B
-      - 0x1E2B296B
-      - 0x17AC279C
+    instructions: [
+      [fmov, s11, 30.0],
+      [fadd, s11, s11, s11],
+      [b, 0x23ef74]
+    ]
   # Adjust QTE Speed 
   ## Code cave
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1735134
-    value_type: uint32
-    value:
-      - 0xB0018454
-      - 0xBD426A81
-      - 0x1400001B
+    instructions: [
+      [adrp, x20, 0x47be000],
+      [ldr, s1, [x20, 0x268]],
+      [b, 0x17351a8]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x17351A8
-    value_type: uint32
-    value:
-      - 0xBD412262
-      - 0x1E210841
-      - 0x17BA4435
+    instructions: [
+      [ldr, s2, [x19, 0x120]],
+      [fmul, s1, s2, s1],
+      [b, 0x5c6284]
+    ]
   ## Connect function
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x5C6280
-    value_type: uint32
-    value: 0x1445BBAD
+    instructions: [
+      [b, 0x1735134]
+    ]
   # Adjust Overdrive counter, Follow Ball speed
   ## Code cave
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1735180
-    value_type: uint32
-    value:
-      - 0xB0018440
-      - 0xBD427000
-      - 0xD65F03C0
+    instructions: [
+      [adrp, x0, 0x47be000],
+      [ldr, s0, [x0, 0x270]],
+      [ret]
+    ]
   ## Connect function
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x67354
-    value_type: uint32
-    value: 0x945B36AB
+    instructions: [
+      [bl, 0x1734e00]
+    ]
   # Fix fog speed
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x296AE0
-    value_type: uint32
-    value: 
-      - 0x90022948
-      - 0xBD426902
-      - 0x945279B3
+    instructions: [
+      [adrp, x8, 0x47be000],
+      [ldr, s2, [x8, 0x268]],
+      [bl, 0x17351b4]
+    ]
   ## Code cave
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x17351B4
-    value_type: uint32
-    value: 
-      - 0x1E21C042
-      - 0x1F020020
-      - 0xD65F03C0
+    instructions: [
+      [fsqrt, s2, s2],
+      [fmadd, s0, s1, s2, s0],
+      [ret]
+    ]
 ALL_FPS:
   # FPS Target
   -

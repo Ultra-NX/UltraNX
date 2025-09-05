@@ -6,12 +6,12 @@ unsafeCheck: true
 MASTER_WRITE:
 # Remove double buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6440
-    value_type: uint32
-    value:
-      - 0x52800062
-      - 0x9B022501
+    instructions: [
+      [mov, w2, 3],
+      [madd, x1, x8, x2, x9]
+    ]
   -
     type: bytes
     main_offset: 0xC5A6D8
@@ -23,62 +23,65 @@ MASTER_WRITE:
     value_type: uint32
     value: 0x188CC50
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC56550
-    value_type: uint32
-    value:
-      - 0xF9400B40
-      - 0xB40000C0
-      - 0xD0005808
-      - 0xF9404908
-      - 0xF9400108
-      - 0xD63F0100
-      - 0x14000004
-      - 0x321A07E0
-      - 0x97EB7BC4
-      - 0xF9000B40
-      - 0xF9400376
-      - 0xB000581B
-      - 0xF9400335
-      - 0xF9479F7B
-      - 0xD0005817
-      - 0xF9400368
-      - 0xF9453AF7
-      - 0xAA1703E0
-      - 0xD63F0100
-      - 0xAA0003E2
-      - 0xAA1503E0
-      - 0xAA1603E1
-      - 0x97CEAD3A
-      - 0xAA0003F5
-      - 0xF9400320
-      - 0x97CEAD47
-      - 0xF9400388
-      - 0xAA0003E1
-      - 0xAA1703E0
-      - 0xAA1503E2
-      - 0xD63F0100
-      - 0xF9400B40
-      - 0xF9400308
-      - 0xAA1703E1
-      - 0xD63F0100
-      - 0xD0005816
-      - 0x17CEBE43
+    instructions: [
+      [ldr, x0, [x26, 0x10]],
+      [cbz, x0, +24],
+      [adrp, x8, 0x1758000],
+      [ldr, x8, [x8, 0x90]],
+      [ldr, x8, [x8]],
+      [blr, x8],
+      [b, +16],
+      [mov, w0, 0xc0],
+      [bl, 0x735480],
+      [str, x0, [x26, 0x10]],
+      [ldr, x22, [x27]],
+      [adrp, x27, 0x1757000],
+      [ldr, x21, [x25]],
+      [ldr, x27, [x27, 0xf38]],
+      [adrp, x23, 0x1758000],
+      [ldr, x8, [x27]],
+      [ldr, x23, [x23, 0xa70]],
+      [mov, x0, x23],
+      [blr, x8],
+      [mov, x2, x0],
+      [mov, x0, x21],
+      [mov, x1, x22],
+      [bl, 0x1a90],
+      [mov, x21, x0],
+      [ldr, x0, [x25]],
+      [bl, 0x1ad0],
+      [ldr, x8, [x28]],
+      [mov, x1, x0],
+      [mov, x0, x23],
+      [mov, x2, x21],
+      [blr, x8],
+      [ldr, x0, [x26, 0x10]],
+      [ldr, x8, [x24]],
+      [mov, x1, x23],
+      [blr, x8],
+      [adrp, x22, 0x1758000],
+      [b, 0x5eec]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x5EE8
-    value_type: uint32
-    value: 0x1431419A
+    instructions: [
+      [b, 0xc56550]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x5FC0
-    value_type: uint32
-    value: 0x52800061
+    instructions: [
+      [mov, w1, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x5F8C
-    value_type: uint32
-    value: 0xD2A032A2
+    instructions: [
+      [mov, x2, 0x1950000]
+    ]
 ALL_FPS:
   # dummy
   -

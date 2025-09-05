@@ -6,25 +6,30 @@ unsafeCheck: true
 MASTER_WRITE:
   # Remove double buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xF45DFC
-    value_type: uint32
+    instructions: [
+      [cmp, x26, 3]
+    ]
     value: 0xF1000F5F
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xF45E64
-    value_type: uint32
-    value: 0x52800061
+    instructions: [
+      [mov, w1, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xF461D4
-    value_type: uint32
-    value: 0xF1000F5F
+    instructions: [
+      [cmp, x26, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xF4623C
-    value_type: uint32
-    value: 0x52800061
+    instructions: [
+      [mov, w1, 3]
+    ]
 ALL_FPS:
   # DUMMY
   -

@@ -8,12 +8,12 @@ unsafeCheck: true
 MASTER_WRITE:
   # Change location of GPU frametime double divider to MAIN+0x32C6D00
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x921768
-    value_type: uint32
-    value: 
-      - 0xB0014D28
-      - 0xFD468101
+    instructions: [
+      [adrp, x8, 0x32c6000],
+      [ldr, d1, [x8, 0xd00]]
+    ]
   # Default value
   -
     type: bytes
@@ -27,3 +27,4 @@ ALL_FPS:
     address: [MAIN, 0x32C6D00]
     value_type: double
     value: "(30 / FPS_TARGET) * 1000000"
+

@@ -10,135 +10,142 @@ MASTER_WRITE:
   # Remove double buffer
   ## REF: A0 2A 40 F9 61 A2 40 39
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xBBF258
-    value_type: uint32
-    value: 0x52800021
+    instructions: [
+      [mov, w1, 1]
+    ]
   # Code Injected, $x1 + 0xD8 - last frametime without compensation long ticks, $x0 + 0x50 - fps target used for calculation int,
   # $x0 + 0x24 - our fps target used for calculation but as float, originally is stored there 30 FPS int that seems to do nothing outside of this function
   ## MAIN + 0x3ACCFFC = FPS target for reference
   ## REF: nvnWindowSetPresentInterval
   - 
-    type: bytes
+    type: asm_a64
     main_offset: 0x2D4E68
-    value_type: uint32
-    value: 
-      - 0x9001BFC2
-      - 0xBD4FFC49
-      - 0xAA0003F4
-      - 0xAA0103F5
-      - 0xF9406C20
-      - 0x94A33E6D # BL nn::os::ConvertToTimeSpan(nn::os::Tick)
-      - 0x52994002
-      - 0x72A77342
-      - 0x1E220042
-      - 0x9E220001
-      - 0x1E211841
-      - 0x1E292020
-      - 0x1E21CD21
-      - 0x1E25D009
-      - 0x1E292020
-      - 0x1E21BD21
-      - 0x1E390022
-      - 0xB9005282
-      - 0xBD002681
-      - 0x1400002B
+    instructions: [
+      [adrp, x2, 0x3acc000],
+      [ldr, s9, [x2, 0xffc]],
+      [mov, x20, x0],
+      [mov, x21, x1],
+      [ldr, x0, [x1, 0xd8]],
+      [bl, 0x2ba4830], # BL nn::os::ConvertToTimeSpan(nn::os::Tick)
+      [mov, w2, 0xca00],
+      [movk, w2, 0x3b9a, 16],
+      [scvtf, s2, w2],
+      [scvtf, s1, x0],
+      [fdiv, s1, s2, s1],
+      [fcmp, s1, s9],
+      [fcsel, s1, s9, s1, gt],
+      [fmov, s9, 15.0],
+      [fcmp, s1, s9],
+      [fcsel, s1, s9, s1, lt],
+      [fcvtzu, w2, s1],
+      [str, w2, [x20, 0x50]],
+      [str, s1, [x20, 0x24]],
+      [b, 0x2d4f60]
+    ]
   ## Use our fps target
   ## REF: 60 52 42 BD 08 4E A8 52
   ### Replace LDR S0, [X22,#0x250]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2D4730
-    value_type: uint32
-    value: 0xBD422660
+    instructions: [
+      [ldr, s0, [x19, 0x224]]
+    ]
   ### Replace SCVTF S0, S0
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2D4748
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   ## REF: 14 01 40 F9 08 4E A8 52
   ### Replace LDR S0, [X22,#0x250]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x37EA5C
-    value_type: uint32
-    value: 0xBD4226C0
+    instructions: [
+      [ldr, s0, [x22, 0x224]]
+    ]
   ### Replace SCVTF S0, S0
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x37EA68
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   # When prerendered cutscene is active write flag to MAIN + 0x3ACCFFB
   ## REF: 68 52 40 79 08 01 19 32 68 52 00 79
   ## BL to Code Cave 1
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2B238B4
-    value_type: uint32
-    value: 0x975EC581
+    instructions: [
+      [bl, 0x2d4eb8]
+    ]
   ## REF: 68 52 40 79 08 79 18 12 68 52 00 79, inside call
   ## B to Code Cave 2
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2B210CC
-    value_type: uint32
-    value: 0x175ECF7F
+    instructions: [
+      [b, 0x2d4ec8]
+    ]
   ## CODE CAVE 1, offset +0x50 relative to start of previous code cave 
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2D4EB8
-    value_type: uint32
-    value: 
-      - 0x52800022
-      - 0x9001BFC3
-      - 0x393FEC62
-      - 0x17F62A71 # Jump to original BL as B
+    instructions: [
+      [mov, w2, 1],
+      [adrp, x3, 0x3acc000],
+      [strb, w2, [x3, 0xffb]],
+      [b, 0x5f888] # Jump to original BL as B
+    ]
   ## CODE CAVE 2, offset +0x10 relative to start of previous code cave
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2D4EC8
-    value_type: uint32
-    value: 
-      - 0x9001BFC3
-      - 0x393FEC60
-      - 0x14A343EC # B nn::oe::SetUserInactivityDetectionTimeExtended(bool)
+    instructions: [
+      [adrp, x3, 0x3acc000],
+      [strb, w0, [x3, 0xffb]],
+      [b, 0x2ba5e80] # B nn::oe::SetUserInactivityDetectionTimeExtended(bool)
+    ]
   # Adjust DR timing to factor from MAIN + 0x3ACCFF4
   # REF: 88 02 15 CB 00 01 23 9E
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xEED54
-    value_type: uint32
-    value:
-      - 0xD001CEE8
-      - 0xBD4FF501
+    instructions: [
+      [adrp, x8, 0x3acc000],
+      [ldr, s1, [x8, 0xff4]]
+    ]
   # Fix black background for D-pad menu
   ## REF: 21 03 5E BC
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x387390
-    value_type: uint32
-    value: 
-      - 0x17FD36D1 # Jump to Code Cave 3
-      - 0x1E202008
+    instructions: [
+      [b, 0x2d4ed4], # Jump to Code Cave 3
+      [fcmp, s0, 0.0]
+    ]
   ## CODE CAVE 3, offset +0xC relative to start of previous code cave
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2D4ED4
-    value_type: uint32
-    value:
-      - 0x1E202028
-      - 0x54000101
-      - 0x785FA328
-      - 0x7100151F
-      - 0x540000A1
-      - 0x785F8328
-      - 0x7100151F
-      - 0x54000041
-      - 0x1E2E1008
-      - 0x1F080409
-      - 0x1402C926 # Go back
+    instructions: [
+      [fcmp, s1, 0.0],
+      [b.ne, +32],
+      [ldurh, w8, [x25, -6]],
+      [cmp, w8, 5],
+      [b.ne, +20],
+      [ldurh, w8, [x25, -8]],
+      [cmp, w8, 5],
+      [b.ne, +8],
+      [fmov, s8, 1.0],
+      [fmadd, s9, s0, s8, s1],
+      [b, 0x387394] # Go back
+    ]
   # Default values
   ## FPS Target
   -

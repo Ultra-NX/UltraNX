@@ -6,27 +6,28 @@ unsafeCheck: true
 MASTER_WRITE:
   # Read FPS target from code cave at MAIN + 0xA13170
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2004
-    value_type: uint32
-    value: 0x1428445B
+    instructions: [
+      [b, 0xa13170]
+    ]
   # CODE CAVE - read FPS target from MAIN + 0xD94628
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xA13170
-    value_type: uint32
-    value:
-      - 0xB0001C08
-      - 0xB9462908
-      - 0x17D7BBA4
+    instructions: [
+      [adrp, x8, 0xd94000],
+      [ldr, w8, [x8, 0x628]],
+      [b, 0x2008]
+    ]
   # Redirect DR time factor to MAIN + 0x2ECAB38
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2140
-    value_type: uint32
-    value:
-      - 0x90017648
-      - 0xBD4B3909
+    instructions: [
+      [adrp, x8, 0x2eca000],
+      [ldr, s9, [x8, 0xb38]]
+    ]
   # Default value
   -
     type: bytes
@@ -44,3 +45,4 @@ ALL_FPS:
     address: [MAIN, 0x2ECAB38]
     value_type: float
     value: "(30 / FPS_TARGET) * 1000000"
+

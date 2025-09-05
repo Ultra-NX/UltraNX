@@ -9,12 +9,12 @@ unsafeCheck: true
 MASTER_WRITE:
   # Move loading FPS lock time to MAIN+0x2B31200
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x511818
-    value_type: uint32
-    value:
-      - 0x90013109
-      - 0xB9420129
+    instructions: [
+      [adrp, x9, 0x2b31000],
+      [ldr, w9, [x9, 0x200]]
+    ]
   # Default value
   -
     type: bytes
@@ -23,35 +23,35 @@ MASTER_WRITE:
     value: 33333333
   # Write game's loop time as float to MAIN+0x2B31204
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x511884
-    value_type: uint32
-    value:
-      - 0x17FFFFDC
+    instructions: [
+      [b, 0x5117f4]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x5117F4
-    value_type: uint32
-    value:
-      - 0xFD001100
-      - 0x1E624004
-      - 0x140000A2
+    instructions: [
+      [str, d0, [x8, 0x20]],
+      [fcvt, s4, d0],
+      [b, 0x511a84]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x511A84
-    value_type: uint32
-    value:
-      - 0x90013108
-      - 0xBD020504
-      - 0x17FFFF7F
+    instructions: [
+      [adrp, x8, 0x2b31000],
+      [str, s4, [x8, 0x204]],
+      [b, 0x511888]
+    ]
   - # Read lowest timing float factor from MAIN+0x2B31204
-    type: bytes
+    type: asm_a64
     main_offset: 0x5E5EC
-    value_type: uint32
-    value:
-      - 0xF0015688
-      - 0x1E227821
-      - 0xBD420502
+    instructions: [
+      [adrp, x8, 0x2b31000],
+      [fminnm, s1, s1, s2],
+      [ldr, s2, [x8, 0x204]]
+    ]
   - # Default value
     type: bytes
     main_offset: 0x2B31204
@@ -63,3 +63,4 @@ ALL_FPS:
     address: [MAIN, 0x2B31200]
     value_type: uint32
     value: 11111111
+

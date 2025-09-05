@@ -7,21 +7,21 @@ MASTER_WRITE:
   # Redirect FPS Lock to float MAIN+B75F200, frametime and DR target to float MAIN+B75F204
   # REF: 08 14 40 BD 00 10 2E 1E 00 18 28 1E
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x36A3F8
-    value_type: uint32
-    value: 
-      - 0xB0059FA8
-      - 0xBD420100
-      - 0xBD420508
+    instructions: [
+      [adrp, x8, 0xb75f000],
+      [ldr, s0, [x8, 0x200]],
+      [ldr, s8, [x8, 0x204]]
+    ]
   # REF: 00 14 40 BD 09 10 2E 1E (1 instruction before that)
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x34A0EB4
-    value_type: uint32
-    value: 
-      - 0xF00415E0
-      - 0xBD420400
+    instructions: [
+      [adrp, x0, 0xb75f000],
+      [ldr, s0, [x0, 0x204]]
+    ]
   # Default values
   -
     type: bytes

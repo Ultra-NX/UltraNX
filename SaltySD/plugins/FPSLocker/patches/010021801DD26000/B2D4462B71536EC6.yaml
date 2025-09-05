@@ -1,4 +1,4 @@
-﻿# Momotaro Dentetsu: Showa, Heisei, Reiwa mo Teiban! Asia Edition 1.0.1
+# Momotaro Dentetsu: Showa, Heisei, Reiwa mo Teiban! Asia Edition 1.0.1
 # BID: B2D4462B71536EC6
 
 unsafeCheck: true
@@ -6,15 +6,17 @@ unsafeCheck: true
 MASTER_WRITE:
   # Remove double buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1B630
-    value_type: uint32
-    value: 0x52800061
+    instructions: [
+      [mov, w1, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x5774C
-    value_type: uint32
-    value: 0x52800061
+    instructions: [
+      [mov, w1, 3]
+    ]
 ALL_FPS:
   # REF: 20 59 60 BC
   # Internal FPS Lock
@@ -48,4 +50,5 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x10D8028]
     value_type: uint32
+
     value: "VSYNC_TARGET - 1"

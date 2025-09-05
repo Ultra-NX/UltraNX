@@ -7,30 +7,34 @@ unsafeCheck: true
 MASTER_WRITE:
   # Change minimal game speed to half of default value
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x91DC94
-    value_type: uint32
-    value: 0x1E2C1001
+    instructions: [
+      [fmov, s1, 0.5]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x91DCA0
-    value_type: uint32
-    value: 0x1E2C1001
+    instructions: [
+      [fmov, s1, 0.5]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x91DCAC
-    value_type: uint32
-    value: 0x52A7E008
+    instructions: [
+      [mov, w8, 0x3f000000]
+    ]
   # Block cutscenes from having speed fixed to 30 FPS
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x91DC10
-    value_type: uint32
-    value: 
-      - 0xD503201F
+    instructions: [
+      [nop]
+    ]
 ALL_FPS:
   -
     type: evaluate_write
     address: [MAIN, 0xCCB7AF0, 0x420]
     value_type: uint32
     value: "VSYNC_TARGET - 1"
+

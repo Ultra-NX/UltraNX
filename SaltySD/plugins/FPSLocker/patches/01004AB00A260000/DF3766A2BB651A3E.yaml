@@ -6,25 +6,25 @@ unsafeCheck: false
 MASTER_WRITE:
   # Redirect FPS target to MAIN+0x55E9A00
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x706FA4
-    value_type: uint32
-    value: 
-      - 0xF0027701
+    instructions: [
+      [adrp, x1, 0x55e9000]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x7070B0
-    value_type: uint32
-    value: 
-      - 0xFD450020
+    instructions: [
+      [ldr, d0, [x1, 0xa00]]
+    ]
   # Redirect game speed to MAIN+0x55E9A08
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x667900
-    value_type: uint32
-    value: 
-      - 0xD0027C08
-      - 0xBD4A0908
+    instructions: [
+      [adrp, x8, 0x55e9000],
+      [ldr, s8, [x8, 0xa08]]
+    ]
   # Write default value
   -
     type: bytes
@@ -68,3 +68,4 @@ ALL_FPS:
   -
     type: block
     what: timing
+

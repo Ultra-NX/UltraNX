@@ -8,7 +8,7 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [Ultra 2.5|R2](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает все HOS, включая 20.3.0
+### [Ultra 2.6|R1](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает все HOS, включая 20.4.0
 
 
 
@@ -60,8 +60,8 @@
      - **`Ultra OC (sys-clk)`**, мод [sys-clk](https://github.com/ppkantorski/sys-clk) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках (Так как они закрыты).
      - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Tuner.
      - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
-     - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов, включая графические.
-     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - Оверлей для переключения запущенной игры в портатив\док, меняет настройки графики\разрешения в играх.
+     - [EdiZon](https://github.com/ppkantorski/EdiZon-Overlay) - Оверлей для использования читов, включая графические.
+     - [ReverseNX-RT](https://github.com/masagrator/ReverseNX-RT) - Оверлей для переключения запущенной игры в портатив\док, меняет настройки графики\разрешения в играх.
      - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Оверлей для включения\отключения установленных системных модулей.
 
 

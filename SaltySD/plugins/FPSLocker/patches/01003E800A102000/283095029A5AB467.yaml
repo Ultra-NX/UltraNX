@@ -7,18 +7,19 @@ unsafeCheck: true
 MASTER_WRITE:
   # Force game to use dynamic speed instead of fixed speed
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xE7BC90
-    value_type: uint32
-    value: 0x52800048
+    instructions: [
+      [mov, w8, 2]
+    ]
   # Redirect DR timing to MAIN + 0x9DBAEB8
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xE88250
-    value_type: uint32
-    value: 
-      - 0xD0047988
-      - 0xBD4EB900
+    instructions: [
+      [adrp, x8, 0x9dba000],
+      [ldr, s0, [x8, 0xeb8]]
+    ]
   # Default value
   -
     type: bytes
@@ -32,3 +33,4 @@ ALL_FPS:
     address: [MAIN, 0x9DBAEB8]
     value_type: float
     value: FRAMETIME_TARGET
+

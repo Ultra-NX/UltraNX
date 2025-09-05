@@ -7,12 +7,12 @@ unsafeCheck: true
 MASTER_WRITE:
 # Redirect DR frametime target to MAIN+0x30A7F00
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x193CEA8
-    value_type: uint32
-    value: 
-      - 0xF000BB4A # adrp x10, #0x30A7000
-      - 0xBD4F0142 # ldr s2, [x10, #0xf00]
+    instructions: [
+      [adrp, x10, 0x30a7000],
+      [ldr, s2, [x10, 0xf00]]
+    ]
   # default value
   -
     type: bytes

@@ -8,10 +8,11 @@ MASTER_WRITE:
   # Triple buffer
   # REF: 28 60 81 52 E8 37 00 B9 E8 03 1F 32
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x3AE35C
-    value_type: uint32
-    value: 0x52800068
+    instructions: [
+      [mov, w8, 3]
+    ]
 ALL_FPS:
   # Disable FPS Lock
   # REF: C8 46 90 52 first ADRP + LDR + LDR above it

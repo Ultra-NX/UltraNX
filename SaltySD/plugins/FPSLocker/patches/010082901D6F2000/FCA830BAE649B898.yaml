@@ -6,19 +6,19 @@ unsafeCheck: true
 MASTER_WRITE:
   # Redirect DR timing range to MAIN + 0x878B800
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x4451E88
-    value_type: uint32
-    value:
-      - 0xD00219C8
-      - 0xB9480108
+    instructions: [
+      [adrp, x8, 0x878b000],
+      [ldr, w8, [x8, 0x800]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x4451ED4
-    value_type: uint32
-    value:
-      - 0xD00219C8
-      - 0xB9480508
+    instructions: [
+      [adrp, x8, 0x878b000],
+      [ldr, w8, [x8, 0x804]]
+    ]
   # Default values
   -
     type: bytes
@@ -32,3 +32,4 @@ ALL_FPS:
     address: [MAIN, 0x878B800]
     value_type: float
     value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(1000 / (FPS_TARGET + 5), 2)"]
+

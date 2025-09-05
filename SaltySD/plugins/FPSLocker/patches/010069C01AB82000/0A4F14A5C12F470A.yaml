@@ -6,10 +6,11 @@ unsafeCheck: true
 MASTER_WRITE:
   # Block from reapplying t.MaxFPS by game, REF: 01 E4 00 2F 00 AC 21 1E 08 00 40 F9 08 75 41 F9, nop BLR X8 after LDR X8, [X8,#0x2E8]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x3780DD0
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget
   -

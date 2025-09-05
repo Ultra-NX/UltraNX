@@ -8,13 +8,13 @@ MASTER_WRITE:
   ## REF: 81 1a 40 bd 02 10 2e 1e 
   ## REF: FPSTarget.<>d__6::MoveNext()
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2DF1E60
-    value_type: uint32
-    value:
-      - 0xF000E048 # adrp x8, #0x49fc000
-      - 0xBD4FF101 # ldr s1, [x8, #0xff0]
-      - 0xD503201F # NOP
+    instructions: [
+      [adrp, x8, 0x49fc000],
+      [ldr, s1, [x8, 0xff0]],
+      [nop]
+    ]
   ## Default value
   -
     type: bytes

@@ -6,54 +6,54 @@ unsafeCheck: true
 MASTER_WRITE:
   # Redirect updating various deltas to read frametime target from UnityEngine.Application::targetFrameRate, REF: 08 10 91 52 08 A1 A7 72
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x18AE7B8
-    value_type: uint32
-    value:
-     - 0xF001ED48 # adrp x8, 0x5659000
-     - 0xB9406908 # ldr w8, [x8, #0x68]
-     - 0x1E230101 # ucvtf s1, w8
-     - 0x1E2E1000 # fmov s0, #1.00000000
-     - 0x1E211800 # fdiv s0, s0, s1
+    instructions: [
+      [adrp, x8, 0x5659000],
+      [ldr, w8, [x8, 0x68]],
+      [ucvtf, s1, w8],
+      [fmov, s0, 1.0],
+      [fdiv, s0, s0, s1]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x18B2570
-    value_type: uint32
-    value:
-     - 0xF001ED28 # adrp x8, 0x5659000
-     - 0xB9406908 # ldr w8, [x8, #0x68]
-     - 0x1E230101 # ucvtf s1, w8
-     - 0x1E2E1000 # fmov s0, #1.00000000
-     - 0x1E211800 # fdiv s0, s0, s1
+    instructions: [
+      [adrp, x8, 0x5659000],
+      [ldr, w8, [x8, 0x68]],
+      [ucvtf, s1, w8],
+      [fmov, s0, 1.0],
+      [fdiv, s0, s0, s1]
+    ]
   # Redirect Dynamic Resolution GPU Timing target in DynamicResolutionScaler::Update to MAIN+0x5ACEF08
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x389C824
-    value_type: uint32
-    value:
-     - 0xD0011188 # adrp x8, #0x5ACE000
-     - 0xF9478508 # ldr x8, [x8, #0xf08]
-     - 0xD503201F # nop
-     - 0xD503201F # nop
+    instructions: [
+      [adrp, x8, 0x5ace000],
+      [ldr, x8, [x8, 0xf08]],
+      [nop],
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x389C8A4
-    value_type: uint32
-    value:
-     - 0xD0011188 # adrp x8, #0x5ACE000
-     - 0xF9478508 # ldr x8, [x8, #0xf08]
-     - 0xBD402A60 # ldr s0, [x19, #0x28]
-     - 0xD503201F # nop
-     - 0xD503201F # nop
+    instructions: [
+      [adrp, x8, 0x5ace000],
+      [ldr, x8, [x8, 0xf08]],
+      [ldr, s0, [x19, 0x28]],
+      [nop],
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x389C918
-    value_type: uint32
-    value:
-     - 0xD0011188 # adrp x8, #0x5ACE000
-     - 0xF9478508 # ldr x8, [x8, #0xf08]
-     - 0xD503201F # nop
-     - 0xD503201F # nop
+    instructions: [
+      [adrp, x8, 0x5ace000],
+      [ldr, x8, [x8, 0xf08]],
+      [nop],
+      [nop]
+    ]
   # Default values
   -
     type: bytes
@@ -77,4 +77,5 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x5ACEF08]
     value_type: double
+
     value: "1000 / (FPS_TARGET + 5)"

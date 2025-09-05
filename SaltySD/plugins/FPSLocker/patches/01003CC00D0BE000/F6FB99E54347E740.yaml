@@ -7,34 +7,34 @@ unsafeCheck: true
 MASTER_WRITE:
   # Redirect FPS Lock and Dynamic Resolution target values to MAIN + 0x21036F00
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x13281C
-    value_type: uint32
-    value: 
-      - 0x90107828 # ADRP X8, 0x21036000
-      - 0xF9478108 # LDR X8, [X8, 0xF00]
+    instructions: [
+      [adrp, x8, 0x21036000],
+      [ldr, x8, [x8, 0xf00]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x3E324C
-    value_type: uint32
-    value: 
-      - 0xF0106288 # ADRP X8, 0x21036000
-      - 0xF9478108 # LDR X8, [X8, 0xF00]
+    instructions: [
+      [adrp, x8, 0x21036000],
+      [ldr, x8, [x8, 0xf00]]
+    ]
   # NOP updating Dynamic Resolution target value
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2D94E8
-    value_type: uint32
-    value:
-      - 0xB0106AE9 # ADRP X9, 0x21036000
-      - 0xB94F0929 # LDR W9, [X9, 0xF08]
+    instructions: [
+      [adrp, x9, 0x21036000],
+      [ldr, w9, [x9, 0xf08]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x597C5C
-    value_type: uint32
-    value:
-      - 0xF01054E9 # ADRP X9, 0x21036000
-      - 0xB94F0929 # LDR W9, [X9, 0xF08]
+    instructions: [
+      [adrp, x9, 0x21036000],
+      [ldr, w9, [x9, 0xf08]]
+    ]
   # Default values
   -
     type: bytes
@@ -57,4 +57,5 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x21036F08]
     value_type: float
+
     value: FRAMETIME_TARGET

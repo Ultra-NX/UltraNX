@@ -1,4 +1,4 @@
-# Gear.Club Unlimited 2
+# Gear.Club Unlimited 2 1.7.2
 # BID: FE757B10B45C3444
 
 unsafeCheck: true
@@ -7,58 +7,60 @@ MASTER_WRITE:
 # Edit Eden.Graphics.IGraphicsQualityProfile::set_VSyncCount to get interval from MAIN + 0x5FBAF20
 # If not edited, light is flickering at > 30 FPS
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x14B4990
-    value_type: uint32
-    value: 
-      - 0xD0025821
-      - 0xB94F2021
-      - 0xB9005401
-      - 0xD65F03C0
+    instructions: [
+      [adrp, x1, 0x5fba000],
+      [ldr, w1, [x1, 0xf20]],
+      [str, w1, [x0, 0x54]],
+      [ret]
+    ]
 # Edit UnityEngine.QualitySettings::set_vSyncCount to get interval from MAIN + 0x5FBAF20
 # If not edited, light is flickering at > 30 FPS
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1B46EE4
-    value_type: uint32
-    value: 
-      - 0x900223A0
-      - 0xB94F2000
-      - 0xA9427BFD
-      - 0xA9414FF4
-      - 0x9100C3FF
-      - 0xD61F0020
+    instructions: [
+      [adrp, x0, 0x5fba000],
+      [ldr, w0, [x0, 0xf20]],
+      [ldp, x29, x30, [sp, 0x20]],
+      [ldp, x20, x19, [sp, 0x10]],
+      [add, sp, sp, 0x30],
+      [br, x1]
+    ]
 # Edit Eden.Graphics.GraphicsQualityManager::SetTargetFrameRate to get interval from MAIN + 0x5FBAF20
 # If not edited, it locks to 30 FPS
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x14AB578
-    value_type: uint32
-    value: 0x947E69DC
+    instructions: [
+      [bl, 0x3445ce8]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x3445CE8
-    value_type: uint32
-    value:
-      - 0xB0015BA1
-      - 0xB94F2021
-      - 0x2A0103F3
-      - 0xD65F03C0
+    instructions: [
+      [adrp, x1, 0x5fba000],
+      [ldr, w1, [x1, 0xf20]],
+      [mov, w19, w1],
+      [ret]
+    ]
 # Edit Eden.Graphics.DynamicResolutionScaler::UpdateScaling to get DR target timing from MAIN + 0x5FBAF28
 # If not edited, performance is much worse at > 30 FPS
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x14988BC
-    value_type: uint32
-    value: 0x947EB50F
+    instructions: [
+      [bl, 0x3445cf8]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x3445CF8
-    value_type: uint32
-    value:
-      - 0xB0015BA0
-      - 0xBD4F2800
-      - 0xD65F03C0
+    instructions: [
+      [adrp, x0, 0x5fba000],
+      [ldr, s0, [x0, 0xf28]],
+      [ret]
+    ]
 # Default values
   -
     type: bytes
@@ -81,3 +83,5 @@ ALL_FPS:
     address: [MAIN, 0x5FBAF28]
     value_type: float
     value: "1.1 * FPS_TARGET"
+
+

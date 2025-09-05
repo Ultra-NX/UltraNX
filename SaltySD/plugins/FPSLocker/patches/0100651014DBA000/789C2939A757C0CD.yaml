@@ -7,21 +7,21 @@ MASTER_WRITE:
   # Redirect Dynamic Resolution timings to MAIN + 0x23774F00
   # 38.0
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xF57294
-    value_type: uint32
-    value:
-      - 0xB01140E9
-      - 0x1E210800
-      - 0xBD4F0121
+    instructions: [
+      [adrp, x9, 0x23774000],
+      [fmul, s0, s0, s1],
+      [ldr, s1, [x9, 0xf00]]
+    ]
   # 32.0
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xF572B8
-    value_type: uint32
-    value:
-      - 0xBD4F0521
-      - 0xD503201F
+    instructions: [
+      [ldr, s1, [x9, 0xf04]],
+      [nop]
+    ]
   # Default values:
   -
     type: bytes

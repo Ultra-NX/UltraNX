@@ -7,90 +7,92 @@ unsafeCheck: true
 MASTER_WRITE:
   # Block game from updating interval
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x7264
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x721C
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   # Remove double buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC5B08
-    value_type: uint32
-    value: 
-      - 0x52800068
+    instructions: [
+      [mov, w8, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC5BB0
-    value_type: uint32
-    value: 
-      - 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC5720
-    value_type: uint32
-    value: 
-      - 0xD10143FF
-      - 0xA90257F6
-      - 0xA9034FF4
-      - 0xA9047BFD
-      - 0x910103FD
+    instructions: [
+      [sub, sp, sp, 0x50],
+      [stp, x22, x21, [sp, 0x20]],
+      [stp, x20, x19, [sp, 0x30]],
+      [stp, x29, x30, [sp, 0x40]],
+      [add, x29, sp, 0x40]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC5744
-    value_type: uint32
-    value: 
-      - 0xA9017FFF
+    instructions: [
+      [stp, xzr, xzr, [sp, 0x10]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC5758
-    value_type: uint32
-    value: 
-      - 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC5780
-    value_type: uint32
-    value: 
-      - 0xA9447BFD
-      - 0xA9434FF4
-      - 0xA94257F6
-      - 0x910143FF
+    instructions: [
+      [ldp, x29, x30, [sp, 0x40]],
+      [ldp, x20, x19, [sp, 0x30]],
+      [ldp, x22, x21, [sp, 0x20]],
+      [add, sp, sp, 0x50]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC57A0
-    value_type: uint32
-    value: 
-      - 0xD10143FF
-      - 0xA901D7FF
-      - 0xA9034FF4
-      - 0xA9047BFD
-      - 0x910103FD
+    instructions: [
+      [sub, sp, sp, 0x50],
+      [stp, xzr, x21, [sp, 0x18]],
+      [stp, x20, x19, [sp, 0x30]],
+      [stp, x29, x30, [sp, 0x40]],
+      [add, x29, sp, 0x40]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC57CC
-    value_type: uint32
-    value: 
-      - 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC57E4
-    value_type: uint32
-    value: 
-      - 0xF90003E8
+    instructions: [
+      [str, x8, [sp]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC580C
-    value_type: uint32
-    value: 
-      - 0xA9447BFD
-      - 0xF94013F5
-      - 0xA9434FF4
-      - 0x910143FF
+    instructions: [
+      [ldp, x29, x30, [sp, 0x40]],
+      [ldr, x21, [sp, 0x20]],
+      [ldp, x20, x19, [sp, 0x30]],
+      [add, sp, sp, 0x50]
+    ]
 ALL_FPS:
   # Interval
   -

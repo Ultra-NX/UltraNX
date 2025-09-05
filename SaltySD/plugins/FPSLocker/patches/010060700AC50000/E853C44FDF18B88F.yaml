@@ -7,12 +7,12 @@ unsafeCheck: true
 MASTER_WRITE:
 # Redirect reading DR GPU time factor to MAIN + 0x4FC0E00
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x470E80
-    value_type: uint32
-    value: 
-      - 0x90025A89
-      - 0xBD4E0122
+    instructions: [
+      [adrp, x9, 0x4fc0000],
+      [ldr, s2, [x9, 0xe00]]
+    ]
 # Default value (= 0.5 / FPS)
   -
     type: bytes
@@ -38,3 +38,4 @@ ALL_FPS:
     address: [MAIN, 0x4FC0E00]
     value_type: float
     value: "0.5 / FPS_TARGET"
+

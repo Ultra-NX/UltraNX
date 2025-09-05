@@ -7,70 +7,74 @@ unsafeCheck: true
 MASTER_WRITE:
   # Force FPS lock to 60
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x81AB0
-    value_type: uint32
-    value: 0x72A79108
+    instructions: [
+      [movk, w8, 0x3c88, 16]
+    ]
   # Force refreshing camera to 60 Hz
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x81AE4
-    value_type: uint32
-    value: 0x72A79109
+    instructions: [
+      [movk, w9, 0x3c88, 16]
+    ]
   # Properly scale frametime for FPS drops
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x81AEC
-    value_type: uint32
-    value: 0x72B7910A
+    instructions: [
+      [movk, w10, 0xbc88, 16]
+    ]
 # Read actual frametime instead of hardcoded 1/30
   # Store actual frametime as float in seconds to MAIN+0x7A52478
   # It sets minimum delta to 1/60 and maximum delta to 1/15
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x8192C
-    value_type: uint32
-    value: 0x14339A82
+    instructions: [
+      [b, 0xd68334]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xD682D0
-    value_type: uint32
-    value:
-      - 0xD0000CE9
-      - 0xBD4F0121
-      - 0xBD4E0922
-      - 0x97FFF941
-      - 0xD0036749
-      - 0xF942392A
-      - 0xF9023920
-      - 0xCB0A000A
-      - 0x9E230143
-      - 0x528F8009
-      - 0x72A97249
-      - 0x1E270124
-      - 0x1E241864
-      - 0xD0036749
-      - 0x1E212080
-      - 0x54000068
-      - 0x1E204024
-      - 0x14000004
-      - 0x1E222080
-      - 0x5400004B
-      - 0x1E204044
-      - 0xBD047924
-      - 0x52835E08
-      - 0xAA1403E0
-      - 0x17CC6580
-      - 0xAA0003F4
-      - 0x17FFFFE6
+    instructions: [
+      [adrp, x9, 0xf06000],
+      [ldr, s1, [x9, 0xf00]],
+      [ldr, s2, [x9, 0xe08]],
+      [bl, 0xd667e0],
+      [adrp, x9, 0x7a52000],
+      [ldr, x10, [x9, 0x470]],
+      [str, x0, [x9, 0x470]],
+      [sub, x10, x0, x10],
+      [ucvtf, s3, x10],
+      [mov, w9, 0x7c00],
+      [movk, w9, 0x4b92, 16],
+      [fmov, s4, w9],
+      [fdiv, s4, s3, s4],
+      [adrp, x9, 0x7a52000],
+      [fcmp, s4, s1],
+      [b.hi, +12],
+      [fmov, s4, s1],
+      [b, +16],
+      [fcmp, s4, s2],
+      [b.lt, +8],
+      [fmov, s4, s2],
+      [str, s4, [x9, 0x478]],
+      [mov, w8, 0x1af0],
+      [mov, x0, x20],
+      [b, 0x81930],
+      [mov, x20, x0],
+      [b, -104]
+    ]
   # Read actual frametime as float in seconds from MAIN+0x7A52478
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x81B50
-    value_type: uint32
-    value:
-      - 0xB003CE8B
-      - 0xB944796B
+    instructions: [
+      [adrp, x11, 0x7a52000],
+      [ldr, w11, [x11, 0x478]]
+    ]
   # Default value
   -
     type: bytes
@@ -84,3 +88,4 @@ ALL_FPS:
     address: [MAIN, 0x7A52500]
     value_type: uint8
     value: 0
+

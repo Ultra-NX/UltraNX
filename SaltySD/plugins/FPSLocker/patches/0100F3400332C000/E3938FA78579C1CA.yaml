@@ -7,74 +7,75 @@ MASTER_WRITE:
   # Dynamic speed
   # Jump before pushing frame to the end of .plt, which is 0x8B3448 (backup: MOV W8, #0x21A0)
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x700050
-    value_type: uint32
-    value: 0x1406CCFE
+    instructions: [
+      [b, 0x8b3448]
+    ]
   # Game speed math, write data to unused .bss, tick at 0x15ECF00, game speed at 0x15ECF08, take min delta from 0x15ECF10
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x8B3448
-    value_type: uint32
-    value: 
-      - 0x97FFFB84
-      - 0xB00069C2
-      - 0xF9478041
-      - 0xF9078040
-      - 0xB5000061
-      - 0x52843408
-      - 0x17F932FD
-      - 0xCB010000
-      - 0x97FFFB80
-      - 0x1E25D002
-      - 0x52807D01
-      - 0x9AC10800
-      - 0x9E220000
-      - 0x52848001
-      - 0x72A92E81
-      - 0x1E270021
-      - 0x14000018
-      - 0x900016E0
-      - 0xF9406800
-      - 0xB4FFFE40
-      - 0xBD007800
-      - 0xBD007C00
-      - 0xF0001B60
-      - 0xF9416400
-      - 0xBD008000
-      - 0xB00069C0
-      - 0xBD0F0800
-      - 0x17FFFFEA
-      - 0x1E2E1001
-      - 0x1E221822
-      - 0x1E222000
-      - 0x5400006B
-      - 0x1E204040
-      - 0x17FFFFF0
-      - 0xB00069C0
-      - 0xBD4F1002
-      - 0x1E222000
-      - 0x54FFFD88
-      - 0x1E204040
-      - 0x17FFFFEA
-      - 0x1E211800
-      - 0x17FFFFF3
+    instructions: [
+      [bl, 0x8b2258],
+      [adrp, x2, 0x15ec000],
+      [ldr, x1, [x2, 0xf00]],
+      [str, x0, [x2, 0xf00]],
+      [cbnz, x1, +12],
+      [mov, w8, 0x21a0],
+      [b, 0x700054],
+      [sub, x0, x0, x1],
+      [bl, 0x8b2268],
+      [fmov, s2, 15.0],
+      [mov, w1, 1000],
+      [udiv, x0, x0, x1],
+      [scvtf, s0, x0],
+      [mov, w1, 0x2400],
+      [movk, w1, 0x4974, 16],
+      [fmov, s1, w1],
+      [b, +96],
+      [adrp, x0, 0xb8f000],
+      [ldr, x0, [x0, 0xd0]],
+      [cbz, x0, -56],
+      [str, s0, [x0, 0x78]],
+      [str, s0, [x0, 0x7c]],
+      [adrp, x0, 0xc22000],
+      [ldr, x0, [x0, 0x2c8]],
+      [str, s0, [x0, 0x80]],
+      [adrp, x0, 0x15ec000],
+      [str, s0, [x0, 0xf08]],
+      [b, -88],
+      [fmov, s1, 1.0],
+      [fdiv, s2, s1, s2],
+      [fcmp, s0, s2],
+      [b.lt, +12],
+      [fmov, s0, s2],
+      [b, -64],
+      [adrp, x0, 0x15ec000],
+      [ldr, s2, [x0, 0xf10]],
+      [fcmp, s0, s2],
+      [b.hi, -80],
+      [fmov, s0, s2],
+      [b, -88],
+      [fdiv, s0, s0, s1],
+      [b, -52]
+    ]
   # Patch wind speed to take game speed from MAIN + 0x15ECF08
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x747CC4
-    value_type: uint32
-    value:
-      - 0xB0007528
-      - 0xBD4F0906
+    instructions: [
+      [adrp, x8, 0x15ec000],
+      [ldr, s6, [x8, 0xf08]]
+    ]
   # Redirect DR timing to MAIN + 0x15ECF18
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6AA038
-    value_type: uint32
-    value: 
-      - 0xD0007A08
-      - 0xBD4F1900
+    instructions: [
+      [adrp, x8, 0x15ec000],
+      [ldr, s0, [x8, 0xf18]]
+    ]
   # Default values
   -
     type: bytes
@@ -125,3 +126,4 @@ ALL_FPS:
     address: [MAIN, 0x15ECF18]
     value_type: float
     value: 0.0333333333
+

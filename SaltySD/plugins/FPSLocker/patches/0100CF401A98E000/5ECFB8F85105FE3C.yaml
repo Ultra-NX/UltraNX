@@ -6,19 +6,20 @@ unsafeCheck: true
 MASTER_WRITE:
   # Redirect DR Timing target to MAIN + 0x6D91A00, REF: 61 36 40 BD 60 3E 40 BD
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x3534598
-    value_type: uint32
-    value: 0x944D1AEB
+    instructions: [
+      [bl, 0x487b144]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x487B144
-    value_type: uint32
-    value:
-      - 0xD00128A8
-      - 0xBD4A0100
-      - 0xBD003E60
-      - 0xD65F03C0
+    instructions: [
+      [adrp, x8, 0x6d91000],
+      [ldr, s0, [x8, 0xa00]],
+      [str, s0, [x19, 0x3c]],
+      [ret]
+    ]
   # Default value
   -
     type: bytes

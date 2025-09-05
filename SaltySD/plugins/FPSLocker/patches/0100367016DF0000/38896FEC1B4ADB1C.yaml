@@ -12,15 +12,17 @@ MASTER_WRITE:
     value: 0x3236
   # Change egl Interval to lock game by default to 30 FPS
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x135D10
-    value_type: uint32
-    value: 0x52800041
+    instructions: [
+      [mov, w1, 2]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x135D38
-    value_type: uint32
-    value: 0x52800041
+    instructions: [
+      [mov, w1, 2]
+    ]
 ALL_FPS:
   # DUMMY
   -
@@ -28,3 +30,4 @@ ALL_FPS:
     address: [MAIN, 0x161BCF8]
     value_type: uint8
     value: 0
+

@@ -1,4 +1,4 @@
-# Kingdom Come: Deliverance - Royal Edition JP 1.9.6H
+# Kingdom Come: Deliverance - Royal Edition 1.9.6H
 # BID: 7A450848CFDEC18E
 # Some prerendered cutscenes are still pushed at 30 FPS
 
@@ -7,22 +7,24 @@ unsafeCheck: true
 MASTER_WRITE:
   # Block updating DR timings, REF: 00 01 27 1E 48 40 A8 52
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1CA806C
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1CA8074
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1CA8094
-    value_type: uint32
-    value: 
-      - 0xD503201F
-      - 0xD503201F
+    instructions: [
+      [nop],
+      [nop]
+    ]
   # Write default DR timings
   -
     type: bytes
@@ -51,3 +53,4 @@ ALL_FPS:
   -
     type: block
     what: timing
+

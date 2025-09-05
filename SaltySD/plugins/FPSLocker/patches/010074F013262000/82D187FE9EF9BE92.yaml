@@ -6,12 +6,12 @@ unsafeCheck: false
 MASTER_WRITE:
   # Redirect DR frametime target reading to .bss code cave [MAIN, 0x236AB00]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x124F518
-    value_type: uint32
-    value:
-      - 0xF00088C8
-      - 0xBD4B0100
+    instructions: [
+      [adrp, x8, 0x236a000],
+      [ldr, s0, [x8, 0xb00]]
+    ]
   # Original DR frametime target
   -
     type: bytes
@@ -21,21 +21,22 @@ MASTER_WRITE:
       - 0.0166666666
   # Fix crash when gathering big amount of ether for > 30 FPS
   - # Code cave at 0x1295DA0
-    type: bytes
+    type: asm_a64
     main_offset: 0x67360
-    value_type: uint32
-    value: 0x9448BA90
+    instructions: [
+      [bl, 0x1295da0]
+    ]
   - # Push fixed 1/30 float to game speed pointer late enough to not affect it 
-    type: bytes
+    type: asm_a64
     main_offset: 0x1295DA0
-    value_type: uint32
-    value:
-      - 0xF9400015
-      - 0x1E2E1001
-      - 0x1E27D002
-      - 0x1E221821
-      - 0xBD0216A1
-      - 0xD65F03C0
+    instructions: [
+      [ldr, x21, [x0]],
+      [fmov, s1, 1.0],
+      [fmov, s2, 30.0],
+      [fdiv, s1, s1, s2],
+      [str, s1, [x21, 0x214]],
+      [ret]
+    ]
 ALL_FPS:
   # vsync
   -
@@ -91,3 +92,4 @@ ALL_FPS:
     address: [MAIN]
     value_type: refresh_rate
     value: 30
+

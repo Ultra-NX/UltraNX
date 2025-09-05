@@ -6,36 +6,37 @@ unsafeCheck: true
 MASTER_WRITE:
   # Redirect Dynamic Resolution Timings to read always not from .text
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x136A51C
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x136A548
-    value_type: uint32
-    value: 
-      - 0xD503201F
-      - 0xD503201F
+    instructions: [
+      [nop],
+      [nop]
+    ]
 # Redirect Dynamic Resolution Timings readings to MAIN+0x3608E00
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x136A520
-    value_type: uint32
-    value:
-      - 0xD00114E8
-      - 0xBD4E0100
-      - 0xBD4E0501
-      - 0xBD4E0902
-      - 0xD503201F
-      - 0xD503201F
+    instructions: [
+      [adrp, x8, 0x3608000],
+      [ldr, s0, [x8, 0xe00]],
+      [ldr, s1, [x8, 0xe04]],
+      [ldr, s2, [x8, 0xe08]],
+      [nop],
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x136A554
-    value_type: uint32
-    value:
-      - 0xD00114E9
-      - 0x91383129
+    instructions: [
+      [adrp, x9, 0x3608000],
+      [add, x9, x9, 0xe0c]
+    ]
 # Write default values
   -
     type: bytes
@@ -111,3 +112,4 @@ ALL_FPS:
   -
     type: block
     what: timing
+

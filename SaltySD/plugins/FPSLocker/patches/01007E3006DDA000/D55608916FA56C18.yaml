@@ -7,92 +7,98 @@ unsafeCheck: true
 MASTER_WRITE:
   # Remove double buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6DBE0
-    value_type: uint32
-    value: 0x52800068
+    instructions: [
+      [mov, w8, 3]
+    ]
   # Fix helper functions to not corrupt stack
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6DC88
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6D85C
-    value_type: uint32
-    value:
-      - 0xD10103FF
-      - 0xA9024FF4
-      - 0xA9037BFD
-      - 0x9100C3FD
+    instructions: [
+      [sub, sp, sp, 0x40],
+      [stp, x20, x19, [sp, 0x20]],
+      [stp, x29, x30, [sp, 0x30]],
+      [add, x29, sp, 0x30]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6D880
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6D894
-    value_type: uint32
-    value:
-      - 0xA9437BFD
-      - 0xA9424FF4
-      - 0x910103FF
+    instructions: [
+      [ldp, x29, x30, [sp, 0x30]],
+      [ldp, x20, x19, [sp, 0x20]],
+      [add, sp, sp, 0x40]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6D8A4
-    value_type: uint32
-    value:
-      - 0xD10143FF
-      - 0xA90257F6
-      - 0xA9034FF4
-      - 0xA9047BFD
-      - 0x910103FD
+    instructions: [
+      [sub, sp, sp, 0x50],
+      [stp, x22, x21, [sp, 0x20]],
+      [stp, x20, x19, [sp, 0x30]],
+      [stp, x29, x30, [sp, 0x40]],
+      [add, x29, sp, 0x40]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6D8DC
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6D904
-    value_type: uint32
-    value:
-      - 0xA9447BFD
-      - 0xA9434FF4
-      - 0xA94257F6
-      - 0x910143FF
+    instructions: [
+      [ldp, x29, x30, [sp, 0x40]],
+      [ldp, x20, x19, [sp, 0x30]],
+      [ldp, x22, x21, [sp, 0x20]],
+      [add, sp, sp, 0x50]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6D918
-    value_type: uint32
-    value:
-      - 0xD10143FF
-      - 0xA901D7FF
-      - 0xA9034FF4
-      - 0xA9047BFD
-      - 0x910103FD
+    instructions: [
+      [sub, sp, sp, 0x50],
+      [stp, xzr, x21, [sp, 0x18]],
+      [stp, x20, x19, [sp, 0x30]],
+      [stp, x29, x30, [sp, 0x40]],
+      [add, x29, sp, 0x40]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6D940
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6D984
-    value_type: uint32
-    value:
-      - 0xA9447BFD
-      - 0xF94013F5
-      - 0xA9434FF4
-      - 0x910143FF
+    instructions: [
+      [ldp, x29, x30, [sp, 0x40]],
+      [ldr, x21, [sp, 0x20]],
+      [ldp, x20, x19, [sp, 0x30]],
+      [add, sp, sp, 0x50]
+    ]
   # Block updating interval
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x5A4C
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
 ALL_FPS:
   # Interval
   -
@@ -100,3 +106,4 @@ ALL_FPS:
     address: [MAIN, 0x54C5B0, 0]
     value_type: int32
     value: "VSYNC_TARGET - 1"
+

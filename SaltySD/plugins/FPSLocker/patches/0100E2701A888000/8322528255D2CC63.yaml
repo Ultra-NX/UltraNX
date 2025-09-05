@@ -7,38 +7,41 @@ unsafeCheck: true
 MASTER_WRITE:
   # Change double buffer to triple buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x138A024
-    value_type: uint32
-    value: 0x52800068
+    instructions: [
+      [mov, w8, 3]
+    ]
   # Allow changing dynamic resolution timings
   # Max - changed address to MAIN + 0x7D05200
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x25992CC
-    value_type: uint32
-    value: 
-      - 0x9002BB68
-      - 0xD001C236
-      - 0xFD410102
+    instructions: [
+      [adrp, x8, 0x7d05000],
+      [adrp, x22, 0x5ddf000],
+      [ldr, d2, [x8, 0x200]]
+    ]
   # Min - changed address to MAIN + 0x7D05208
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2599344
-    value_type: uint32
-    value: 
-    - 0x9002BB6A
-    - 0xFD410545
+    instructions: [
+      [adrp, x10, 0x7d05000],
+      [ldr, d5, [x10, 0x208]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2599380
-    value_type: uint32
-    value: 0x9002BB6A
+    instructions: [
+      [adrp, x10, 0x7d05000]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2599390
-    value_type: uint32
-    value: 0xFD410546
+    instructions: [
+      [ldr, d6, [x10, 0x208]]
+    ]
   # Default values
   -
     type: bytes
@@ -63,3 +66,4 @@ ALL_FPS:
     address: [MAIN, 0x7D05208]
     value_type: double
     value: "0.96 * FRAMETIME_TARGET"
+

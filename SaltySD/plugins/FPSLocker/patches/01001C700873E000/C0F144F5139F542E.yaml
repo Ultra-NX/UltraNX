@@ -6,10 +6,11 @@ unsafeCheck: true
 MASTER_WRITE:
   # Remove double buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xEA22EC
-    value_type: uint32
-    value: 0xB20007E8
+    instructions: [
+      [mov, x8, 0x300000003]
+    ]
 ALL_FPS:
   # DUMMY
   -

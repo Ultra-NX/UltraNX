@@ -58,3 +58,7 @@ X0100423009358000
 ;Splatoon 3
 ;10.0.0 upwards crashes after online match
 X0100C2500FC20000
+
+;Hollow Knight: Silksong
+;1.0.28324 crash on boot
+X010013C00E930000

@@ -1,7 +1,7 @@
 # Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles 1.53
 # BID: 14C878ECCA9D7CB5
 
-unsafeCheck: true
+unsafeCheck: false
 
 ALL_FPS:
   # Disable bUseFixedFrameRate to unlock framerate
@@ -36,3 +36,4 @@ ALL_FPS:
   -
     type: block
     what: timing
+

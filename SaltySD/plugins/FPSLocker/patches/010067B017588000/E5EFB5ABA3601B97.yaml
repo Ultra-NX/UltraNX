@@ -19,43 +19,46 @@ MASTER_WRITE:
     value: 0x36
   # Allow variable game speed instead of fixed
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x36D880
-    value_type: uint32
-    value: 
-      - 0xF0009308
-      - 0x91203108
+    instructions: [
+      [adrp, x8, 0x15d0000],
+      [add, x8, x8, 0x80c]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x36D88C
-    value_type: uint32
-    value: 0x528002C9
+    instructions: [
+      [mov, w9, 0x16]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x36D894
-    value_type: uint32
-    value: 
-      - 0x90009308
-      - 0x91042508
+    instructions: [
+      [adrp, x8, 0x15cd000],
+      [add, x8, x8, 0x109]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x36D89C
-    value_type: uint32
-    value: 0x52800269
+    instructions: [
+      [mov, w9, 0x13]
+    ]
   # Force interval to 2 to maintain original 30 FPS lock by default
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x92BB84
-    value_type: uint32
-    value: 0x52800055
+    instructions: [
+      [mov, w21, 2]
+    ]
   # Redirect DR timing target to MAIN + 0x1C5DF00
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xA38B18
-    value_type: uint32
-    value: 
-      - 0xB0009121
-      - 0xBD4F0020
+    instructions: [
+      [adrp, x1, 0x1c5d000],
+      [ldr, s0, [x1, 0xf00]]
+    ]
 ALL_FPS:
   # DR timing = 1/FPS
   -
@@ -69,3 +72,4 @@ ALL_FPS:
     address: [MAIN, 0x1C49DD0, 0x39E0]
     value_type: uint32
     value: "VSYNC_TARGET - 1"
+

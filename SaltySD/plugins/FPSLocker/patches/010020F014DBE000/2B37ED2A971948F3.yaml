@@ -7,44 +7,44 @@ MASTER_WRITE:
   # Redirect Dynamic Resolution timings to MAIN + 0x3189F00
   # 38.0
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xFFEAFC
-    value_type: uint32
-    value:
-      - 0xF0010C4A
-      - 0xBD4F0141
+    instructions: [
+      [adrp, x10, 0x3189000],
+      [ldr, s1, [x10, 0xf00]]
+    ]
   # 22.0
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xFFEB0C
-    value_type: uint32
-    value:
-      - 0xBD4F0541
+    instructions: [
+      [ldr, s1, [x10, 0xf04]]
+    ]
   # 43.5 
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xFFEAD4
-    value_type: uint32
-    value:
-      - 0xF0010C4A
-      - 0xBD4F0941
+    instructions: [
+      [adrp, x10, 0x3189000],
+      [ldr, s1, [x10, 0xf08]]
+    ]
   # 58.0
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xFFEAE4
-    value_type: uint32
-    value:
-      - 0xF0010C4A
-      - 0xBD4F0D41
+    instructions: [
+      [adrp, x10, 0x3189000],
+      [ldr, s1, [x10, 0xf0c]]
+    ]
   # 47.0 | 34.0
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xFFEB20
-    value_type: uint32
-    value:
-      - 0xF0010C4B
-      - 0xBD4F1161
-      - 0xB94F156C
+    instructions: [
+      [adrp, x11, 0x3189000],
+      [ldr, s1, [x11, 0xf10]],
+      [ldr, w12, [x11, 0xf14]]
+    ]
   # Default values:
   -
     type: bytes
@@ -65,3 +65,4 @@ ALL_FPS:
     address: [MAIN, 0x3189F00]
     value_type: float
     value: ["(38.0 / (1000/30)) * FRAMETIME_TARGET", "(22.0 / (1000/30)) * FRAMETIME_TARGET", "(43.5 / (1000/30)) * FRAMETIME_TARGET", "(58.0 / (1000/30)) * FRAMETIME_TARGET", "(47.0 / (1000/30)) * FRAMETIME_TARGET", "(34.0 / (1000/30)) * FRAMETIME_TARGET"]
+

@@ -6,22 +6,22 @@ unsafeCheck: true
 MASTER_WRITE:
   # redirect reading Dynamic Resolution timing min & max to MAIN + 0xC3C0A50
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6171A0
-    value_type: uint32
-    value: 
-      - 0xD503201F
-      - 0xBD4E0563
-      - 0x1E232821
-      - 0xB005ED4C
-      - 0xBD4A5182
+    instructions: [
+      [nop],
+      [ldr, s3, [x11, 0xe04]],
+      [fadd, s1, s1, s3],
+      [adrp, x12, 0xc3c0000],
+      [ldr, s2, [x12, 0xa50]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6171F0
-    value_type: uint32
-    value: 
-      - 0xB005ED4B
-      - 0xBD4A5562  
+    instructions: [
+      [adrp, x11, 0xc3c0000],
+      [ldr, s2, [x11, 0xa54]]
+    ]
   # Default DR timings
   -
     type: bytes
@@ -41,3 +41,4 @@ ALL_FPS:
     address: [MAIN, 0xC3C0A50]
     value_type: float
     value: ["0.72 * FRAMETIME_TARGET", "0.93 * FRAMETIME_TARGET"]
+

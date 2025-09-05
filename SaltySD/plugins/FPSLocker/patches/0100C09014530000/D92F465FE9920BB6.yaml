@@ -6,13 +6,13 @@ unsafeCheck: true
 MASTER_WRITE:
   # Patch `DynamicResolution.Settings$$get_TargetFPS` to redirect reading targetFPS to unused .bss region [MAIN, 0x5E9AFF0]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x3821020
-    value_type: int32
-    value: 
-      - 0xB00133C0
-      - 0xBD4FF000
-      - 0xD65F03C0
+    instructions: [
+      [adrp, x0, 0x5e9a000],
+      [ldr, s0, [x0, 0xff0]],
+      [ret]
+    ]
   # Write default value of `DynamicResolution.Settings$$get_TargetFPS` to redirected address
   -
     type: bytes
@@ -26,3 +26,4 @@ ALL_FPS:
     address: [MAIN, 0x5E9AFF0]
     value_type: float
     value: FPS_TARGET
+

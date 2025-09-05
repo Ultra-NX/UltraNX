@@ -7,100 +7,107 @@ MASTER_WRITE:
   # Remove double buffer
   ## REF: 61 F6 42 39
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xD80748
-    value_type: uint32
-    value: 0x52800021
+    instructions: [
+      [mov, w1, 1]
+    ]
   # Change pointer of time factor for DR calculations to MAIN + 0x1D36FF4
   ## REF: 01 01 27 1E 08 59 A8 52 03 08 21 1E, replace hardcoded 100.0 float
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1153314
-    value_type: uint32
-    value: 
-      - 0xF0005F08
-      - 0x1E210803
-      - 0xBD4FF501
+    instructions: [
+      [adrp, x8, 0x1d36000],
+      [fmul, s3, s0, s1],
+      [ldr, s1, [x8, 0xff4]]
+    ]
   # Dynamic speed
   ## Replace nvnQueuePresentTexture call to code cave at MAIN+0x148D964
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xD874FC
-    value_type: uint32
-    value: 0x141C191A
+    instructions: [
+      [b, 0x148d964]
+    ]
   ## Patch game speed function to use speed from MAIN+0x1D36FF0
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x14092A8
-    value_type: uint32
-    value: 0x14000003
+    instructions: [
+      [b, 0x14092b4]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x14092CC
-    value_type: uint32
-    value:
-      - 0xB0004969
-      - 0xBD4FF121
+    instructions: [
+      [adrp, x9, 0x1d36000],
+      [ldr, s1, [x9, 0xff0]]
+    ]
   ## Patch UI speed function to use speeed from MAIN+0x1D36FF0
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x116D0D8
-    value_type: uint32
-    value: 0xB0005E47
+    instructions: [
+      [adrp, x7, 0x1d36000]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x116D0E4
-    value_type: uint32
-    value: 0xBD4FF0E0
+    instructions: [
+      [ldr, s0, [x7, 0xff0]]
+    ]
   ## CODE CAVE
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x148D964
-    value_type: uint32
-    value:
-      - 0xD63F0100
-      - 0xD53BE022
-      - 0xB0004548
-      - 0xF947FD01
-      - 0xEB1F003F
-      - 0x54000061
-      - 0xF907FD02
-      - 0x17E3E6E0
-      - 0xCB010040
-      - 0x97FFFBB6 # BL nn::os::ConvertToTimeSpan(nn::os::Tick)
-      - 0x9E230000
-      - 0x52940AA0
-      - 0x72A03F80
-      - 0x1E230001
-      - 0x1E211800
-      - 0x1E201001
-      - 0x1E212000
-      - 0x5400004B
-      - 0x1E204020
-      - 0xB0004548
-      - 0xBD4FED01
-      - 0x1E212000
-      - 0x5400004C
-      - 0x1E204020
-      - 0xBD0FF100
-      - 0x17FFFFED
-      - 0xB0004540
-      - 0xB94FF000
-      - 0xD65F03C0
-      - 0xB0004547
-      - 0xB90FE8E1
-      - 0x17DDA966
+    instructions: [
+      [blr, x8],
+      [mrs, x2, cntpct_el0],
+      [adrp, x8, 0x1d36000],
+      [ldr, x1, [x8, 0xff8]],
+      [cmp, x1, xzr],
+      [b.ne, 0x148d984],
+      [str, x2, [x8, 0xff8]],
+      [b, 0xd87500],
+      [sub, x0, x2, x1],
+      [bl, 0x148c860], # BL nn::os::ConvertToTimeSpan(nn::os::Tick)
+      [ucvtf, s0, x0],
+      [mov, w0, 0xa055],
+      [movk, w0, 0x1fc, 16],
+      [ucvtf, s1, w0],
+      [fdiv, s0, s0, s1],
+      [fmov, s1, 2.0],
+      [fcmp, s0, s1],
+      [b.lt, 0x148d9b0],
+      [fmov, s0, s1],
+      [adrp, x8, 0x1d36000],
+      [ldr, s1, [x8, 0xfec]],
+      [fcmp, s0, s1],
+      [b.gt, 0x148d9c4],
+      [fmov, s0, s1],
+      [str, s0, [x8, 0xff0]],
+      [b, 0x148d97c],
+      [adrp, x0, 0x1d36000],
+      [ldr, w0, [x0, 0xff0]],
+      [ret],
+      [adrp, x7, 0x1d36000],
+      [str, w1, [x7, 0xfe8]],
+      [b, 0xbf7f78]
+    ]
   # Signal Cutscenes playing
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC00680
-    value_type: uint32
-    value: 0x942234D6
+    instructions: [
+      [bl, 0x148d9d8]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xC00E40
-    value_type: uint32
-    value: 0x942232E6
+    instructions: [
+      [bl, 0x148d9d8]
+    ]
   # Default speed
   -
     type: bytes

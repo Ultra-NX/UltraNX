@@ -7,10 +7,11 @@ unsafeCheck: true
 MASTER_WRITE:
   # Remove FPS Lock
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x4835A4
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
 ALL_FPS:
   # Switch game to 60 FPS mode
   -
@@ -41,3 +42,4 @@ ALL_FPS:
     address: [MAIN, 0xEFFC60, 0x50]
     value_type: float
     value: "1 / FPS_TARGET"
+

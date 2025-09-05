@@ -6,12 +6,12 @@ unsafeCheck: true
 MASTER_WRITE:
   # Redirect DynamicResolutionManager$$Update Timing to be read from MAIN+0x72C6500
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x2B0188C
-    value_type: uint32
-    value: 
-      - 0xB0023E28
-      - 0xBD450101
+    instructions: [
+      [adrp, x8, 0x72c6000],
+      [ldr, s1, [x8, 0x500]]
+    ]
   # Write default value
   -
     type: bytes
@@ -25,3 +25,4 @@ ALL_FPS:
     address: [MAIN, 0x72C6500]
     value_type: float
     value: "0.97 * FRAMETIME_TARGET"
+

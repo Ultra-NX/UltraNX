@@ -6,10 +6,11 @@ unsafeCheck: true
 # Disable setting double buffer, REF: 28 63 A8 9B B8 5F 6E 29 2B F7 01 51 B9 83 57 B8
 MASTER_WRITE:
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x5DB12C
-    value_type: uint32
-    value: 0x52800079
+    instructions: [
+      [mov, w25, 3]
+    ]
 ALL_FPS:
   # interval, REF: 29 00 80 52 16 00 08 8B 08 A0 8C 52 28 00 A0 72
   -

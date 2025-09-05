@@ -6,42 +6,42 @@ unsafeCheck: true
 MASTER_WRITE:
   # Disable Dynamic GPU Clocks
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1DE89CC
-    value_type: uint32
-    value: 
-      - 0xD503201F
+    instructions: [
+      [nop]
+    ]
   # Redirect Dynamic Resolution Timings to MAIN+0x4113D00
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1DE89A8
-    value_type: uint32
-    value: 
-      - 0xF001194A
-      - 0xB94D014A
+    instructions: [
+      [adrp, x10, 0x4113000],
+      [ldr, w10, [x10, 0xd00]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1DE8A08
-    value_type: uint32
-    value: 
-      - 0xF001194A
-      - 0xB94D054A
+    instructions: [
+      [adrp, x10, 0x4113000],
+      [ldr, w10, [x10, 0xd04]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1DE80C8
-    value_type: uint32
-    value: 
-      - 0xF001194B
-      - 0xB94D096C
-      - 0xB94D0D6B
-      - 0xD503201F
+    instructions: [
+      [adrp, x11, 0x4113000],
+      [ldr, w12, [x11, 0xd08]],
+      [ldr, w11, [x11, 0xd0c]],
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1DE80F8
-    value_type: uint32
-    value: 
-      - 0xF001194B
-      - 0xB94D116B
+    instructions: [
+      [adrp, x11, 0x4113000],
+      [ldr, w11, [x11, 0xd10]]
+    ]
 # Write default values
   # MAIN + 0x1DE89AC
   -

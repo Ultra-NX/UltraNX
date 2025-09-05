@@ -6,33 +6,34 @@ unsafeCheck: true
 MASTER_WRITE:
   # Redirect DR timings to MAIN + 0x2BE8F00, [Bad, Optimal, Good]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x9C07A4
-    value_type: uint32
-    value: 
-      - 0x9001114C
-      - 0xBD4F0183
+    instructions: [
+      [adrp, x12, 0x2be8000],
+      [ldr, s3, [x12, 0xf00]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x9C07F4
-    value_type: uint32
-    value: 
-      - 0x9001114C
-      - 0xB94F058C
+    instructions: [
+      [adrp, x12, 0x2be8000],
+      [ldr, w12, [x12, 0xf04]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x9C0844
-    value_type: uint32
-    value: 
-      - 0x1E20CC83
-      - 0x9001114C
-      - 0xBD4F0580
-      - 0xD503201F
+    instructions: [
+      [fcsel, s3, s4, s0, gt],
+      [adrp, x12, 0x2be8000],
+      [ldr, s0, [x12, 0xf04]],
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x9C0868
-    value_type: uint32
-    value: 0xBD4F0980
+    instructions: [
+      [ldr, s0, [x12, 0xf08]]
+    ]
   # Default values
   -
     type: bytes
@@ -45,3 +46,4 @@ ALL_FPS:
     address: [MAIN, 0x2BE8F00]
     value_type: float
     value: ["1.35 * FRAMETIME_TARGET", "0.9603 * FRAMETIME_TARGET", "0.9 * FRAMETIME_TARGET"]
+

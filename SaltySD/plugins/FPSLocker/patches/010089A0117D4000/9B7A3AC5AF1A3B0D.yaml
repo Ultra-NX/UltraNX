@@ -6,30 +6,35 @@ unsafeCheck: true
 # Block updating FPS Lock
 MASTER_WRITE:
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1240DFC
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1240E10
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1240E1C
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1240E24
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x1240E2C
-    value_type: uint32
-    value: 0xBD41F100
+    instructions: [
+      [ldr, s0, [x8, 0x1f0]]
+    ]
 ALL_FPS:
   -
     type: evaluate_write
@@ -54,3 +59,4 @@ ALL_FPS:
   -
     type: block
     what: timing
+

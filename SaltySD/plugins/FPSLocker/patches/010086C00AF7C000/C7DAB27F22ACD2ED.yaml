@@ -1,29 +1,31 @@
 # 妖怪ウォッチ4 ぼくらは同じ空を見上げている 2.2.0
 # BID: C7DAB27F22ACD2ED
 # Game is using double buffer, nvnWindowBuilderSetTextures has hardcoded values.
-# So it's not possible to get stable FPS lock between 30 and 60.
+# So it's not possible to get stable FPS lock between 30 and 60 without changing refresh rate.
 
 unsafeCheck: true
 
 MASTER_WRITE:
   # Change main loop delay from 31.6 ms to 4.2 ms
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x950C6C
-    value_type: uint32
-    value: 0xD2A00800
+    instructions: [
+      [mov, x0, 0x400000]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x950C74
-    value_type: uint32
-    value: 0xD2A00800
+    instructions: [
+      [mov, x0, 0x400000]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x950C94
-    value_type: uint32
-    value:
-      - 0xD503201F
-      - 0xD503201F
+    instructions: [
+      [nop],
+      [nop]
+    ]
 ALL_FPS:
   # DUMMY
   -

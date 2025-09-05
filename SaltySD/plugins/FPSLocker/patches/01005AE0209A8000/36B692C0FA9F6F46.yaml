@@ -7,27 +7,27 @@ MASTER_WRITE:
   # REF: 09 49 A8 52 21 01 27 1E 00 20 21 1E
   # Use FPS Target instead of vsync value for Dynamic Resolution max delta
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6E3AF0
-    value_type: uint32
-    value:
-      - 0xD00049E1 # ADRP X1, 0x1021000
-      - 0xBD4E1021 # LDR S1, [X1, 0xE10]
+    instructions: [
+      [adrp, x1, 0x1021000],
+      [ldr, s1, [x1, 0xe10]]
+    ]
   # Redirect DR Targets to MAIN+0x1477F00
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6E3B94
-    value_type: uint32
-    value:
-      - 0x90006EE9 # ADRP X9, 0x14BF000
-      - 0xBD4F0121 # LDR S1, [X9, 0xF00]
+    instructions: [
+      [adrp, x9, 0x14bf000],
+      [ldr, s1, [x9, 0xf00]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6E3BA4
-    value_type: uint32
-    value:
-      - 0x90006EE9 # ADRP X9, 0x14BF000
-      - 0xBD4F0521 # LDR S1, [X9, 0xF04]
+    instructions: [
+      [adrp, x9, 0x14bf000],
+      [ldr, s1, [x9, 0xf04]]
+    ]
   # Default values
   -
     type: bytes
@@ -72,4 +72,5 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x14BFF00]
     value_type: float
+
     value: ["1.5 * FRAMETIME_TARGET", "1.2 * FRAMETIME_TARGET"]

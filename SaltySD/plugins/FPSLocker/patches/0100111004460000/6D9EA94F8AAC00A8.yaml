@@ -7,16 +7,18 @@ unsafeCheck: true
 MASTER_WRITE:
   # Remove double buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xAD40FC
-    value_type: uint32
-    value: 0x52800068
+    instructions: [
+      [mov, w8, 3]
+    ]
   # Block switching back to 30 FPS mode on loading screens
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6173B0
-    value_type: uint32
-    value: 0xD503201F
+    instructions: [
+      [nop]
+    ]
 ALL_FPS:
   # Switch to 60 FPS Mode
   -

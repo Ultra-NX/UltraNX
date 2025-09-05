@@ -8,14 +8,14 @@ MASTER_WRITE:
 # Patch code to multiply last frametime by float scale factor stored in MAIN+0x3B4D800
 # To match it to Dynamic Resolution calculations
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xB40638
-    value_type: uint32
-    value:
-      - 0xB0018069
-      - 0xBD480120
-      - 0x1E200909
-      - 0xD503201F
+    instructions: [
+      [adrp, x9, 0x3b4d000],
+      [ldr, s0, [x9, 0x800]],
+      [fmul, s9, s8, s0],
+      [nop]
+    ]
 # Write default dynamic resolution timing factor
   -
     type: bytes
@@ -28,3 +28,4 @@ ALL_FPS:
     address: [MAIN, 0x3B4D800]
     value_type: float
     value: "FPS_TARGET / 30"
+

@@ -7,71 +7,78 @@ unsafeCheck: false
 MASTER_WRITE:
   # Remove double buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x745E94
-    value_type: uint32
-    value: 0x52800069
+    instructions: [
+      [mov, w9, 3]
+    ]
   # Fix helper functions to not corrupt stack
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x745F70
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x75908C
-    value_type: uint32
-    value: 0x52800062 
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x675198
-    value_type: uint32
-    value:
-      - 0xD10143FF
-      - 0xA90257F6
-      - 0xA9034FF4
-      - 0xA9047BFD
-      - 0x910103FD
+    instructions: [
+      [sub, sp, sp, 0x50],
+      [stp, x22, x21, [sp, 0x20]],
+      [stp, x20, x19, [sp, 0x30]],
+      [stp, x29, x30, [sp, 0x40]],
+      [add, x29, sp, 0x40]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6751EC
-    value_type: uint32
-    value: 0x52800062 
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x675210
-    value_type: uint32
-    value:
-      - 0xA9447BFD
-      - 0xA9434FF4
-      - 0xA94257F6
-      - 0x910143FF
+    instructions: [
+      [ldp, x29, x30, [sp, 0x40]],
+      [ldp, x20, x19, [sp, 0x30]],
+      [ldp, x22, x21, [sp, 0x20]],
+      [add, sp, sp, 0x50]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x74A510
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x7590F8
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x7BDCD4
-    value_type: uint32
-    value: 0x52800062
+    instructions: [
+      [mov, w2, 3]
+    ]
   # Block transparency in some 2D elements to avoid issue with flickering at triple buffer
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x6A58C8
-    value_type: uint32
-    value:
-      - 0xD2802049
-      - 0xB948414A
-      - 0x91208114
-      - 0xD37DF14C
-      - 0xF9000289
+    instructions: [
+      [mov, x9, 0x102],
+      [ldr, w10, [x10, 0x840]],
+      [add, x20, x8, 0x820],
+      [lsl, x12, x10, 3],
+      [str, x9, [x20]]
+    ]
 ALL_FPS:
   # Interval (Setting it to 0 unlocks framerate and sets dynamic game speed)
   -
@@ -85,3 +92,4 @@ ALL_FPS:
     address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
     value_type: float
     value: ["(30 / FPS_TARGET) * 1.95", "(30 / FPS_TARGET) * 1.7"]
+

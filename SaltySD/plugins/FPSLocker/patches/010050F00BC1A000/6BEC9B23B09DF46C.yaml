@@ -6,39 +6,41 @@ unsafeCheck: true
 MASTER_WRITE:
   # Detect prerendered cutscenes
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xB1A810
-    value_type: uint32
-    value: 0x14005CF6
+    instructions: [
+      [b, 0xb31be8]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xB31BE8
-    value_type: uint32
-    value:
-      - 0xF81E0FF3
-      - 0x52800021
-      - 0xD000CDB3
-      - 0xB90FF261
-      - 0xAA0003F3
-      - 0x52994000
-      - 0x72A77340
-      - 0xD4000161
-      - 0xAA1303E0
-      - 0x17FFA302
+    instructions: [
+      [str, x19, [sp, -0x20], "!"],
+      [mov, w1, 1],
+      [adrp, x19, 0x24e7000],
+      [str, w1, [x19, 0xff0]],
+      [mov, x19, x0],
+      [mov, w0, 0xca00],
+      [movk, w0, 0x3b9a, 16],
+      [svc, 0xb],
+      [mov, x0, x19],
+      [b, 0xb1a814]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xB1A9BC
-    value_type: uint32
-    value: 0x14005C95
+    instructions: [
+      [b, 0xb31c10]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0xB31C10
-    value_type: uint32
-    value:
-      - 0x2A1F03E1
-      - 0xD000CDA2
-      - 0xB90FF041
-      - 0x17FFCCA9
+    instructions: [
+      [mov, w1, wzr],
+      [adrp, x2, 0x24e7000],
+      [str, w1, [x2, 0xff0]],
+      [b, 0xb24ec0]
+    ]
 ALL_FPS:
   # Internal FPS Lock
   -

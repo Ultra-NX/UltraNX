@@ -6,19 +6,19 @@ unsafeCheck: true
 MASTER_WRITE:
   # Redirect DR timing targets to MAIN + 0x21E4F30
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x4C82D0
-    value_type: uint32
-    value:
-      - 0x9000E8EA
-      - 0xBD4F3142
+    instructions: [
+      [adrp, x10, 0x21e4000],
+      [ldr, s2, [x10, 0xf30]]
+    ]
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x4C8300
-    value_type: uint32
-    value:
-      - 0x9000E8E8
-      - 0xBD4F3502
+    instructions: [
+      [adrp, x8, 0x21e4000],
+      [ldr, s2, [x8, 0xf34]]
+    ]
   # Default values
   -
     type: bytes
@@ -31,3 +31,4 @@ ALL_FPS:
     address: [MAIN, 0x21E4F30]
     value_type: float
     value: ["0.99 * FRAMETIME_TARGET", "0.84 * FRAMETIME_TARGET"]
+

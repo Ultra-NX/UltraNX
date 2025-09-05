@@ -14,13 +14,13 @@ MASTER_WRITE:
   # Redirect Dynamic Resolution target reading to MAIN + 0x30C3F00
   # REF: 28 11 91 52 08 A1 A7 72 03 01 27 1E
   -
-    type: bytes
+    type: asm_a64
     main_offset: 0x147BE04
-    value_type: uint32
-    value:
-      - 0x9000E248 # ADRP X8, 0x30C3000
-      - 0xBD4F0103 # LDR S3, [X8, 0xF00]
-      - 0xD503201F # NOP
+    instructions: [
+      [adrp, x8, 0x30c3000],
+      [ldr, s3, [x8, 0xf00]],
+      [nop]
+    ]
   ## Default values
   -
     type: bytes
