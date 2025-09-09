@@ -1,8 +1,6 @@
 # FANTASY LIFE i: The Girl Who Steals Time 1.4.0
 # BID: 061A7341077C0974
 
-unsafeCheck: true
-
 ALL_FPS:
   # t.MaxFPS
   -

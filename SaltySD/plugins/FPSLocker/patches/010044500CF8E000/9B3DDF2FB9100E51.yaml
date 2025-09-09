@@ -1,8 +1,6 @@
 # Hellblade: Senua's Sacrifice 1.1.0
 # BID: 9B3DDF2FB9100E51
 
-unsafeCheck: false
-
 ALL_FPS:
   # Custom Dynamic Resolution implementation - Frame Time (MAX/MIN)
   # MAX = (1/FPS) * 0.95
@@ -11,7 +9,7 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x520BBE0, 0x40]
     value_type: float
-    value: ["(1 / FPS_TARGET) * 0.95", "(1 / FPS_TARGET) * 0.9"]
+    value: ["0.95 / FPS_TARGET", "0.9 / FPS_TARGET"]
   # t.MaxFPS
   -
     type: evaluate_write

@@ -1,12 +1,11 @@
 # The Forest Quartet 4.0.2
 # BID: 47A022F858BA09B1
 
-unsafeCheck: false
-
 ALL_FPS:
   # DynamicResolution_TypeInfo
   -
     type: evaluate_write
     address: [MAIN, 0x4B320A0, 0xB8, 0]
+    address_unsafe: true
     value_type: double
     value: ["0.96 * FRAMETIME_TARGET", "(0.96 * FRAMETIME_TARGET) - 0.75"]

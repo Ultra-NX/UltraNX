@@ -1,0 +1,106 @@
+# Kirby and the Forgotten Land 1.1.0
+# BID: A6CE40DC3AEDB1BE
+# Thanks to Hazerou for finding interval offsets
+
+MASTER_WRITE:
+  # Remove double buffer
+  ## REF: 08 07 40 B9 49 00 80 52
+  -
+    type: asm_a64
+    main_offset: 0x747C04
+    instructions: [
+      [mov, w9, 3]
+    ]
+  # Fix helper functions to not corrupt stack
+  ## REF: 42 00 80 52 BF FF 30 A9
+  -
+    type: asm_a64
+    main_offset: 0x747CE0
+    instructions: [
+      [mov, w2, 3]
+    ]
+  ## REF: 08 65 45 F9 42 00 80 52, first result
+  -
+    type: asm_a64
+    main_offset: 0x75ADFC
+    instructions: [
+      [mov, w2, 3]
+    ]
+  ## REF: 09 C0 9D 52 09 01 A0 72 E1 03 00 91 F6 03 00 91, beginning of function
+  -
+    type: asm_a64
+    main_offset: 0x676AC8
+    instructions: [
+      [sub, sp, sp, 0x50],
+      [stp, x22, x21, [sp, 0x20]],
+      [stp, x20, x19, [sp, 0x30]],
+      [stp, x29, x30, [sp, 0x40]],
+      [add, x29, sp, 0x40]
+    ]
+  ## REF: 00 61 00 91 42 00 80 52
+  -
+    type: asm_a64
+    main_offset: 0x676B1C
+    instructions: [
+      [mov, w2, 3]
+    ]
+  ## REF: End of function from code above, first ldp x29 x30
+  -
+    type: asm_a64
+    main_offset: 0x676B40
+    instructions: [
+      [ldp, x29, x30, [sp, 0x40]],
+      [ldp, x20, x19, [sp, 0x30]],
+      [ldp, x22, x21, [sp, 0x20]],
+      [add, sp, sp, 0x50]
+    ]
+  ## REF: 42 00 80 52 F6 03 00 91
+  -
+    type: asm_a64
+    main_offset: 0x74C280
+    instructions: [
+      [mov, w2, 3]
+    ]
+  ## REF: 42 00 80 52 16 69 69 F8, second result
+  -
+    type: asm_a64
+    main_offset: 0x75AE68
+    instructions: [
+      [mov, w2, 3]
+    ]
+  ## REF: 42 00 80 52 08 05 40 F9
+  -
+    type: asm_a64
+    main_offset: 0x7C2E64
+    instructions: [
+      [mov, w2, 3]
+    ]
+  # Block transparency in some 2D elements to avoid issue with flickering at triple buffer
+  ## REF: 49 91 89 B9 4A 41 48 B9
+  -
+    type: asm_a64
+    main_offset: 0x6A757C
+    instructions: [
+      [mov, x9, 0x102],
+      [ldr, w10, [x10, 0x840]],
+      [add, x20, x8, 0x820],
+      [lsl, x12, x10, 3],
+      [str, x9, [x20]]
+    ]
+ALL_FPS:
+  # Interval (Setting it to 0 unlocks framerate and sets dynamic game speed)
+  ## REF: 17 6C 90 52 57 01 A0 72 08 7C 01 A9, first STR above it
+  -
+    type: write
+    address: [MAIN, 0xA76728, 0x50]
+    address_unsafe: true
+    value_type: int32
+    value: 0
+  # Dynamic Resolution GPU Frametiming Max / Min (Max = 1.95 * (30/FPS), Min = 1.7 * (30/FPS))
+  ## REF: 88 F2 80 B9 F3 03 00 AA 1F 05 00 71, last result, first STR above it
+  -
+    type: evaluate_write
+    address: [MAIN, 0xA767B0, 0x140, 0x1B0, 0x20, 0x34]
+    address_unsafe: true
+    value_type: float
+    value: ["(30 / FPS_TARGET) * 1.95", "(30 / FPS_TARGET) * 1.7"]

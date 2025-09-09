@@ -1,13 +1,12 @@
 # Stray 1.6.0
 # BID: 109D974E180A5AA1
 
-unsafeCheck: false
-
 ALL_FPS:
   # Disable bUseFixedFrameRate
   -
     type: write
     address: [MAIN, 0x5DC7368, 0x7A4]
+    address_unsafe: true
     value_type: int32
     value: 7
   # r.VSync

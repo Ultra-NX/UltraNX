@@ -3,32 +3,34 @@
 # Double buffer is hardcoded in class, getting triple buffer is hard.
 # Some graphical effects like aura have wrong speed outside of 15, 20, 30 and 60 FPS
 
-unsafeCheck: false
-
 ALL_FPS:
   # Search those in Edizon by searching for 1/60 in title menu, then 1/30 when FPS lock is applied.
   # FPS Lock
   -
     type: write
     address: [MAIN, 0x4AC8AD8, 0x698]
+    address_unsafe: true
     value_type: float
     value: 0.0
   # Unknown
   -
     type: write
     address: [MAIN, 0x4AC8AD8, 0x6A4]
+    address_unsafe: true
     value_type: float
     value: 0.0
   # Game Battle Speed Factor
   -
     type: evaluate_write
     address: [MAIN, 0x4AC8AD8, 0x6B0]
+    address_unsafe: true
     value_type: uint32
     value: VSYNC_TARGET
   # Cutscenes Speed Factor
   -
     type: evaluate_write
     address: [MAIN, 0x4AC8AD8, 0x6B4]
+    address_unsafe: true
     value_type: uint32
     value: VSYNC_TARGET
   # Target Speed
@@ -43,5 +45,6 @@ ALL_FPS:
   -
     type: evaluate_write
     address: [MAIN, 0x23D53C8, 0x1844]
+    address_unsafe: true
     value_type: float
     value: "FPS_TARGET"  

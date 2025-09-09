@@ -1,8 +1,6 @@
 # Outlast 1.0.1
 # BID: C3D46BB3C7059DB1
 
-unsafeCheck: true
-
 MASTER_WRITE:
   # Remove double buffer
   -
@@ -29,10 +27,3 @@ MASTER_WRITE:
     instructions: [
       [mov, w1, 3]
     ]
-ALL_FPS:
-  # DUMMY
-  -
-    type: write
-    address: [MAIN, 0x36BF100]
-    value_type: uint8
-    value: 0

@@ -1,54 +1,41 @@
 # 零 ～濡鴉ノ巫女～ 1.0.5
 # BID: 8BFBF5B8A7098443
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: min_delta
+    value_type: float
+    default_value: 0.0333333333
+    evaluate: "1 / FPS_TARGET"
+  -
+    type: variable
+    name: fps_lock
+    value_type: uint32
+    default_value: 33333333
+    evaluate: "1000000000 / FPS_TARGET"
 MASTER_WRITE:
-  # Redirect min delta to MAIN + 0x1BC4FF0
+  # Redirect min delta
   # REF: 00 D9 21 7E 28 19 20 1E
   -
     type: asm_a64
     main_offset: 0x39ABF8
     instructions: [
-      [adrp, x27, 0x1bc4000],
-      [ldr, s8, [x27, 0xff0]]
+      [adrp, x27, $min_delta],
+      [ldr, s8, [x27, $min_delta]]
     ]
-  # Redirect FPS Lock to MAIN + 0x1BC4FF4
+  # Redirect FPS Lock
   # REF: 69 AA 40 B9 0A 40 99 52
   -
     type: asm_a64
     main_offset: 0x39B2D8
     instructions: [
-      [adrp, x9, 0x1BC4000],
-      [ldr, w9, [x9, 0xff4]],
+      [adrp, x9, $fps_lock],
+      [ldr, w9, [x9, $fps_lock]],
       [nop],
       [nop]
     ]
-  # Default values
-  -
-    type: bytes
-    main_offset: 0x1BC4FF0
-    value_type: float
-    value: 0.0333333333
-  -
-    type: bytes
-    main_offset: 0x1BC4FF4
-    value_type: uint32
-    value: 33333333
 ALL_FPS:
-  # Min delta
-  -
-    type: evaluate_write
-    address: [MAIN, 0x1BC4FF0]
-    value_type: float
-    value: "1 / FPS_TARGET"
-  # FPS Lock
-  -
-    type: evaluate_write
-    address: [MAIN, 0x1BC4FF4]
-    value_type: uint32
-    value: "1000000000 / FPS_TARGET"
   -
     type: block
     what: timing
-

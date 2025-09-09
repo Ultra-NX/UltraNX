@@ -1,42 +1,23 @@
 # Batman: The Enemy Within 1.0.3
 # BID: AAC6FB02E03062EF
 
-unsafeCheck: true
-
-MASTER_WRITE:
-# Remove double buffer
+DECLARATIONS:
   -
-    type: asm_a64
-    main_offset: 0x64A8
+    type: code
+    name: tripleBuffer
     instructions: [
-      [mov, w2, 3],
-      [madd, x1, x8, x2, x9]
-    ]
-  -
-    type: bytes
-    main_offset: 0xC526D0
-    value_type: uint32
-    value: 0x1887D70
-  -
-    type: bytes
-    main_offset: 0x1751C50
-    value_type: uint32
-    value: 0x1887D70
-  -
-    type: asm_a64
-    main_offset: 0xC4EDE0
-    instructions: [
+      [stp, x29, x30, [sp, -16], "!"],
       [ldr, x0, [x26, 0x10]],
-      [cbz, x0, +24],
+      [cbz, x0, :goto1],
       [adrp, x8, 0x1751000],
       [ldr, x8, [x8, 0x150]],
       [ldr, x8, [x8]],
       [blr, x8],
-      [b, +16],
-      [mov, w0, 0xc0],
+      [b, :goto2],
+      :goto1, [mov, w0, 0xc0],
       [bl, 0x72bb40],
       [str, x0, [x26, 0x10]],
-      [ldr, x22, [x27]],
+      :goto2, [ldr, x22, [x27]],
       [adrp, x27, 0x1750000],
       [ldr, x21, [x25]],
       [ldr, x27, [x27, 0xff8]],
@@ -62,13 +43,34 @@ MASTER_WRITE:
       [mov, x1, x23],
       [blr, x8],
       [adrp, x22, 0x1751000],
-      [b, 0x5edc]
+      [ldp, x29, x30, [sp], 16],
+      [ret]
     ]
+
+MASTER_WRITE:
+# Remove double buffer
+  -
+    type: asm_a64
+    main_offset: 0x64A8
+    instructions: [
+      [mov, w2, 3],
+      [madd, x1, x8, x2, x9]
+    ]
+  -
+    type: bytes
+    main_offset: 0xC526D0
+    value_type: uint32
+    value: 0x1887D70
+  -
+    type: bytes
+    main_offset: 0x1751C50
+    value_type: uint32
+    value: 0x1887D70
   -
     type: asm_a64
     main_offset: 0x5ED8
     instructions: [
-      [b, 0xc4ede0]
+      [bl, _tripleBuffer()]
     ]
   -
     type: asm_a64
@@ -82,10 +84,5 @@ MASTER_WRITE:
     instructions: [
       [mov, x2, 0x1950000]
     ]
-ALL_FPS:
-  # dummy
-  -
-    type: write
-    address: [MAIN, 0x1887F00]
-    value_type: uint8
-    value: 0
+
+

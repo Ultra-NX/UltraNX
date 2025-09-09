@@ -1,17 +1,28 @@
 # REYNATIS (US/EU) 1.0.10
 # BID: 5F765D2CC4CDEF1C
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target1
+    value_type: double
+    default_value: 31
+    evaluate: "0.93 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target2
+    value_type: double
+    default_value: 29
+    evaluate: "(0.93 * FRAMETIME_TARGET) - 2"
 MASTER_WRITE:
-  # Redirect reading DR timing in DynamicResolution::LowerResSW() to MAIN + 0x7C22F00
+  # Redirect reading DR timing in DynamicResolution::LowerResSW()
   # REF: 01 f0 67 1e
   -
     type: asm_a64
     main_offset: 0x38E7ECC
     instructions: [
-      [adrp, x20, 0x7c22000],
-      [ldr, d1, [x20, 0xf00]],
+      [adrp, x20, $dr_target1],
+      [ldr, d1, [x20, $dr_target1]],
       [fcmpe, d0, d1],
       [ldp, s9, s8, [x19, 0x40]],
       [b.le, 0x38e7f34],
@@ -21,19 +32,5 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x38E7F34
     instructions: [
-      [ldr, d1, [x20, 0xf08]]
+      [ldr, d1, [x20, $dr_target2]]
     ]
-  # Default handheld value
-  -
-    type: bytes
-    main_offset: 0x7C22F00
-    value_type: double
-    value: [31, 29]
-ALL_FPS:
-  # Dynamic Resolution Timing
-  -
-    type: evaluate_write
-    address: [MAIN, 0x7C22F00]
-    value_type: double
-    value: ["0.93 * FRAMETIME_TARGET", "(0.93 * FRAMETIME_TARGET) - 2"]
-

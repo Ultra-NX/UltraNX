@@ -3,28 +3,20 @@
 # Game is using double buffer, buffers are not allocated in loop.
 # So it's not possible to get stable FPS lock between 30 and 60 without changing refresh rate.
 
-unsafeCheck: true
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_scale
+    value_type: double
+    default_value: 1000000
+    evaluate: "30000000 / FPS_TARGET"
 
 MASTER_WRITE:
-  # Change location of GPU frametime double divider to MAIN+0x32C6D00
+  # Change location of GPU frametime double divider
   -
     type: asm_a64
     main_offset: 0x921768
     instructions: [
-      [adrp, x8, 0x32c6000],
-      [ldr, d1, [x8, 0xd00]]
+      [adrp, x8, $dr_scale],
+      [ldr, d1, [x8, $dr_scale]]
     ]
-  # Default value
-  -
-    type: bytes
-    main_offset: 0x32C6D00
-    value_type: double
-    value: 1000000
-ALL_FPS:
-  # GPU Frametime divider = (30/FPS) * 1000000
-  -
-    type: evaluate_write
-    address: [MAIN, 0x32C6D00]
-    value_type: double
-    value: "(30 / FPS_TARGET) * 1000000"
-

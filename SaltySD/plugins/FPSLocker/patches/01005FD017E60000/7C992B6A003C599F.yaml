@@ -1,13 +1,12 @@
 # Warhammer 40,000: Boltgun 1.0.0.3
 # BID: 7C992B6A003C599F
 
-unsafeCheck: false
-
 ALL_FPS:
   # Disable bUseFixedFrameRate to unlock framerate
   -
     type: write
     address: [MAIN, 0x710C9C8, 0x7A4]
+    address_unsafe: true
     value_type: uint32
     # Default is 0x47, bUseFixedFrameRate |= 0x40 
     # By writing 7 we are making sure that other flags are maintained: 

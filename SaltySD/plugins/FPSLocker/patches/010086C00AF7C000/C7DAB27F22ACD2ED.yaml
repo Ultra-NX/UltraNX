@@ -3,8 +3,6 @@
 # Game is using double buffer, nvnWindowBuilderSetTextures has hardcoded values.
 # So it's not possible to get stable FPS lock between 30 and 60 without changing refresh rate.
 
-unsafeCheck: true
-
 MASTER_WRITE:
   # Change main loop delay from 31.6 ms to 4.2 ms
   -
@@ -26,10 +24,3 @@ MASTER_WRITE:
       [nop],
       [nop]
     ]
-ALL_FPS:
-  # DUMMY
-  -
-    type: write
-    address: [MAIN, 0x6AE8500]
-    value_type: uint8
-    value: 0

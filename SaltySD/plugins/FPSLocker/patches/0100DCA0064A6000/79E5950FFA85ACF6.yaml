@@ -2,30 +2,28 @@
 # BID: 79E5950FFA85ACF6
 # Credits for finding FPS Lock goes to theboy181
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_target
+    value_type: float
+    default_value: 33.333333
+    evaluate: "1000 / FPS_LOCK_TARGET"
 MASTER_WRITE:
   # Redirect reading FPS Lock to MAIN+0x1D164DC
   -
     type: asm_a64
     main_offset: 0x7A3E9C
     instructions: [
-      [adrp, x12, 0x1d16000]
+      [adrp, x12, $fps_target]
     ]
-  # Default value
   -
-    type: bytes
-    main_offset: 0x1D164DC
-    value_type: float
-    value: 33.33333333
+    type: asm_a64
+    main_offset: 0x7A3EA8
+    instructions: [
+      [ldr, s0, [x12, $fps_target]]
+    ]
 ALL_FPS:
-  # FPS Lock in ms
-  -
-    type: evaluate_write
-    address: [MAIN, 0x1D164DC]
-    value_type: float
-    value: "1000 / FPS_LOCK_TARGET"
   -
     type: block
     what: timing
-

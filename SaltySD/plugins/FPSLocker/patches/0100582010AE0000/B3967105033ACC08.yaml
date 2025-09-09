@@ -1,8 +1,61 @@
 # Crysis 2 Remastered 1.3.0
 # BID: B3967105033ACC08
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target1
+    value_type: float
+    default_value: 31.5
+    evaluate: "0.945 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target2
+    value_type: float
+    default_value: 32.5
+    evaluate: "0.975 * FRAMETIME_TARGET"
+  # DON'T PUT ANYTHING BETWEEN - START
+  -
+    type: variable
+    name: dr_target3
+    value_type: float
+    default_value: 33
+    evaluate: "0.99 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target4
+    value_type: float
+    default_value: 35
+    evaluate: "0.99 * FRAMETIME_TARGET"
+  # DON'T PUT ANYTHING BETWEEN - END
+  # DON'T PUT ANYTHING BETWEEN - START
+  -
+    type: variable
+    name: dr_target5
+    value_type: float
+    default_value: 32
+    evaluate: "0.96 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target6
+    value_type: float
+    default_value: 33.5
+    evaluate: "0.96 * FRAMETIME_TARGET"
+  # DON'T PUT ANYTHING BETWEEN - END
+  # DON'T PUT ANYTHING BETWEEN - START
+  -
+    type: variable
+    name: dr_target7
+    value_type: float
+    default_value: 28.75
+    evaluate: "0.8625 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target8
+    value_type: float
+    default_value: 29.75
+    evaluate: "0.8625 * FRAMETIME_TARGET"
+  # DON'T PUT ANYTHING BETWEEN - END
 MASTER_WRITE:
   # Redirect Dynamic Resolution Timings to read always not from .text
   -
@@ -22,63 +75,32 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x2EE9A38
     instructions: [
-      [adrp, x11, 0x453b000]
+      [adrp, x11, $dr_target1]
     ]
   -
     type: asm_a64
     main_offset: 0x2EE9A40
     instructions: [
-      [adrp, x12, 0x453b000],
-      [ldr, s1, [x11, 0x300]],
-      [ldr, s2, [x12, 0x304]]
+      [adrp, x12, $dr_target2],
+      [ldr, s1, [x11, $dr_target1]],
+      [ldr, s2, [x12, $dr_target2]]
     ]
   -
     type: asm_a64
     main_offset: 0x2EE9A50
     instructions: [
-      [adrp, x13, 0x453b000],
-      [add, x13, x13, 0x308]
+      [adrp, x13, $dr_target3],
+      [add, x13, x13, $dr_target3]
     ]
   -
     type: asm_a64
     main_offset: 0x2EE9A7C
     instructions: [
-      [adrp, x9, 0x453b000],
-      [add, x9, x9, 0x310],
-      [adrp, x11, 0x453b000],
-      [add, x11, x11, 0x318]
+      [adrp, x9, $dr_target5],
+      [add, x9, x9, $dr_target5],
+      [adrp, x11, $dr_target7],
+      [add, x11, x11, $dr_target7]
     ]
-# Write default values
-  # MAIN + 0x333FAFC
-  -
-    type: bytes
-    main_offset: 0x453B300
-    value_type: float
-    value: 31.5
-  # MAIN + 0x333F844
-  -
-    type: bytes
-    main_offset: 0x453B304
-    value_type: float
-    value: 32.5
-  # MAIN + 0x333E360
-  -
-    type: bytes
-    main_offset: 0x453B308
-    value_type: float
-    value: [33, 35]
-  # MAIN + 0x333E258
-  -
-    type: bytes
-    main_offset: 0x453B310
-    value_type: float
-    value: [32, 33.5]
-  # MAIN + 0x333E9F8
-  -
-    type: bytes
-    main_offset: 0x453B318
-    value_type: float
-    value: [28.75, 29.75]
 ALL_FPS:
   # sys_MaxFPS
   -
@@ -88,40 +110,10 @@ ALL_FPS:
     value: FPS_LOCK_TARGET
   # Renderer thread delay
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x444A0D8]
     value_type: float
-    value: 0.01
-  # MAIN + 0x333FAFC
-  -
-    type: evaluate_write
-    address: [MAIN, 0x453B300]
-    value_type: float
-    value: "0.945 * FRAMETIME_TARGET"
-  # MAIN + 0x333F844
-  -
-    type: evaluate_write
-    address: [MAIN, 0x453B304]
-    value_type: float
-    value: "0.975 * FRAMETIME_TARGET"
-  # MAIN + 0x333E360
-  -
-    type: evaluate_write
-    address: [MAIN, 0x453B308]
-    value_type: float
-    value: ["0.99 * FRAMETIME_TARGET", "0.99 * FRAMETIME_TARGET"]
-  # MAIN + 0x333E258
-  -
-    type: evaluate_write
-    address: [MAIN, 0x453B310]
-    value_type: float
-    value: ["0.96 * FRAMETIME_TARGET", "0.96 * FRAMETIME_TARGET"]
-  # MAIN + 0x333E9F8
-  -
-    type: evaluate_write
-    address: [MAIN, 0x453B318]
-    value_type: float
-    value: ["0.8625 * FRAMETIME_TARGET", "0.8625 * FRAMETIME_TARGET"]
+    value: "0.66 / FPS_TARGET"
   -
     type: block
     what: timing

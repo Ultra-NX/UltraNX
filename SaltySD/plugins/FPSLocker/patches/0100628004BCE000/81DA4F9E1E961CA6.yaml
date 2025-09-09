@@ -1,29 +1,20 @@
 # Nights Of Azure 2: Bride of the New Moon 1.0.1
 # BID: 81DA4F9E1E961CA6
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: code
+    name: tripleBuffer
+    instructions: [
+      [mov, w22, 3],
+      [str, w22, [x1, 8]],
+      [b, 0xa305c0]
+    ]    
 MASTER_WRITE:
   # Remove double buffer
   -
     type: asm_a64
     main_offset: 0x7E4ED8
     instructions: [
-      [bl, 0xa31900]
+      [bl, _tripleBuffer()]
     ]
-  -
-    type: asm_a64
-    main_offset: 0xA31900
-    instructions: [
-      [mov, w22, 3],
-      [str, w22, [x1, 8]],
-      [b, 0xa305c0]
-    ]
-ALL_FPS:
-  # DUMMY
-  -
-    type: write
-    address: [MAIN, 0x13E5400]
-    value_type: uint8
-    value: 0
-

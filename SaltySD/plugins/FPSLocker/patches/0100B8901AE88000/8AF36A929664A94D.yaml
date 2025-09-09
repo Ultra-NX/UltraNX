@@ -1,8 +1,6 @@
 # Daydream: Forgotten Sorrow 1.0.1
 # BID: 8AF36A929664A94D
 
-unsafeCheck: false
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
   -

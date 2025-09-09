@@ -1,8 +1,6 @@
 # GOD EATER 3 2.5.1
 # BID: C0F144F5139F542E
 
-unsafeCheck: true
-
 MASTER_WRITE:
   # Remove double buffer
   -
@@ -11,10 +9,3 @@ MASTER_WRITE:
     instructions: [
       [mov, x8, 0x300000003]
     ]
-ALL_FPS:
-  # DUMMY
-  -
-    type: write
-    address: [MAIN, 0xA7FA900]
-    value_type: uint8
-    value: 0

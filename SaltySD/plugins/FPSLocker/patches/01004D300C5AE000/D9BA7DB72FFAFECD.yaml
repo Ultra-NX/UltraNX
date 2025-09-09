@@ -2,8 +2,6 @@
 # BID: D9BA7DB72FFAFECD
 # Thanks to Hazerou for finding interval offsets
 
-unsafeCheck: false
-
 MASTER_WRITE:
   # Remove double buffer
   -
@@ -84,12 +82,15 @@ ALL_FPS:
   -
     type: write
     address: [MAIN, 0xA72628, 0x50]
+    address_unsafe: true
     value_type: int32
     value: 0
   # Dynamic Resolution GPU Frametiming Max / Min (Max = 1.95 * (30/FPS), Min = 1.7 * (30/FPS))
   -
     type: evaluate_write
     address: [MAIN, 0xA726B0, 0x140, 0x1B0, 0x20, 0x34]
+    address_unsafe: true
     value_type: float
     value: ["(30 / FPS_TARGET) * 1.95", "(30 / FPS_TARGET) * 1.7"]
+
 

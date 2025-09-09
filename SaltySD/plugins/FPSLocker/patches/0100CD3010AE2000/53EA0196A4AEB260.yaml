@@ -1,8 +1,45 @@
 # Crysis 3 Remastered 1.3.0
 # BID: 53EA0196A4AEB260
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target1
+    value_type: float
+    default_value: 28.5
+    evaluate: "0.855 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target2
+    value_type: float
+    default_value: 33.5
+    evaluate: "1.005 * FRAMETIME_TARGET"   
+  -
+    type: variable
+    name: dr_target3
+    value_type: float
+    default_value: 30.5
+    evaluate: "0.915 * FRAMETIME_TARGET"
+  # DON'T PUT ANYTHING BETWEEN - START
+  -
+    type: variable
+    name: dr_target4
+    value_type: float
+    default_value: 32.5
+    evaluate: "0.975 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target5
+    value_type: float
+    default_value: 31.5
+    evaluate: "0.945 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target6
+    value_type: float
+    default_value: 33.25
+    evaluate: "0.945 * FRAMETIME_TARGET"
+  # DON'T PUT ANYTHING BETWEEN - END
 MASTER_WRITE:
   # Redirect Dynamic Resolution Timings to read always not from .text
   -
@@ -23,50 +60,20 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x136A520
     instructions: [
-      [adrp, x8, 0x3608000],
-      [ldr, s0, [x8, 0xe00]],
-      [ldr, s1, [x8, 0xe04]],
-      [ldr, s2, [x8, 0xe08]],
-      [nop],
-      [nop]
+      [adrp, x8, $dr_target1],
+      [ldr, s0, [x8, $dr_target1]],
+      [adrp, x8, $dr_target2],
+      [ldr, s1, [x8, $dr_target2]],
+      [adrp, x8, $dr_target3],
+      [ldr, s2, [x8, $dr_target3]]
     ]
   -
     type: asm_a64
     main_offset: 0x136A554
     instructions: [
-      [adrp, x9, 0x3608000],
-      [add, x9, x9, 0xe0c]
+      [adrp, x9, $dr_target4],
+      [add, x9, x9, $dr_target4]
     ]
-# Write default values
-  -
-    type: bytes
-    main_offset: 0x3443CA4
-    value_type: float
-    value: 28.5
-  # MAIN + 0x22EA494
-  -
-    type: bytes
-    main_offset: 0x3608E00
-    value_type: float
-    value: 33.5
-  # MAIN + 0x22EAE14
-  -
-    type: bytes
-    main_offset: 0x3608E04
-    value_type: float
-    value: 30.5
-  # MAIN + 0x22EAB58
-  -
-    type: bytes
-    main_offset: 0x3608E08
-    value_type: float
-    value: 32.5
-  # MAIN + 0x22E9E48
-  -
-    type: bytes
-    main_offset: 0x3608E0C
-    value_type: float
-    value: [31.5, 33.25]
 ALL_FPS:
   # sys_MaxFPS
   -
@@ -74,42 +81,12 @@ ALL_FPS:
     address: [MAIN, 0x34382D8]
     value_type: int32
     value: FPS_LOCK_TARGET
-  # Renderer thread delay (default value)
+  # Renderer thread delay
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x3466BB0]
     value_type: float
-    value: 0.01
-  -
-    type: evaluate_write
-    address: [MAIN, 0x3443CA4]
-    value_type: float
-    value: "0.855 * FRAMETIME_TARGET"
-  # MAIN + 0x22EA494
-  -
-    type: evaluate_write
-    address: [MAIN, 0x3608E00]
-    value_type: float
-    value: "1.005 * FRAMETIME_TARGET"
-  # MAIN + 0x22EAE14
-  -
-    type: evaluate_write
-    address: [MAIN, 0x3608E04]
-    value_type: float
-    value: "0.915 * FRAMETIME_TARGET"
-  # MAIN + 0x22EAB58
-  -
-    type: evaluate_write
-    address: [MAIN, 0x3608E08]
-    value_type: float
-    value: "0.975 * FRAMETIME_TARGET"
-  # MAIN + 0x22E9E48
-  -
-    type: evaluate_write
-    address: [MAIN, 0x3608E0C]
-    value_type: float
-    value: ["0.945 * FRAMETIME_TARGET", "0.945 * FRAMETIME_TARGET"]
+    value: "0.66 / FPS_TARGET"
   -
     type: block
     what: timing
-

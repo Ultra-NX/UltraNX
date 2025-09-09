@@ -1,42 +1,24 @@
 # Batman - The Telltale Series 1.0.4
 # BID: A3A998AF3252D110
 
-unsafeCheck: true
-
-MASTER_WRITE:
-# Remove double buffer
+DECLARATIONS:
   -
-    type: asm_a64
-    main_offset: 0x6440
+    type: code
+    name: tripleBuffer
     instructions: [
-      [mov, w2, 3],
-      [madd, x1, x8, x2, x9]
-    ]
-  -
-    type: bytes
-    main_offset: 0xC5A6D8
-    value_type: uint32
-    value: 0x188CC50
-  -
-    type: bytes
-    main_offset: 0x1758A90
-    value_type: uint32
-    value: 0x188CC50
-  -
-    type: asm_a64
-    main_offset: 0xC56550
-    instructions: [
+      [stp, x29, x30, [sp, -16], "!"],
+      [mov, x29, sp],
       [ldr, x0, [x26, 0x10]],
-      [cbz, x0, +24],
+      [cbz, x0, :goto1],
       [adrp, x8, 0x1758000],
       [ldr, x8, [x8, 0x90]],
       [ldr, x8, [x8]],
       [blr, x8],
-      [b, +16],
-      [mov, w0, 0xc0],
+      [b, :goto2],
+      :goto1, [mov, w0, 0xc0],
       [bl, 0x735480],
       [str, x0, [x26, 0x10]],
-      [ldr, x22, [x27]],
+      :goto2, [ldr, x22, [x27]],
       [adrp, x27, 0x1757000],
       [ldr, x21, [x25]],
       [ldr, x27, [x27, 0xf38]],
@@ -62,13 +44,34 @@ MASTER_WRITE:
       [mov, x1, x23],
       [blr, x8],
       [adrp, x22, 0x1758000],
-      [b, 0x5eec]
+      [ldp, x29, x30, [sp], 16],
+      [ret]
+    ]    
+
+MASTER_WRITE:
+# Remove double buffer
+  -
+    type: asm_a64
+    main_offset: 0x6440
+    instructions: [
+      [mov, w2, 3],
+      [madd, x1, x8, x2, x9]
     ]
+  -
+    type: bytes
+    main_offset: 0xC5A6D8
+    value_type: uint32
+    value: 0x188CC50
+  -
+    type: bytes
+    main_offset: 0x1758A90
+    value_type: uint32
+    value: 0x188CC50
   -
     type: asm_a64
     main_offset: 0x5EE8
     instructions: [
-      [b, 0xc56550]
+      [bl, _tripleBuffer()]
     ]
   -
     type: asm_a64
@@ -82,10 +85,4 @@ MASTER_WRITE:
     instructions: [
       [mov, x2, 0x1950000]
     ]
-ALL_FPS:
-  # dummy
-  -
-    type: write
-    address: [MAIN, 0x188CF00]
-    value_type: uint8
-    value: 0
+

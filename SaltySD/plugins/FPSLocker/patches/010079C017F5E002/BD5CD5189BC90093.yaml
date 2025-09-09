@@ -1,8 +1,6 @@
 # Lara Croft and the Guardian of Light 1.1_65791
 # BID: BD5CD5189BC90093
 
-unsafeCheck: false
-
 ALL_FPS:
   # DynamicResolutionScaling\FPSTarget
   -

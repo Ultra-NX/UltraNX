@@ -4,8 +4,65 @@
 Addons:
   - atmosphere/contents/0100F2C0115B6000/exefs/main.npdm
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_target
+    value_type: float
+    default_value: 30
+    evaluate: FPS_TARGET
+  -
+    type: variable
+    name: cutscene_flag
+    value_type: uint8
+    default_value: 0
+  -
+    type: variable
+    name: dr_factor
+    value_type: float
+    default_value: 0.001
+    evaluate: 0.001 * (FPS_TARGET / 30)
+  -
+    type: const
+    name: nanoseconds_in_s
+    value: 1000000000
+  -
+    type: code
+    name: cutscene_1
+    instructions: [
+      [stp, x29, x30, [sp, -16], "!"],
+      [mov, x29, sp],
+      [mov, w2, 1],
+      [adrp, x3, $cutscene_flag],
+      [strb, w2, [x3, $cutscene_flag]],
+      [bl, 0x5f888], #Jump to original BL
+      [ldp, x29, x30, [sp], 16],
+      [ret]
+    ]
+  -
+    type: code
+    name: cutscene_2
+    instructions: [
+      [adrp, x3, $cutscene_flag],
+      [strb, w0, [x3, $cutscene_flag]],
+      [b, _setUserInactivityDetectionTimeExtended()],
+    ]
+  -
+    type: code
+    name: blackBackgroundFix
+    instructions: [
+      [fcmp, s1, 0.0],
+      [b.ne, :goto1],
+      [ldurh, w8, [x25, -6]],
+      [cmp, w8, 5],
+      [b.ne, :goto1],
+      [ldurh, w8, [x25, -8]],
+      [cmp, w8, 5],
+      [b.ne, :goto1],
+      [fmov, s8, 1.0],
+      :goto1, [fmadd, s9, s0, s8, s1],
+      [ret]
+    ]
 MASTER_WRITE:
   # Remove double buffer
   ## REF: A0 2A 40 F9 61 A2 40 39
@@ -17,20 +74,19 @@ MASTER_WRITE:
     ]
   # Code Injected, $x1 + 0xD8 - last frametime without compensation long ticks, $x0 + 0x50 - fps target used for calculation int,
   # $x0 + 0x24 - our fps target used for calculation but as float, originally is stored there 30 FPS int that seems to do nothing outside of this function
-  ## MAIN + 0x3ACCFFC = FPS target for reference
   ## REF: nvnWindowSetPresentInterval
   - 
     type: asm_a64
     main_offset: 0x2D4E68
     instructions: [
-      [adrp, x2, 0x3acc000],
-      [ldr, s9, [x2, 0xffc]],
+      [adrp, x2, $fps_target],
+      [ldr, s9, [x2, $fps_target]],
       [mov, x20, x0],
       [mov, x21, x1],
       [ldr, x0, [x1, 0xd8]],
-      [bl, 0x2ba4830], # BL nn::os::ConvertToTimeSpan(nn::os::Tick)
-      [mov, w2, 0xca00],
-      [movk, w2, 0x3b9a, 16],
+      [bl, _convertTickToTimeSpan()],
+      [mov, w2, $nanoseconds_in_s],
+      [movk, w2, $nanoseconds_in_s, 16],
       [scvtf, s2, w2],
       [scvtf, s1, x0],
       [fdiv, s1, s2, s1],
@@ -75,14 +131,14 @@ MASTER_WRITE:
     instructions: [
       [nop]
     ]
-  # When prerendered cutscene is active write flag to MAIN + 0x3ACCFFB
+  # When prerendered cutscene is active write flag to cutscene_flag
   ## REF: 68 52 40 79 08 01 19 32 68 52 00 79
   ## BL to Code Cave 1
   -
     type: asm_a64
     main_offset: 0x2B238B4
     instructions: [
-      [bl, 0x2d4eb8]
+      [bl, _cutscene_1()]
     ]
   ## REF: 68 52 40 79 08 79 18 12 68 52 00 79, inside call
   ## B to Code Cave 2
@@ -90,35 +146,16 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x2B210CC
     instructions: [
-      [b, 0x2d4ec8]
+      [b, _cutscene_2()]
     ]
-  ## CODE CAVE 1, offset +0x50 relative to start of previous code cave 
-  -
-    type: asm_a64
-    main_offset: 0x2D4EB8
-    instructions: [
-      [mov, w2, 1],
-      [adrp, x3, 0x3acc000],
-      [strb, w2, [x3, 0xffb]],
-      [b, 0x5f888] # Jump to original BL as B
-    ]
-  ## CODE CAVE 2, offset +0x10 relative to start of previous code cave
-  -
-    type: asm_a64
-    main_offset: 0x2D4EC8
-    instructions: [
-      [adrp, x3, 0x3acc000],
-      [strb, w0, [x3, 0xffb]],
-      [b, 0x2ba5e80] # B nn::oe::SetUserInactivityDetectionTimeExtended(bool)
-    ]
-  # Adjust DR timing to factor from MAIN + 0x3ACCFF4
+  # Adjust DR timing to factor from dr_factor
   # REF: 88 02 15 CB 00 01 23 9E
   -
     type: asm_a64
     main_offset: 0xEED54
     instructions: [
-      [adrp, x8, 0x3acc000],
-      [ldr, s1, [x8, 0xff4]]
+      [adrp, x8, $dr_factor],
+      [ldr, s1, [x8, $dr_factor]]
     ]
   # Fix black background for D-pad menu
   ## REF: 21 03 5E BC
@@ -126,62 +163,14 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x387390
     instructions: [
-      [b, 0x2d4ed4], # Jump to Code Cave 3
+      [bl, _blackBackgroundFix()], # Jump to Code Cave 3
       [fcmp, s0, 0.0]
     ]
-  ## CODE CAVE 3, offset +0xC relative to start of previous code cave
-  -
-    type: asm_a64
-    main_offset: 0x2D4ED4
-    instructions: [
-      [fcmp, s1, 0.0],
-      [b.ne, +32],
-      [ldurh, w8, [x25, -6]],
-      [cmp, w8, 5],
-      [b.ne, +20],
-      [ldurh, w8, [x25, -8]],
-      [cmp, w8, 5],
-      [b.ne, +8],
-      [fmov, s8, 1.0],
-      [fmadd, s9, s0, s8, s1],
-      [b, 0x387394] # Go back
-    ]
-  # Default values
-  ## FPS Target
-  -
-    type: bytes
-    main_offset: 0x3ACCFFC
-    value_type: float
-    value: 30
-  ## Cutscene flag
-  -
-    type: bytes
-    main_offset: 0x3ACCFFB
-    value_type: uint8
-    value: 0
-  ## Dynamic Resolution timing factor
-  -
-    type: bytes
-    main_offset: 0x3ACCFF4
-    value_type: float
-    value: 0.001
 ALL_FPS:
   -
-    type: evaluate_write
-    address: [MAIN, 0x3ACCFFC]
-    value_type: float
-    value: FPS_TARGET
-  -
-    type: evaluate_write
-    address: [MAIN, 0x3ACCFF4]
-    value_type: float
-    value: "0.001 * (FPS_TARGET / 30)"
-  -
     type: compare
-    compare_address: [MAIN, 0x3ACCFFB]
-    compare_value_type: uint8
+    compare_address: [VARIABLE, cutscene_flag]
     compare_value: 1
     compare_type: "=="
-    address: [MAIN]
     value_type: refresh_rate
     value: 30

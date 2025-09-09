@@ -3,8 +3,13 @@
 # Some things are still tied to framerate, but nothing game breaking it seems.
 # Game is using double buffer, trying to enable triple buffer results in crash.
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.0333333333
+    evaluate: "1/FPS_TARGET"
 MASTER_WRITE:
   # Swap 30 FPS target with 60
   -
@@ -51,25 +56,20 @@ MASTER_WRITE:
     instructions: [
       [mov, w21, 2]
     ]
-  # Redirect DR timing target to MAIN + 0x1C5DF00
+  # Redirect DR timing target
   -
     type: asm_a64
     main_offset: 0xA38B18
     instructions: [
-      [adrp, x1, 0x1c5d000],
-      [ldr, s0, [x1, 0xf00]]
+      [adrp, x1, $dr_target],
+      [ldr, s0, [x1, $dr_target]]
     ]
 ALL_FPS:
-  # DR timing = 1/FPS
-  -
-    type: evaluate_write
-    address: [MAIN, 0x1C5DF00]
-    value_type: float
-    value: "1 / FPS_TARGET"
   # vsync target
   -
     type: evaluate_write
     address: [MAIN, 0x1C49DD0, 0x39E0]
     value_type: uint32
     value: "VSYNC_TARGET - 1"
+
 

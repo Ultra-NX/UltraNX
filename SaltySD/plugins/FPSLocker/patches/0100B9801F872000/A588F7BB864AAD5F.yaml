@@ -1,8 +1,6 @@
 # FAIRY TAIL 2 1.4.1
 # BID: A588F7BB864AAD5F
 
-unsafeCheck: false
-
 MASTER_WRITE:
   # Redirect Dynamic Resolution target to MAIN+0x2C53F00
   # REF: 6AC88252
@@ -32,6 +30,7 @@ ALL_FPS:
   -
     type: evaluate_write
     address: [MAIN, 0x2C0B558, 0x170, 0x18C]
+    address_unsafe: true
     value_type: int32
     value: FPS_LOCK_TARGET
   # Dynamic Resolution Target

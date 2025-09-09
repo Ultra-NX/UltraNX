@@ -1,8 +1,6 @@
 # MotoGP 24 1.0.5
 # BID: 1053EA8AD2A50F15
 
-unsafeCheck: false
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
   -

@@ -1,13 +1,12 @@
 # Twilight Monk 1.0.0
 # BID: 5D63D46226DB106F
 
-unsafeCheck: false
-
 ALL_FPS:
   # Disable bUseFixedFrameRate to untie game speed from framerate and unlock FPS
   -
     type: write
     address: [MAIN, 0x5DBD688, 0x7A4]
+    address_unsafe: true
     value_type: uint32
     # Default is 0x46, bUseFixedFrameRate |= 0x40 
     # By writing 7 we are making sure that other flags are maintained: 

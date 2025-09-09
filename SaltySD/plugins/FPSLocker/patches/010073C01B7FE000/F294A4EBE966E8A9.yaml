@@ -1,7 +1,5 @@
-# The Smurfs 2: The Prisoner of the Green Stone 1.03.03
+# The Smurfs 2: The Prisoner of the Green Stone 1.03.03/1.04
 # BID: F294A4EBE966E8A9
-
-unsafeCheck: true
 
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals

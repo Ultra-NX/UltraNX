@@ -1,0 +1,19 @@
+# Bum Simulator 1.0.3
+# BID: CE6953FB28A66265
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5C858B8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5489408, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

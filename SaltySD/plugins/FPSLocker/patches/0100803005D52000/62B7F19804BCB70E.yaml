@@ -1,8 +1,6 @@
 # ぎゃる☆がん２ 1.0.4
 # BID: 62B7F19804BCB70E
 
-unsafeCheck: false
-
 ALL_FPS:
   # r.VSync
   -
@@ -20,6 +18,7 @@ ALL_FPS:
   -
     type: write
     address: [MAIN, 0x44E6030, 0x764]
+    address_unsafe: true
     value_type: float
     value: 0
   -

@@ -1,12 +1,11 @@
 # A Hat in Time 1.0.4
 # BID: 746F0D697EEEE2DD
 
-unsafeCheck: false
-
 ALL_FPS:
   # MaxSmoothedFrameRate
   -
     type: evaluate_write
     address: [MAIN, 0x2265248, 0x71C]
+    address_unsafe: true
     value_type: float
     value: FPS_LOCK_TARGET

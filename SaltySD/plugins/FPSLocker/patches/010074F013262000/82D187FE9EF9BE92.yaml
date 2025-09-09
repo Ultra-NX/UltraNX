@@ -1,41 +1,42 @@
 # Xenoblade Chronicles 3 2.2.0/2.2.1
 # BID: 82D187FE9EF9BE92
 
-unsafeCheck: false
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.0166666666
+    evaluate: "(1 / FPS_TARGET) / VSYNC_TARGET"
+  -
+    type: const
+    name: default_frametime
+    value: 0x3d088889
+  - 
+    type: code
+    name: etherFix
+    instructions: [
+      [ldr, x21, [x0]],
+      [mov, w8, $default_frametime],
+      [movk, w8, $default_frametime, 16],
+      [str, w8, [x21, 0x214]],
+      [ret]
+    ]    
 MASTER_WRITE:
-  # Redirect DR frametime target reading to .bss code cave [MAIN, 0x236AB00]
+  # Redirect DR frametime target reading
   -
     type: asm_a64
     main_offset: 0x124F518
     instructions: [
-      [adrp, x8, 0x236a000],
-      [ldr, s0, [x8, 0xb00]]
+      [adrp, x8, $dr_target],
+      [ldr, s0, [x8, $dr_target]]
     ]
-  # Original DR frametime target
-  -
-    type: bytes
-    main_offset: 0x236AB00
-    value_type: float
-    value:
-      - 0.0166666666
   # Fix crash when gathering big amount of ether for > 30 FPS
-  - # Code cave at 0x1295DA0
+  -
     type: asm_a64
     main_offset: 0x67360
     instructions: [
-      [bl, 0x1295da0]
-    ]
-  - # Push fixed 1/30 float to game speed pointer late enough to not affect it 
-    type: asm_a64
-    main_offset: 0x1295DA0
-    instructions: [
-      [ldr, x21, [x0]],
-      [fmov, s1, 1.0],
-      [fmov, s2, 30.0],
-      [fdiv, s1, s1, s2],
-      [str, s1, [x21, 0x214]],
-      [ret]
+      [bl, _etherFix()]
     ]
 ALL_FPS:
   # vsync
@@ -44,16 +45,11 @@ ALL_FPS:
     address: [MAIN, 0x1B42DB0]
     value_type: int32
     value: [VSYNC_TARGET, VSYNC_TARGET]
-  # DR Timing (relative to vsync)
-  -
-    type: evaluate_write
-    address: [MAIN, 0x236AB00]
-    value_type: float
-    value: "((1 / FPS_TARGET) / VSYNC_TARGET) * 0.78"
   # UI speed
   -
     type: evaluate_write
     address: [MAIN, 0x1BA1A90, 128]
+    address_unsafe: true
     value_type: float
     value: "1 / FPS_TARGET"
   -
@@ -66,30 +62,28 @@ ALL_FPS:
     value_type: int32
     value: [2, 2]
   -
-    type: evaluate_compare
+    type: compare
     compare_address: [MAIN, 0x1BA1A98]
     compare_type: "!="
     compare_value_type: int8
     compare_value: 0
-    address: [MAIN, 0x236AB00]
-    value_type: float
-    value: "((1 / 30) / 2) * 0.78"
-  -
-    type: evaluate_compare
-    compare_address: [MAIN, 0x1BA1A98]
-    compare_type: "!="
-    compare_value_type: int8
-    compare_value: 0
-    address: [MAIN, 0x1BA1A90, 128]
-    value_type: float
-    value: "1 / 30"
+    address: [VARIABLE, dr_target]
+    value: 0.0166666666
   -
     type: compare
     compare_address: [MAIN, 0x1BA1A98]
     compare_type: "!="
     compare_value_type: int8
     compare_value: 0
-    address: [MAIN]
+    address: [MAIN, 0x1BA1A90, 128]
+    address_unsafe: true
+    value_type: float
+    value: 0.0333333333
+  -
+    type: compare
+    compare_address: [MAIN, 0x1BA1A98]
+    compare_type: "!="
+    compare_value_type: int8
+    compare_value: 0
     value_type: refresh_rate
     value: 30
-

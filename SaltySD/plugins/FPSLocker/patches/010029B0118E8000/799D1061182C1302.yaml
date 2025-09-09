@@ -2,8 +2,6 @@
 # BID: 799D1061182C1302
 # Thanks to theboy181 for finding instruction responsible for calculating frame time which I used to find where is FPS target stored
 
-unsafeCheck: true
-
 MASTER_WRITE:
   # Remove FPS Lock
   -
@@ -23,11 +21,13 @@ ALL_FPS:
   -
     type: evaluate_write
     address: [MAIN, 0xED96A8, 0x30]
+    address_unsafe: true
     value_type: uint32
     value: "19200000 / FPS_TARGET"
   -
     type: evaluate_write
     address: [MAIN, 0xED96A8, 0x28]
+    address_unsafe: true
     value_type: uint32
     value: "1920000 / FPS_TARGET"
   # FPS 2D Game Speed Target
@@ -42,4 +42,3 @@ ALL_FPS:
     address: [MAIN, 0xEFFC60, 0x50]
     value_type: float
     value: "1 / FPS_TARGET"
-

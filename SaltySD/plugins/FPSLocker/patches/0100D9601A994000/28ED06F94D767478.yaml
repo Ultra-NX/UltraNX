@@ -1,8 +1,6 @@
 # ONE PIECE ODYSSEY Deluxe Edition US/EU/JP 1.0.0
 # BID: 28ED06F94D767478
 
-unsafeCheck: false
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
   -

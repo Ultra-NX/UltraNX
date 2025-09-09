@@ -1,8 +1,37 @@
 # Dying Light: Platinum Edition 1.0.5
 # BID: 8C93B930348C9787
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_timing1
+    value_type: float
+    default_value: 0.034
+    evaluate: "1.02 / FPS_TARGET"
+  -
+    type: variable
+    name: dr_timing2
+    value_type: float
+    default_value: 0.028
+    evaluate: "0.84 / FPS_TARGET"
+  -
+    type: variable
+    name: dr_timing3
+    value_type: float
+    default_value: 0.0289855
+    evaluate: "0.87 / FPS_TARGET"
+  -
+    type: variable
+    name: dr_timing4
+    value_type: float
+    default_value: 0.0263158
+    evaluate: "0.79 / FPS_TARGET"
+  -
+    type: variable
+    name: dr_timing5
+    value_type: float
+    default_value: 0.0324675
+    evaluate: "0.974 / FPS_TARGET"
 MASTER_WRITE:
   # Disable Dynamic GPU Clocks
   -
@@ -11,71 +40,35 @@ MASTER_WRITE:
     instructions: [
       [nop]
     ]
-  # Redirect Dynamic Resolution Timings to MAIN+0x4113D00
+  # Redirect Dynamic Resolution Timings
   -
     type: asm_a64
     main_offset: 0x1DE89A8
     instructions: [
-      [adrp, x10, 0x4113000],
-      [ldr, w10, [x10, 0xd00]]
+      [adrp, x10, $dr_timing1],
+      [ldr, w10, [x10, $dr_timing1]]
     ]
   -
     type: asm_a64
     main_offset: 0x1DE8A08
     instructions: [
-      [adrp, x10, 0x4113000],
-      [ldr, w10, [x10, 0xd04]]
+      [adrp, x10, $dr_timing2],
+      [ldr, w10, [x10, $dr_timing2]]
     ]
   -
     type: asm_a64
     main_offset: 0x1DE80C8
     instructions: [
-      [adrp, x11, 0x4113000],
-      [ldr, w12, [x11, 0xd08]],
-      [ldr, w11, [x11, 0xd0c]],
-      [nop]
+      [adrp, x11, $dr_timing3],
+      [ldr, w12, [x11, $dr_timing3]],
+      [adrp, x11, $dr_timing4],
+      [ldr, w11, [x11, $dr_timing4]]
     ]
   -
     type: asm_a64
     main_offset: 0x1DE80F8
     instructions: [
-      [adrp, x11, 0x4113000],
-      [ldr, w11, [x11, 0xd10]]
+      [adrp, x11, $dr_timing5],
+      [ldr, w11, [x11, $dr_timing5]]
     ]
-# Write default values
-  # MAIN + 0x1DE89AC
-  -
-    type: bytes
-    main_offset: 0x4113D00
-    value_type: float
-    value: 0.034
-  # MAIN + 0x1DE8A0C
-  -
-    type: bytes
-    main_offset: 0x4113D04
-    value_type: float
-    value: 0.028
-  # MAIN + 0x1DE80D4
-  -
-    type: bytes
-    main_offset: 0x4113D08
-    value_type: float
-    value: 0.0289855
-  # MAIN + 0x1DE80D0
-  -
-    type: bytes
-    main_offset: 0x4113D0C
-    value_type: float
-    value: 0.0263158
-  # MAIN + 0x1DE80D0
-  -
-    type: bytes
-    main_offset: 0x4113D10
-    value_type: float
-    value: 0.0324675
-ALL_FPS:
-  -
-    type: evaluate_write
-    address: [MAIN, 0x4113D00]
-    value_type: float
-    value: ["(1 / FPS_TARGET) * 1.02", "(1 / FPS_TARGET) * 0.84", "(1 / FPS_TARGET) * 0.87", "(1 / FPS_TARGET) * 0.79", "(1 / FPS_TARGET) * 0.974"]
+

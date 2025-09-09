@@ -2,25 +2,24 @@
 # BID: E853C44FDF18B88F
 # Credits to Hazerou for finding offsets for FPS lock and speed
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.0166666666
+    evaluate: "0.5 / FPS_TARGET"
 MASTER_WRITE:
 # Redirect reading DR GPU time factor to MAIN + 0x4FC0E00
   -
     type: asm_a64
     main_offset: 0x470E80
     instructions: [
-      [adrp, x9, 0x4fc0000],
-      [ldr, s2, [x9, 0xe00]]
+      [adrp, x9, $dr_target],
+      [ldr, s2, [x9, $dr_target]]
     ]
-# Default value (= 0.5 / FPS)
-  -
-    type: bytes
-    main_offset: 0x4FC0E00
-    value_type: float
-    value: 0.0166666666
 ALL_FPS:
-  # Internal Vsync (default value)
+  # Internal Vsync
   -
     type: evaluate_write
     address: [MAIN, 0x45A7410]
@@ -32,10 +31,3 @@ ALL_FPS:
     address: [MAIN, 0x45A71F0]
     value_type: float
     value: FPS_TARGET
-  # DR GPU time factor
-  -
-    type: evaluate_write
-    address: [MAIN, 0x4FC0E00]
-    value_type: float
-    value: "0.5 / FPS_TARGET"
-

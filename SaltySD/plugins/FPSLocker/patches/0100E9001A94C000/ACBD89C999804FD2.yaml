@@ -1,7 +1,5 @@
-# TinTin Reporter - Cigars of the Pharaoh 1.4.0
+# TinTin Reporter - Cigars of the Pharaoh 1.4.0/1.4.1
 # BID: ACBD89C999804FD2
-
-unsafeCheck: true
 
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (default is 50 ms xD)
@@ -25,3 +23,4 @@ ALL_FPS:
   -
     type: block
     what: timing
+

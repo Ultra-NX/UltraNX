@@ -1,15 +1,13 @@
 # Hammerwatch 2 1.0.4
 # BID: 38896FEC1B4ADB1C
 
-unsafeCheck: true
-
 MASTER_WRITE:
-  # Rewrite "v_fps_limit 30" to 62
+  # Rewrite "v_fps_limit 30" to 99
   -
     type: bytes
     main_offset: 0x7C7597
     value_type: uint16
-    value: 0x3236
+    value: 0x3939
   # Change egl Interval to lock game by default to 30 FPS
   -
     type: asm_a64
@@ -23,11 +21,3 @@ MASTER_WRITE:
     instructions: [
       [mov, w1, 2]
     ]
-ALL_FPS:
-  # DUMMY
-  -
-    type: write
-    address: [MAIN, 0x161BCF8]
-    value_type: uint8
-    value: 0
-

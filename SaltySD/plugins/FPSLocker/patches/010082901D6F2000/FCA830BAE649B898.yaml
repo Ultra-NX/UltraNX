@@ -1,35 +1,32 @@
 # Neptunia Game Maker R:Evolution 1.00
 # BID: FCA830BAE649B898
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target1
+    value_type: float
+    default_value: 33.33
+    evaluate: "TruncDec(FRAMETIME_TARGET, 2)"
+  -
+    type: variable
+    name: dr_target2
+    value_type: float
+    default_value: 28.57
+    evaluate: "TruncDec(1000 / (FPS_TARGET + 5), 2)"
 MASTER_WRITE:
   # Redirect DR timing range to MAIN + 0x878B800
   -
     type: asm_a64
     main_offset: 0x4451E88
     instructions: [
-      [adrp, x8, 0x878b000],
-      [ldr, w8, [x8, 0x800]]
+      [adrp, x8, $dr_target1],
+      [ldr, w8, [x8, $dr_target1]]
     ]
   -
     type: asm_a64
     main_offset: 0x4451ED4
     instructions: [
-      [adrp, x8, 0x878b000],
-      [ldr, w8, [x8, 0x804]]
+      [adrp, x8, $dr_target2],
+      [ldr, w8, [x8, $dr_target2]]
     ]
-  # Default values
-  -
-    type: bytes
-    main_offset: 0x878B800
-    value_type: float
-    value: [33.33, 28.57]  
-ALL_FPS:
-  # DR timing
-  -
-    type: evaluate_write
-    address: [MAIN, 0x878B800]
-    value_type: float
-    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(1000 / (FPS_TARGET + 5), 2)"]
-

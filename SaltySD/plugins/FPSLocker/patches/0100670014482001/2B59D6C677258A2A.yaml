@@ -2,17 +2,23 @@
 # BID: 2B59D6C677258A2A
 # Scenes exclusively 2D are tied to framerate, so at 60 FPS they are 2x faster. 
 
-unsafeCheck: true
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_scale
+    value_type: float
+    default_value: 1
+    evaluate: "FPS_TARGET / 30"
 
 MASTER_WRITE:
-# Patch code to multiply last frametime by float scale factor stored in MAIN+0x4276B00
+# Patch code to multiply last frametime by float scale factor
 # To match it to Dynamic Resolution calculations
   -
     type: asm_a64
     main_offset: 0xBDBE44
     instructions: [
-      [adrp, x8, 0x4276000],
-      [ldr, s0, [x8, 0xb00]]
+      [adrp, x8, $dr_scale],
+      [ldr, s0, [x8, $dr_scale]]
     ]
   -
     type: asm_a64
@@ -21,16 +27,3 @@ MASTER_WRITE:
       [fmul, s0, s8, s0],
       [nop]
     ]
-# Write default dynamic resolution timing factor
-  -
-    type: bytes
-    main_offset: 0x4276B00
-    value_type: float
-    value: 1
-ALL_FPS:
-  -
-    type: evaluate_write
-    address: [MAIN, 0x4276B00]
-    value_type: float
-    value: "FPS_TARGET / 30"
-

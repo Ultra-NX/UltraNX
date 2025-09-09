@@ -4,63 +4,50 @@
 # Fishing timer is decreasing 2x faster at 60 FPS
 # Bike is turning 2x faster at 60 FPS
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_lock
+    value_type: uint32
+    default_value: 33333333
+    evaluate: "FRAMETIME_TARGET * 930000"
+  -
+    type: variable
+    name: frame_time
+    value_type: float
+    default_value: 0.0333333333
+  -
+    type: code
+    name: dynamicSpeed
+    instructions: [
+      [str, d0, [x8, 0x20]],
+      [fcvt, s4, d0],
+      [adrp, x8, $frame_time],
+      [str, s4, [x8, $frame_time]],
+      [ret]
+    ]
 MASTER_WRITE:
-  # Move loading FPS lock time to MAIN+0x2B31200
+  # Move loading FPS lock time
   -
     type: asm_a64
     main_offset: 0x511818
     instructions: [
-      [adrp, x9, 0x2b31000],
-      [ldr, w9, [x9, 0x200]]
+      [adrp, x9, $fps_lock],
+      [ldr, w9, [x9, $fps_lock]]
     ]
-  # Default value
-  -
-    type: bytes
-    main_offset: 0x2B31200
-    value_type: uint32
-    value: 33333333
-  # Write game's loop time as float to MAIN+0x2B31204
+  # Write game's loop time as float
   -
     type: asm_a64
     main_offset: 0x511884
     instructions: [
-      [b, 0x5117f4]
+      [bl, _dynamicSpeed()]
     ]
-  -
-    type: asm_a64
-    main_offset: 0x5117F4
-    instructions: [
-      [str, d0, [x8, 0x20]],
-      [fcvt, s4, d0],
-      [b, 0x511a84]
-    ]
-  -
-    type: asm_a64
-    main_offset: 0x511A84
-    instructions: [
-      [adrp, x8, 0x2b31000],
-      [str, s4, [x8, 0x204]],
-      [b, 0x511888]
-    ]
-  - # Read lowest timing float factor from MAIN+0x2B31204
+  - # Read lowest timing float factor
     type: asm_a64
     main_offset: 0x5E5EC
     instructions: [
-      [adrp, x8, 0x2b31000],
+      [adrp, x8, $frame_time],
       [fminnm, s1, s1, s2],
-      [ldr, s2, [x8, 0x204]]
+      [ldr, s2, [x8, $frame_time]]
     ]
-  - # Default value
-    type: bytes
-    main_offset: 0x2B31204
-    value_type: float
-    value: 0.0333333333
-ALL_FPS:
-  -
-    type: evaluate_write
-    address: [MAIN, 0x2B31200]
-    value_type: uint32
-    value: 11111111
 

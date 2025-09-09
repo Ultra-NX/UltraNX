@@ -1,8 +1,6 @@
 # Outlast 2 1.0.0
 # BID: F18ACDA7A11CB287
 
-unsafeCheck: true
-
 MASTER_WRITE:
   # Remove double buffer
   -
@@ -11,7 +9,6 @@ MASTER_WRITE:
     instructions: [
       [cmp, x26, 3]
     ]
-    value: 0xF1000F5F
   -
     type: asm_a64
     main_offset: 0xF45E64
@@ -30,10 +27,3 @@ MASTER_WRITE:
     instructions: [
       [mov, w1, 3]
     ]
-ALL_FPS:
-  # DUMMY
-  -
-    type: write
-    address: [MAIN, 0x408B900]
-    value_type: uint8
-    value: 0

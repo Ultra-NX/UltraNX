@@ -1,8 +1,6 @@
 # Clive 'N' Wrench 1.0.6
 # BID: FE211DBFAD6EA549
 
-unsafeCheck: false
-
 ALL_FPS:
   # Dynamic Resolution GPU Frame Timing target in ms = 0.9 * (1000/FPS)
   # It was derived by hooking `PSH.DynamicResolutionManager$$ScaleResolutionToAchieveFrameRate` before its first use
@@ -11,5 +9,6 @@ ALL_FPS:
   -
     type: evaluate_write
     address: [MAIN, 0x3E8B368, 0x20, 0x620, 0x18]
+    address_unsafe: true
     value_type: double
     value: "0.9 * FRAMETIME_TARGET"

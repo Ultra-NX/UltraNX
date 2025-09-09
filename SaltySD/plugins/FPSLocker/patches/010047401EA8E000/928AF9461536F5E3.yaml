@@ -1,8 +1,6 @@
 # Deliver Us The Moon 1.0.0
 # BID: 928AF9461536F5E3
 
-unsafeCheck: false
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
   -

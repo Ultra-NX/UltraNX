@@ -1,8 +1,6 @@
 # Atelier Yumia: The Alchemist of Memories & the Envisioned Land 1.1.0
 # BID: 153DB27728D41305
 
-unsafeCheck: false
-
 MASTER_WRITE:
   # Redirect DR to MAIN + 0x2F11FF0
   # REF: A9 24 89 52 49 A2 A7 72
@@ -26,6 +24,7 @@ ALL_FPS:
   -
     type: write
     address: [MAIN, 0x2ED8D10, 0xE0, 0x284]
+    address_unsafe: true
     value_type: uint8
     value: 0
   # DR Target

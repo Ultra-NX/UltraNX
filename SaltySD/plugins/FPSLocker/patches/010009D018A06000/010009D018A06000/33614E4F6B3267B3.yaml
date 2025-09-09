@@ -1,0 +1,25 @@
+# SWORD ART ONLINE Fractured Daydream JAP 1.4.1.1
+# BID: 33614E4F6B3267B3
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x90A0758, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x90DB2B0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x88DAF88, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

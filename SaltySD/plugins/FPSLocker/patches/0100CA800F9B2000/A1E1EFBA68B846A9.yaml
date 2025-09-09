@@ -1,8 +1,6 @@
 # Sherlock Holmes The Awakened 1.0.1
 # BID: A1E1EFBA68B846A9
 
-unsafeCheck: true
-
 ALL_FPS:
   # t.MaxFPS
   -

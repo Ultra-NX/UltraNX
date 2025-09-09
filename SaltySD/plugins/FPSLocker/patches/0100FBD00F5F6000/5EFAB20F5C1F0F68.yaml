@@ -2,8 +2,6 @@
 # BID: 5EFAB20F5C1F0F68
 # Game stores textures inside fixed size class, so it's hard to get triple buffer
 
-unsafeCheck: false
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 1 decimals
   -

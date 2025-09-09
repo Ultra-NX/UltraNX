@@ -1,8 +1,6 @@
 # Gal*Gun 2 1.0.4
 # BID: 9CDFB0CD24CAE030
 
-unsafeCheck: false
-
 ALL_FPS:
   # r.VSync
   -
@@ -20,6 +18,7 @@ ALL_FPS:
   -
     type: write
     address: [MAIN, 0x44E6030, 0x764]
+    address_unsafe: true
     value_type: float
     value: 0
   -

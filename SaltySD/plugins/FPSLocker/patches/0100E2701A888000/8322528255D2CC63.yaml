@@ -2,8 +2,19 @@
 # BID: 8322528255D2CC63
 # To update dynamic resolution offsets look at fb::renderer::ResolutionScaler::update
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target_max
+    value_type: double
+    default_value: 34
+    evaluate: "1.02 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target_min
+    value_type: double
+    default_value: 32
+    evaluate: "0.96 * FRAMETIME_TARGET"
 MASTER_WRITE:
   # Change double buffer to triple buffer
   -
@@ -13,57 +24,33 @@ MASTER_WRITE:
       [mov, w8, 3]
     ]
   # Allow changing dynamic resolution timings
-  # Max - changed address to MAIN + 0x7D05200
+  # Max
   -
     type: asm_a64
     main_offset: 0x25992CC
     instructions: [
-      [adrp, x8, 0x7d05000],
+      [adrp, x8, $dr_target_max],
       [adrp, x22, 0x5ddf000],
-      [ldr, d2, [x8, 0x200]]
+      [ldr, d2, [x8, $dr_target_max]]
     ]
   # Min - changed address to MAIN + 0x7D05208
   -
     type: asm_a64
     main_offset: 0x2599344
     instructions: [
-      [adrp, x10, 0x7d05000],
-      [ldr, d5, [x10, 0x208]]
+      [adrp, x10, $dr_target_min],
+      [ldr, d5, [x10, $dr_target_min]]
     ]
   -
     type: asm_a64
     main_offset: 0x2599380
     instructions: [
-      [adrp, x10, 0x7d05000]
+      [adrp, x10, $dr_target_min]
     ]
   -
     type: asm_a64
     main_offset: 0x2599390
     instructions: [
-      [ldr, d6, [x10, 0x208]]
+      [ldr, d6, [x10, $dr_target_min]]
     ]
-  # Default values
-  -
-    type: bytes
-    main_offset: 0x7D05200
-    value_type: double
-    value: 34.0
-  -
-    type: bytes
-    main_offset: 0x7D05208
-    value_type: double
-    value: 32.0
-ALL_FPS:
-  # Max Dynamic Resolution Timing
-  -
-    type: evaluate_write
-    address: [MAIN, 0x7D05200]
-    value_type: double
-    value: "1.02 * FRAMETIME_TARGET"
-  # Min Dynamic Resolution Timing
-  -
-    type: evaluate_write
-    address: [MAIN, 0x7D05208]
-    value_type: double
-    value: "0.96 * FRAMETIME_TARGET"
 

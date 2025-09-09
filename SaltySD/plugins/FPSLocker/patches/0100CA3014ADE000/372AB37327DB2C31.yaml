@@ -1,7 +1,13 @@
 # Umurangi Generation 1.6.6.0
 # BID: 372AB37327DB2C31
 
-unsafeCheck: true
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_lock
+    value_type: float
+    default_value: 0.03333333333
+    evaluate: "1 / FPS_TARGET"
 
 MASTER_WRITE:
   # Read FPS Lock from MAIN+0x49FCFF0
@@ -11,20 +17,11 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x2DF1E60
     instructions: [
-      [adrp, x8, 0x49fc000],
-      [ldr, s1, [x8, 0xff0]],
+      [adrp, x8, $fps_lock],
+      [ldr, s1, [x8, $fps_lock]],
       [nop]
     ]
-  ## Default value
-  -
-    type: bytes
-    main_offset: 0x49FCFF0
-    value_type: float
-    value: 0.03333333333
 ALL_FPS:
-  # FPS Lock
   -
-    type: evaluate_write
-    address: [MAIN, 0x49FCFF0]
-    value_type: float
-    value: "1 / FPS_TARGET"
+    type: block
+    what: timing

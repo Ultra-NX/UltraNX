@@ -1,0 +1,36 @@
+# Twilight Monk 1.4.0
+# BID: 6D560144F6B09A98
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate to untie game speed from framerate and unlock FPS
+  -
+    type: write
+    address: [MAIN, 0x5E09268, 0x7A4]
+    address_unsafe: true
+    value_type: uint32
+    # Default is 0x46, bUseFixedFrameRate |= 0x40 
+    # By writing 6 we are making sure that other flags are maintained: 
+    # bAllowMultiThreadedAnimationUpdate |= 4
+    # bOptimizeAnimBlueprintMemberVariableAccess |= 2
+    value: 6
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5DDBEC8, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5E09B88, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: evaluate_write
+    address: [MAIN, 0x560DA68, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

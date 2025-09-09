@@ -1,0 +1,21 @@
+# SnowRunner 1.0.41
+# BID: B37F6B200EF31DFC
+# Just search for 0x42055555 in case of REF not working
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 33.333333
+    evaluate: FRAMETIME_TARGET
+MASTER_WRITE:
+# Redirect DR frametime target
+## REF: 01 04 0C 5E 00 10 2E 1E
+  -
+    type: asm_a64
+    main_offset: 0x1944014
+    instructions: [
+      [adrp, x10, $dr_target],
+      [ldr, s2, [x10, $dr_target]]
+    ]

@@ -1,45 +1,44 @@
 # resident evil 0 1.0.0
 # BID: FB4239AA962B429B
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: cutscene_flag
+    value_type: uint32
+    default_value: 0
+  -
+    type: code
+    name: signalCutscene
+    instructions: [
+      [add, x29, sp, 0x10],
+      [adrp, x8, $cutscene_flag],
+      [mov, w1, 1],
+      [str, w1, [x8, $cutscene_flag]],
+      [ret]
+    ]   
+  -
+    type: code
+    name: designalCutscene
+    instructions: [
+      [mov, w3, wzr],
+      [adrp, x4, $cutscene_flag],
+      [str, w3, [x4, $cutscene_flag]],
+      [ret]
+    ]    
 MASTER_WRITE:
   # Detect prerendered cutscenes
   -
     type: asm_a64
-    main_offset: 0x9F2540
+    main_offset: 0x9F2548
     instructions: [
-      [b, 0xa05fa8]
-    ]
-  -
-    type: asm_a64
-    main_offset: 0xA05FA8
-    instructions: [
-      [adrp, x8, 0x1bc2000],
-      [mov, w1, 1],
-      [str, w1, [x8, 0xff0]],
-      [str, x19, [sp, -0x20], "!"],
-      [mov, x19, x0],
-      [mov, w0, 0xca00],
-      [movk, w0, 0x3b9a, 16],
-      [svc, 0xb],
-      [mov, x0, x19],
-      [b, 0x9f2544]
+      [bl, _signalCutscene()]
     ]
   -
     type: asm_a64
     main_offset: 0x9F26EC
     instructions: [
-      [b, 0xa05fd0]
-    ]
-  -
-    type: asm_a64
-    main_offset: 0xA05FD0
-    instructions: [
-      [mov, w3, wzr],
-      [adrp, x4, 0x1bc2000],
-      [str, w3, [x4, 0xff0]],
-      [b, 0x9fcc10]
+      [b, _designalCutscene()]
     ]
 ALL_FPS:
   # Internal FPS Lock
@@ -51,10 +50,7 @@ ALL_FPS:
   -
     type: compare
     compare_type: "=="
-    compare_value_type: uint32
     compare_value: 1
-    compare_address: [MAIN, 0x1BC2FF0]
-    address: [MAIN]
+    compare_address: [VARIABLE, cutscene_flag]
     value_type: refresh_rate
-
     value: 30

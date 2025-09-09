@@ -1,37 +1,31 @@
 # Atelier Yumia: The Alchemist of Memories & the Envisioned Land 1.3.0
 # BID: 1CEA83A1E6684665
 
-unsafeCheck: false
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.035714
+    evaluate: "1.01 / FPS_TARGET"
 
 MASTER_WRITE:
-  # Redirect DR to MAIN + 0x2F5CFF0
+  # Redirect DR
   # REF: A9 24 89 52 49 A2 A7 72, second REF
   -
     type: asm_a64
     main_offset: 0x10AAEE4
     instructions: [
-      [adrp, x9, 0x2f5c000],
-      [ldr, s1, [x9, 0xff0]],
+      [adrp, x9, $dr_target],
+      [ldr, s1, [x9, $dr_target]],
       [nop]
     ]
-  ## Default value
-  -
-    type: bytes
-    main_offset: 0x2F5CFF0
-    value_type: float
-    value: 0.035714
 ALL_FPS:
   # Disable FPS Lock
   # REF: 88 46 40 F9 03 11 40 F9, first ADRP+LDR above it
   -
     type: write
     address: [MAIN, 0x2F23C00, 0xE0, 0x294]
+    address_unsafe: true
     value_type: uint8
     value: 0
-  # DR Target
-  -
-    type: evaluate_write
-    address: [MAIN, 0x2F5CFF0]
-    value_type: float
-    value: "1.01 / FPS_TARGET"
-

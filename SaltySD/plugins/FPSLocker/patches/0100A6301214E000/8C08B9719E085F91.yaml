@@ -3,13 +3,12 @@
 # Game has many things hardcoded to vSyncCount, so if game can't remain FPS target that is rounded up to 60/30/20/15, some elements are slowed down.
 # Thanks to ~systemdev for figuring out basic of patching this game.
 
-unsafeCheck: false
-
 ALL_FPS:
   # UnityEngine.QualitySettings::vSyncCount
   -
     type: evaluate_write
     address: [MAIN, 0x65ABCA0, 0x30, 0x68]
+    address_unsafe: true
     value_type: uint32
     value: VSYNC_TARGET
   # Internal vSyncCount
@@ -22,5 +21,6 @@ ALL_FPS:
   -
     type: evaluate_write
     address: [MAIN, 0x6157F28, 0xB8, 0, 0x20]
+    address_unsafe: true
     value_type: float
     value: "(30 / FPS_TARGET) * 0.14"

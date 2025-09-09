@@ -1,87 +1,74 @@
 # Gear.Club Unlimited 2 1.7.2
 # BID: FE757B10B45C3444
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: vsync_target
+    value_type: uint32
+    default_value: 2
+    evaluate: VSYNC_TARGET
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 33
+    evaluate: "1.1 * FPS_TARGET"
+  -
+    type: code
+    name: getVsyncTarget
+    instructions: [
+      [adrp, x1, $vsync_target],
+      [ldr, w1, [x1, $vsync_target]],
+      [mov, w19, w1],
+      [ret]
+    ]
+  -
+    type: code
+    name: getDrTarget
+    instructions: [
+      [adrp, x0, $dr_target],
+      [ldr, s0, [x0, $dr_target]],
+      [ret]
+    ]
 MASTER_WRITE:
-# Edit Eden.Graphics.IGraphicsQualityProfile::set_VSyncCount to get interval from MAIN + 0x5FBAF20
+# Edit Eden.Graphics.IGraphicsQualityProfile::set_VSyncCount
 # If not edited, light is flickering at > 30 FPS
   -
     type: asm_a64
     main_offset: 0x14B4990
     instructions: [
-      [adrp, x1, 0x5fba000],
-      [ldr, w1, [x1, 0xf20]],
+      [adrp, x1, $vsync_target],
+      [ldr, w1, [x1, $vsync_target]],
       [str, w1, [x0, 0x54]],
       [ret]
     ]
-# Edit UnityEngine.QualitySettings::set_vSyncCount to get interval from MAIN + 0x5FBAF20
+# Edit UnityEngine.QualitySettings::set_vSyncCount
 # If not edited, light is flickering at > 30 FPS
   -
     type: asm_a64
     main_offset: 0x1B46EE4
     instructions: [
-      [adrp, x0, 0x5fba000],
-      [ldr, w0, [x0, 0xf20]],
+      [adrp, x0, $vsync_target],
+      [ldr, w0, [x0, $vsync_target]],
       [ldp, x29, x30, [sp, 0x20]],
       [ldp, x20, x19, [sp, 0x10]],
       [add, sp, sp, 0x30],
       [br, x1]
     ]
-# Edit Eden.Graphics.GraphicsQualityManager::SetTargetFrameRate to get interval from MAIN + 0x5FBAF20
+# Edit Eden.Graphics.GraphicsQualityManager::SetTargetFrameRate
 # If not edited, it locks to 30 FPS
   -
     type: asm_a64
     main_offset: 0x14AB578
     instructions: [
-      [bl, 0x3445ce8]
+      [bl, _getVsyncTarget()]
     ]
-  -
-    type: asm_a64
-    main_offset: 0x3445CE8
-    instructions: [
-      [adrp, x1, 0x5fba000],
-      [ldr, w1, [x1, 0xf20]],
-      [mov, w19, w1],
-      [ret]
-    ]
-# Edit Eden.Graphics.DynamicResolutionScaler::UpdateScaling to get DR target timing from MAIN + 0x5FBAF28
+# Edit Eden.Graphics.DynamicResolutionScaler::UpdateScaling
 # If not edited, performance is much worse at > 30 FPS
   -
     type: asm_a64
     main_offset: 0x14988BC
     instructions: [
-      [bl, 0x3445cf8]
+      [bl, _getDrTarget()]
     ]
-  -
-    type: asm_a64
-    main_offset: 0x3445CF8
-    instructions: [
-      [adrp, x0, 0x5fba000],
-      [ldr, s0, [x0, 0xf28]],
-      [ret]
-    ]
-# Default values
-  -
-    type: bytes
-    main_offset: 0x5FBAF20
-    value_type: uint32
-    value: 2
-  -
-    type: bytes
-    main_offset: 0x5FBAF28
-    value_type: float
-    value: 33
-ALL_FPS:
-  -
-    type: evaluate_write
-    address: [MAIN, 0x5FBAF20]
-    value_type: uint32
-    value: VSYNC_TARGET
-  -
-    type: evaluate_write
-    address: [MAIN, 0x5FBAF28]
-    value_type: float
-    value: "1.1 * FPS_TARGET"
-
-

@@ -1,8 +1,6 @@
 # Jujutsu Kaisen Cursed Clash EUR 1.4.0
 # BID: 7C724F497564C027
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget
   -
@@ -26,8 +24,10 @@ ALL_FPS:
   -
     type: write
     address: [MAIN, 0x849B7A8, 0x9C4]
+    address_unsafe: true
     value_type: uint32
     value: 7
   -
     type: block
     what: timing
+

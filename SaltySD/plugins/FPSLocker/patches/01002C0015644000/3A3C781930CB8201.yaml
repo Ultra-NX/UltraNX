@@ -2,13 +2,12 @@
 # BID: 3A3C781930CB8201
 # WARNING: Enemy Movement Speed is not scaling properly to framerate. At 60 FPS it's multiple times slower, looking like enemies are practically walking in place.
 
-unsafeCheck: true
-
 ALL_FPS:
   # Disable bUseFixedFrameRate to untie game speed from framerate and unlock FPS
   -
     type: write
     address: [MAIN, 0x5F32908, 0x7B8]
+    address_unsafe: true
     value_type: uint32
     # Default is 0x47, bUseFixedFrameRate |= 0x40 
     # By writing 7 we are making sure that other flags are maintained: 
@@ -31,3 +30,4 @@ ALL_FPS:
   -
     type: block
     what: timing
+

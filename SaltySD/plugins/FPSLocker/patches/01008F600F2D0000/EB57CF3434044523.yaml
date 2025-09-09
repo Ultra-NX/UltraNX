@@ -2,13 +2,12 @@
 # BID: EB57CF3434044523
 # Game stores textures inside fixed size class, so it's hard to get triple buffer
 
-unsafeCheck: false
-
 ALL_FPS:
   # Disable bUseFixedFrameRate and bSmoothFrameRate
   -
     type: write
     address: [MAIN, 0x54C75F0, 0x770]
+    address_unsafe: true
     value_type: uint32
     value: 7
   # t.MaxFPS

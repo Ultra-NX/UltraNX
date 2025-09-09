@@ -1,8 +1,6 @@
 # Lara Croft and the Temple of Osiris 1.1_65791
 # BID: F47C697C2B59443B
 
-unsafeCheck: true
-
 MASTER_WRITE:
   # Disable internal FPS lock
   # EnableFramerateManager

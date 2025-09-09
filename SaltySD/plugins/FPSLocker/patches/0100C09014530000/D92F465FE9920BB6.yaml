@@ -1,29 +1,22 @@
 # Boomerang X 1.0.2
 # BID: D92F465FE9920BB6
 
-unsafeCheck: true
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 28
+    evaluate: FPS_TARGET
 
 MASTER_WRITE:
-  # Patch `DynamicResolution.Settings$$get_TargetFPS` to redirect reading targetFPS to unused .bss region [MAIN, 0x5E9AFF0]
+  # Patch `DynamicResolution.Settings$$get_TargetFPS` to redirect reading targetFPS
   -
     type: asm_a64
     main_offset: 0x3821020
     instructions: [
-      [adrp, x0, 0x5e9a000],
-      [ldr, s0, [x0, 0xff0]],
+      [adrp, x0, $dr_target],
+      [ldr, s0, [x0, $dr_target]],
       [ret]
     ]
-  # Write default value of `DynamicResolution.Settings$$get_TargetFPS` to redirected address
-  -
-    type: bytes
-    main_offset: 0x5E9AFF0
-    value_type: float
-    value: 28
-ALL_FPS:
-  # DynamicResolution.Settings$$get_TargetFPS
-  -
-    type: evaluate_write
-    address: [MAIN, 0x5E9AFF0]
-    value_type: float
-    value: FPS_TARGET
 

@@ -175,3 +175,4 @@ ALL_FPS:
     address: [MAIN]
     value_type: refresh_rate
     value: 30
+

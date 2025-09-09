@@ -1,13 +1,12 @@
-# SSINNER: Sacrifice for Redemption 1.1.0319
+# SINNER: Sacrifice for Redemption 1.1.0319
 # BID: 490D681909609015
-
-unsafeCheck: true
 
 ALL_FPS:
   # Disable bSmoothFrameRate and bUseFixedFrameRate to untie game speed from framerate
   -
     type: write
     address: [MAIN, 0x5CCE320, 0x750]
+    address_unsafe: true
     value_type: uint32
     # Default is 0x67, bSmoothFrameRate |= 0x20, bUseFixedFrameRate |= 0x40 
     # By writing 7 we are making sure that other flags are maintained: 

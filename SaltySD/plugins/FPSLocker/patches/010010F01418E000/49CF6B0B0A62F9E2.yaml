@@ -1,8 +1,6 @@
 # Remnant: From The Ashes 1.0.1
 # BID: 49CF6B0B0A62F9E2
 
-unsafeCheck: false
-
 ALL_FPS:
   # r.DynamicRes.MaxGPUTime ((1000/FPS) * 0.93)
   -

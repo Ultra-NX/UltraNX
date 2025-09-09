@@ -1,48 +1,42 @@
 # Contra: Rogue Corps 1.3.0
 # BID: 4CCD2F6D331DD104
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_factor
+    value_type: float
+    default_value: 1000000
+    evaluate: "30000000 / FPS_TARGET"
+  -
+    type: code
+    name: fpsTarget
+    instructions: [
+      [adrp, x8, 0xd94000],
+      [ldr, w8, [x8, 0x628]],
+      [ret]
+    ]    
 MASTER_WRITE:
-  # Read FPS target from code cave at MAIN + 0xA13170
+  # Read FPS target from code cave
   -
     type: asm_a64
     main_offset: 0x2004
     instructions: [
-      [b, 0xa13170]
+      [bl, _fpsTarget()]
     ]
-  # CODE CAVE - read FPS target from MAIN + 0xD94628
-  -
-    type: asm_a64
-    main_offset: 0xA13170
-    instructions: [
-      [adrp, x8, 0xd94000],
-      [ldr, w8, [x8, 0x628]],
-      [b, 0x2008]
-    ]
-  # Redirect DR time factor to MAIN + 0x2ECAB38
+  # Redirect DR time factor
   -
     type: asm_a64
     main_offset: 0x2140
     instructions: [
-      [adrp, x8, 0x2eca000],
-      [ldr, s9, [x8, 0xb38]]
+      [adrp, x8, $dr_factor],
+      [ldr, s9, [x8, $dr_factor]]
     ]
-  # Default value
-  -
-    type: bytes
-    main_offset: 0x2ECAB38
-    value_type: float
-    value: 1000000
 ALL_FPS:
   -
     type: evaluate_write
     address: [MAIN, 0xD94628]
     value_type: uint32
     value: FPS_TARGET
-  -
-    type: evaluate_write
-    address: [MAIN, 0x2ECAB38]
-    value_type: float
-    value: "(30 / FPS_TARGET) * 1000000"
+
 

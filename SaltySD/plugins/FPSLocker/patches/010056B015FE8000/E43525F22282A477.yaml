@@ -1,49 +1,54 @@
 # NieR:Automata The End of YoRHa Edition US/EU 1.0.2
 # BID: E43525F22282A477
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target_bad
+    value_type: float
+    default_value: 45
+    evaluate: "1.35 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target_optimal
+    value_type: float
+    default_value: 32.01
+    evaluate: "0.9603 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target_good
+    value_type: float
+    default_value: 30
+    evaluate: "0.9 * FRAMETIME_TARGET"
 MASTER_WRITE:
-  # Redirect DR timings to MAIN + 0x2BE6F00, [Bad, Optimal, Good]
+  # Redirect DR timings
   -
     type: asm_a64
     main_offset: 0x9BF3E4
     instructions: [
-      [adrp, x12, 0x2be6000],
-      [ldr, s3, [x12, 0xf00]]
+      [adrp, x12, $dr_target_bad],
+      [ldr, s3, [x12, $dr_target_bad]]
     ]
   -
     type: asm_a64
     main_offset: 0x9BF434
     instructions: [
-      [adrp, x12, 0x2be6000],
-      [ldr, w12, [x12, 0xf04]]
+      [adrp, x12, $dr_target_optimal],
+      [ldr, w12, [x12, $dr_target_optimal]]
     ]
   -
     type: asm_a64
     main_offset: 0x9BF484
     instructions: [
       [fcsel, s3, s4, s0, gt],
-      [adrp, x12, 0x2be6000],
-      [ldr, s0, [x12, 0xf04]],
-      [nop]
+      [adrp, x12, $dr_target_optimal],
+      [ldr, s0, [x12, $dr_target_optimal]],
+      [adrp, x12, $dr_target_good]
     ]
   -
     type: asm_a64
     main_offset: 0x9BF4A8
     instructions: [
-      [ldr, s0, [x12, 0xf08]]
+      [ldr, s0, [x12, $dr_target_good]]
     ]
-  # Default values
-  -
-    type: bytes
-    main_offset: 0x2BE6F00
-    value_type: float
-    value: [45, 32.01, 30]
-ALL_FPS:
-  -
-    type: evaluate_write
-    address: [MAIN, 0x2BE6F00]
-    value_type: float
-    value: ["1.35 * FRAMETIME_TARGET", "0.9603 * FRAMETIME_TARGET", "0.9 * FRAMETIME_TARGET"]
 

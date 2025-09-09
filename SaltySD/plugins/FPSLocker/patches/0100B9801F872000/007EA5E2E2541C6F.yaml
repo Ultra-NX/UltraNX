@@ -1,44 +1,42 @@
 # FAIRY TAIL 2 1.4.2
 # BID: 007EA5E2E2541C6F
 
-unsafeCheck: false
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target1
+    value_type: float
+    default_value: 0.043478
+    evaluate: "1 / FPS_TARGET"
+  -
+    type: variable
+    name: dr_target2
+    value_type: float
+    default_value: 0.037037
+    evaluate: "1 / (FPS_TARGET + 5)"
 MASTER_WRITE:
-  # Redirect Dynamic Resolution target to MAIN+0x2C53F00
+  # Redirect Dynamic Resolution target
   # REF: 6A C8 82 52
   -
     type: asm_a64
     main_offset: 0x138238C
     instructions: [
-      [adrp, x10, 0x2c53000],
-      [ldr, w10, [x10, 0xf00]]
+      [adrp, x10, $dr_target1],
+      [ldr, w10, [x10, $dr_target1]]
     ]
   -
     type: asm_a64
     main_offset: 0x13823A8
     instructions: [
-      [adrp, x10, 0x2c53000],
-      [ldr, w10, [x10, 0xf04]]
-    ]
-  # Default values
-  -
-    type: bytes
-    main_offset: 0x2C53F00
-    value_type: float
-    value: [0.043478, 0.037037]   
+      [adrp, x10, $dr_target2],
+      [ldr, w10, [x10, $dr_target2]]
+    ]  
 ALL_FPS:
   # FPS Lock
   # REF: 1F 00 00 71 C8 03 80 52, first ADRP+ADD above it
   -
     type: evaluate_write
     address: [MAIN, 0x2C0B558, 0x170, 0x18C]
+    address_unsafe: true
     value_type: int32
     value: FPS_LOCK_TARGET
-  # Dynamic Resolution Target
-  # Game proritizes resolution over framerate, I changed it to prefer framerate
-  -
-    type: evaluate_write
-    address: [MAIN, 0x2C53F00]
-    value_type: float
-
-    value: ["1 / FPS_TARGET", "1 / (FPS_TARGET + 5)"]

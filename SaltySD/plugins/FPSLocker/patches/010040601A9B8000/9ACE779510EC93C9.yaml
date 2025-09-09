@@ -1,7 +1,5 @@
-# Tamagotchi Plaza 1.0.2
+# たまごっちのプチプチおみせっち おまちど～さま！ 1.0.2
 # BID: 9ACE779510EC93C9
-
-unsafeCheck: true
 
 ALL_FPS:
   # UnityEngine.Rendering.OnDemandRendering_TypeInfo

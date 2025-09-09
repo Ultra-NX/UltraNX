@@ -1,8 +1,6 @@
 # GUNDAM BREAKER 4 1.9.0
 # BID: 0CC82881FF112C6D
 
-unsafeCheck: false
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget
   -

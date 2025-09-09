@@ -2,8 +2,6 @@
 # BID: 76EC789B99A25BA5
 # REF: aql::GraphicsContext::initialize
 
-unsafeCheck: true
-
 MASTER_WRITE:
   # Remove double buffer
   -
@@ -12,10 +10,3 @@ MASTER_WRITE:
     instructions: [
       [mov, x8, 3]
     ]
-ALL_FPS:
-  # DUMMY
-  -
-    type: write
-    address: [MAIN, 0x25CCF00]
-    value_type: uint8
-    value: 0

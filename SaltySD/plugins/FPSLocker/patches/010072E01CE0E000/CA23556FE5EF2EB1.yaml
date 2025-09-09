@@ -1,8 +1,6 @@
 # F1 Manager 2024 1.5
 # BID: CA23556FE5EF2EB1
 
-unsafeCheck: false
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
   -

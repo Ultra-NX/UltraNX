@@ -1,13 +1,12 @@
 # Monster Hunter Rise 16.0.2
 # BID: C9A3DD7702075ECD
 
-unsafeCheck: false
-
 ALL_FPS:
   # Internal FPS lock
   -
     type: evaluate_write
     address: [MAIN, 0x1295B3F0, 0x434]
+    address_unsafe: true
     value_type: float
     value: FPS_LOCK_TARGET
   -

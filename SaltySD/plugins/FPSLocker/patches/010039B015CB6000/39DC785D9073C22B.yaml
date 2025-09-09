@@ -1,50 +1,48 @@
 # Eiyuden Chronicle: Rising 1.02
 # BID: 39DC785D9073C22B
 
-unsafeCheck: true
-
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target1
+    value_type: double
+    default_value: 31
+    evaluate: "0.93 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target2
+    value_type: double
+    default_value: 29
+    evaluate: "0.87 * FRAMETIME_TARGET"
+  -
+    type: code
+    name: drMaxTarget
+    instructions: [
+      [adrp, x19, $dr_target1],
+      [ldr, d1, [x19, $dr_target1]],
+      [ret]
+    ]
+  -
+    type: code
+    name: drMinTarget
+    instructions: [
+      [adrp, x8, $dr_target2],
+      [ldr, d1, [x8, $dr_target2]],
+      [ret]
+    ]
 MASTER_WRITE:
-  # Redirect DynamicResolution$$LowerResSW Max Target in MS to MAIN+0x3BE1200
+  # Redirect DynamicResolution$$LowerResSW Max Target in MS
   -
     type: asm_a64
     main_offset: 0x2426988
     instructions: [
-      [b, 0x2426a94]
+      [bl, _drMaxTarget()]
     ]
-      
-  -
-    type: asm_a64
-    main_offset: 0x2426A94
-    instructions: [
-      [adrp, x19, 0x3be1000],
-      [ldr, d1, [x19, 0x200]],
-      [b, 0x242698c]
-    ]
-  # Redirect DynamicResolution$$LowerResSW Min Target in MS to MAIN+0x3BE1208
+  # Redirect DynamicResolution$$LowerResSW Min Target
   -
     type: asm_a64
     main_offset: 0x24269F4
     instructions: [
-      [b, 0x2426ea4]
+      [bl, _drMinTarget()]
     ]
-  -
-    type: asm_a64
-    main_offset: 0x2426EA4
-    instructions: [
-      [adrp, x8, 0x3be1000],
-      [ldr, d1, [x8, 0x208]],
-      [b, 0x24269f8]
-    ]
-  # Write default values
-  -
-    type: bytes
-    main_offset: 0x3BE1200
-    value_type: double
-    value: [31, 29]
-ALL_FPS:
-  -
-    type: evaluate_write
-    address: [MAIN, 0x3BE1200]
-    value_type: double
-    value: ["0.93 * FRAMETIME_TARGET", "0.87 * FRAMETIME_TARGET"]
 

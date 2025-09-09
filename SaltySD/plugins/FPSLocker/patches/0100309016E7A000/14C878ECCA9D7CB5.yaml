@@ -1,13 +1,12 @@
 # Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles 1.53
 # BID: 14C878ECCA9D7CB5
 
-unsafeCheck: false
-
 ALL_FPS:
   # Disable bUseFixedFrameRate to unlock framerate
   -
     type: write
     address: [MAIN, 0xB314540, 0x7F8]
+    address_unsafe: true
     value_type: uint32
     # Default is 0x47, bUseFixedFrameRate |= 0x40 
     # By writing 7 we are making sure that other flags are maintained: 

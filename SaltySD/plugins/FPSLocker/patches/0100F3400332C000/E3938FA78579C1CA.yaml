@@ -1,7 +1,94 @@
 # Xenoblade2 2.0.2
 # BID: E3938FA78579C1CA
 
-unsafeCheck: true
+DECLARATIONS:
+  -
+    type: variable
+    name: last_tick
+    value_type: uint64
+    default_value: 0
+  -
+    type: variable
+    name: game_speed
+    value_type: float
+    default_value: 0.03333333333
+  -
+    type: variable
+    name: min_delta
+    value_type: float
+    default_value: 0.03333333333
+    evaluate: "1 / FPS_TARGET"
+  -
+    type: variable
+    name: max_delta
+    value_type: float
+    default_value: 30
+    evaluate: "FPS_TARGET / 2"
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.0166666666
+    evaluate: "(1 / FPS_TARGET) / VSYNC_TARGET"
+  -
+    type: const
+    name: microseconds_in_sec
+    value: 1000000
+  -
+    type: const
+    name: milliseconds_in_sec
+    value: 1000
+  -
+    type: code
+    name: dynamicSpeed
+    instructions: [
+      [stp, x29, x30, [sp, -16], "!"],
+      [mov, x29, sp],
+      [mrs, x0, cntpct_el0],
+      [adrp, x2, $last_tick],
+      [ldr, x1, [x2, $last_tick]],
+      [str, x0, [x2, $last_tick]],
+      [cbz, x1, :goto3],
+      [sub, x0, x0, x1],
+      [bl, _convertTickToTimeSpan()],
+      [adrp, x1, $max_delta],
+      [ldr, s2, [x1, $max_delta],
+      [mov, w1, $milliseconds_in_sec],
+      [udiv, x0, x0, x1],
+      [ucvtf, s0, x0],
+      [mov, w1, $microseconds_in_sec],
+      [movk, w1, $microseconds_in_sec, 16],
+      [ucvtf, s1, w1],
+      [b, :goto2],
+      :goto4, [adrp, x0, 0xb8f000],
+      [ldr, x0, [x0, 0xd0]],
+      [cbz, x0, :goto3],
+      [str, s0, [x0, 0x78]],
+      [str, s0, [x0, 0x7c]],
+      [adrp, x0, 0xc22000],
+      [ldr, x0, [x0, 0x2c8]],
+      [str, s0, [x0, 0x80]],
+      [adrp, x0, $game_speed],
+      [str, s0, [x0, $game_speed]],
+      [b, :goto3],
+      :goto5, [fmov, s1, 1.0],
+      [fdiv, s2, s1, s2],
+      [fcmp, s0, s2],
+      [b.lt, :goto6],
+      [fmov, s0, s2],
+      [b, :goto4],
+      :goto6, [adrp, x0, $min_delta],
+      [ldr, s2, [x0, $min_delta]],
+      [fcmp, s0, s2],
+      [b.hi, :goto4],
+      [fmov, s0, s2],
+      [b, :goto4],
+      :goto2, [fdiv, s0, s0, s1],
+      [b, :goto5],
+      :goto3, [mov, w8, 0x21a0],
+      [ldp, x29, x30, [sp], 16],
+      [ret],
+    ]
 
 MASTER_WRITE:
   # Dynamic speed
@@ -10,94 +97,30 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x700050
     instructions: [
-      [b, 0x8b3448]
-    ]
-  # Game speed math, write data to unused .bss, tick at 0x15ECF00, game speed at 0x15ECF08, take min delta from 0x15ECF10
-  -
-    type: asm_a64
-    main_offset: 0x8B3448
-    instructions: [
-      [bl, 0x8b2258],
-      [adrp, x2, 0x15ec000],
-      [ldr, x1, [x2, 0xf00]],
-      [str, x0, [x2, 0xf00]],
-      [cbnz, x1, +12],
-      [mov, w8, 0x21a0],
-      [b, 0x700054],
-      [sub, x0, x0, x1],
-      [bl, 0x8b2268],
-      [fmov, s2, 15.0],
-      [mov, w1, 1000],
-      [udiv, x0, x0, x1],
-      [scvtf, s0, x0],
-      [mov, w1, 0x2400],
-      [movk, w1, 0x4974, 16],
-      [fmov, s1, w1],
-      [b, +96],
-      [adrp, x0, 0xb8f000],
-      [ldr, x0, [x0, 0xd0]],
-      [cbz, x0, -56],
-      [str, s0, [x0, 0x78]],
-      [str, s0, [x0, 0x7c]],
-      [adrp, x0, 0xc22000],
-      [ldr, x0, [x0, 0x2c8]],
-      [str, s0, [x0, 0x80]],
-      [adrp, x0, 0x15ec000],
-      [str, s0, [x0, 0xf08]],
-      [b, -88],
-      [fmov, s1, 1.0],
-      [fdiv, s2, s1, s2],
-      [fcmp, s0, s2],
-      [b.lt, +12],
-      [fmov, s0, s2],
-      [b, -64],
-      [adrp, x0, 0x15ec000],
-      [ldr, s2, [x0, 0xf10]],
-      [fcmp, s0, s2],
-      [b.hi, -80],
-      [fmov, s0, s2],
-      [b, -88],
-      [fdiv, s0, s0, s1],
-      [b, -52]
+      [bl, _dynamicSpeed()]
     ]
   # Patch wind speed to take game speed from MAIN + 0x15ECF08
   -
     type: asm_a64
     main_offset: 0x747CC4
     instructions: [
-      [adrp, x8, 0x15ec000],
-      [ldr, s6, [x8, 0xf08]]
+      [adrp, x8, $game_speed],
+      [ldr, s6, [x8, $game_speed]]
     ]
   # Redirect DR timing to MAIN + 0x15ECF18
   -
     type: asm_a64
     main_offset: 0x6AA038
     instructions: [
-      [adrp, x8, 0x15ec000],
-      [ldr, s0, [x8, 0xf18]]
+      [adrp, x8, $dr_target],
+      [ldr, s0, [x8, $dr_target]]
     ]
-  # Default values
-  -
-    type: bytes
-    main_offset: 0x15ECF08
-    value_type: float
-    value: [0.0333333333, 0.0333333333, 0.0333333333, 0.0166666666, 0.0333333333]
 ALL_FPS:
   -
     type: evaluate_write
     address: [MAIN, 0xB74BC0]
     value_type: uint32
     value: ["VSYNC_TARGET", "VSYNC_TARGET"]
-  - 
-    type: evaluate_write
-    address: [MAIN, 0x15ECF10]
-    value_type: float
-    value: "1 / FPS_TARGET"
-  - 
-    type: evaluate_write
-    address: [MAIN, 0x15ECF18]
-    value_type: float
-    value: "(1 / FPS_TARGET) / VSYNC_TARGET"
   # Cutscenes in 30 FPS
   -
     type: compare
@@ -105,8 +128,23 @@ ALL_FPS:
     compare_value_type: uint8
     compare_value: 1
     compare_address: [MAIN, 0xBD7F40]
-    address: [MAIN]
     value_type: refresh_rate
+    value: 60
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 1
+    compare_address: [MAIN, 0xBD7F40]
+    address: [VARIABLE, min_delta]
+    value: 0.0333333333
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 1
+    compare_address: [MAIN, 0xBD7F40]
+    address: [VARIABLE, max_delta]
     value: 30
   -
     type: compare
@@ -114,16 +152,14 @@ ALL_FPS:
     compare_value_type: uint8
     compare_value: 1
     compare_address: [MAIN, 0xBD7F40]
-    address: [MAIN, 0x15ECF10]
-    value_type: float
-    value: 0.0333333333
+    address: [MAIN, 0xB74BC0]
+    value_type: uint32
+    value: [2, 2]
   -
     type: compare
     compare_type: "=="
     compare_value_type: uint8
     compare_value: 1
     compare_address: [MAIN, 0xBD7F40]
-    address: [MAIN, 0x15ECF18]
-    value_type: float
-    value: 0.0333333333
-
+    address: [VARIABLE, dr_target]
+    value: 0.0166666666

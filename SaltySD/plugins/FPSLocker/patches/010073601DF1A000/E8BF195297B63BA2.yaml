@@ -1,7 +1,13 @@
 # Amber Isle 1.0.3
 # BID: E8BF195297B63BA2
 
-unsafeCheck: true
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: double
+    default_value: 25.333333333333336
+    evaluate: "FRAMETIME_TARGET * 0.76"
 
 MASTER_WRITE:
 # Redirect all hardcoded doubles in DynamicResolutionHandler::Update to MAIN+0x909EF00
@@ -10,48 +16,37 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x21FE1E4
     instructions: [
-      [adrp, x8, 0x909e000],
-      [ldr, d0, [x8, 0xf00]]
+      [adrp, x8, $dr_target],
+      [ldr, d0, [x8, $dr_target]]
     ]
   -
     type: asm_a64
     main_offset: 0x21FE3E0
     instructions: [
-      [adrp, x8, 0x909e000],
-      [ldr, d1, [x8, 0xf00]]
+      [adrp, x8, $dr_target],
+      [ldr, d1, [x8, $dr_target]]
     ]
   -
     type: asm_a64
     main_offset: 0x21FE43C
     instructions: [
-      [adrp, x8, 0x909e000],
-      [ldr, d1, [x8, 0xf00]]
+      [adrp, x8, $dr_target],
+      [ldr, d1, [x8, $dr_target]]
     ]
   -
     type: asm_a64
     main_offset: 0x21FE7D4
     instructions: [
-      [adrp, x8, 0x909e000],
-      [ldr, d0, [x8, 0xf00]]
+      [adrp, x8, $dr_target],
+      [ldr, d0, [x8, $dr_target]]
     ]
   ## REF: c8 aa 8a f2 28 07 f8 f2
   -
     type: asm_a64
     main_offset: 0x21fE550
     instructions: [
-      [adrp, x8, 0x909e000],
-      [ldr, d0, [x8, 0xf00]],
+      [adrp, x8, $dr_target],
+      [ldr, d0, [x8, $dr_target]],
       [fneg, d0, d0]
     ]
-  # default value
-  -
-    type: bytes
-    main_offset: 0x909EF00
-    value_type: double
-    value: 25.333333333333336
-ALL_FPS:
-  -
-    type: evaluate_write
-    address: [MAIN, 0x909EF00]
-    value_type: double
-    value: "FRAMETIME_TARGET * 0.76"
+

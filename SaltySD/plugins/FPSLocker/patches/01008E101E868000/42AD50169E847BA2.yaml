@@ -1,8 +1,6 @@
 # Bum Simulator 1.0.2
 # BID: 42AD50169E847BA2
 
-unsafeCheck: false
-
 ALL_FPS:
   # t.MaxFPS
   -

@@ -1,8 +1,6 @@
 # SONIC GENERATIONS 1.0.1/1.1.0
 # BID: D91C67509C6AED8D
 
-unsafeCheck: true
-
 MASTER_WRITE:
   # NOP internal FPS Lock
   # REF: 00 00 23 1E E1 02 27 1E 00 08 21 1E
@@ -20,11 +18,3 @@ MASTER_WRITE:
     instructions: [
       [mov, w20, 2]
     ]
-ALL_FPS:
-  # DUMMY
-  -
-    type: write
-    address: [MAIN, 0x5226F00]
-    value_type: uint8
-    value: 0
-

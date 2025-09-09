@@ -3,6 +3,167 @@
 
 unsafeCheck: true
 
+DECLARATIONS:
+  -
+    type: variable
+    name: last_tick
+    value_type: uint64
+    default_value: 0
+  -
+    type: variable
+    name: frame_target
+    value_type: uint32
+    default_value: 33333333
+    evaluate: "FRAMETIME_TARGET * 1000000"
+  -
+    type: variable
+    name: speed_factor
+    value_type: float
+    default_value: 1.0
+  -
+    type: variable
+    name: current_fps
+    value_type: float
+    default_value: 30.0
+  -
+    type: variable
+    name: current_frametime
+    value_type: float
+    default_value: 0.0333333333
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.0333333333
+    evaluate: "1 / FPS_TARGET"
+  -
+    type: const
+    name: nanoseconds_in_sec
+    value: 1000000000
+  -
+    type: const
+    name: max_delta
+    value: 66666666
+  -
+    type: variable
+    name: microseconds_in_sec
+    value_type: double
+    default_value: 1000000.0
+  -
+    type: code
+    name: dynamicSpeed
+    instructions: [
+      [stp, x29, x30, [sp, -16], "!"],
+      [mov, x29, sp],
+      [blr, x8],
+      [mrs, x0, cntpct_el0],
+      [adrp, x8, $last_tick],
+      [ldr, x7, [x8, $last_tick]],
+      [str, x0, [x8, $last_tick]],
+      [cbz, x7, :goto1],
+      [sub, x0, x0, x7],
+      [bl, _convertTickToTimeSpan()],
+      [adrp, x8, $frame_target],
+      [ldr, w1, [x8, $frame_target]],
+      [cmp, x1, x0],
+      [b.lt, :goto2],
+      [mov, x0, x1],
+      :goto2, [mov, x1, $max_delta],
+      [movk, x1, $max_delta, 16],
+      [cmp, x1, x0],
+      [b.gt, :goto3],
+      [mov, x0, x1],
+      :goto3, [ucvtf, d0, x0],
+      [adrp, x0, $microseconds_in_sec],
+      [ldr, d1, [x0, $microseconds_in_sec]],
+      [fdiv, d0, d0, d1],
+      [mov, x0, 1000],
+      [ucvtf, d1, x0],
+      [fdiv, d1, d1, d0],
+      [adrp, x0, $current_fps],
+      [fcvt, s1, d1],
+      [str, s1, [x0, $current_fps]],
+      [fmov, s2, 30.0],
+      [fdiv, s2, s2, s1],
+      [adrp, x0, $speed_factor],
+      [str, s2, [x0, $speed_factor]],
+      [mov, x1, 1000],
+      [ucvtf, d1, x1],
+      [fdiv, d1, d0, d1],
+      [fcvt, s1, d1],
+      [adrp, x0, $current_frametime],
+      [str, s1, [x0, $current_frametime]],
+      :goto1, [ldp, x29, x30, [sp], 16],
+      [ret]
+    ]
+  -
+    type: code
+    name: battleFix
+    instructions: [
+      [adrp, x9, $speed_factor],
+      [ldr, s0, [x9, $speed_factor]],
+      [ret]
+    ]
+  -
+    type: code
+    name: cameraRotationFix
+    instructions: [
+      [adrp, x8, $speed_factor],
+      [ldr, s8, [x8, $speed_factor]],
+      [fmul, s0, s8, s0],
+      [fcmp, s0, 0.0],
+      [b.ge, :goto1],
+      [fneg, s0, s0],
+      [fsqrt, s0, s0],
+      [fneg, s0, s0],
+      [ret],
+      :goto1, [fsqrt, s0, s0],
+      [ret]
+    ]
+  -
+    type: code
+    name: fnSiteFix
+    instructions: [
+      [ldr, s0, [x19, 0xd0]],
+      [adrp, x0, $speed_factor],
+      [ldr, s1, [x0, $speed_factor]],
+      [fmul, s0, s0, s1],
+      [ret]
+    ]
+  -
+    type: code
+    name: longJumpFix
+    instructions: [
+      [fmov, s11, 30.0],
+      [fadd, s11, s11, s11],
+      [ret]
+    ]
+  -
+    type: code
+    name: qteFix
+    instructions: [
+      [adrp, x20, $speed_factor],
+      [ldr, s1, [x20, $speed_factor]],
+      [ldr, s2, [x19, 0x120]],
+      [fmul, s1, s2, s1],
+      [ret]
+    ]
+  -
+    type: code
+    name: fogSpeedFix
+    instructions: [
+      [fsqrt, s2, s2],
+      [fmadd, s0, s1, s2, s0],
+      [ret]
+    ]
+  -
+    type: code
+    name: overdriveFix
+    instructions: [
+      [adrp, x0, $current_frametime],
+      [ldr, s0, [x0, $current_frametime]],
+      [ret]
+    ]
 MASTER_WRITE:
   # Dynamic speed mod for stuff like UI, lipsync, grass and rain
   ## Redirect nvnQueuePresentTexture call to code cave at MAIN+0x1735050
@@ -10,106 +171,51 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x95EED8
     instructions: [
-      [b, 0x1735050]
+      [bl, _dynamicSpeed()]
     ]
-  ## Code Cave (save floats for speed factor to MAIN+0x47BE268, frametime as FPS in MAIN+0x47BE26C, frametime in s in MAIN+0x47BE270)
-  -
-    type: asm_a64
-    main_offset: 0x1735050
-    instructions: [
-      [blr, x8],
-      [bl, 0x1732500],
-      [adrp, x8, 0x47be000],
-      [ldr, x7, [x8, 0x260]],
-      [str, x0, [x8, 0x260]],
-      [cbnz, x7, +8],
-      [b, 0x95eedc],
-      [sub, x0, x0, x7],
-      [bl, 0x1732510],
-      [adrp, x8, 0x47be000],
-      [ldr, w1, [x8, 0x300]],
-      [cmp, x1, x0],
-      [b.lt, +8],
-      [mov, x0, x1],
-      [mov, x1, 0x40aa],
-      [movk, x1, 0x3f9, 16],
-      [cmp, x1, x0],
-      [b.gt, +8],
-      [mov, x0, x1],
-      [ucvtf, d0, x0],
-      [adrp, x0, 0x17eb000],
-      [ldr, d1, [x0, 0xd58]],
-      [fdiv, d0, d0, d1],
-      [mov, x0, 1000],
-      [ucvtf, d1, x0],
-      [fdiv, d1, d1, d0],
-      [adrp, x0, 0x47be000],
-      [fcvt, s1, d1],
-      [str, s1, [x0, 0x26c]],
-      [fmov, s2, 30.0],
-      [fdiv, s2, s2, s1],
-      [str, s2, [x0, 0x268]],
-      [mov, x1, 1000],
-      [ucvtf, d1, x1],
-      [fdiv, d1, d0, d1],
-      [fcvt, s1, d1],
-      [str, s1, [x0, 0x270]],
-      [b, 0x95eedc]
-    ]
-  ## Default values for code cave
-  -
-    type: bytes
-    main_offset: 0x47BE268
-    value_type: float
-    value: [1.0, 30.0, 0.033333333333]
-  -
-    type: bytes
-    main_offset: 0x47BE300
-    value_type: uint32
-    value: 33333333
   ## Function 1 to speed factor // Usage unknown
   -
     type: asm_a64
     main_offset: 0x286968
     instructions: [
-      [adrp, x21, 0x47be000],
+      [adrp, x21, $speed_factor],
       [ldr, x0, [x8, 0xe18]],
-      [ldr, s10, [x21, 0x268]]
+      [ldr, s10, [x21, $speed_factor]]
     ]
   ## Function 3 to speed factor // Usage unknown
   -
     type: asm_a64
     main_offset: 0xA16F00
     instructions: [
-      [adrp, x0, 0x47be000],
-      [ldr, s8, [x0, 0x268]]
+      [adrp, x0, $speed_factor],
+      [ldr, s8, [x0, $speed_factor]]
     ]
   ## Function 4 to FPS // UI Speed
   -
     type: asm_a64
     main_offset: 0xA1F060
     instructions: [
-      [adrp, x0, 0x47be000],
+      [adrp, x0, $current_fps],
       [fmov, s0, w8],
-      [ldr, s0, [x0, 0x26c]]
+      [ldr, s0, [x0, $current_fps]]
     ]
   ## Function 5 to FPS // Usage unknown
   -
     type: asm_a64
     main_offset: 0x2672DC
     instructions: [
-      [adrp, x0, 0x47ae000],
+      [adrp, x0, $current_fps],
       [fmov, s0, w8],
       [ldrh, w8, [x19, 0x68]],
-      [ldr, s5, [x0, 0x26c]]
+      [ldr, s5, [x0, $current_fps]]
     ]
   ## Function 6 to FPS
   -
     type: asm_a64
     main_offset: 0x26DB70
     instructions: [
-      [adrp, x0, 0x47be000],
-      [ldr, s0, [x0, 0x26c]],
+      [adrp, x0, $current_fps],
+      [ldr, s0, [x0, $current_fps]],
       [fcvtzu, w0, s0],
       [mov, w9, 6],
       [udiv, w8, w0, w9]
@@ -119,29 +225,20 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x1E2924
     instructions: [
-      [adrp, x9, 0x47be000]
+      [adrp, x9, $current_frametime]
     ]
   -
     type: asm_a64
     main_offset: 0x1E2938
     instructions: [
-      [ldr, s0, [x9, 0x270]]
+      [ldr, s0, [x9, $current_frametime]]
     ]
   # Adjust various elements related to fighting
   -
     type: asm_a64
     main_offset: 0x1E8F48
     instructions: [
-      [b, 0x1735174]
-    ]
-  ## Code cave
-  -
-    type: asm_a64
-    main_offset: 0x1735174
-    instructions: [
-      [adrp, x9, 0x47be000],
-      [ldr, s0, [x9, 0x268]],
-      [b, 0x1e8f4c]
+      [bl, _battleFix()]
     ]
   ## Fix gun speed
   -
@@ -155,39 +252,15 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x13A90B4
     instructions: [
-      [adrp, x8, 0x47be000],
-      [ldr, s0, [x8, 0xf00]]
-    ]
-  ## Default value
-  -
-    type: bytes
-    main_offset: 0x47BEF00
-    value_type: float
-    value: 0.01666666666
-  # Adjust camera speed rotation dynamically
-  ## Code cave
-  -
-    type: asm_a64
-    main_offset: 0x1735108
-    instructions: [
-      [adrp, x8, 0x47be000],
-      [ldr, s8, [x8, 0x268]],
-      [fmul, s0, s8, s0],
-      [fcmp, s0, 0.0],
-      [b.ge, +20],
-      [fneg, s0, s0],
-      [fsqrt, s0, s0],
-      [fneg, s0, s0],
-      [ret],
-      [fsqrt, s0, s0],
-      [ret]
+      [adrp, x8, $dr_target],
+      [ldr, s0, [x8, $dr_target]]
     ]
   ## Connect function 1
   -
     type: asm_a64
     main_offset: 0x1E17A0
     instructions: [
-      [bl, 0x1735108]
+      [bl, _cameraRotationFix()]
     ]
   ## Connect function 2
   -
@@ -200,139 +273,55 @@ MASTER_WRITE:
     type: asm_a64
     main_offset: 0x1E17BC
     instructions: [
-      [bl, 0x1735108]
-    ]
-  # Force 1s sleep to synchronize audio if cutscene detected
-  ## Use function responsible for writing type 4 of cutscene
-  -
-    type: asm_a64
-    main_offset: 0x2FB0D8
-    instructions: [
-      [b, 0x1735158]
-    ]
-  ### Code cave
-  -
-    type: asm_a64
-    main_offset: 0x1735158
-    instructions: [
-      [mov, w20, 4],
-      [adrp, x0, 0x1fef000],
-      [str, w20, [x0, 0xaf4]],
-      [mov, x0, 0xca00],
-      [movk, x0, 0x3b9a, 16],
-      [bl, 0x17320d0],
-      [b, 0x2fb0dc]
+      [bl, _cameraRotationFix()]
     ]
   # Adjust Field Action gauge bar speed
   -
     type: asm_a64
     main_offset: 0xE5E00
     instructions: [
-      [adrp, x0, 0x47be000],
+      [adrp, x0, $speed_factor],
       [adrp, x9, 0x1d54000],
-      [ldr, s8, [x0, 0x268]]
+      [ldr, s8, [x0, $speed_factor]]
     ]
   ## Fix for FN Site
   -
     type: asm_a64
     main_offset: 0xE5858
     instructions: [
-      [b, 0x17350e8]
-    ]
-  ### Code cave
-  -
-    type: asm_a64
-    main_offset: 0x17350E8
-    instructions: [
-      [ldr, s0, [x19, 0xd0]],
-      [adrp, x0, 0x47be000],
-      [ldr, s1, [x0, 0x268]],
-      [fmul, s0, s0, s1],
-      [b, 0xe585c]
+      [bl, _fnSiteFix()]
     ]
   # Fix long jump when not running
   -
     type: asm_a64
     main_offset: 0x23EF70
     instructions: [
-      [b, 0x17350fc]
-    ]
-  ## Code cave
-  -
-    type: asm_a64
-    main_offset: 0x17350FC
-    instructions: [
-      [fmov, s11, 30.0],
-      [fadd, s11, s11, s11],
-      [b, 0x23ef74]
+      [bl, _longJumpFix()]
     ]
   # Adjust QTE Speed 
-  ## Code cave
-  -
-    type: asm_a64
-    main_offset: 0x1735134
-    instructions: [
-      [adrp, x20, 0x47be000],
-      [ldr, s1, [x20, 0x268]],
-      [b, 0x17351a8]
-    ]
-  -
-    type: asm_a64
-    main_offset: 0x17351A8
-    instructions: [
-      [ldr, s2, [x19, 0x120]],
-      [fmul, s1, s2, s1],
-      [b, 0x5c6284]
-    ]
   ## Connect function
   -
     type: asm_a64
     main_offset: 0x5C6280
     instructions: [
-      [b, 0x1735134]
-    ]
-  # Adjust Overdrive counter, Follow Ball speed
-  ## Code cave
-  -
-    type: asm_a64
-    main_offset: 0x1735180
-    instructions: [
-      [adrp, x0, 0x47be000],
-      [ldr, s0, [x0, 0x270]],
-      [ret]
-    ]
-  ## Connect function
-  -
-    type: asm_a64
-    main_offset: 0x67354
-    instructions: [
-      [bl, 0x1734e00]
+      [bl, _qteFix()]
     ]
   # Fix fog speed
   -
     type: asm_a64
     main_offset: 0x296AE0
     instructions: [
-      [adrp, x8, 0x47be000],
-      [ldr, s2, [x8, 0x268]],
-      [bl, 0x17351b4]
+      [adrp, x8, $speed_factor],
+      [ldr, s2, [x8, $speed_factor]],
+      [bl, _fogSpeedFix()]
     ]
-  ## Code cave
   -
     type: asm_a64
-    main_offset: 0x17351B4
+    main_offset: 0x676D4
     instructions: [
-      [fsqrt, s2, s2],
-      [fmadd, s0, s1, s2, s0],
-      [ret]
+      [bl, _overdriveFix()]
     ]
 ALL_FPS:
-  # FPS Target
-  -
-    type: evaluate_write
-    address: [MAIN, 0x47BE300]
-    value_type: uint32
-    value: "FRAMETIME_TARGET * 1000000"
   # FPS Lock
   # ref: 00 01 00 b9 2a 01 00 b9 c0 03 5f d6
   -
@@ -340,12 +329,6 @@ ALL_FPS:
     address: [MAIN, 0x1D943A0]
     value_type: int32
     value: [1, 1]
-  # DR Target
-  -
-    type: evaluate_write
-    address: [MAIN, 0x47BEF00]
-    value_type: float
-    value: "1 / FPS_TARGET"
   # Lock game to 30 FPS when complex/prerendered cutscene is played
   ## Adjusts DR target
   -
@@ -354,7 +337,7 @@ ALL_FPS:
     compare_value_type: uint32
     compare_type: ">"
     compare_value: 2
-    address: [MAIN, 0x47BEF00]
+    address: [VARIABLE, dr_target]
     value_type: float
     value: 0.03333333333
   ## Force OS to run at 60 Hz with interval 2
@@ -364,6 +347,5 @@ ALL_FPS:
     compare_value_type: uint32
     compare_type: ">"
     compare_value: 2
-    address: [MAIN]
     value_type: refresh_rate
     value: 30

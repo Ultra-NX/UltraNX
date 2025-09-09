@@ -1,0 +1,19 @@
+# FANTASY LIFE i: The Girl Who Steals Time 1.5.0
+# BID: 74BCAC96835DB9AE
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xAE6F938, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x9E4F728, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

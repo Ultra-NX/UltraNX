@@ -1,8 +1,6 @@
 # Fate/EXTELLA LINK 1.0.2
 # BID: 97FC79E063E26C9B
 
-unsafeCheck: true
-
 MASTER_WRITE:
   # Remove double buffer
   -
@@ -11,11 +9,3 @@ MASTER_WRITE:
     instructions: [
       [mov, x8, 0x300000003]
     ]
-ALL_FPS:
-  # DUMMY
-  -
-    type: write
-    address: [MAIN, 0x4740500]
-    value_type: uint8
-    value: 0
-
