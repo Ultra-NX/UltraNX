@@ -1,0 +1,36 @@
+# Empire of Sin 1.10.0
+# BID: BD5F1ED30FDBA245
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target_min
+    value_type: double
+    default_value: 28.5714282989502
+    evaluate: "999.9996 / (FPS_TARGET + 5)"
+  -
+    type: variable
+    name: dr_target_max
+    value_type: double
+    default_value: 33.33333206176758
+    evaluate: "0.9999996 * FRAMETIME_TARGET"    
+MASTER_WRITE:
+  # REF: RomeroGames.DynamicResolutionService::UpdateService()
+  -
+    type: asm_a64
+    main_offset: 0x17B8A3C
+    instructions: [
+      [nop],
+      [nop],
+      [adrp, x9, $dr_target_max],
+      [ldr, d0, [x9, $dr_target_max]]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x17B8C00
+    instructions: [
+      [nop],
+      [nop],
+      [adrp, x8, $dr_target_min],
+      [ldr, d1, [x8, $dr_target_min]]
+    ]

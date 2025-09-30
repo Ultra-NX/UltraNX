@@ -1,0 +1,10 @@
+# art of rally 1.1.9
+# BID: BCAA04FAF88EEA4A
+
+ALL_FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x63C5AA8, 0xB8, 4]
+    value_type: float
+    value: FPS_TARGET

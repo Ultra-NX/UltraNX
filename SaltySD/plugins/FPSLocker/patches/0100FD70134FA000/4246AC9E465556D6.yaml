@@ -1,0 +1,37 @@
+# 드래곤볼 Z 카카로트 + 새로운 각성 편 1.60
+# BID: 4246AC9E465556D6
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate in cutscenes to unlock framerate
+  -
+    type: write
+    address: [MAIN, 0x996A558, 0x810]
+    address_unsafe: true
+    value_type: uint32
+    # Default is 0x47 in cutscenes, bUseFixedFrameRate |= 0x40 
+    # By writing 7 we are making sure that other flags are maintained: 
+    # bAllowMultiThreadedAnimationUpdate |= 4
+    # bOptimizeAnimBlueprintMemberVariableAccess |= 2
+    # bCanBlueprintsTickByDefault |= 1
+    value: 7
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9935498, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x996AE08, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x8DD7418, 0]
+    value_type: int32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

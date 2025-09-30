@@ -1,0 +1,43 @@
+# 空の軌跡 the 1st 1.0.4
+# BID: 6DE3725465A43249
+
+DECLARATIONS:
+  # Lock Max Handheld Resolution to 720p instead of 900p
+  -
+    type: code
+    name: adjustDrResToNativeInHH
+    instructions: [
+      [cmp, w9, 1280],
+      [b.le, :goto1],
+      [adrp, x21, 0x65E000],
+      [ldr, w21, [x21, 0x820]], ## REF: nn::oe::GetOperationMode in nnMain
+      [cbnz, w21, :goto1],
+      [mov, w9, 1280],
+      [mov, w8, 720],
+      :goto1, [stp, w9, w8, [x19, 0x10]],
+      [ret]
+    ]
+MASTER_WRITE:
+  ## REF: 69 22 02 29
+  -
+    type: asm_a64
+    main_offset: 0x237E54
+    instructions: [
+      [bl, _adjustDrResToNativeInHH()]
+    ]
+ALL_FPS:
+  # Min Delta
+  ## REF: 88 01 80 52 C1 03 80 52 28 4D 28 9B 29 00 80 52, first ADRP + ADD below it
+  -
+    type: evaluate_write
+    address: [MAIN, 0x65E850, 0x2C]
+    value_type: uint32
+    value: FPS_TARGET
+  # Dynamic Resolution
+  ## REF: First function in .init_array section, ADRP + ADD + 0x220 (default float: 2)
+  ## Adding there 0.95 by myself because game seems to have issues with reaching 60 FPS with 1.0
+  -
+    type: write
+    address: [MAIN, 0x65E368]
+    value_type: float
+    value: 0.95

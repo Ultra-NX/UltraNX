@@ -21,7 +21,7 @@ DECLARATIONS:
     name: dr_factor
     value_type: float
     default_value: 0.001
-    evaluate: 0.001 * (FPS_TARGET / 30)
+    evaluate: "FPS_TARGET / 30000"
   -
     type: const
     name: nanoseconds_in_s
@@ -35,7 +35,7 @@ DECLARATIONS:
       [mov, w2, 1],
       [adrp, x3, $cutscene_flag],
       [strb, w2, [x3, $cutscene_flag]],
-      [bl, 0x5f888], #Jump to original BL
+      [bl, 0x5f888], # Jump to original BL
       [ldp, x29, x30, [sp], 16],
       [ret]
     ]
@@ -64,6 +64,13 @@ DECLARATIONS:
       [ret]
     ]
 MASTER_WRITE:
+  # Force default 30 FPS Lock
+  -
+    type: asm_a64
+    main_offset: 0x104E9D8
+    instructions: [
+      [mov, w1, 2]
+    ]
   # Remove double buffer
   ## REF: A0 2A 40 F9 61 A2 40 39
   -
@@ -87,8 +94,8 @@ MASTER_WRITE:
       [bl, _convertTickToTimeSpan()],
       [mov, w2, $nanoseconds_in_s],
       [movk, w2, $nanoseconds_in_s, 16],
-      [scvtf, s2, w2],
-      [scvtf, s1, x0],
+      [ucvtf, s2, w2],
+      [ucvtf, s1, x0],
       [fdiv, s1, s2, s1],
       [fcmp, s1, s9],
       [fcsel, s1, s9, s1, gt],
@@ -131,7 +138,7 @@ MASTER_WRITE:
     instructions: [
       [nop]
     ]
-  # When prerendered cutscene is active write flag to cutscene_flag
+  # When prerendered cutscene is active write flag
   ## REF: 68 52 40 79 08 01 19 32 68 52 00 79
   ## BL to Code Cave 1
   -
@@ -148,7 +155,7 @@ MASTER_WRITE:
     instructions: [
       [b, _cutscene_2()]
     ]
-  # Adjust DR timing to factor from dr_factor
+  # Adjust DR timing to factor
   # REF: 88 02 15 CB 00 01 23 9E
   -
     type: asm_a64

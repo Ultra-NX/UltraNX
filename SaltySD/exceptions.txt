@@ -8,7 +8,7 @@
 
 ;YouTube
 ;Stucks in infinite loop
-X01003A400C3DA000
+01003A400C3DA000
 
 ;Alien: Isolation
 ;1.1_46609 - 1.1.4_60709 crash on first loading
@@ -19,12 +19,14 @@ X01003A400C3DA000
 01004A600EC0A000
 
 ;Stubbs the Zombie in Rebel Without a Pulse
-;1.0.0 - 1.0.2 crash on boot
-X0100964012528000
+;1.0.0 - 1.0.3 crash on boot
+0100964012528000
 
 ;Olympic Games Tokyo 2020 – The Official Video Game
-;1.0.0 crash on boot
-X010034B00E14C000
+;1.0.0-1.0.2 crash on boot
+;1.0.9 crash on boot
+010034B00E14C000
+01004CE00AAE2000
 
 ;Mario Strikers: Battle League
 ;1.0.0 crash on boot
@@ -46,15 +48,3 @@ X010034B00E14C000
 ;Company of Heroes Collection
 ;1.5_66915 crashes
 0100ABD0156F8000
-
-;Donkey Kong Country: Tropical Freeze
-;Crash at second level
-X0100C1F0051B6000
-
-;Death Road to Canada
-;1.0.8 crash
-X0100423009358000
-
-;Splatoon 3
-;10.0.0 upwards crashes after online match
-X0100C2500FC20000

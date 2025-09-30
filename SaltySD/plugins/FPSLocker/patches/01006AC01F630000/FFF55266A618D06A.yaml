@@ -1,8 +1,6 @@
 # Sword of the Necromancer: Resurrection 1.0.5
 # BID: FFF55266A618D06A
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget
   -
@@ -22,3 +20,6 @@ ALL_FPS:
     address: [MAIN, 0x6DE8CB8, 0]
     value_type: int32
     value: [0, 0]
+  -
+    type: block
+    what: timing

@@ -32,3 +32,6 @@ ALL_FPS:
     address: [MAIN, 0x8DD7418, 0]
     value_type: int32
     value: [0, 0]
+  -
+    type: block
+    what: timing

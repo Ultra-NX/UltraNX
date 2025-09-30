@@ -1,0 +1,43 @@
+# 하늘의 궤적 the 1st 1.0.4
+# BID: 169AD641E042A8B4
+
+DECLARATIONS:
+  # Lock Max Handheld Resolution to 720p instead of 900p
+  -
+    type: code
+    name: adjustDrResToNativeInHH
+    instructions: [
+      [cmp, w9, 1280],
+      [b.le, :goto1],
+      [adrp, x21, 0x65F000],
+      [ldr, w21, [x21, 0x830]], ## REF: nn::oe::GetOperationMode in nnMain
+      [cbnz, w21, :goto1],
+      [mov, w9, 1280],
+      [mov, w8, 720],
+      :goto1, [stp, w9, w8, [x19, 0x10]],
+      [ret]
+    ]
+MASTER_WRITE:
+  ## REF: 69 22 02 29
+  -
+    type: asm_a64
+    main_offset: 0x2380A4
+    instructions: [
+      [bl, _adjustDrResToNativeInHH()]
+    ]
+ALL_FPS:
+  # Min Delta
+  ## REF: 88 01 80 52 C1 03 80 52 28 4D 28 9B 29 00 80 52, first ADRP + ADD below it
+  -
+    type: evaluate_write
+    address: [MAIN, 0x65F860, 0x2C]
+    value_type: uint32
+    value: FPS_TARGET
+  # Dynamic Resolution
+  ## REF: First function in .init_array section, ADRP + ADD + 0x220 (default float: 2)
+  ## Adding there 0.95 by myself because game seems to have issues with reaching 60 FPS with 1.0
+  -
+    type: write
+    address: [MAIN, 0x65F378]
+    value_type: float
+    value: 0.95

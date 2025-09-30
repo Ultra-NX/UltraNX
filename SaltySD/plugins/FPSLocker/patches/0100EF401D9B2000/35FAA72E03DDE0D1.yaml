@@ -1,0 +1,19 @@
+# HYKE:Northern Light(s) 1.0.0
+# BID: 35FAA72E03DDE0D1
+
+ALL_FPS:
+ # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x84FD958, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x94F5260, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

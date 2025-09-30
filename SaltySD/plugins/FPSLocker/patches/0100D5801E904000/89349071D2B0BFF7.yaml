@@ -14,3 +14,6 @@ ALL_FPS:
     address: [MAIN, 0x7A84920, 0]
     value_type: float
     value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

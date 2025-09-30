@@ -1,0 +1,10 @@
+# NINJA GAIDEN: Ragebound 1.0.4
+# BID: 48D35EF3C7EFBF5F
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x61216C0, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

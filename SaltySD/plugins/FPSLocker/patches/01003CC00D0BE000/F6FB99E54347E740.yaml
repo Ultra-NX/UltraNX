@@ -2,8 +2,6 @@
 # BID: F6FB99E54347E740
 # Double buffer is hardcoded line by line, it's hard to make it triple
 
-unsafeCheck: true
-
 DECLARATIONS:
   -
     type: variable
@@ -46,3 +44,4 @@ MASTER_WRITE:
       [adrp, x9, $dr_target],
       [ldr, w9, [x9, $dr_target]]
     ]
+

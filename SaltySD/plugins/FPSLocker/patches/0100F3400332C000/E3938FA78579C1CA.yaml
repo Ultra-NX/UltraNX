@@ -36,7 +36,7 @@ DECLARATIONS:
     value: 1000000
   -
     type: const
-    name: milliseconds_in_sec
+    name: nano_in_micro
     value: 1000
   -
     type: code
@@ -52,8 +52,8 @@ DECLARATIONS:
       [sub, x0, x0, x1],
       [bl, _convertTickToTimeSpan()],
       [adrp, x1, $max_delta],
-      [ldr, s2, [x1, $max_delta],
-      [mov, w1, $milliseconds_in_sec],
+      [ldr, s2, [x1, $max_delta]],
+      [mov, w1, $nano_in_micro],
       [udiv, x0, x0, x1],
       [ucvtf, s0, x0],
       [mov, w1, $microseconds_in_sec],
@@ -92,14 +92,14 @@ DECLARATIONS:
 
 MASTER_WRITE:
   # Dynamic speed
-  # Jump before pushing frame to the end of .plt, which is 0x8B3448 (backup: MOV W8, #0x21A0)
+  # Jump before pushing frame
   -
     type: asm_a64
     main_offset: 0x700050
     instructions: [
       [bl, _dynamicSpeed()]
     ]
-  # Patch wind speed to take game speed from MAIN + 0x15ECF08
+  # Patch wind speed to take game speed
   -
     type: asm_a64
     main_offset: 0x747CC4
@@ -107,7 +107,7 @@ MASTER_WRITE:
       [adrp, x8, $game_speed],
       [ldr, s6, [x8, $game_speed]]
     ]
-  # Redirect DR timing to MAIN + 0x15ECF18
+  # Redirect DR timing
   -
     type: asm_a64
     main_offset: 0x6AA038

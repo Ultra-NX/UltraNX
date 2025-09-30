@@ -1,0 +1,10 @@
+# ABYSS SEEKER――What Do You See Deep in Abyss 1.3.0.105
+# BID: 820EF220126FF10A
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7B04500, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

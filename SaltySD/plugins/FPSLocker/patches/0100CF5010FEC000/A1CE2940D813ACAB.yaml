@@ -1,0 +1,45 @@
+# Bayonetta Origins: Cereza and the Lost Demon 1.0.0
+# BID: A1CE2940D813ACAB
+# By blocking writing bit 0x17 and bits 0x1C (some single instructions have both 0x1B and 0x1C) we are forcing game to run at dynamic speed
+# Some parts of game may use code I didn't find that write those bits, then I need to update this config
+# Game has somewhere hardcoded min delta to be 60 FPS, so settings FPS Target above 60 speeds up the game
+
+MASTER_WRITE:
+  ## REF: 08 00 AA 52 1F 01 34 6A - MOV & BICS
+  -
+    type: asm_a64
+    main_offset: 0xFF9EBC
+    instructions: [
+      [nop],
+      [nop]
+    ]
+  ## REF: 08 00 AA 52 1F 01 34 6A - ORR & STR
+  -
+    type: asm_a64
+    main_offset: 0xFF9EC8
+    instructions: [
+      [nop],
+      [nop]
+    ]
+  ## REF: You need to find address that STR above writes to, look at its XREFS for write, find references to nnMain and search for "ORR W8, W8, #0x800000", nop ORR and STR
+  -
+    type: asm_a64
+    main_offset: 0xFF87F4
+    instructions: [
+      [nop],
+      [nop]
+    ]
+  ## REF: 2A 01 04 32 29 79 03 12
+  -
+    type: asm_a64
+    main_offset: 0x141017C
+    instructions: [
+      [mov, w10, w9]
+    ]
+  # Force default interval to 2
+  -
+    type: asm_a64
+    main_offset: 0xFFB01C
+    instructions: [
+      [mov, w1, 2]
+    ]

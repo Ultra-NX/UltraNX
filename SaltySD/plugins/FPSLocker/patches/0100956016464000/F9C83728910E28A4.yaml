@@ -1,8 +1,6 @@
 # Kao the Kangaroo EU 1.5
 # BID: F9C83728910E28A4
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget = (1000/FPS) cutted to 1 decimal
   -
@@ -22,3 +20,6 @@ ALL_FPS:
     address: [MAIN, 0x696CDD8, 0]
     value_type: int32
     value: [0, 0]
+  -
+    type: block
+    what: timing

@@ -1,0 +1,23 @@
+# 真・三國無双８ Empires 1.0.1
+# BID: 6C3F685C62070885
+
+ALL_FPS:
+  ## REF: 02 00 00 00 3C 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2111728]
+    value_type: int32
+    value: [VSYNC_TARGET, FPS_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2111730]
+    value_type: float
+    value: FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x34DF954]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  -
+    type: block
+    what: timing
