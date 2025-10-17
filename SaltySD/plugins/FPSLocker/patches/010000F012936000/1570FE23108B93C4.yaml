@@ -1,7 +1,5 @@
-# Agatha Christie - Hercule Poirot: The First Cases 1.0.3
+# Agatha Christie - Hercule Poirot: The First Cases 1.0.3/1.0.3.1
 # BID: 1570FE23108B93C4
-
-unsafeCheck: true
 
 ALL_FPS:
   # fixedDeltaTime

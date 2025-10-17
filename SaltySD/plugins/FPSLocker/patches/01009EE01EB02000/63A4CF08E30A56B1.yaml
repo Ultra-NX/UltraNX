@@ -1,0 +1,10 @@
+# 英雄伝説 黎の軌跡II for Nintendo Switch 1.0.1
+# BID: 63A4CF08E30A56B1
+
+ALL_FPS:
+  # REF: 88 01 80 52 C1 03 80 52 28 4D 28 9B 29 00 80 52, first ADRP + ADD below it
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6E7998, 0x34]
+    value_type: uint32
+    value: FPS_TARGET

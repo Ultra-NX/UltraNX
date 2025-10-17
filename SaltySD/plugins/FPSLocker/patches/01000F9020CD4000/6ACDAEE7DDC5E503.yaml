@@ -1,0 +1,11 @@
+# Atelier Resleriana: The Red Alchemist & the White Guardian 1.2a
+# BID: 6ACDAEE7DDC5E503
+
+ALL_FPS:
+  # MagicaCloth2.MagicaManager_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x777A550, 0xB8, 0, 0x10, 0x20, 0x10]
+    address_unsafe: true
+    value_type: uint32
+    value: "FPS_TARGET + 5"

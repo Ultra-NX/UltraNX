@@ -1,0 +1,53 @@
+# 모모타로전철 ～쇼와 헤이세이 레이와에서도 국룰！～ Korea Edition 1.0.1
+# BID: A4A3B5A20B03B2A7
+
+MASTER_WRITE:
+  # Remove double buffer
+  ## REF: E1 80 82 52 E0 03 13 AA, MOV W1, #2 below it
+  -
+    type: asm_a64
+    main_offset: 0x1B410
+    instructions: [
+      [mov, w1, 3]
+    ]
+  ## REF: Use xref of function where is passed w1 in patch above
+  -
+    type: asm_a64
+    main_offset: 0x5752C
+    instructions: [
+      [mov, w1, 3]
+    ]
+ALL_FPS:
+  # REF: 20 59 60 BC
+  # Internal FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0xFF6098]
+    value_type: float
+    value: [FPS_TARGET, "60 / FPS_TARGET"]
+  # Blocking game to max 60 FPS because setting game speed ratio below 1 causes glitches
+  -
+    type: compare
+    compare_address: [MAIN, 0xFF6098]
+    compare_type: ">"
+    compare_value_type: float
+    compare_value: 60
+    address: [MAIN, 0xFF6098]
+    value_type: float
+    value: 60
+  -
+    type: compare
+    compare_address: [MAIN, 0xFF6098]
+    compare_type: "=="
+    compare_value_type: float
+    compare_value: 60
+    address: [MAIN, 0xFF609C]
+    value_type: float
+    value: 1
+  # Unknown value that is set based on FPS Lock function argument, 0 = 60 FPS, 1 = 30 FPS, 2 = 20 FPS, 3 = 15 FPS
+  # According to IDA is not used at all, but writing this anyway
+  -
+    type: evaluate_write
+    address: [MAIN, 0x10D7028]
+    value_type: uint32
+    value: "VSYNC_TARGET - 1"

@@ -92,5 +92,3 @@ ALL_FPS:
     address_unsafe: true
     value_type: float
     value: ["(30 / FPS_TARGET) * 1.95", "(30 / FPS_TARGET) * 1.7"]
-
-

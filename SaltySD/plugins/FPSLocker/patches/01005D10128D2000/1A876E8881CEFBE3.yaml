@@ -1,0 +1,26 @@
+# 碧藍航線 Crosswave 1.0.1
+# BID: 1A876E8881CEFBE3
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate and bSmoothFrameRate
+  -
+    type: write
+    address: [MAIN, 0x6BE5318, 0x778]
+    address_unsafe: true
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6BE5DE8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6394958, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

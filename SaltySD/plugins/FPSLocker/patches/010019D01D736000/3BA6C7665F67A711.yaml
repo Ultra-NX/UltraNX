@@ -1,0 +1,58 @@
+# 삼국지8 REMAKE 1.0.8
+# BID: 3BA6C7665F67A711
+# Cursor speed is tied to framerate
+
+DECLARATIONS:
+  # DON'T PUT ANYTHING BETWEEN - START
+  -
+    type: variable
+    name: fps_lock
+    value_type: uint32
+    default_value: 30
+    evaluate: FPS_LOCK_TARGET
+  -
+    type: variable
+    name: fps_lock2
+    value_type: uint32
+    default_value: 60
+    evaluate: FPS_LOCK_TARGET
+  -
+    type: variable
+    name: game_speed
+    value_type: float
+    default_value: 0.0333333333
+    evaluate: "1/FPS_TARGET"
+  -
+    type: variable
+    name: game_speed2
+    value_type: float
+    default_value: 0.0166666666
+  # DON'T PUT ANYTHING BETWEEN - END
+  -
+    type: code
+    name: fpsLock
+    instructions: [
+      [adrp, x8, $fps_lock],
+      [ldr, w8, [x8, $fps_lock]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # Redirect FPS Lock, REF: A8 EA 00 B9 08 00 40 B9, LDR W8, [X0]
+  -
+    type: asm_a64
+    main_offset: 0x1F902CC
+    instructions: [
+      [bl, _fpsLock()]
+    ]
+  # Redirect game speed, REF: 08 31 9F 9A 20 79 68 BC 68 6E 41 B9
+  -
+    type: asm_a64
+    main_offset: 0x88B320
+    instructions: [
+      [adrp, x8, $game_speed],
+      [ldr, s0, [x8, $game_speed]]
+    ]
+ALL_FPS:
+  -
+    type: block
+    what: timing

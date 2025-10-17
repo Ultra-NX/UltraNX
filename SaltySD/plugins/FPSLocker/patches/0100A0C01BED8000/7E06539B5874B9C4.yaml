@@ -1,0 +1,12 @@
+# 伊蘇X -北境歷險- 1.0.5
+# BID: 7E06539B5874B9C4
+# Credits to StevensND for finding assembly instruction from which I have derived pointer address
+
+ALL_FPS:
+  # Used to set min delta timing for various parts of game + DR target
+  # REF: 00 10 2C 1E 01 E4 00 2F 09 85 9A 52 29 00 A0 72 E1 03 1F 2A first ADRP above it
+  -
+    type: evaluate_write
+    address: [MAIN, 0xBDA228, 0x34]
+    value_type: uint32
+    value: FPS_TARGET

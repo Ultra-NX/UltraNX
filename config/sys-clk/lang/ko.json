@@ -7,7 +7,7 @@
     "Settings": "설정",
     "Enable": "활성화",
     "Uncapped Clocks": "클럭 제한 해제",
-    "Override Boost Mode": "부스트 모드 오버라이드",
+    "Boost GPU Override": "Boost GPU 덮어쓰기",
     "Auto CPU Boost": "자동 CPU 부스트",
     "Sync ReverseNX": "ReverseNX 동기화",
     "Auto GPU Vmin": "자동 GPU Vmin",
@@ -32,5 +32,9 @@
     "USB Charger   Reset": "USB 충전기   리셋",
     "Memory": "메모리",
     "Do not override": "오버라이드 안 함",
-    "Profile": "프로필"
+    "Profile": "프로필",
+    "Fatal error": "치명적 오류",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "sys-clk에 연결 실패.\n\n\n설치 및 활성화를\n\n확인하세요.",
+    "sys-clk is not running.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "sys-clk이 실행 안 됨.\n\n\n설치 및 활성화를\n\n확인하세요.",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "sys-clk에 연결 실패.\n\n\n설치 및 활성화를\n\n확인하세요."
 }

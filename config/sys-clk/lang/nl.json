@@ -7,7 +7,7 @@
     "Settings": "Instellingen",
     "Enable": "Inschakelen",
     "Uncapped Clocks": "Ongelimiteerde kloksnelheden",
-    "Override Boost Mode": "Boostmodus overschrijven",
+    "Boost GPU Override": "Boost GPU Overschrijven",
     "Auto CPU Boost": "Automatische CPU-boost",
     "Sync ReverseNX": "ReverseNX synchroniseren",
     "Auto GPU Vmin": "Automatische GPU Vmin",
@@ -32,5 +32,9 @@
     "USB Charger   Reset": "USB-oplader   Resetten",
     "Memory": "Geheugen",
     "Do not override": "Niet overschrijven",
-    "Profile": "Profiel"
+    "Profile": "Profiel",
+    "Fatal error": "Fatale fout",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "Geen verbinding met sys-clk.\n\n\nControleer installatie\n\nen activering.",
+    "sys-clk is not running.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "sys-clk draait niet.\n\n\nControleer installatie\n\nen activering.",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "Geen verbinding met sys-clk.\n\n\nControleer installatie\n\nen activering."
 }

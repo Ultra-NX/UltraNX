@@ -1,0 +1,19 @@
+# ARK: Survival Evolved 2.0.15
+# BID: 2B70B1A7B478FCA3
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) rounded to one decimal
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7ACB1B8, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7AF93E8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

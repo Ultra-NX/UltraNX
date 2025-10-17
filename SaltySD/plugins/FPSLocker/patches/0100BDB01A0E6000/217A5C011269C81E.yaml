@@ -1,8 +1,6 @@
 # EA SPORTS FC 24 1.5a.9115
 # BID: 217A5C011269C81E
 
-unsafeCheck: true
-
 ALL_FPS:
   # Internal FPS Lock
   -
@@ -10,3 +8,6 @@ ALL_FPS:
     address: [MAIN, 0xCDF1E20, 8]
     value_type: double
     value: FPS_TARGET
+  -
+    type: block
+    what: timing

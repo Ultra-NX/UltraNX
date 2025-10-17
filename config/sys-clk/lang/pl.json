@@ -7,14 +7,14 @@
     "Settings": "Ustawienia",
     "Enable": "Włącz",
     "Uncapped Clocks": "Nieograniczone taktowanie",
-    "Override Boost Mode": "Nadpisz tryb Boost",
+    "Boost GPU Override": "Boost GPU Nadpisz",
     "Auto CPU Boost": "Automatyczny Boost CPU",
     "Sync ReverseNX": "Synchronizuj z ReverseNX",
     "Auto GPU Vmin": "Automatyczny GPU Vmin",
     "Off": "Wył.",
     "Official Service": "Oficjalna usługa",
     "Hijack": "Przejęcie",
-    "GPU Vmin Offset": "GPU Vmin Offset",
+    "GPU Vmin Offset": "Przesunięcie Vmin GPU",
     "App ID": "ID app",
     "EOS mode": "Tryb EOS",
     "Skin": "Motyw",
@@ -32,5 +32,9 @@
     "USB Charger   Reset": "Ładowarka USB   Resetuj",
     "Memory": "Pamięć",
     "Do not override": "Nie nadpisuj",
-    "Profile": "Profil"
+    "Profile": "Profil",
+    "Fatal error": "Błąd krytyczny",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "Brak połączenia z sys-clk.\n\n\nSprawdź instalację\n\ni aktywację.",
+    "sys-clk is not running.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "sys-clk nie działa.\n\n\nSprawdź instalację\n\ni aktywację.",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "Brak połączenia z sys-clk.\n\n\nSprawdź instalację\n\ni aktywację."
 }

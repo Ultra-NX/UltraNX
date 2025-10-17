@@ -1,0 +1,10 @@
+# 英雄伝説 創の軌跡 1.0.6
+# BID: 086367BD573D1899
+
+ALL_FPS:
+  # Set game to 60 FPS mode
+  -
+    type: write
+    address: [MAIN, 0x4FBEA80, 0x20A4]
+    value_type: uint32
+    value: 0

@@ -1,0 +1,54 @@
+# 英雄伝説 閃の軌跡Ⅳ 1.0.2
+# BID: 652D04C4BD51AE83
+# Button polling is 2x more sensitive to holding any button
+
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_lock
+    value_type: uint32
+    default_value: 33333333
+    evaluate: "FRAMETIME_TARGET * 930000"
+  -
+    type: variable
+    name: frame_time
+    value_type: float
+    default_value: 0.0333333333
+  -
+    type: code
+    name: dynamicSpeed
+    instructions: [
+      [str, x0, [x19, 8]],
+      [fcvt, s4, d0],
+      [adrp, x8, $frame_time],
+      [str, s4, [x8, $frame_time]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # Move loading FPS lock time
+  ## REF: MOV with 0x1FCA055
+  -
+    type: asm_a64
+    main_offset: 0x60A998
+    instructions: [
+      [adrp, x9, $fps_lock],
+      [ldr, w9, [x9, $fps_lock]]
+    ]
+  # Write game's loop time as float
+  ## REF: 1F 01 09 EB 00 08 61 1E, replace STR X0, [X19,#8] below it
+  -
+    type: asm_a64
+    main_offset: 0x60A9E8
+    instructions: [
+      [bl, _dynamicSpeed()]
+    ]
+  # Read lowest timing float factor
+  ## REF: E8 03 1F 2A 00 20 22 1E 60 5E 1A BD, ADRP + FMINM + LDR above it
+  -
+    type: asm_a64
+    main_offset: 0x65518
+    instructions: [
+      [adrp, x8, $frame_time],
+      [fminnm, s0, s0, s2],
+      [ldr, s2, [x8, $frame_time]]
+    ]

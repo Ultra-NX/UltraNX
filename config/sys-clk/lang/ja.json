@@ -7,7 +7,7 @@
     "Settings": "設定",
     "Enable": "有効化",
     "Uncapped Clocks": "クロック制限解除",
-    "Override Boost Mode": "ブーストモードをオーバーライド",
+    "Boost GPU Override": "Boost GPU 上書き",
     "Auto CPU Boost": "自動CPUブースト",
     "Sync ReverseNX": "ReverseNXと同期",
     "Auto GPU Vmin": "自動GPU Vmin",
@@ -32,5 +32,9 @@
     "USB Charger   Reset": "USB充電器   リセット",
     "Memory": "メモリ",
     "Do not override": "オーバーライドしない",
-    "Profile": "プロフィール"
+    "Profile": "プロフィール",
+    "Fatal error": "致命的エラー",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "sys-clkに接続できません。\n\n\nインストールと有効化を\n\n確認してください。",
+    "sys-clk is not running.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "sys-clkが動作していません。\n\n\nインストールと有効化を\n\n確認してください。",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "sys-clkに接続できません。\n\n\nインストールと有効化を\n\n確認してください。"
 }

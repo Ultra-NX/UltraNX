@@ -1,0 +1,26 @@
+# 光明之響 龍奏回音 1.0.0
+# BID: 069E3EFC16365FFD
+
+MASTER_WRITE:
+  # Triple buffer
+  # REF: 28 60 81 52 E8 37 00 B9 E8 03 1F 32
+  -
+    type: asm_a64
+    main_offset: 0x3AD308
+    instructions: [
+      [mov, w8, 3]
+    ]
+ALL_FPS:
+  # Disable FPS Lock
+  # REF: C8 46 90 52 first ADRP + LDR + LDR above it
+  -
+    type: write
+    address: [MAIN, 0xFBEDA8]
+    value_type: uint32
+    value: 0
+  # Lipsync fix
+  -
+    type: evaluate_write
+    address: [MAIN, 0xFBEDBC]
+    value_type: float
+    value: "30.0 / FPS_TARGET"

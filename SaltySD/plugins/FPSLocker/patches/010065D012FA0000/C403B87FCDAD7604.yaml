@@ -1,0 +1,26 @@
+# Azur Lane: Crosswave 1.0.1
+# BID: C403B87FCDAD7604
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate and bSmoothFrameRate
+  -
+    type: write
+    address: [MAIN, 0x6BE6318, 0x778]
+    address_unsafe: true
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6BE6DE8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6395A88, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

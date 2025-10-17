@@ -7,7 +7,7 @@
     "Settings": "Impostazioni",
     "Enable": "Abilita",
     "Uncapped Clocks": "Clock senza limiti",
-    "Override Boost Mode": "Forza modalità Boost",
+    "Boost GPU Override": "Boost GPU Sovrascrivere",
     "Auto CPU Boost": "Boost CPU automatico",
     "Sync ReverseNX": "Sincronizza con ReverseNX",
     "Auto GPU Vmin": "Auto GPU Vmin",
@@ -32,5 +32,9 @@
     "USB Charger   Reset": "Caricatore USB   Reimposta",
     "Memory": "Memoria",
     "Do not override": "Non sovrascrivere",
-    "Profile": "Profilo"
+    "Profile": "Profilo",
+    "Fatal error": "Errore fatale",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "Connessione a sys-clk fallita.\n\n\nVerifica installazione\n\ne attivazione.",
+    "sys-clk is not running.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "sys-clk non attivo.\n\n\nVerifica installazione\n\ne attivazione.",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "Connessione a sys-clk fallita.\n\n\nVerifica installazione\n\ne attivazione."
 }

@@ -1,0 +1,11 @@
+# Plants vs. Zombies Battle for Neighborville 1.0.4
+# BID: 5AD255D6667B6EB5
+
+ALL_FPS:
+  # fb::Settings<fb::GameRenderSettings>::s_settings + 0x20
+  # Dynamic Resolution frametime target
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9ED3AA0, 0x20]
+    value_type: float
+    value: "0.93 * FRAMETIME_TARGET"

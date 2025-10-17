@@ -1,0 +1,74 @@
+# Another Crab's Treasure 1.1.100.3
+# BID: 807A2202464D445B
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: double
+    default_value: 28.57142857142857
+    evaluate: "1000 / (FPS_TARGET + 5)"
+MASTER_WRITE:
+  # Redirect updating various deltas to read frametime target from UnityEngine.Application::targetFrameRate, REF: 08 10 91 52 08 A1 A7 72
+  -
+    type: asm_a64
+    main_offset: 0x18AE7B8
+    instructions: [
+      [adrp, x8, 0x565A000],
+      [ldr, w8, [x8, 0x78]],
+      [ucvtf, s1, w8],
+      [fmov, s0, 1.0],
+      [fdiv, s0, s0, s1]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x18B2570
+    instructions: [
+      [adrp, x8, 0x565A000],
+      [ldr, w8, [x8, 0x78]],
+      [ucvtf, s1, w8],
+      [fmov, s0, 1.0],
+      [fdiv, s0, s0, s1]
+    ]
+  # Default value
+  -
+    type: bytes
+    main_offset: 0x565A078
+    value_type: uint32
+    value: 30
+  # Redirect Dynamic Resolution GPU Timing target in DynamicResolutionScaler::Update
+  -
+    type: asm_a64
+    main_offset: 0x1A0E404
+    instructions: [
+      [adrp, x8, $dr_target],
+      [ldr, x8, [x8, $dr_target]],
+      [nop],
+      [nop]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x1A0E484
+    instructions: [
+      [adrp, x8, $dr_target],
+      [ldr, x8, [x8, $dr_target]],
+      [ldr, s0, [x19, 0x28]],
+      [nop],
+      [nop]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x1A0E4F8
+    instructions: [
+      [adrp, x8, $dr_target],
+      [ldr, x8, [x8, $dr_target]],
+      [nop],
+      [nop]
+    ]
+ALL_FPS:
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: evaluate_write
+    address: [MAIN, 0x565A078]
+    value_type: uint32
+    value: FPS_TARGET

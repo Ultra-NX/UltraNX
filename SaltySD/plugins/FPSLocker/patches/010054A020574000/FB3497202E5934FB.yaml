@@ -1,0 +1,30 @@
+# 優米雅的鍊金工房 ～追憶之鍊金術士與幻創之地～ 1.5.1
+# BID: FB3497202E5934FB
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.035714287 # Basically = 1/28
+    evaluate: "1.01 / FPS_TARGET"
+MASTER_WRITE:
+  # Redirect DR
+  # REF: A9 24 89 52 49 A2 A7 72, second REF
+  -
+    type: asm_a64
+    main_offset: 0x10F7B74
+    instructions: [
+      [adrp, x9, $dr_target],
+      [ldr, s1, [x9, $dr_target]],
+      [nop]
+    ]
+ALL_FPS:
+  # Disable FPS Lock
+  # REF: 88 46 40 F9 03 11 40 F9, first ADRP+LDR above it
+  -
+    type: write
+    address: [MAIN, 0x2FEACB0, 0xE0, 0x294]
+    address_unsafe: true
+    value_type: uint8
+    value: 0

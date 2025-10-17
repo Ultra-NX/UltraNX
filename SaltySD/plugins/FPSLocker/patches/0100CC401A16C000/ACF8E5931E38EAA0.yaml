@@ -1,0 +1,12 @@
+# イースX -NORDICS- 1.0.4
+# BID: ACF8E5931E38EAA0
+# Credits to StevensND for finding assembly instruction from which I have derived pointer address
+
+ALL_FPS:
+  # Used to set min delta timing for various parts of game + DR target
+  # REF: C9 03 80 52 C1 03 80 52 first ADRP above it
+  -
+    type: evaluate_write
+    address: [MAIN, 0xD87CB8, 0x34]
+    value_type: uint32
+    value: FPS_TARGET

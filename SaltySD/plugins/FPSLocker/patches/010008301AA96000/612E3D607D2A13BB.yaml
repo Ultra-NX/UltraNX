@@ -1,0 +1,28 @@
+# Tiebreak+: Official Game of the ATP and WTA 1.4.0
+# BID: 612E3D607D2A13BB
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.03333333333
+    evaluate: "0.8 / FPS_TARGET" # we are using this trick because function is overengineered and it's not easy to just use standard 1 / FPS_TARGET
+MASTER_WRITE:
+  # Triple buffer
+  # REF: 00 40 00 00 00 04 00 00 00 88 00 00 02 00 00 00
+  -
+    type: bytes
+    main_offset: 0x1A8B39C
+    value_type: uint32
+    value: 3
+  # Redirect Dynamic Resolution target reading to MAIN + 0x30C3F00
+  # REF: 28 11 91 52 08 A1 A7 72 03 01 27 1E
+  -
+    type: asm_a64
+    main_offset: 0x1483084
+    instructions: [
+      [adrp, x8, $dr_target],
+      [ldr, s3, [x8, $dr_target]],
+      [nop]
+    ]

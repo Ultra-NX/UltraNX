@@ -1,0 +1,11 @@
+# 閃亂忍忍忍者大戰戰機少女-少女們的響艷- / 섬란 닌닌닌자 대전 넵튠 -소녀들의 향염- 1.0.0
+# BID: 288908CE7F6177CC
+
+ALL_FPS:
+  # 30FPS lock bool
+  ## REF: C8 01 18 37 68 0A 40 BD, check first ADRP + LDR inside first function below result
+  -
+    type: write
+    address: [MAIN, 0x9F1480, 8, 0x6C]
+    value_type: uint32
+    value: 0
