@@ -1,0 +1,25 @@
+# Formula Legends 1.0.5
+# BID: 2735E564A9BD3DA3
+
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x73BDEE8, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x83A1F68, 0]
+    value_type: float
+    value: [FRAMETIME_TARGET, FRAMETIME_TARGET]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x83DD780, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

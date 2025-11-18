@@ -35,7 +35,7 @@ ALL_FPS:
     value: FPS_TARGET
   # Dynamic Resolution
   ## REF: First function in .init_array section, ADRP + ADD + 0x220 (default float: 2)
-  ## Adding there 0.9 by myself because game seems to have issues with reaching 60 FPS without it
+  ## Adding there 0.95 by myself because game seems to have issues with reaching 60 FPS at 1.0
   -
     type: write
     address: [MAIN, 0x72F3D0]

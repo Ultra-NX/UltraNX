@@ -6,7 +6,9 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [UltraNX](https://github.com/Ultra-NX/UltraNX/releases) Supports all HOS, including 20.5.0
+### [UltraNX 2.6|R3](https://github.com/Ultra-NX/UltraNX/releases/tag/2.6-R3) Supports all HOS up to and including 20.5.0
+
+### [UltraNX 2.7|Pre1](https://github.com/Ultra-NX/UltraNX/releases/tag/2.7-R1) Supports all HOS up to and including 21.0.0. Not a full-fledged release!
 
 
 
@@ -78,7 +80,7 @@
       * [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Status Monitor fork from kantorski.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay/) - "That" game in the form of an overlay. Works only on the latest versions of Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Global volume control, allows you to raise the volume above the maximum. Use with care!
-      * [NX-FanControl](https://github.com/Zathawo/NX-FanControl) - Module for manually adjusting the speed of the cooler. The changes are applied immediately, the module works from SOC temperature and not Skin temperature like Atmosphere.
+      * [NX-FanControl](https://github.com/Insektaure/NX-FanControl) - Module for manually adjusting the speed of the cooler. The changes are applied immediately, the module works from SOC temperature and not Skin temperature like Atmosphere.
       * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - An overlay that allows you to quickly disconnect\connect to a bluetooth headset.
       * [Fizeau](https://github.com/averne/Fizeau) - Module for changing the screen color profile.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Overlay music player, works in background.

@@ -1,8 +1,6 @@
 # Wolfenstein: Youngblood 1.5
 # BID: 8B40EBBA7244C94A
 
-unsafeCheck: true
-
 ALL_FPS:
   # rs_force460
   -
@@ -24,7 +22,7 @@ ALL_FPS:
     value: "(30 / FPS_TARGET) * 0.984"
   # com_adaptiveTickMaxHz
   -
-    type: write
+    type: evaluate_write
     address: [MAIN, 0x85F74E0]
     value_type: int32
     value: FPS_LOCK_TARGET

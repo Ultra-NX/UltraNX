@@ -1,0 +1,43 @@
+# ドラゴンクエストXI　過ぎ去りし時を求めて S 1.0.4
+# BID: 325E49E94A030B7E
+
+ALL_FPS:
+  # r.DynamicResolution.MaxTimeBudget = 0.99 * (1000/FPS)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x84EBDD8, 0]
+    value_type: float
+    value: ["0.99 * FRAMETIME_TARGET", "0.99 * FRAMETIME_TARGET"]
+  # r.DynamicResolution.MinTimeBudget = 0.9 * (1000/FPS)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x84EBDF0, 0]
+    value_type: float
+    value: ["0.9 * FRAMETIME_TARGET", "0.9 * FRAMETIME_TARGET"]
+  # r.DynamicResolution.HeavyTimeBudget = 1.05 * (1000/FPS)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x84EBE08, 0]
+    value_type: float
+    value: ["1.05 * FRAMETIME_TARGET", "1.05 * FRAMETIME_TARGET"]
+  # r.DynamicResolution.LightTimeBudget = 0.9 * (1000/FPS)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x84EBE20, 0]
+    value_type: float
+    value: ["0.9 * FRAMETIME_TARGET", "0.9 * FRAMETIME_TARGET"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8500C48, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x7878500, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

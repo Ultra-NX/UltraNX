@@ -6,6 +6,7 @@ ALL_FPS:
   -
     type: evaluate_write
     address: [MAIN, 0xCDF1E20, 8]
+    address_unsafe: true
     value_type: double
     value: FPS_TARGET
   -

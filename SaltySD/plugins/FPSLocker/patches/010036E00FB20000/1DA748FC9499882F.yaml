@@ -1,7 +1,5 @@
 # The Great Ace Attorney Chronicles 1.0.0
-# BID: 761CD556AB357C87
-
-unsafeCheck: true
+# BID: 1DA748FC9499882F
 
 ALL_FPS:
   # FPS lock

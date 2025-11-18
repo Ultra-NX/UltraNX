@@ -1,0 +1,10 @@
+# Little Noah: Scion of Paradise 1.41
+# BID: 8CCC67A5A75CB8E5
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3D2E180, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

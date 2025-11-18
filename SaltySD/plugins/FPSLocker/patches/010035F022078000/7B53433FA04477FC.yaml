@@ -1,0 +1,31 @@
+# DRAGON BALL: Sparking! ZERO 2.0.73
+# BID: 7B53433FA04477FC
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate to unlock framerate
+  -
+    type: write
+    address: [MAIN, 0x9A2EA20, 0x9C4]
+    address_unsafe: true
+    value_type: uint32
+    # Default is 0x47, bUseFixedFrameRate |= 0x40 
+    # By writing 7 we are making sure that other flags are maintained: 
+    # bAllowMultiThreadedAnimationUpdate |= 4
+    # bOptimizeAnimBlueprintMemberVariableAccess |= 2
+    # bCanBlueprintsTickByDefault |= 1
+    value: 7
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9A2FFF0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x9238B68, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

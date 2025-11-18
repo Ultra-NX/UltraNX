@@ -1,0 +1,25 @@
+# Endling 1.3.0
+# BID: 33DBE39C8A83F1E6
+
+ALL_FPS:
+ # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7453898, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+ # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6C85E08, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7481468, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing
