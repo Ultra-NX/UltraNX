@@ -2,7 +2,7 @@
     "about": false,
     "atmosphere": true,
     "cfw": true,
-    "firmwares": false,
+    "firmwares": true,
     "cheats": false,
     "custom": false,
     "outdatedtitles": false,
