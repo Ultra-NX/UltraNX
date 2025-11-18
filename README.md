@@ -8,7 +8,9 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [UltraNX](https://github.com/Ultra-NX/UltraNX/releases) Поддерживает все HOS, включая 20.5.0
+### [UltraNX 2.6|R3](https://github.com/Ultra-NX/UltraNX/releases/tag/2.6-R3) Поддерживает все HOS до 20.5.0 включительно
+
+### [UltraNX 2.7|Pre1](https://github.com/Ultra-NX/UltraNX/releases/tag/2.7-R1) Поддерживает все HOS до 21.0.0 включительно. Не полноценный релиз!
 
 
 
@@ -82,7 +84,7 @@
       * [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Форк Status Monitor от kantorski.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay) - Та самая игра в виде оверлея. Работает только на последних версиях Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Регулировка глобальной громкости, позволяет поднять громкость выше максимума. Использовать аккуратно!
-      * [NX-FanControl](https://github.com/Zathawo/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
+      * [NX-FanControl](https://github.com/Insektaure/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
       * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться\подключаться к bluetooth-гарнитуре.
       * [Fizeau](https://github.com/averne/Fizeau) - Модуль для изменения цветового профиля экрана.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.
