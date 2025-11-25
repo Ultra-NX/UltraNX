@@ -8,7 +8,7 @@
 
 ### [UltraNX 2.6|R3](https://github.com/Ultra-NX/UltraNX/releases/tag/2.6-R3) Supports all HOS up to and including 20.5.0
 
-### [UltraNX 2.7|Pre1](https://github.com/Ultra-NX/UltraNX/releases/tag/2.7-R1) Supports all HOS up to and including 21.0.0. Not a full-fledged release!
+### [UltraNX 2.7|Pre2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.7-R2) Supports all HOS up to and including 21.0.1. Not a full-fledged release!
 
 
 
