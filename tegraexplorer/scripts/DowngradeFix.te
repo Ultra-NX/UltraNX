@@ -1,0 +1,109 @@
+#REQUIRE VER 4.0.0
+#REQUIRE MINERVA
+#REQUIRE KEYS
+#REQUIRE SD
+#Script_by_CostelaBR
+
+p = println
+fatal = {
+    color(0xFF0000)
+    p("\n[FATAL]", fatalMsg)
+    pause()
+    exit()
+}
+
+wait = {
+    t = timer()
+    while (timer() < (t + tw)) {
+        print("Wait for ", ((t + tw - timer()) / 1000), " seconds \r")
+    }
+}
+
+downgradeFix = {
+    color(0x00FF00)
+    p("Starting Downgrade Fix...")
+    color(0xFFFFFF)
+    
+    p("Mounting SYSTEM partition...")
+    if (mount("SYSTEM")) {
+        fatal(fatalMsg = "Failed to mount SYSTEM partition!")
+    }
+    
+    targetFile = "bis:/save/8000000000000073"
+    if (!fsexists(targetFile)) {
+        color(0xFFFF00)
+        p("File 8000000000000073 not found in SYSTEM partition.")
+        p("No action needed.")
+        color(0xFFFFFF)
+        pause()
+        exit()
+    }
+    
+    color(0xFF0000)
+    p("Deleting 8000000000000073 from SYSTEM partition...")
+    color(0xFFFFFF)
+    
+    if (delfile(targetFile)) {
+        fatal(fatalMsg = "Failed to delete 8000000000000073!")
+    }
+    
+    if (fsexists(targetFile)) {
+        fatal(fatalMsg = "File deletion failed - file still exists!")
+    }
+    
+    color(0x00FF00)
+    p("SUCCESS: 8000000000000073 has been deleted!")
+    color(0xFFFFFF)
+}
+
+clear()
+color(0x00FFFF)
+p("=== Switch Downgrade Fix ===")
+p("This script will delete the 8000000000000073 save file")
+p("from the SYSTEM partition to prevent downgrade protection.")
+p()
+color(0xFFFFFF)
+
+p("Select target:")
+target = menu(["Exit", "Sysmmc", "Emummc"], 0)
+
+if (target == 0) {
+    exit()
+}
+
+if (target == 1) {
+    mount = mountsys
+    mmcType = "Sysmmc"
+} .else() {
+    mount = mountemu
+    mmcType = "Emummc"
+}
+
+clear()
+color(0x00FFFF)
+p("=== Downgrade Fix Confirmation ===")
+color(0xFFFFFF)
+p("Target:", mmcType)
+p("Action: Delete 8000000000000073")
+p()
+color(0xFFFF00)
+p("WARNING: This will modify your SYSTEM partition!")
+p("Make sure you know what you doing before proceeding!")
+p()
+color(0xFFFFFF)
+
+wait(tw = 5000)
+p("Press POWER to continue, any other key to exit")
+if (!pause().power) {
+    exit()
+}
+
+clear()
+downgradeFix()
+
+p()
+color(0x00FF00)
+p("Downgrade fix completed successfully!")
+color(0xFFFFFF)
+p("Press any key to exit")
+pause()
