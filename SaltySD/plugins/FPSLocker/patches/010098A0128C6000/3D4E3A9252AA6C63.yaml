@@ -1,0 +1,23 @@
+# 죠죠의 기묘한 모험 올 스타 배틀 R / JOJO的奇妙冒險 群星之戰 重製版 2.3.3
+# BID: 3D4E3A9252AA6C63
+# There are small issues with animations in cutscenes at higher framerates
+
+ALL_FPS:
+  # Internal FPS Lock, pointer ref: 00 01 40 F9 E5 03 04 2A
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2AEDA08, 704]
+    value_type: uint32
+    value: VSYNC_TARGET
+  # Game Speed, pointer ref: F3 03 00 AA 20 00 80 52 F4 03 01 AA
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2AEF6D0, 1360]
+    value_type: uint32
+    value: VSYNC_TARGET
+  # UI Speed
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2AEF6D0, 2554]
+    value_type: uint8
+    value: FPS_TARGET

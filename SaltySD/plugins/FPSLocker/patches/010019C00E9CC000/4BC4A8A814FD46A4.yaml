@@ -1,7 +1,5 @@
-# The Witcher 3: Wild Hund - Complete Edition 4.04b
+# 《巫師 3：狂獵》－完全版 4.04b
 # BID: 4BC4A8A814FD46A4
-
-unsafeCheck: true
 
 ALL_FPS:
   # DRGameTargetFrameTimeInMs

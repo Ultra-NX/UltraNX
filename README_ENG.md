@@ -6,9 +6,7 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [UltraNX 2.6|R3](https://github.com/Ultra-NX/UltraNX/releases/tag/2.6-R3) Supports all HOS up to and including 20.5.0
-
-### [UltraNX 2.7|Pre2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.7-Pre2) Supports all HOS up to and including 21.0.1. Not a full-fledged release!
+### [UltraNX 2.7|R1](https://github.com/Ultra-NX/UltraNX/releases/tag/2.7-R1) Supports all HOS up to and including 21.0.1
 
 
 
@@ -89,7 +87,7 @@
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - The patch package for FPSLocker allows you to update all patches at once, instead of downloading one at a time through the FPSLocker overlay. UltraNX always has the latest patches by default, so it's enough to update the CFW in a timely manner.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - SysDVR patches, work without the system module, activating background recording in games where it is initially prohibited.
       * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - A package for downloading, installing, and managing mods for games.
-      * [sys-ftpd](https://github.com/cathery/sys-ftpd) - FTP server running in background.
+      * [sys-ftpd](https://github.com/ELY3M/sys-ftpd) - FTP server running in background.
 
 
 

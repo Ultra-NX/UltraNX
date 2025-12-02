@@ -1,0 +1,25 @@
+# ウィッチャー３　ワイルドハント 4.04b
+# BID: D27FD8A515077F34
+
+ALL_FPS:
+  # DRGameTargetFrameTimeInMs
+  -
+    type: evaluate_write
+    address: [MAIN, 0x41312B4]
+    value_type: float
+    value: "0.945 * FRAMETIME_TARGET"
+  # DRCinematicTargetFrameTimeInMs
+  -
+    type: evaluate_write
+    address: [MAIN, 0x41312E4]
+    value_type: float
+    value: "0.945 * FRAMETIME_TARGET"
+  # LimitFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x411DCFC]
+    value_type: int32
+    value: FPS_LOCK_TARGET
+  -
+    type: block
+    what: timing

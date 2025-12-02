@@ -1,0 +1,10 @@
+# Zombie Army 4: Dead War `Asia` 1.1.1
+# BID: 12024D08CCFD25EB
+
+ALL_FPS:
+  # Dynamic Resolution FPS Target
+  -
+    type: evaluate_write
+    address: [MAIN, 0x179EF64]
+    value_type: float
+    value: FPS_TARGET

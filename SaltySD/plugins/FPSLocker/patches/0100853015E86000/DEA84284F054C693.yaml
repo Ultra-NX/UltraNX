@@ -1,0 +1,21 @@
+# No Man's Sky 6.10.0
+# BID: DEA84284F054C693
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 30
+    evaluate: FPS_TARGET
+MASTER_WRITE:
+  # Redirect DR frametime target
+  # REF: 08 4E A8 52 00 01 27 1E 48 8F A8 52, ADRP + ADD + LDR above that
+  -
+    type: asm_a64
+    main_offset: 0x1F9BC40
+    instructions: [
+      [adrp, x9, $dr_target],
+      [ldr, s0, [x9, $dr_target]],
+      [nop]
+    ]

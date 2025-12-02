@@ -1,8 +1,6 @@
 # Gori: Cuddly Carnage 1.0.7
 # BID: A21FFE97D09DCE4E
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget
   -

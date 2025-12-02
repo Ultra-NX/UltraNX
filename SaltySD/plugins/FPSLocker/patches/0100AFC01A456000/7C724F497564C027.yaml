@@ -1,0 +1,31 @@
+# 주술회전 전화향명 1.4.0
+# BID: 7C724F497564C027
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8458A48, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x849BF50, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x77DD548, 0]
+    value_type: uint32
+    value: [0, 0]
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x849B7A8, 0x9C4]
+    value_type: uint32
+    value: 7
+  -
+    type: block
+    what: timing

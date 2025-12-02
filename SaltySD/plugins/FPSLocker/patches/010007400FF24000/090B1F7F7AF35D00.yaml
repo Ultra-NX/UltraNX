@@ -1,0 +1,26 @@
+# Borderlands: The Pre-Sequel Ultimate Edition 1.0.1
+# BID: 090B1F7F7AF35D00
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_frametime_max
+    value_type: float
+    default_value: 33.3
+    evaluate: "0.999 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_frametime_min
+    value_type: float
+    default_value: 29.97
+    evaluate: "0.8991 * FRAMETIME_TARGET"
+MASTER_WRITE:
+  -
+    type: asm_a64
+    main_offset: 0xEA60B8
+    instructions: [
+      [adrp, x9, $dr_frametime_max],
+      [ldr, s11, [x9, $dr_frametime_max]],
+      [adrp, x9, $dr_frametime_min],
+      [ldr, s12, [x9, $dr_frametime_min]]
+    ]

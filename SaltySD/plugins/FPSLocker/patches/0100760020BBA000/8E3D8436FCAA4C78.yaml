@@ -1,0 +1,37 @@
+# みんなのGOLF WORLD 1.1.4
+# BID: 8E3D8436FCAA4C78
+# Changed frametime target value math formula because default one sucks at 60 FPS target
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_frametime_max
+    value_type: double
+    default_value: 40
+    evaluate: "0.9 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_frametime_min
+    value_type: double
+    default_value: 33.3333333333
+    evaluate: "(0.9 * FRAMETIME_TARGET) - 6"
+MASTER_WRITE:
+  # REF: 0a 00 a4 d2 8a 08 e8 f2 41 01 67 9e
+  -
+    type: asm_a64
+    main_offset: 0x3936328
+    instructions: [
+      [adrp, x10, $dr_frametime_max],
+      [ldr, d1, [x10, $dr_frametime_max]],
+      [nop]
+    ]
+  -
+  # REF: 00 0d 40 fd 0a 00 b8 d2
+    type: asm_a64
+    main_offset: 0x39363FC
+    instructions: [
+      [adrp, x10, $dr_frametime_min],
+      [ldr, d1, [x10, $dr_frametime_min]],
+      [nop],
+      [nop]
+    ]

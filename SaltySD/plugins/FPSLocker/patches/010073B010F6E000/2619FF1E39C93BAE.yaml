@@ -1,0 +1,19 @@
+# Blue Fire 6.1.0
+# BID: 2619FF1E39C93BAE
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x60E2D38, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x59178E8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

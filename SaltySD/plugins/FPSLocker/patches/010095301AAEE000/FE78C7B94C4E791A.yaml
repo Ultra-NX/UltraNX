@@ -1,0 +1,25 @@
+# HOT WHEELS UNLEASHED 2 `JPN` 1.0.11
+# BID: FE78C7B94C4E791A
+
+ALL_FPS:
+ # r.VSync
+  -
+    type: write
+    address: [MAIN, 0xAD73888, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
+  -
+    type: evaluate_write
+    address: [MAIN, 0xB58D090, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xB631E08, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

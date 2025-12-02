@@ -2,8 +2,6 @@
 # BID: 3D4E3A9252AA6C63
 # There are small issues with animations in cutscenes at higher framerates
 
-unsafeCheck: true
-
 ALL_FPS:
   # Internal FPS Lock, pointer ref: 00 01 40 F9 E5 03 04 2A
   -

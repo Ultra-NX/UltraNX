@@ -1,8 +1,6 @@
 # Sniper Elite 4 1.0.3
 # BID: 4EEA2970DF38ECE1
 
-unsafeCheck: true
-
 ALL_FPS:
   # Dynamic Resolution frame time target
   -

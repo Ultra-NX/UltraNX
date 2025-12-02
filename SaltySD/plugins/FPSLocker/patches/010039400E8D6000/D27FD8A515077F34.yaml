@@ -1,7 +1,5 @@
-# The Witcher 3: Wild Hund - Complete Edition 4.04b
+# The Witcher 3: Wild Hunt - Complete Edition 4.04b
 # BID: D27FD8A515077F34
-
-unsafeCheck: true
 
 ALL_FPS:
   # DRGameTargetFrameTimeInMs

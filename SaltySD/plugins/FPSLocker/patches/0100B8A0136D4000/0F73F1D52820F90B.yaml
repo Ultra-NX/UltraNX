@@ -1,0 +1,19 @@
+# Pumpkin Jack (パンプキン・ジャック) 1.4.4
+# BID: 0F73F1D52820F90B
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x60F3B68, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x592B218, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

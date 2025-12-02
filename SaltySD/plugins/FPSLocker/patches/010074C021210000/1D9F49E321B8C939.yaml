@@ -1,0 +1,10 @@
+# Nice Day for Fishing 1.0.6
+# BID: 1D9F49E321B8C939
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x4C273C0, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

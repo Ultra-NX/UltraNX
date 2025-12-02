@@ -1,0 +1,55 @@
+# トライン５：ぜんまい仕掛けの陰謀（Trine 5: A Clockwork Conspiracy） 1.0.5
+# BID: 8322528255D2CC63
+# To update dynamic resolution offsets look at fb::renderer::ResolutionScaler::update
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target_max
+    value_type: double
+    default_value: 34
+    evaluate: "1.02 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target_min
+    value_type: double
+    default_value: 32
+    evaluate: "0.96 * FRAMETIME_TARGET"
+MASTER_WRITE:
+  # Change double buffer to triple buffer
+  -
+    type: asm_a64
+    main_offset: 0x138A024
+    instructions: [
+      [mov, w8, 3]
+    ]
+  # Allow changing dynamic resolution timings
+  # Max
+  -
+    type: asm_a64
+    main_offset: 0x25992CC
+    instructions: [
+      [adrp, x8, $dr_target_max],
+      [adrp, x22, 0x5ddf000],
+      [ldr, d2, [x8, $dr_target_max]]
+    ]
+  # Min - changed address to MAIN + 0x7D05208
+  -
+    type: asm_a64
+    main_offset: 0x2599344
+    instructions: [
+      [adrp, x10, $dr_target_min],
+      [ldr, d5, [x10, $dr_target_min]]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x2599380
+    instructions: [
+      [adrp, x10, $dr_target_min]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x2599390
+    instructions: [
+      [ldr, d6, [x10, $dr_target_min]]
+    ]

@@ -1,0 +1,19 @@
+# Pandemic Shooter 1.0.0
+# BID: 02D54DEBD40AF215
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x624FF78, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5A8BE30, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

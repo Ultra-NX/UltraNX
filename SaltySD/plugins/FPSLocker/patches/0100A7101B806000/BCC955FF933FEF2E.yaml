@@ -1,0 +1,26 @@
+# Demon Slayer -Kimetsu no Yaiba- Sweep the Board! 1.20
+# BID: BCC955FF933FEF2E
+
+ALL_FPS:
+  # Disable FixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x95CD058, 0x804]
+    address_unsafe: true
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x95CD978, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x8DC3D48, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

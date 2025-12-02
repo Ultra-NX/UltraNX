@@ -1,0 +1,19 @@
+# Descenders 1.0.7
+# BID: 899B8B12DCD0864F
+
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_target
+    value_type: float
+    default_value: 30
+    evaluate: FPS_TARGET
+MASTER_WRITE:
+  # DynamicResolutionCamera::Update
+  -
+    type: asm_a64
+    main_offset: 0x20420C
+    instructions: [
+      [adrp, x0, $fps_target],
+      [ldr, s0, [x0, $fps_target]]
+    ]

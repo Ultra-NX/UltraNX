@@ -1,0 +1,20 @@
+# Gal*Gun Returns 1.0.4
+# BID: 7E65E5BC3564BE46
+# Buffers are hardcoded into fixed size class, so it's hard to get triple buffer
+
+ALL_FPS:
+  # FPS Target + FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0x16CE8A8, 0x20]
+    value_type: float
+    value: "60 / FPS_TARGET"
+  # Lipsync fix
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1BA0A1C]
+    value_type: uint32
+    value: FPS_TARGET
+  -
+    type: block
+    what: timing

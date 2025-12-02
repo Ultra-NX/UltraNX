@@ -1,0 +1,28 @@
+# Wolfenstein®: Youngblood™ (Deutsche Version) 1.5
+# BID: 8B40EBBA7244C94A
+
+ALL_FPS:
+  # rs_force460
+  -
+    type: write
+    address: [MAIN, 0x7994DF0]
+    value_type: int32
+    value: 1
+  # rs_raiseThreshold = 0.96 * (30/FPS)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7994F14]
+    value_type: float
+    value: "(30 / FPS_TARGET) * 0.96"
+  # rs_dropThreshold = 0.984 * (30/FPS)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7994E84]
+    value_type: float
+    value: "(30 / FPS_TARGET) * 0.984"
+  # com_adaptiveTickMaxHz
+  -
+    type: evaluate_write
+    address: [MAIN, 0x85F74E0]
+    value_type: int32
+    value: FPS_LOCK_TARGET

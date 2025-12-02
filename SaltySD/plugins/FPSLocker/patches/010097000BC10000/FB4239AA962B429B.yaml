@@ -21,9 +21,8 @@ DECLARATIONS:
     type: code
     name: designalCutscene
     instructions: [
-      [mov, w3, wzr],
-      [adrp, x4, $cutscene_flag],
-      [str, w3, [x4, $cutscene_flag]],
+      [adrp, x3, $cutscene_flag],
+      [str, wzr, [x3, $cutscene_flag]],
       [ret]
     ]    
 MASTER_WRITE:
@@ -54,3 +53,4 @@ ALL_FPS:
     compare_address: [VARIABLE, cutscene_flag]
     value_type: refresh_rate
     value: 30
+

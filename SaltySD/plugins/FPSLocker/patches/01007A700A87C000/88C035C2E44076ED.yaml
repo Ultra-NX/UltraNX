@@ -1,0 +1,15 @@
+# The Long Dark 2.40.153678
+# BID: 88C035C2E44076ED
+
+ALL_FPS:
+  # TLD.Rendering.DynamicResolutionHelper_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6B71BB8, 0xB8, 0x48]
+    value_type: uint32
+    value: FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6B71BB8, 0xB8, 0x50]
+    value_type: double
+    value: FRAMETIME_TARGET

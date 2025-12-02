@@ -1,0 +1,23 @@
+# Majogami 1.1.1
+# BID: 9FD75204E7C17463
+# REF: nnMain
+
+ALL_FPS:
+  # Min delta
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2CEF420, 0x50]
+    value_type: uint32
+    value: FPS_TARGET
+  # FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2CEF420, 0x60]
+    value_type: uint32
+    value: "1 / FPS_TARGET"
+  # Disable fixed speed
+  -
+    type: write
+    address: [MAIN, 0x2CEF420, 0x5C]
+    value_type: uint8
+    value: 0

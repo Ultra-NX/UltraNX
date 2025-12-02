@@ -1,0 +1,10 @@
+# WRC 8 FIA 월드 랠리 챔피언십 1.4.0
+# BID: 6B0B26802F0DAAAF
+
+ALL_FPS:
+  # OptimalFrameDuration_ms = (1000/FPS) - (0.07 * (1000/30)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x22F50FC]
+    value_type: float
+    value: "FRAMETIME_TARGET - (0.07 * (1000/30))"

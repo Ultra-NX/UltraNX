@@ -1,0 +1,31 @@
+# Dusk Diver 酉閃町 -ダスクダイバー ユウセンチョウ- 1.0.6
+# BID: FAD1AF4EDC6DB267
+
+ALL_FPS:
+  # Disable bSmoothFrameRate and bUseFixedFrameRate to untie game speed from framerate and unlock FPS
+  -
+    type: write
+    address: [MAIN, 0x5379338, 0x780]
+    address_unsafe: true
+    value_type: uint32
+    # Default is 0x67, bSmoothFrameRate |= 0x20, bUseFixedFrameRate |= 0x40 
+    # By writing 7 we are making sure that other flags are maintained: 
+    # bAllowMultiThreadedAnimationUpdate |= 4
+    # bOptimizeAnimBlueprintMemberVariableAccess |= 2
+    # bCanBlueprintsTickByDefault |= 1
+    value: 7
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 1 decimal
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5354210, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x537A880, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

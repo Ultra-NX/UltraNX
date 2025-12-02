@@ -1,0 +1,10 @@
+# 팩맨 월드 2 리팩 / 吃豆人 吃遍世界2 1.0.3
+# BID: B70D6561B718C8E0
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x87DE838, 0x58]
+    value_type: uint32
+    value: "2352000 * FPS_TARGET"

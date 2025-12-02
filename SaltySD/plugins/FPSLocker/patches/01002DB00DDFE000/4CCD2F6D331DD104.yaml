@@ -1,0 +1,42 @@
+# 魂斗羅 ローグ コープス 1.3.0
+# BID: 4CCD2F6D331DD104
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_factor
+    value_type: float
+    default_value: 1000000
+    evaluate: "30000000 / FPS_TARGET"
+  -
+    type: code
+    name: fpsTarget
+    instructions: [
+      [adrp, x8, 0xd94000],
+      [ldr, w8, [x8, 0x628]],
+      [ret]
+    ]    
+MASTER_WRITE:
+  # Read FPS target from code cave
+  -
+    type: asm_a64
+    main_offset: 0x2004
+    instructions: [
+      [bl, _fpsTarget()]
+    ]
+  # Redirect DR time factor
+  -
+    type: asm_a64
+    main_offset: 0x2140
+    instructions: [
+      [adrp, x8, $dr_factor],
+      [ldr, s9, [x8, $dr_factor]]
+    ]
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0xD94628]
+    value_type: uint32
+    value: FPS_TARGET
+
+

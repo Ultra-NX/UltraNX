@@ -1,0 +1,46 @@
+# Life is Strange: Before the Storm Remastered 1.0
+# BID: 30B812AB1BA3D447
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_frametime_max
+    value_type: float
+    default_value: 30
+    evaluate: "0.9 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_frametime_min
+    value_type: float
+    default_value: 25
+    evaluate: "0.75 * FRAMETIME_TARGET"
+  -
+    type: code
+    name: getDrFrametimeMax
+    instructions: [
+      [adrp, x8, $dr_frametime_max],
+      [ldr, s1, [x8, $dr_frametime_max]],
+      [ret]
+    ]
+  -
+    type: code
+    name: getDrFrametimeMin
+    instructions: [
+      [adrp, x8, $dr_frametime_min],
+      [ldr, s1, [x8, $dr_frametime_min]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # REF: 60 2e 40 bd 01 d0 27 1e 00 20 21 1e
+  -
+    type: asm_a64
+    main_offset: 0x14FD210
+    instructions: [
+      [bl, _getDrFrametimeMax()]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x14FD23C
+    instructions: [
+      [bl, _getDrFrametimeMin()]
+    ]

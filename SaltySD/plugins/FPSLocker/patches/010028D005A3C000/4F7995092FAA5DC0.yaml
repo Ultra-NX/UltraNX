@@ -1,0 +1,16 @@
+# The Elder Scrolls V: Skyrim JPN 1.1.392.3925134
+# BID: 4F7995092FAA5DC0
+
+ALL_FPS:
+  # Dynamic Resolution Frame Time Min = 0.9 * (1000/FPS)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3356FC8]
+    value_type: float
+    value: "0.9 * FRAMETIME_TARGET"
+  # Dynamic Resolution Frame Time Max = 0.99 * (1000/FPS)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3356FB0]
+    value_type: float
+    value: "0.99 * FRAMETIME_TARGET"

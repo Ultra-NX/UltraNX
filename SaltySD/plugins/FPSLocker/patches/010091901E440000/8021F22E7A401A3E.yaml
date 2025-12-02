@@ -1,0 +1,25 @@
+# Daymare: 1994 Sandcastle 1.0
+# BID: 8021F22E7A401A3E
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x75DCBD8, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x760A548, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6E0E228, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

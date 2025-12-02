@@ -1,0 +1,25 @@
+# Journey To The Savage Planet 01.02
+# BID: 4BED8F28C0F34C86
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7235890, 0]
+    value_type: float
+    value: ["FRAMETIME_TARGET * 0.975", "FRAMETIME_TARGET * 0.975"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7259F98, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6A04498, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

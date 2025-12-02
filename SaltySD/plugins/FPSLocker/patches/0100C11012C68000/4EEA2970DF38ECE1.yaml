@@ -1,0 +1,10 @@
+# Sniper Elite 4 JPN 1.0.3
+# BID: 4EEA2970DF38ECE1
+
+ALL_FPS:
+  # Dynamic Resolution frame time target
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2D7A974]
+    value_type: float
+    value: "0.969 * FRAMETIME_TARGET"

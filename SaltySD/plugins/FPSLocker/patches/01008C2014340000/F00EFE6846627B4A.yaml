@@ -1,0 +1,10 @@
+# ワールズエンドクラブ 1.0.6
+# BID: F00EFE6846627B4A
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6AC31C0, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

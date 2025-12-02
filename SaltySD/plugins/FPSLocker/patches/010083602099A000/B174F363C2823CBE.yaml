@@ -1,0 +1,11 @@
+# 워블리 라이프 1.0.0.3
+# BID: B174F363C2823CBE
+
+ALL_FPS:
+  # DynamicResolutionManager_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x84A6F58, 0xB8, 0]
+    address_unsafe: true
+    value_type: double
+    value: [FPS_TARGET, FRAMETIME_TARGET]

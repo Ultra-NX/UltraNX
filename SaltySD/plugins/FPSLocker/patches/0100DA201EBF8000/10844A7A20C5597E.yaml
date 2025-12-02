@@ -1,7 +1,5 @@
-# Disney Epic Mickey: Rebrushed 1.0.4
+# ディズニー エピックミッキー：Rebrushed 1.0.4
 # BID: 10844A7A20C5597E
-
-unsafeCheck: true
 
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget

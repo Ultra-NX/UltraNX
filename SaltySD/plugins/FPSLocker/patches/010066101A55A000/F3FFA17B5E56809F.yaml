@@ -1,0 +1,19 @@
+# Little Nightmares III 1.0.3
+# BID: F3FFA17B5E56809F
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7CADE48, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x74B9210, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

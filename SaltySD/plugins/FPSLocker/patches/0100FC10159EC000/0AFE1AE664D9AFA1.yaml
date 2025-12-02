@@ -1,0 +1,14 @@
+# Space Marshals 3 1.0.0
+# BID: 0AFE1AE664D9AFA1
+
+ALL_FPS:
+  # FPS Lock
+  ## REF: CAppSWITCH xref, 0x10 above address storing pointer
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5E14D0]
+    value_type: double
+    value: "1 / FPS_TARGET"
+  -
+    type: block
+    what: timing

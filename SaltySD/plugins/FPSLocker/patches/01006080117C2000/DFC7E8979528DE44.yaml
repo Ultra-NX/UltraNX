@@ -1,0 +1,32 @@
+# Made in Abyss: Binary Star Falling into Darkness 1.0.3
+# BID: DFC7E8979528DE44
+
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x657D2C8, 0]
+    value_type: int32
+    value: [0, 0]
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6D2E330, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # r.DynamicRes.TargetedGPUHeadRoomPercentage
+  # Because game is using 5.0 while default is 10.0 and with their value reaching target FPS above 30 is hard
+  -
+    type: write
+    address: [MAIN, 0x6D2E348, 0]
+    value_type: float
+    value: [10.0, 10.0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6D58E68, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

@@ -1,0 +1,74 @@
+# Tales of Xillia Remastered 1.0.1
+# BID: 171806C35E4152E7
+
+DECLARATIONS:
+  -
+    type: variable
+    name: patch_running
+    value_type: uint8
+    default_value: 0
+  -
+    type: code
+    name: applyCustomSpeed
+    instructions: [
+      [adrp, x4, $patch_running],
+      [ldrb, w4, [x4, $patch_running]],
+      [cbnz, w4, :goto1],
+      [stp, s0, s1, [x8, 0x6C]],
+      :goto1, [ret]
+    ]
+MASTER_WRITE:
+  # Block updating game speed
+  ## REF: 00 85 0d 2d
+  -
+    type: asm_a64
+    main_offset: 0x244A5F4
+    instructions: [
+      [bl, _applyCustomSpeed()]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x28EBC5C
+    instructions: [
+      [bl, _applyCustomSpeed()]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x2B26E04
+    instructions: [
+      [bl, _applyCustomSpeed()]
+    ]
+ALL_FPS:
+ # Game Speed
+ ## REF: Global_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x82C50C0, 0xB8, 0x6C]
+    value_type: float
+    value: [FPS_TARGET, "60 / FPS_TARGET"]
+  # Just in case, dunno if they are used for anything, but all of them were set to target strictly 30 FPS
+  # UnityEngine.Time::maximumDeltaTime
+  -
+    type: write
+    address: [MAIN, 0x9FCFBF8, 0x100]
+    value_type: float
+    value: [0.066666666, 0.066666666]
+  # UnityEngine.Time::fixedDeltaTime
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9FCFBF8, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  # UnityEngine.Application::targetFrameRate
+  -
+    type: evaluate_write
+    address: [MAIN, 0x84E1EA8]
+    value_type: uint32
+    value: FPS_TARGET
+  -
+    type: compare
+    compare_address: [VARIABLE, patch_running]
+    compare_type: "=="
+    compare_value: 0
+    address: [VARIABLE, patch_running]
+    value: 1

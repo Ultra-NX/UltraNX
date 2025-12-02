@@ -1,0 +1,25 @@
+# Upin & Ipin Universe 1.0.2
+# BID: 301E4A1FB0BA1575
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9302098, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x933D5C0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x831EEE8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

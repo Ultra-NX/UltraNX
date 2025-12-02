@@ -1,0 +1,16 @@
+# Hob: The Definitive Edition 1.1.3
+# BID: 4E7978E35F9D7490
+
+ALL_FPS:
+  # r_dynamicResGPUTimeDrop
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2F8A248]
+    value_type: float
+    value: ["0.96 * FRAMETIME_TARGET", "0.96 * FRAMETIME_TARGET"]
+  # r_dynamicResGPUTimeRaise
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2F8A268]
+    value_type: float
+    value: ["0.84 * FRAMETIME_TARGET", "0.84 * FRAMETIME_TARGET"]

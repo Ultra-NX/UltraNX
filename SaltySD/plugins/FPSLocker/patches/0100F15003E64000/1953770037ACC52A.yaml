@@ -1,0 +1,20 @@
+# Fire Emblem Warriors 1.5.0
+# BID: 1953770037ACC52A
+
+ALL_FPS:
+  # FPS Lock + Game Speed
+  -
+    type: evaluate_write
+    address: [MAIN, 0x12BBCC4]
+    value_type: float
+    value: FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x12BBCCC]
+    value_type: uint32
+    value: VSYNC_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x12A0FB0]
+    value_type: uint32
+    value: FPS_TARGET

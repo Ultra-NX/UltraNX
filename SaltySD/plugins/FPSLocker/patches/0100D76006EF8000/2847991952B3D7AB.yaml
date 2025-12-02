@@ -1,0 +1,34 @@
+# DOOM `JPN` 1.4
+# BID: 2847991952B3D7AB
+
+ALL_FPS:
+  # rs_460Threshold (default is 0.285)
+  -
+    type: write
+    address: [MAIN, 0x594152C]
+    value_type: float
+    value: 1
+  # rs_raiseMilliseconds
+  -
+    type: evaluate_write
+    address: [MAIN, 0x59419EC]
+    value_type: float
+    value: "0.966 * FRAMETIME_TARGET"
+  # rs_dropMilliseconds
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5941954]
+    value_type: float
+    value: "0.99 * FRAMETIME_TARGET"
+  # com_adaptiveTickMaxHz (default is 30)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x66BAF50]
+    value_type: int32
+    value: FPS_TARGET
+  # com_adaptiveTickMinHz (default is 30)
+  -
+    type: write
+    address: [MAIN, 0x66BAEB8]
+    value_type: int32
+    value: 15

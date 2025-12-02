@@ -1,0 +1,25 @@
+# Lynked: Banner of the Spark 1.2.3
+# BID: 98C2DD2B041D3CCC
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7EB5348, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7EE3028, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x76E6488, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

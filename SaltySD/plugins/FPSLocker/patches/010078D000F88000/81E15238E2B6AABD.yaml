@@ -1,0 +1,52 @@
+# DRAGON BALL XENOVERSE 2 FOR NINTENDO SWITCH 1.25.01
+# BID: 81E15238E2B6AABD
+# Double buffer is hardcoded in class, getting triple buffer is hard.
+# Some graphical effects like aura have wrong speed outside of 15, 20, 30 and 60 FPS
+
+ALL_FPS:
+  # Search those in Edizon by searching for 1/60 in title menu, then 1/30 when FPS lock is applied.
+  # FPS Lock
+  -
+    type: write
+    address: [MAIN, 0x4B26AD8, 0x698]
+    address_unsafe: true
+    value_type: float
+    value: 0.0
+  # Unknown
+  -
+    type: write
+    address: [MAIN, 0x4B26AD8, 0x6A4]
+    address_unsafe: true
+    value_type: float
+    value: 0.0
+  # Game Battle Speed Factor
+  -
+    type: evaluate_write
+    address: [MAIN, 0x4B26AD8, 0x6B0]
+    address_unsafe: true
+    value_type: uint32
+    value: VSYNC_TARGET
+  # Cutscenes Speed Factor
+  -
+    type: evaluate_write
+    address: [MAIN, 0x4B26AD8, 0x6B4]
+    address_unsafe: true
+    value_type: uint32
+    value: VSYNC_TARGET
+  # Target Speed
+  # REF: E9 03 00 32 09 01 00 39 C0 03 5F D6, first result, LDR instruction
+  -
+    type: evaluate_write
+    address: [MAIN, 0x244E090]
+    value_type: float
+    value: "(1 / FPS_TARGET) * VSYNC_TARGET"
+  # Dynamic Resolution FPS Target
+  # REF: 16 4E A8 52 F7 03 60 B2, first ADRP + LDR above it
+  -
+    type: evaluate_write
+    address: [MAIN, 0x242A3C8, 0x1844]
+    address_unsafe: true
+    value_type: float
+
+    value: "FPS_TARGET"
+

@@ -1,0 +1,13 @@
+# Don't Starve Together 1.23.0
+# BID: 05D2208140190484
+
+ALL_FPS:
+  # FPS Lock
+  # REF: find instruction 36 D9 34 F8, set breakpoint in GDB, use X9 to find main offset (ignore addend)
+  -
+    type: evaluate_write
+    address: [MAIN, 0xD692DF0, 0x320]
+    address_unsafe: true
+    value_type: float
+    value: "1 / FPS_TARGET"
+

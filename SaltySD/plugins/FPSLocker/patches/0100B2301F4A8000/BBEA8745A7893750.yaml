@@ -1,8 +1,6 @@
 # Life is Strange: Double Exposure 1.0.3
 # BID: BBEA8745A7893750
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.VSync
   -

@@ -1,0 +1,11 @@
+# Once Upon A KATAMARI 1.0.3
+# BID: 41F236A333370F55
+
+ALL_FPS:
+  # Dynamic Resolution
+  ## REF: App.KatamariSin.AppSupport_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8F858B8, 0xB8, 0x18]
+    value_type: double
+    value: "0.9 * FRAMETIME_TARGET"

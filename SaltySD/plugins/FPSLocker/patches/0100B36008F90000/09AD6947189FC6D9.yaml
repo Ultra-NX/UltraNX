@@ -1,0 +1,29 @@
+# INAZUMA ELEVEN: Victory Road 1.2.0
+# BID: 09AD6947189FC6D9
+# Thanks to Fl4sh for finding out function responsible for FPS Lock
+
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_target
+    value_type: float
+    default_value: 30
+    evaluate: FPS_TARGET
+MASTER_WRITE:
+  # Dynamic Resolution FPS Target
+  ## REF: 62 02 23 1E 21 18 22 1E
+  -
+    type: asm_a64
+    main_offset: 0xC35488
+    instructions: [
+      [adrp, x9, $fps_target],
+      [ldr, s1, [x9, $fps_target]]
+    ]
+ALL_FPS:
+  # Disable FPS Lock
+  ## REF: 20 01 00 A9 00 01 63 9E, second LDRB below that
+  -
+    type: write
+    address: [MAIN, 0x3294F09]
+    value_type: uint8
+    value: 0

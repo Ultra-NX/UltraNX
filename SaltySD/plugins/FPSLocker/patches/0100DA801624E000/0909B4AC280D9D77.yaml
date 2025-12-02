@@ -1,0 +1,10 @@
+# TUNIC 1.0.3
+# BID: 0909B4AC280D9D77
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3886480, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

@@ -1,8 +1,6 @@
-# Gal*Gun Returns 1.0.4
+# ぎゃる☆がん りたーんず 1.0.4
 # BID: 7E65E5BC3564BE46
 # Buffers are hardcoded into fixed size class, so it's hard to get triple buffer
-
-unsafeCheck: true
 
 ALL_FPS:
   # FPS Target + FPS Lock

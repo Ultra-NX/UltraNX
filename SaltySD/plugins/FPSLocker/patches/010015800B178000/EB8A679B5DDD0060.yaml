@@ -1,0 +1,10 @@
+# V-Rally 4 JPN 1.2.0
+# BID: EB8A679B5DDD0060
+
+ALL_FPS:
+  # OptimalFrameDuration_ms = (1000/FPS) - (0.07 * (1000/30)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x20A0E44]
+    value_type: float
+    value: "FRAMETIME_TARGET - (0.07 * (1000/30))"

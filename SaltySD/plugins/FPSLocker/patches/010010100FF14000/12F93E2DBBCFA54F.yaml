@@ -1,0 +1,10 @@
+# 60 Parsecs! 1.0.10
+# BID: 12F93E2DBBCFA54F
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime
+  -
+    type: evaluate_write
+    address: [MAIN, 0x393D5F8, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

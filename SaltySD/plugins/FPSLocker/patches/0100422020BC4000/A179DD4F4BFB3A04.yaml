@@ -1,0 +1,36 @@
+# 모두의 골프 월드 / 全民高爾夫 環球之旅 1.1.3
+# BID: A179DD4F4BFB3A04
+# Changed frametime target value math formula because default one sucks at 60 FPS target
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_frametime_max
+    value_type: double
+    default_value: 40
+    evaluate: "0.9 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_frametime_min
+    value_type: double
+    default_value: 33.3333333333
+    evaluate: "(0.9 * FRAMETIME_TARGET) - 6"
+MASTER_WRITE:
+  # REF: DynamicResolution::Compute()
+  -
+    type: asm_a64
+    main_offset: 0x3925918
+    instructions: [
+      [adrp, x10, $dr_frametime_max],
+      [ldr, d1, [x10, $dr_frametime_max]],
+      [nop]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x39259EC
+    instructions: [
+      [adrp, x10, $dr_frametime_min],
+      [ldr, d1, [x10, $dr_frametime_min]],
+      [nop],
+      [nop]
+    ]

@@ -1,0 +1,12 @@
+# Sworn 1.0.2
+# BID: 87F1CEF6D52392AE
+
+ALL_FPS:
+ # Dynamic Resolution target
+ ## REF: DynamicResolution_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5F98160, 0xB8, 0]
+    address_unsafe: true
+    value_type: double
+    value: [FPS_TARGET, FRAMETIME_TARGET]

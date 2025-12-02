@@ -1,8 +1,6 @@
 # Paradise Killer 1.2.1
 # BID: D3744AF2C376CDC4
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
   -

@@ -1,0 +1,25 @@
+# ゴリ: カドリー カーネイジ（Gori: Cuddly Carnage） 1.0.7
+# BID: A21FFE97D09DCE4E
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6A02E68, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6A3C938, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6245AA8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

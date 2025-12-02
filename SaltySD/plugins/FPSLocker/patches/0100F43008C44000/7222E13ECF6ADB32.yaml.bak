@@ -1,0 +1,212 @@
+# Pokémon Legends: Z-A 1.0.1
+# BID: 7222E13ECF6ADB32
+
+DECLARATIONS:
+  -
+    type: variable
+    name: frametick
+    value_type: uint64
+    default_value: 0
+  -
+    type: const
+    name: max_delta
+    value: 66666667
+  -
+    type: variable
+    name: min_delta
+    value_type: uint64
+    default_value: 33333334
+    evaluate: "(FRAMETIME_TARGET * 1000000) + 1"
+  -
+    type: variable
+    name: fps_target
+    value_type: uint32
+    default_value: 30
+    evaluate: FPS_TARGET
+  -
+    type: const
+    name: 60FPSInNanoseconds
+    value: 16666667
+  -
+    type: const
+    name: 30FPSInNanoseconds
+    value: 33333334
+  -
+    type: variable
+    name: frametime
+    value_type: uint64
+    default_value: 0
+  -
+    type: variable
+    name: roll_flag
+    value_type: uint32
+    default_value: 0
+  -
+    type: variable
+    name: interval_pointer
+    value_type: uint64
+    default_value: 0
+  -
+    type: code
+    name: dynamicFPS
+    instructions: [
+      [stp, x29, x30, [sp, -16], "!"],
+      [mov, x29, sp],
+      [blr, x8],
+      [mrs, x11, cntpct_el0],
+      [adrp, x10, $frametick],
+      [ldr, x12, [x10, $frametick]],
+      [str, x11, [x10, $frametick]],
+      [mov, x10, x12],
+      [cbz, x10, :goto1],
+      [sub, x10, x11, x10],
+      [mov, x11, 625],
+      [mul, x10, x10, x11],
+      [mov, x11, 12],
+      [udiv, x10, x10, x11],
+      [mov, x12, $max_delta],
+      [movk, x12, $max_delta, 16],
+      [cmp, x10, x12],
+      [csel, x10, x10, x12, lt],
+      [adrp, x11, $min_delta],
+      [ldr, x11, [x11, $min_delta]],
+      [cmp, x10, x11],
+      [csel, x2, x10, x11, gt],
+      [adrp, x10, $fps_target],
+      [ldr, w10, [x10, $fps_target]],
+      [cmp, w10, 60],
+      [csel, x2, x11, x2, eq],
+      [adrp, x10, $frametime],
+      [str, x2, [x10, $frametime]],
+      [mov, x12, $30FPSInNanoseconds],
+      [movk, x12, $30FPSInNanoseconds, 16],
+      [mov, w13, 0x100],
+      [cmp, x2, x12],
+      [b.lt, :goto1],
+      [mov, w13, 0x101],
+      :goto1, [adrp, x10, $interval_pointer],
+      [ldr, x10, [x10, $interval_pointer]],
+      [strh, w13, [x10]],
+      [adrp, x10, $roll_flag],
+      [ldr, w11, [x10, $roll_flag]],
+      [cmp, w11, 0],
+      [b.eq, :goto2],
+      [sub, w11, w11, 1],
+      [str, w11, [x10, $roll_flag]],
+      :goto2, [ldp, x29, x30, [sp], 16],
+      [ret]
+    ]
+  -
+    type: code
+    name: readDynamicFPS
+    instructions: [
+      [adrp, x10, $frametime],
+      [ldr, x11, [x10, $frametime]],
+      [cmp, x11, 0],
+      [csel, x2, x2, x11, eq],
+      [adrp, x10, $roll_flag],
+      [ldr, w10, [x10, $roll_flag]],
+      [cmp, w10, 0],
+      [adrp, x10, $min_delta],
+      [ldr, x10, [x10, $min_delta]],
+      [csel, x2, x2, x10, eq],
+      [adrp, x10, 0x5F0C000],
+      [add, x10, x10, 0x600], # Offset where is written flag when ladder is in use
+      [ldrb, w10, [x10]],
+      [mov, x12, $60FPSInNanoseconds],
+      [movk, x12, $60FPSInNanoseconds, 16], # Climbing animation expects from us animation to be multiplication of 1/60s, otherwise climbing speed is uneven and eventually we fall
+      [mov, x13, $30FPSInNanoseconds],
+      [movk, x13, $30FPSInNanoseconds, 16],
+      [cmp, x11, x13],
+      [csel, x11, x12, x13, lt],
+      [cmp, w10, 0],
+      [csel, x2, x2, x11, eq],
+      [br, x3]
+    ]
+  -
+    type: code
+    name: setTo60FPSMode
+    instructions: [
+      [str, x0, [x26, 0x40]],
+      [add, x0, x0, 0x20],
+      [adrp, x8, $interval_pointer],
+      [str, x0, [x8, $interval_pointer]],
+      [mov, w8, 0x101],
+      [strh, w8, [x0]],
+      [sub, x0, x0, 0x20],
+      [ret]
+    ]
+  -
+    type: const
+    name: rollFixTiming
+    value: 20000001
+  -
+    type: code
+    name: rollFix
+    instructions: [
+      [ldr, x8, [x0, 0x120]],
+      [tbnz, x8, 1, +8], # Bit 1 = ladder/rolling
+      [b, :goto1],
+      [adrp, x22, $frametime],
+      [ldr, x22, [x22, $frametime]],
+      [mov, x21, $rollFixTiming],
+      [movk, x21, $rollFixTiming, 16],      
+      [cmp, x22, x21],
+      [b.gt, :goto1], # If our FPS target is not above 50, don't do anything
+      [mov, w21, 3],
+      [adrp, x22, $fps_target],
+      [ldr, w22, [x22, $fps_target]],
+      [udiv, w22, w22, w21], # Divide FPS target by 3 to get amount of frames necessary for rolling animation to not stuck our character
+      [adrp, x19, $roll_flag],
+      [str, w22, [x19, $roll_flag]],
+      :goto1, [ret]
+    ]
+MASTER_WRITE:
+  # Roll Fix, thanks to Fl4sh9174 for address
+  -
+    type: asm_a64
+    main_offset: 0x2962A74
+    instructions: [
+      [bl, _rollFix()]
+    ]
+  # Restore original 30 FPS lock
+  -
+    type: asm_a64
+    main_offset: 0x175E864
+    instructions: [
+      [mov, w1, 2]
+    ]
+  # Dynamic Resolution
+  ## REF: 21 D8 61 5E 21 18 68 1E 00 18 61 1E, replace ADRP + ADD + LDR above it
+  -
+    type: asm_a64
+    main_offset: 0xD5AB0
+    instructions: [
+      [adrp, x9, $min_delta],
+      [ldr, d1, [x9, $min_delta]],
+      [nop]
+    ]
+  # Calculate frame time by replacing call to nvnQueuePresentTexture
+  -
+    type: asm_a64
+    main_offset: 0x175F154
+    instructions: [
+      [bl, _dynamicFPS()]
+    ]
+  # Replace reading hardcoded values
+  ## REF: 02 D9 62 F8 08 00 40 F9 03 09 40 F9 60 00 1F D6, last REF. Check two other results if anything will go wrong somewhere
+  -
+    type: asm_a64
+    main_offset: 0x2891B08
+    instructions: [
+      [b, _readDynamicFPS()]
+    ]
+  # Force game to start in 60 FPS mode for better game thread synchronization (writing 0 to 0x20) + enable constantly updating speed (writing 1 to 0x21)
+  ## REF: 40 23 00 F9 08 04 40 F9
+  -
+    type: asm_a64
+    main_offset: 0x19DD334
+    instructions: [
+      [bl, _setTo60FPSMode()]
+    ]
+

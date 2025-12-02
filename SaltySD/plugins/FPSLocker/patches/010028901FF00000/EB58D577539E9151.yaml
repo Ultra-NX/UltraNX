@@ -1,0 +1,26 @@
+# The Beast Inside 1.2.0
+# BID: EB58D577539E9151
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x64AD448, 0x7A4]
+    address_unsafe: true
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x64ADD48, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5CE8100, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

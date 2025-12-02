@@ -1,7 +1,5 @@
 # Borderlands 3 1.0.3
-# BID: AFDEB128252898AC
-
-unsafeCheck: true
+# BID: AE2768797E3337EE
 
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget

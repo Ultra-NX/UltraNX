@@ -1,0 +1,12 @@
+# Hellpoint 1.0.2.0
+# BID: 3776E7BBC7C01E43
+
+ALL_FPS:
+  # Manager<DynamicResolutionManager>_TypeInfo
+  # Using different scales than original (0.78, 1.14) because they seem to not be good for targeting 60 FPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5357390, 0xB8, 0, 0x20, 0x20]
+    address_unsafe: true
+    value_type: float
+    value: ["0.6 * FRAMETIME_TARGET", "0.84 * FRAMETIME_TARGET"]

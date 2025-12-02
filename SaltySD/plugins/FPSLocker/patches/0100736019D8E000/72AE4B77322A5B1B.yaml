@@ -1,0 +1,10 @@
+# Project Nightmares Case 36: Henrietta Kedward 1.0.3
+# BID: 72AE4B77322A5B1B
+
+ALL_FPS:
+  # DynamicResolution_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x475AB98, 0xB8, 0]
+    value_type: double
+    value: [FPS_TARGET, FRAMETIME_TARGET]

@@ -1,0 +1,26 @@
+# Saints Row: The Third - The Full Package 1.6.1
+# BID: A8631EDCC0013045
+
+DECLARATIONS:
+  -
+    type: variable
+    name: frametime_target
+    value_type: double
+    default_value: -30.0
+    evaluate: "-0.9 * FRAMETIME_TARGET"
+  -
+    type: code
+    name: getFrametimeTarget
+    instructions: [
+      [adrp, x23, $frametime_target],
+      [ldr, d9, [x23, $frametime_target]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # REF: 09 D0 77 1E
+  -
+    type: asm_a64
+    main_offset: 0xE80348
+    instructions: [
+      [bl, _getFrametimeTarget()]
+    ]

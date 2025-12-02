@@ -1,0 +1,19 @@
+# Unbound: Worlds Apart 1.0.3
+# BID: 1B98D227021142B1
+
+ALL_FPS:
+ # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x65C4920, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6D886E8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

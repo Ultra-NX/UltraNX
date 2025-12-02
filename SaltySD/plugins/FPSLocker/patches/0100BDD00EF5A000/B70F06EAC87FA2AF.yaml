@@ -1,0 +1,40 @@
+# トライン4：ザ・ナイトメア プリンス 1.0.3
+# BID: B70F06EAC87FA2AF
+# REF: 00 00 00 00 00 00 41 40, its xref
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target_max
+    value_type: double
+    default_value: 34
+    evaluate: "1.02 * FRAMETIME_TARGET"
+  -
+    type: variable
+    name: dr_target_min
+    value_type: double
+    default_value: 33
+    evaluate: "0.99 * FRAMETIME_TARGET"
+MASTER_WRITE:
+  # Allow changing dynamic resolution timings
+  # Max
+  -
+    type: asm_a64
+    main_offset: 0x16DC3B8
+    instructions: [
+      [adrp, x8, $dr_target_max],
+      [ldr, d2, [x8, $dr_target_max]]
+    ]
+  # Min
+  -
+    type: asm_a64
+    main_offset: 0x16DC404
+    instructions: [
+      [adrp, x10, $dr_target_min]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x16DC418
+    instructions: [
+      [ldr, d4, [x10, $dr_target_min]]
+    ]

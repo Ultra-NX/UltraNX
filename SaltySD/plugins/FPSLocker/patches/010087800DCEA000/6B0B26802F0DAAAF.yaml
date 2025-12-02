@@ -1,8 +1,6 @@
 # WRC8 1.4.0
 # BID: 6B0B26802F0DAAAF
 
-unsafeCheck: true
-
 ALL_FPS:
   # OptimalFrameDuration_ms = (1000/FPS) - (0.07 * (1000/30)
   -

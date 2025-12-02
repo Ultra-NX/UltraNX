@@ -1,7 +1,5 @@
 # WRC10 1.1.0
-# BID: 69CACEEC5F01C418
-
-unsafeCheck: true
+# BID: 69CACEEC5F01C41B
 
 ALL_FPS:
   # OptimalFrameDuration_ms = (1000/FPS) - (0.07 * (1000/30)

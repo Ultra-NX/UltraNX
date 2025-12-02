@@ -1,0 +1,25 @@
+# Rune Factory: Guardians of Azuma US 1.1.1
+# BID: F678FD2BB197125B
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8F68D40, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8FA2470, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x7F816E8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

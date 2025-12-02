@@ -1,0 +1,10 @@
+# WRC 제너레이션 - FIA 월드 랠리 챔피언십 1.2.2
+# BID: B8BE1CFAE53CAEBE
+
+ALL_FPS:
+  # OptimalFrameDuration_ms = (1000/FPS) - (0.07 * (1000/30)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2D5A83C]
+    value_type: float
+    value: "FRAMETIME_TARGET - (0.07 * (1000/30))"

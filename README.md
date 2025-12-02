@@ -8,9 +8,7 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [UltraNX 2.6|R3](https://github.com/Ultra-NX/UltraNX/releases/tag/2.6-R3) Поддерживает все HOS до 20.5.0 включительно
-
-### [UltraNX 2.7|Pre2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.7-Pre2) Поддерживает все HOS до 21.0.1 включительно. Не полноценный релиз!
+### [UltraNX 2.7|R1](https://github.com/Ultra-NX/UltraNX/releases/tag/2.7-R1) Поддерживает все HOS до 21.0.1 включительно
 
 
 
@@ -93,7 +91,7 @@
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Пакет патчей для FPSLocker, позволяет обновить все патчи сразу, вместо скачивания по одному через оверлей FPSLocker'а. В Ультре по умолчанию всегда последние патчи, так что достаточно своевременно обновлять сборку.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
       * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - Пакет для скачивания, установки и управления модами для игр.
-      * [sys-ftpd](https://github.com/tomvita/sys-ftpd-light) - FTP сервер, работающий на фоне.
+      * [sys-ftpd](https://github.com/ELY3M/sys-ftpd) - FTP сервер, работающий на фоне.
 
 
 

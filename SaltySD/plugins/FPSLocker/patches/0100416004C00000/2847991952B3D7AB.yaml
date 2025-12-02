@@ -1,7 +1,5 @@
-# DOOM 1.4
+# DOOM `West` 1.4
 # BID: 2847991952B3D7AB
-
-unsafeCheck: true
 
 ALL_FPS:
   # rs_460Threshold (default is 0.285)

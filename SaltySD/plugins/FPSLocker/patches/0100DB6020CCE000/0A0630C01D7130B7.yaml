@@ -1,0 +1,10 @@
+# Little Droid 1.0.4
+# BID: 0A0630C01D7130B7
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x52BA6B8, 0x50]
+    value_type: uint32
+    value: "141120000 / FPS_TARGET"

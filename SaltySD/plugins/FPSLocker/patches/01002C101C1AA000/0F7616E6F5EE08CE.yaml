@@ -1,0 +1,20 @@
+# Expeditions: A Mudrunner Game 1.19.0.0
+# BID: 0F7616E6F5EE08CE
+# REF: 01 04 0C 5E 00 10 2E 1E
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 33.333333
+    evaluate: FRAMETIME_TARGET
+MASTER_WRITE:
+# Redirect DR frametime target
+  -
+    type: asm_a64
+    main_offset: 0x177D4A4
+    instructions: [
+      [adrp, x13, $dr_target],
+      [ldr, s2, [x13, $dr_target]]
+    ]

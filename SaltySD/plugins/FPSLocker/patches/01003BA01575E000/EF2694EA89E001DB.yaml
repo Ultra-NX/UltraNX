@@ -1,0 +1,25 @@
+# Nickelodeon Kart Racers 3: Slime Speedway 0.3.2.15969
+# BID: EF2694EA89E001DB
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7F32158, 0]
+    value_type: float
+    value: [FRAMETIME_TARGET, FRAMETIME_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x7764D78, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7F5FD48, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

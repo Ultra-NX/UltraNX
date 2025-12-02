@@ -1,0 +1,10 @@
+# Soul Stalker 1.0.2
+# BID: 38730D109E48050C
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x62BDD40, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

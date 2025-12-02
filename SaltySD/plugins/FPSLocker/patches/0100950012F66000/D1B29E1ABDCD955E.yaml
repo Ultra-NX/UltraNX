@@ -1,0 +1,38 @@
+# テニス ワールドツアー 2 1.3.0
+# BID: D1B29E1ABDCD955E
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.03333333333
+    evaluate: "1 / FPS_TARGET"
+  -
+    type: code
+    name: tripleBuffer
+    instructions: [
+      [mov, w9, 3],
+      [str, w9, [x8, 0x1A0]],
+      [mov, w8, w9],
+      [ret]
+    ]
+MASTER_WRITE:
+  # Triple buffer
+  # REF: 00 40 00 00 00 04 00 00 00 88 00 00 02 00 00 00
+  -
+    type: asm_a64
+    main_offset: 0x726338
+    instructions: [
+      [bl, _tripleBuffer()]
+    ]
+  # Redirect Dynamic Resolution target reading to MAIN + 0x30C3F00
+  # REF: 28 11 91 52 08 A1 A7 72 03 01 27 1E
+  -
+    type: asm_a64
+    main_offset: 0x1896448
+    instructions: [
+      [adrp, x12, $dr_target],
+      [ldr, s17, [x12, $dr_target]],
+      [nop]
+    ]

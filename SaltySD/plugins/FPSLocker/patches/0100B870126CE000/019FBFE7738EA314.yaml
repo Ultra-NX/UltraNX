@@ -1,8 +1,6 @@
 # SHIN MEGAMI TENSEI V 1.0.2
 # BID: 019FBFE7738EA314
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
   -

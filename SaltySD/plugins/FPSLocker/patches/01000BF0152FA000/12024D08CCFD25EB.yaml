@@ -1,8 +1,6 @@
 # Zombie Army 4: Dead War 1.1.1
 # BID: 12024D08CCFD25EB
 
-unsafeCheck: true
-
 ALL_FPS:
   # Dynamic Resolution FPS Target
   -

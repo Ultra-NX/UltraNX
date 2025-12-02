@@ -1,8 +1,6 @@
 # Star Overdrive 1.0.10
 # BID: 6D05923E7005E182
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.VSync
   -

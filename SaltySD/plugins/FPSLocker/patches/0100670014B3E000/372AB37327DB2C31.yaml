@@ -1,0 +1,27 @@
+# ウムランギジェネレーション 1.6.6.0
+# BID: 372AB37327DB2C31
+
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_lock
+    value_type: float
+    default_value: 0.03333333333
+    evaluate: "1 / FPS_TARGET"
+
+MASTER_WRITE:
+  # Read FPS Lock from MAIN+0x49FCFF0
+  ## REF: 81 1a 40 bd 02 10 2e 1e 
+  ## REF: FPSTarget.<>d__6::MoveNext()
+  -
+    type: asm_a64
+    main_offset: 0x2DF1E60
+    instructions: [
+      [adrp, x8, $fps_lock],
+      [ldr, s1, [x8, $fps_lock]],
+      [nop]
+    ]
+ALL_FPS:
+  -
+    type: block
+    what: timing

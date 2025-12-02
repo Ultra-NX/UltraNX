@@ -1,10 +1,8 @@
 # Ultra Age 2.0.4
 # BID: CA77083E259D87A2
 
-unsafeCheck: true
-
 ALL_FPS:
-  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 2 decimals
+  # r.DynamicRes.FrameTimeBudget
   -
     type: evaluate_write
     address: [MAIN, 0x7984A48, 0]

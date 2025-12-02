@@ -2,7 +2,7 @@
 # BID: 5AD255D6667B6EB5
 
 ALL_FPS:
-  # fb::Settings<fb::GameRenderSettings>::s_settings + 0x20
+  # REF: fb::Settings<fb::GameRenderSettings>::s_settings
   # Dynamic Resolution frametime target
   -
     type: evaluate_write

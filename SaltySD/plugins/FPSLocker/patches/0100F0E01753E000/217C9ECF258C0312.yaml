@@ -1,0 +1,32 @@
+# Dusk Diver 2 1.0.1
+# BID: 217C9ECF258C0312
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate to untie game speed from framerate and unlock FPS
+  -
+    type: write
+    address: [MAIN, 0x77C7098, 0x7A4]
+    address_unsafe: true
+    value_type: uint32
+    # Default is 0x47, bUseFixedFrameRate |= 0x40 
+    # By writing 7 we are making sure that other flags are maintained: 
+    # bAllowMultiThreadedAnimationUpdate |= 4
+    # bOptimizeAnimBlueprintMemberVariableAccess |= 2
+    # bCanBlueprintsTickByDefault |= 1
+    value: 7
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to 1 decimal
+  -
+    type: evaluate_write
+    address: [MAIN, 0x779A0E8, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x77C79B8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing
+

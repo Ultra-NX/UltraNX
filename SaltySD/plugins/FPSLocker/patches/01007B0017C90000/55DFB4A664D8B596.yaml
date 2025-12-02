@@ -1,8 +1,6 @@
 # Morbid: The Lords of Ire 1.02
 # BID: 55DFB4A664D8B596
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.VSync
   -

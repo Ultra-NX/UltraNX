@@ -1,0 +1,19 @@
+# Caligula Overdose/カリギュラ オーバードーズ 1.01
+# BID: A953B35A45BEA33D
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to one decimal
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5CF2530, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5D170A8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

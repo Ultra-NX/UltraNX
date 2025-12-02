@@ -1,0 +1,19 @@
+# 셜록 홈즈 어웨이큰드 1.0.1
+# BID: A1E1EFBA68B846A9
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7D81968, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x75811D8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

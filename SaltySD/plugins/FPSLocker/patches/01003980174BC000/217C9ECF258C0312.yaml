@@ -1,4 +1,4 @@
-# Dusk Diver 2 1.0.1
+# Dusk Diver 2 `US` 1.0.1
 # BID: 217C9ECF258C0312
 
 ALL_FPS:
@@ -29,4 +29,3 @@ ALL_FPS:
   -
     type: block
     what: timing
-

@@ -1,0 +1,11 @@
+# Tomb Raider: Definitive Edition 1.0.1
+# BID: 2A4A71E176DAA356
+
+ALL_FPS:
+  # Dynamic Resolution Frametime Target
+  # REF: E9 F3 00 B2 A9 40 A8 F2 A9 40 E8 F2
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1C2BB00]
+    value_type: float
+    value: FRAMETIME_TARGET

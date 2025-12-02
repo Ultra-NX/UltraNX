@@ -1,0 +1,25 @@
+# CRISIS CORE -FINAL FANTASY VII- REUNION Asia 1.0.4
+# BID: 4710B51EB3A3C05C
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (1000/FPS) rounded to 1 decimal
+  -
+    type: evaluate_write
+    address: [MAIN, 0x96CFDA8, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x96FDCD0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x8EFC0E8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

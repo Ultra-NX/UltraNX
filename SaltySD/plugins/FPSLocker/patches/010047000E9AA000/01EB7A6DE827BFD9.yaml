@@ -1,0 +1,35 @@
+# AO Tennis 2 1.7.0
+# BID: 01EB7A6DE827BFD9
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.03333333333
+    evaluate: "1 / FPS_TARGET"
+  -
+    type: code
+    name: tripleBuffer
+    instructions: [
+      [mov, w9, 3],
+      [str, w9, [x21, 0x1A0]],
+      [mov, w8, w9],
+      [ret]
+    ]
+MASTER_WRITE:
+  -
+    type: asm_a64
+    main_offset: 0x3DBAFC
+    instructions: [
+      [bl, _tripleBuffer()]
+    ]
+  # Redirect Dynamic Resolution target
+  # REF: EC AF 40 B9 EB 07 9F 1A, first adrp + ldr below
+  -
+    type: asm_a64
+    main_offset: 0x131922C
+    instructions: [
+      [adrp, x12, $dr_target],
+      [ldr, s18, [x12, $dr_target]]
+    ]

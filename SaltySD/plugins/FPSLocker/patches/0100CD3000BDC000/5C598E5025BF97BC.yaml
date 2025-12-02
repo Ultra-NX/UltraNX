@@ -1,0 +1,52 @@
+# ドラゴンクエストヒーローズI・II for Nintendo Switch 1.0.3
+# BID: 5C598E5025BF97BC
+
+DECLARATIONS:
+  -
+    type: code
+    name: tripleBuffer
+    instructions: [
+      [mov, w8, 3],
+      [str, w8, [x20, 0x2AB8]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # REF: check first function that has nvnWindowBuilderSetTextures, it must read numBuffers from pointer with offset
+  -
+    type: asm_a64
+    main_offset: 0xBA10A4
+    instructions: [
+      [bl, _tripleBuffer()]
+    ]
+ALL_FPS:
+  # REF: 01 00 00 00 01 00 00 00 3C 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0x17A1C10]
+    value_type: uint32
+    value: [VSYNC_TARGET, VSYNC_TARGET, FPS_TARGET, FPS_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x17A1C20]
+    value_type: float
+    value: [FPS_TARGET, FPS_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x17B23F0]
+    value_type: uint32
+    value: [VSYNC_TARGET, VSYNC_TARGET, FPS_TARGET, FPS_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x17B2400]
+    value_type: float
+    value: [FPS_TARGET, FPS_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1806BE0]
+    value_type: uint32
+    value: [VSYNC_TARGET, VSYNC_TARGET, FPS_TARGET, FPS_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1806BF0]
+    value_type: float
+    value: [FPS_TARGET, FPS_TARGET]

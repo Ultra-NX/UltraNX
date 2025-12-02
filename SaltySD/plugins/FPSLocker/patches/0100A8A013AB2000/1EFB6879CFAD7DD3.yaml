@@ -1,0 +1,25 @@
+# Hazel Sky 1.0.10f
+# BID: 1EFB6879CFAD7DD3
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x70E9148, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7116A18, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x691DB78, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

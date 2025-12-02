@@ -1,0 +1,38 @@
+# 鬼滅の刃 ヒノカミ血風譚 1.53
+# BID: 14C878ECCA9D7CB5
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate to unlock framerate
+  -
+    type: write
+    address: [MAIN, 0xB314540, 0x7F8]
+    address_unsafe: true
+    value_type: uint32
+    # Default is 0x47, bUseFixedFrameRate |= 0x40 
+    # By writing 7 we are making sure that other flags are maintained: 
+    # bAllowMultiThreadedAnimationUpdate |= 4
+    # bOptimizeAnimBlueprintMemberVariableAccess |= 2
+    # bCanBlueprintsTickByDefault |= 1
+    value: 7
+  # Disable CustomTimeStep
+  -
+    type: write
+    address: [MAIN, 0xB314540, 0x810]
+    value_type: uint8
+    value: 0
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xB314830, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0xAB49110, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing
+

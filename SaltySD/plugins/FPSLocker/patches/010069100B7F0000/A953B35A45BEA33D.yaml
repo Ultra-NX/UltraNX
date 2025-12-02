@@ -1,8 +1,6 @@
 # The Caligula Effect: Overdose 1.01
 # BID: A953B35A45BEA33D
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget (1000/FPS) cutted to one decimal
   -

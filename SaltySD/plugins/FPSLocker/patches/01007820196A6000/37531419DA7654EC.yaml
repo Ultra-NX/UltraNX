@@ -1,0 +1,35 @@
+# Red Dead Redemption 1.0.4-1.0.6
+# BID: 37531419DA7654EC
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_frametime_target
+    value_type: float
+    default_value: 31.415926
+    evaluate: "0.94247778 * FRAMETIME_TARGET"
+  -
+    type: code
+    name: getDrTarget
+    instructions: [
+      [adrp, x20, $dr_frametime_target],
+      [ldr, s2, [x20, $dr_frametime_target]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # REF: 22 BC 22 1E 21 93 45 BD
+  # sagRenderer::UpdateDynamicResolutionScaling()
+  -
+    type: asm_a64
+    main_offset: 0x139647C
+    instructions: [
+      [bl, _getDrTarget()]
+    ]
+ALL_FPS:
+  # rage::grcDevice::sm_FrameLock
+  # I guess just in case?
+  -
+    type: evaluate_write
+    address: [MAIN, 0x20DBA20]
+    value_type: uint32
+    value: VSYNC_TARGET

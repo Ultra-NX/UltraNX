@@ -1,8 +1,6 @@
 # The Elder Scrolls V: Skyrim 1.1.392.3925134
 # BID: 4F7995092FAA5DC0
 
-unsafeCheck: true
-
 ALL_FPS:
   # Dynamic Resolution Frame Time Min = 0.9 * (1000/FPS)
   -
