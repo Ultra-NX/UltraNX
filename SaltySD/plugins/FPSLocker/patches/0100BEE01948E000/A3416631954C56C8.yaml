@@ -1,0 +1,47 @@
+# Beholder 3 1.0.1
+# BID: A3416631954C56C8
+
+DECLARATIONS:
+  # Changed math because frametime peaks at 60 FPS
+  -
+    type: variable
+    name: fps_target
+    value_type: uint32
+    default_value: 30
+    evaluate: FPS_TARGET - 5
+  -
+    type: variable
+    name: fps_target_max
+    value_type: uint32
+    default_value: 40
+    evaluate: FPS_TARGET - 1
+  -
+    type: code
+    name: getFpsTarget
+    instructions: [
+      [adrp, x9, $fps_target],
+      [ldr, w9, [x9, $fps_target]],
+      [ret]
+    ]
+  -
+    type: code
+    name: getFpsTargetMax
+    instructions: [
+      [adrp, x9, $fps_target_max],
+      [ldr, w9, [x9, $fps_target_max]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # DynamicResolutionURP::Update(), offsets 0x30 and 0x34
+  -
+    type: asm_a64
+    main_offset: 0x2E765DC
+    instructions: [
+      [bl, _getFpsTarget()]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x2E765F8
+    instructions: [
+      [bl, _getFpsTargetMax()]
+    ]

@@ -1,0 +1,18 @@
+# Card-en-Ciel 1.6.0
+# BID: 9558FFD5CABC4612
+# Buffers are hardcoded line by line and put into fixed size heap allocation, so getting triple buffer requires effort
+
+ALL_FPS:
+  # Min delta FPS Target
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2289610, 0x50]
+    value_type: uint32
+    value: FPS_TARGET
+  # Internal FPS Lock
+  # REF: look at nn::os::SleepThread() called in nnMain()
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2289610, 0x60]
+    value_type: float
+    value: 1 / FPS_LOCK_TARGET

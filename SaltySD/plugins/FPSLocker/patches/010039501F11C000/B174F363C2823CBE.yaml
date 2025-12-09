@@ -5,7 +5,7 @@ ALL_FPS:
   # DynamicResolutionManager_TypeInfo
   -
     type: evaluate_write
-    address: [MAIN, 0x84A6F58, 0xB8, 0]
+    address: [MAIN, 0x84A6F58, 0xB8, 8]
     address_unsafe: true
     value_type: double
     value: [FPS_TARGET, FRAMETIME_TARGET]

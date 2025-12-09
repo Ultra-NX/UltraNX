@@ -1,0 +1,10 @@
+# Beholder 2 1.0.3
+# BID: 5D3FE9C0FAA44B4C
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x4275238, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

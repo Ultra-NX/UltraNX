@@ -1,0 +1,10 @@
+# Fruitbus 1.0.2
+# BID: 2E049E21624484CF
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9A7CBF8, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

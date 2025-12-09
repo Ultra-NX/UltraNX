@@ -1,0 +1,10 @@
+# There Is No Light 1.0.3
+# BID: 76EB8E0320472553
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5E6BCA0, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

@@ -1,0 +1,11 @@
+# Risen 1.0.1
+# BID: 94EA2A7C7EE32EEF
+
+ALL_FPS:
+  # Dynamic Resolution factors
+  # REF: g_GetModuleAdmin<eCGfxAdmin>(void)::s_pAdmin + 0x610
+  -
+    type: evaluate_write
+    address: [MAIN, 0x41FDEA0, 0x610]
+    value_type: double
+    value: ["5.2 * (FPS_TARGET / 30)", "1.3 * (FPS_TARGET / 30)"]

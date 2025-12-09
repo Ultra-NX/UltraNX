@@ -1,0 +1,16 @@
+# Lumo 2 1.0.0.0
+# BID: 5C2942CCDF0AA6EA
+
+ALL_FPS:
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6BB0EE8, 0]
+    value_type: uint32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7BC68D0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]

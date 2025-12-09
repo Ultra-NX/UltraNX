@@ -1,0 +1,25 @@
+# American Arcadia 1.0.3
+# BID: 2CE51030AF9800A5
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (default is 34.5)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x76908F0, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x66B5390, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x76BE650, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing
