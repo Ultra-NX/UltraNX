@@ -1,0 +1,12 @@
+# Once Upon A KATAMARI EUR 1.0.4
+# BID: 1A7F96143CE7FF25
+
+ALL_FPS:
+  # Dynamic Resolution
+  ## REF: App.KatamariSin.AppSupport_TypeInfo
+  ## REF: 89 07 80 D2  20 04 00 0F, ADRP X20 above it + LDR below it
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8F86948, 0xB8, 0x18]
+    value_type: double
+    value: "0.9 * FRAMETIME_TARGET"

@@ -1,0 +1,184 @@
+# The Legend of Zelda: Tears of The Kingdom 1.4.3
+# BID: 277178B7DBA1B6D4
+
+Addons:
+  - atmosphere/contents/0100F2C0115B6000/exefs/main.npdm
+
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_target
+    value_type: float
+    default_value: 30
+    evaluate: FPS_TARGET
+  -
+    type: variable
+    name: cutscene_flag
+    value_type: uint8
+    default_value: 0
+  -
+    type: variable
+    name: dr_factor
+    value_type: float
+    default_value: 0.001
+    evaluate: FPS_TARGET / 30000
+  -
+    type: const
+    name: nanoseconds_in_s
+    value: 1000000000
+  -
+    type: code
+    name: cutscene_1
+    instructions: [
+      [stp, x29, x30, [sp, -16], "!"],
+      [mov, x29, sp],
+      [mov, w2, 1],
+      [adrp, x3, $cutscene_flag],
+      [strb, w2, [x3, $cutscene_flag]],
+      [bl, 0x772FD8], # Jump to original BL
+      [ldp, x29, x30, [sp], 16],
+      [ret]
+    ]
+  -
+    type: code
+    name: cutscene_2
+    instructions: [
+      [adrp, x3, $cutscene_flag],
+      [strb, w0, [x3, $cutscene_flag]],
+      [b, _setUserInactivityDetectionTimeExtended()],
+    ]
+  -
+    type: code
+    name: blackBackgroundFix
+    instructions: [
+      [fcmp, s1, 0.0],
+      [b.ne, :goto1],
+      [ldurh, w8, [x24, -6]],
+      [cmp, w8, 5],
+      [b.ne, :goto1],
+      [ldurh, w8, [x24, -8]],
+      [cmp, w8, 5],
+      [b.ne, :goto1],
+      [fmov, s8, 1.0],
+      :goto1, [fmadd, s10, s0, s8, s1],
+      [ret]
+    ]
+MASTER_WRITE:
+  # Force default 30 FPS Lock
+  ## REF: nvnWindowBuilderSetPresentInterval, function without UnlockMutex at the end
+  -
+    type: asm_a64
+    main_offset: 0x1047B2C
+    instructions: [
+      [mov, w1, 2]
+    ]
+  # Remove double buffer
+  ## REF: A0 2A 40 F9 61 A2 40 39
+  -
+    type: asm_a64
+    main_offset: 0xBE14A8
+    instructions: [
+      [mov, w1, 1]
+    ]
+  # Code Injected, $x1 + 0xD8 - last frametime without compensation long ticks, $x0 + 0x50 - fps target used for calculation int,
+  # $x0 + 0x24 - our fps target used for calculation but as float, originally is stored there 30 FPS int that seems to do nothing outside of this function
+  ## REF: 09 60 41 39 F3 03 01 AA
+  - 
+    type: asm_a64
+    main_offset: 0x2DB18C
+    instructions: [
+      [adrp, x2, $fps_target],
+      [ldr, s9, [x2, $fps_target]],
+      [mov, x20, x0],
+      [mov, x21, x1],
+      [ldr, x0, [x1, 0xd8]],
+      [bl, _convertTickToTimeSpan()],
+      [mov, w2, $nanoseconds_in_s],
+      [movk, w2, $nanoseconds_in_s, 16],
+      [ucvtf, s2, w2],
+      [ucvtf, s1, x0],
+      [fdiv, s1, s2, s1],
+      [fcmp, s1, s9],
+      [fcsel, s1, s9, s1, gt],
+      [fmov, s9, 15.0],
+      [fcmp, s1, s9],
+      [fcsel, s1, s9, s1, lt],
+      [fcvtzu, w2, s1],
+      [str, w2, [x20, 0x50]],
+      [str, s1, [x20, 0x24]],
+      [b, 0x2DB284] # Jump to the end of function, to where stack is restored
+    ]
+  ## Use our fps target
+  ## REF: 60 52 42 BD 08 4E A8 52
+  ### Replace LDR S0, [X22,#0x250]
+  -
+    type: asm_a64
+    main_offset: 0x2DAA54
+    instructions: [
+      [ldr, s0, [x19, 0x224]]
+    ]
+  ### Replace SCVTF S0, S0
+  -
+    type: asm_a64
+    main_offset: 0x2DAA6C
+    instructions: [
+      [nop]
+    ]
+  ## REF: 14 01 40 F9 08 4E A8 52
+  ### Replace LDR S0, [X22,#0x250]
+  -
+    type: asm_a64
+    main_offset: 0x3E562C
+    instructions: [
+      [ldr, s0, [x22, 0x224]]
+    ]
+  ### Replace SCVTF S0, S0
+  -
+    type: asm_a64
+    main_offset: 0x3E5638
+    instructions: [
+      [nop]
+    ]
+  # When prerendered cutscene is active write flag
+  ## REF: 68 52 40 79 08 01 19 32 68 52 00 79
+  ## BL to Code Cave 1
+  -
+    type: asm_a64
+    main_offset: 0x2B36100
+    instructions: [
+      [bl, _cutscene_1()]
+    ]
+  ## REF: 68 52 40 79 08 79 18 12 68 52 00 79, inside call
+  ## B to Code Cave 2
+  -
+    type: asm_a64
+    main_offset: 0x2B33918
+    instructions: [
+      [b, _cutscene_2()]
+    ]
+  # Adjust DR timing to factor
+  # REF: 88 02 15 CB 00 01 23 9E
+  -
+    type: asm_a64
+    main_offset: 0xA1B94
+    instructions: [
+      [adrp, x8, $dr_factor],
+      [ldr, s1, [x8, $dr_factor]]
+    ]
+  # Fix black background for D-pad menu
+  ## REF: 08 20 20 1E 0A 04 08 1F
+  -
+    type: asm_a64
+    main_offset: 0x1FBC80
+    instructions: [
+      [bl, _blackBackgroundFix()], # Jump to Code Cave 3
+      [fcmp, s0, 0.0]
+    ]
+ALL_FPS:
+  -
+    type: compare
+    compare_address: [VARIABLE, cutscene_flag]
+    compare_value: 1
+    compare_type: "=="
+    value_type: refresh_rate
+    value: 30

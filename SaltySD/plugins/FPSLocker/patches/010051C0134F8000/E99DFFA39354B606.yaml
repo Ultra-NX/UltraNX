@@ -1,0 +1,34 @@
+# DRAGON BALL Z: KARAKOT + A NEW POWER AWAKENS SET 1.70
+# BID: E99DFFA39354B606
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate in cutscenes to unlock framerate
+  -
+    type: write
+    address: [MAIN, 0x9D02558, 0x810]
+    address_unsafe: true
+    value_type: uint32
+    # Default is 0x47 in cutscenes, bUseFixedFrameRate |= 0x40 
+    # By writing 7 we are making sure that other flags are maintained: 
+    # bAllowMultiThreadedAnimationUpdate |= 4
+    # bOptimizeAnimBlueprintMemberVariableAccess |= 2
+    # bCanBlueprintsTickByDefault |= 1
+    value: 7
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9CCD498, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9D02E08, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x916F698, 0]
+    value_type: int32
+    value: [0, 0]

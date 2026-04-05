@@ -2,10 +2,9 @@
 # BID: D626F7A72AF54744
 # Cutscenes don't use Dynamic Resolution
 
-unsafeCheck: true
-
 ALL_FPS:
   # Dynamic Resolution Frame Target Max in ms (default is 38, so resolution is a priority over framerate)
+  ## REF: Method$SingletonMonoBehaviour<SkyStudioTimeManager>.CheckInstance()
   -
     type: evaluate_write
     address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x38]
@@ -16,4 +15,4 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x5F5B610, 0x738, 0x70, 0x3C]
     value_type: float
-    value: "0.96 * FRAMETIME_TARGET"
+    value: "FRAMETIME_TARGET - 1.5"

@@ -1,4 +1,4 @@
-# Divinity Original Sin 2 1.0.10-1.0.11
+# Divinity Original Sin 2 1.0.10-1.0.12
 # BID: 4979B200D53BB282
 # Game is using double buffer, buffers are not allocated in loop.
 # So it's not possible to get stable FPS lock between 30 and 60 without changing refresh rate.

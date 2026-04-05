@@ -1,0 +1,60 @@
+# 삼국지14 with 파워업키트 1.0.10
+# BID: C00AA2EBF01D3A48
+# Cursor speed is tied to framerate, main menu animations speed is not adjusted properly in range from 35 to 55 FPS
+
+DECLARATIONS:
+  # DON'T PUT ANYTHING BETWEEN - START
+  -
+    type: variable
+    name: fps_lock
+    value_type: uint32
+    default_value: 30
+    evaluate: FPS_LOCK_TARGET
+  -
+    type: variable
+    name: fps_lock2
+    value_type: uint32
+    default_value: 60
+    evaluate: FPS_LOCK_TARGET
+  # DON'T PUT ANYTHING BETWEEN - END
+  -
+    type: variable
+    name: game_speed
+    value_type: float
+    default_value: 0.0333333333
+    evaluate: "1/FPS_TARGET"
+MASTER_WRITE:
+  # Redirect adjusting game speed to FPS Lock, REF: 20 79 68 BC 01 10 2E 1E 00 D8 21 7E, replace ADRP+ADD above
+  -
+    type: asm_a64
+    main_offset: 0xB8EB08
+    instructions: [
+      [adrp, x9, $fps_lock],
+      [add, x9, x9, $fps_lock]
+    ]
+  # Redirect FPS Lock, REF: C8 32 40 B9 E8 C2 00 B9, below replace LDR W8, [X0] + B
+  -
+    type: asm_a64
+    main_offset: 0x89668C
+    instructions: [
+      [adrp, x8, $fps_lock],
+      [ldr, w8, [x8, $fps_lock]]
+    ]
+  # Redirect game speed to MAIN + 0x2B92808, REF: 00 28 21 1E 00 A0 00 BD C0 03 5F D6, replace beginning of function
+  -
+    type: asm_a64
+    main_offset: 0x1112670
+    instructions: [
+      [adrp, x8, $game_speed],
+      [ldr, s0, [x0, 0xa0]],
+      [ldr, s1, [x8, $game_speed]]
+    ]
+ALL_FPS:
+  - # Adjust max delta for menus, 0 - 30 FPS, 1 - 60 FPS, REF: 20 79 68 BC 01 10 2E 1E 00 D8 21 7E, ADRP X8 + LDR W8 above
+    type: evaluate_write
+    address: [MAIN, 0x254DDF0]
+    value_type: uint32
+    value: "FPS_TARGET / 60"
+  -
+    type: block
+    what: timing

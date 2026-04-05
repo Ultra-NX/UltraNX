@@ -1,8 +1,6 @@
 # NieR:Automata The End of YoRHa Edition AS 1.0.2
 # BID: 992787E2B5425994
 
-unsafeCheck: true
-
 DECLARATIONS:
   -
     type: variable
@@ -23,7 +21,8 @@ DECLARATIONS:
     default_value: 30
     evaluate: "0.9 * FRAMETIME_TARGET"
 MASTER_WRITE:
-  # Redirect DR timings to MAIN + 0x2BE8F00, [Bad, Optimal, Good]
+  # Redirect DR timings
+  ## REF: 8C 46 A8 52  83 01 27 1E
   -
     type: asm_a64
     main_offset: 0x9C07A4
@@ -31,6 +30,7 @@ MASTER_WRITE:
       [adrp, x12, $dr_target_bad],
       [ldr, s3, [x12, $dr_target_bad]]
     ]
+  ## REF: AC 47 81 52 0C 40 A8 72, first result
   -
     type: asm_a64
     main_offset: 0x9C07F4
@@ -38,6 +38,7 @@ MASTER_WRITE:
       [adrp, x12, $dr_target_optimal],
       [ldr, w12, [x12, $dr_target_optimal]]
     ]
+  ## REF: AC 47 81 52 0C 40 A8 72, second result
   -
     type: asm_a64
     main_offset: 0x9C0844
@@ -47,6 +48,7 @@ MASTER_WRITE:
       [ldr, s0, [x12, $dr_target_optimal]],
       [adrp, x12, $dr_target_good]
     ]
+  ## REF: 00 D0 27 1E 60 20 20 1E
   -
     type: asm_a64
     main_offset: 0x9C0868

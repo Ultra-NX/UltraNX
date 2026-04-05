@@ -1,0 +1,10 @@
+# The Legend of Heroes: Trails beyond the Horizon 1.0.6
+# BID: 11D7F970861DFA66
+
+ALL_FPS:
+  # REF: C1 03 80 52 09 35 00 B9, first ADRP + ADD above it
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9FBEA0, 0x34]
+    value_type: uint32
+    value: FPS_TARGET

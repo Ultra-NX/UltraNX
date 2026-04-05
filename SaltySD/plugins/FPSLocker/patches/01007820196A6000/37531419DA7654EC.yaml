@@ -1,4 +1,4 @@
-# Red Dead Redemption 1.0.4-1.0.6
+# Red Dead Redemption 1.0.4-1.0.7
 # BID: 37531419DA7654EC
 
 DECLARATIONS:
@@ -32,4 +32,5 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x20DBA20]
     value_type: uint32
+
     value: VSYNC_TARGET

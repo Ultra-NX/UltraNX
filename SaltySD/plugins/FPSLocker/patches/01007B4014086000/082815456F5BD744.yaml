@@ -1,0 +1,18 @@
+# 룬 팩토리 5 / 符文工廠5 1.1.2
+# BID: 082815456F5BD744
+# Cutscenes don't use Dynamic Resolution
+
+ALL_FPS:
+  # Dynamic Resolution Frame Target Max in ms (default is 38, so resolution is a priority over framerate)
+  ## REF: Method$SingletonMonoBehaviour<SkyStudioTimeManager>.CheckInstance()
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5ED5E58, 0x738, 0x70, 0x38]
+    value_type: float
+    value: "TruncDec(FRAMETIME_TARGET, 1)"
+  # Dynamic Resolution Frame Target Min in ms (default is 33)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5ED5E58, 0x738, 0x70, 0x3C]
+    value_type: float
+    value: "FRAMETIME_TARGET - 1.5"

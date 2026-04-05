@@ -1,0 +1,16 @@
+# Phantom Brave: The Lost Hero 1.24
+# BID: 5CBE310E8D25E740
+
+ALL_FPS:
+  # Adjust DR FPS target
+  ## REF: Nmpl::Core::CSingleton<Nmpl::Gra::CGraMgr>::s_singleton + 0x0, this gives us an address to first function of Nmpl::Gra::CGraMgr vtable in NmplDLL.nro that we need to edit
+  ## Then we search in that NRO Nmpl::Core::System::CPerformCnt::frameRate_ and substract them to get final offset
+  -
+    type: evaluate_compare
+    compare_address: [MAIN, 0xE67160, 0, -0x75A5C0]
+    compare_type: "=="
+    compare_value_type: uint64
+    compare_value: 0x3442AB8D51FBBA4D # BID of NRO
+    address: [MAIN, 0xE67160, 0, 0xE4FCC]
+    value_type: int32
+    value: FPS_TARGET

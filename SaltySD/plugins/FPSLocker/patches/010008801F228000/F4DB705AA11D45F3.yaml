@@ -1,0 +1,20 @@
+# Tales of Berseria Remastered `US` 1.0.2
+# BID: F4DB705AA11D45F3
+
+ALL_FPS:
+  # Disable FPS Lock
+  ## REF: 08 01 40 f9 08 01 09 8b
+  ## X8 from ADD X8, X8, X9, this is the address of vsync interval. 0x4 is interval speed
+  -
+    type: write
+    address: [MAIN, 0x44D039BC]
+    value_type: uint32
+    value: [0, 1]
+  # Speed Factor
+  ## REF: 00 01 3f d6 00 00 22 1e 28 11 91 52 08 91 a7 72
+  ## Find first BLR X8 above search result (ignore BLR X8 in result), then find LDR X8, [X23, #offset]. X23 + offset is our address
+  -
+    type: evaluate_write
+    address: [MAIN, 0x44a8e680, -4]
+    value_type: float
+    value: "60 / FPS_TARGET"

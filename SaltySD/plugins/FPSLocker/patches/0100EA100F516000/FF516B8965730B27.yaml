@@ -1,0 +1,19 @@
+# The Turing Test 1.0.0
+# BID: FF516B8965730B27
+
+ALL_FPS:
+  # t.MaxFPS (Defualt value is 45)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5477B30, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x48B6380, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

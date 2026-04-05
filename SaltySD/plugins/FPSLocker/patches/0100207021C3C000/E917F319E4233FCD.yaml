@@ -1,0 +1,17 @@
+# Bendy and the Dark Revival 1.6.4s
+# BID: E917F319E4233FCD
+
+ALL_FPS:
+  # PSH.DynamicResolution.DynamicResolutionController_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3970680, 0xB8, 0]
+    address_unsafe: true
+    value_type: double
+    value: [FPS_TARGET, FRAMETIME_TARGET]
+  # UnityEngine.Time::fixedDeltaTime
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3D43700, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

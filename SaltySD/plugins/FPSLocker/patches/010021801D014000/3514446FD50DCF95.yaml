@@ -1,0 +1,34 @@
+# 超次元游汐 戰機少女 Sisters vs Sisters 1.0.0
+# BID: 3514446FD50DCF95
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_target1
+    value_type: float
+    default_value: 33.33
+    evaluate: "TruncDec(FRAMETIME_TARGET, 2)"
+  -
+    type: variable
+    name: dr_target2
+    value_type: float
+    default_value: 28.57
+    evaluate: "TruncDec(1000 / (FPS_TARGET + 5), 2)"
+MASTER_WRITE:
+  # Redirect DR timing range
+  -
+    type: asm_a64
+    main_offset: 0x3DC5770
+    instructions: [
+      [adrp, x8, $dr_target1],
+      [ldr, s1, [x8, $dr_target1]],
+      [nop]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x3DC57DC
+    instructions: [
+      [adrp, x8, $dr_target2],
+      [ldr, s1, [x8, $dr_target2]],
+      [nop]
+    ]

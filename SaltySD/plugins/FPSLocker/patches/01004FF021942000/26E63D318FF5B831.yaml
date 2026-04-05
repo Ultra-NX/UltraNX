@@ -1,0 +1,13 @@
+# EA SPORTS FC 26 1.83.c362
+# BID: 26E63D318FF5B831
+
+ALL_FPS:
+  # Internal FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0xC67B718, 8]
+    value_type: double
+    value: FPS_TARGET
+  -
+    type: block
+    what: timing

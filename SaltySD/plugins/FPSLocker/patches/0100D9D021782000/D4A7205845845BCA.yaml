@@ -1,0 +1,19 @@
+# 百日戰記 -最終防衛學園- 1.2.0
+# BID: D4A7205845845BCA
+# Last found function with REF: FD 7B BE A9 F3 0B 00 F9 FD 03 00 91 E0 03 01 2A stores some code related to playing above 60 FPS. Look at it if someone will have an issue playing above 60 FPS.
+
+ALL_FPS:
+  # FPS Lock
+  # REF: 1B 41 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0xC97D18]
+    value_type: uint32
+    value: FRAMETIME_TARGET * 1000
+  # Unknown value, but set in the same function as FPS lock, so it may be important
+  # REF: 3C 00 00 00 01 00 00 00 00 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0xC97CE4]
+    value_type: uint32
+    value: FPS_TARGET

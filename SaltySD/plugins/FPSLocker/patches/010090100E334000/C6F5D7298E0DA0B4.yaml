@@ -1,0 +1,12 @@
+# Don't Starve Together 1.26.0
+# BID: C6F5D7298E0DA0B4
+
+ALL_FPS:
+  # FPS Lock
+  # REF: Find instruction 36 D9 34 F8, use X9 to find main offset
+  -
+    type: evaluate_write
+    address: [MAIN, 0x91E448, 0, 0x320]
+    address_unsafe: true
+    value_type: float
+    value: "1 / FPS_TARGET"

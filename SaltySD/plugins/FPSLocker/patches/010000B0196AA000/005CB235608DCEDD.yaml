@@ -1,0 +1,36 @@
+# レッド・デッド・リデンプション 1.0.6-1.0.7
+# BID: 005CB235608DCEDD
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_frametime_target
+    value_type: float
+    default_value: 31.415926
+    evaluate: "0.94247778 * FRAMETIME_TARGET"
+  -
+    type: code
+    name: getDrTarget
+    instructions: [
+      [adrp, x20, $dr_frametime_target],
+      [ldr, s2, [x20, $dr_frametime_target]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # REF: 22 BC 22 1E 21 93 45 BD
+  # sagRenderer::UpdateDynamicResolutionScaling()
+  -
+    type: asm_a64
+    main_offset: 0x139521C
+    instructions: [
+      [bl, _getDrTarget()]
+    ]
+ALL_FPS:
+  # rage::grcDevice::sm_FrameLock
+  # I guess just in case?
+  ## REF: 6A 19 01 B9 EA 17 9F 1A, ADRP X21 + STR below it
+  -
+    type: evaluate_write
+    address: [MAIN, 0x20DAA20]
+    value_type: uint32
+    value: VSYNC_TARGET

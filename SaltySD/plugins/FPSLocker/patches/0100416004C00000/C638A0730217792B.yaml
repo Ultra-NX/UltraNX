@@ -1,0 +1,71 @@
+# DOOM `West` 1.4.1
+# BID: C638A0730217792B
+
+ALL_FPS:
+  # rs_460Threshold (default is 0.285)
+  -
+    type: write
+    address: [MAIN, 0x593E52C]
+    value_type: float
+    value: 1
+  # rs_raiseMilliseconds
+  -
+    type: evaluate_write
+    address: [MAIN, 0x593E9EC]
+    value_type: float
+    value: "0.966 * FRAMETIME_TARGET"
+  # rs_dropMilliseconds
+  -
+    type: evaluate_write
+    address: [MAIN, 0x593E954]
+    value_type: float
+    value: "0.99 * FRAMETIME_TARGET"
+  # com_adaptiveTickMaxHz (default is 30)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x66B3F50]
+    value_type: int32
+    value: FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x66B3F54]
+    value_type: float
+    value: FPS_TARGET
+  # com_adaptiveTickMinHz (default is 30)
+  -
+    type: write
+    address: [MAIN, 0x66B3EB8]
+    value_type: uint32
+    value: 15
+  -
+    type: write
+    address: [MAIN, 0x66B3EBC]
+    value_type: float
+    value: 15
+  # With some update devs broke some cutscenes, they apply fixed speed for them. Removing this fixed speed causes myriads of weird issues, that's why I'm locking those cutscenes to 30 FPS.
+  -
+    type: compare
+    compare_address: [MAIN, 0x7377D64]
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 0
+    value_type: refresh_rate
+    value: 30
+  -
+    type: compare
+    compare_address: [MAIN, 0x7377D64]
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 0
+    address: [MAIN, 0x593E9EC]
+    value_type: float
+    value: 32.2
+  -
+    type: compare
+    compare_address: [MAIN, 0x7377D64]
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 0
+    address: [MAIN, 0x593E954]
+    value_type: float
+    value: 33

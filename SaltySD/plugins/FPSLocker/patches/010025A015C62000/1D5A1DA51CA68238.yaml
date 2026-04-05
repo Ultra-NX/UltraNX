@@ -1,0 +1,10 @@
+# Little Orpheus 1.0.2
+# BID: 1D5A1DA51CA68238
+
+ALL_FPS:
+  # REF: Search with Edizon double 33, at offset -8 it should be float 0.6
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3A8BD30, 0x2F0, 0x500]
+    value_type: double
+    value: "FRAMETIME_TARGET - (1/3)"

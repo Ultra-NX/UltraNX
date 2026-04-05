@@ -1,0 +1,26 @@
+# Fuga: Melodies of Steel 2 1.5.2
+# BID: 2C45FAC26500CBAD
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x7315498, 0x7A4]
+    address_unsafe: true
+    value_type: uint32
+    value: 7
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6B1AF58, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7315DB8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

@@ -1,0 +1,11 @@
+# RAFT SURVIVAL SIMULATOR 1.0.0
+# BID: 99F0F054E0EE7899
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  # Required for different refresh rates to not jitter
+  -
+    type: evaluate_write
+    address: [MAIN, 0x4A39300, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

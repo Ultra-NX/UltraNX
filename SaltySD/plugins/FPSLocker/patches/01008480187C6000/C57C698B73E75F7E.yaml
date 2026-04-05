@@ -1,0 +1,41 @@
+# DARQ Ultimate Edition 1.0.3
+# BID: C57C698B73E75F7E
+
+DECLARATIONS:
+  -
+    type: variable
+    name: frametime_target
+    value_type: double
+    default_value: 33.333332061767578
+    evaluate: "FRAMETIME_TARGET - 1.0" # Default value is FRAMETIME_TARGET, but it has issues with reaching 60 FPS
+  -
+    type: code
+    name: getFrametimeTarget1
+    instructions: [
+      [adrp, x8, $frametime_target],
+      [ldr, d9, [x8, $frametime_target]],
+      [ret]
+    ]
+  -
+    type: code
+    name: getFrametimeTarget2
+    instructions: [
+      [adrp, x8, $frametime_target],
+      [ldr, d1, [x8, $frametime_target]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # REF: 69 26 40 fd
+  -
+    type: asm_a64
+    main_offset: 0x17FE28C
+    instructions: [
+      [bl, _getFrametimeTarget1()]
+    ]
+  # REF: 61 26 40 fd 00 20 61 1e
+  -
+    type: asm_a64
+    main_offset: 0x17FE2B8
+    instructions: [
+      [bl, _getFrametimeTarget2()]
+    ]

@@ -1,0 +1,13 @@
+# EA SPORTS FC 26 1.82.4264
+# BID: EDE4F70074EC37C7
+
+ALL_FPS:
+  # Internal FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0xC667718, 8]
+    value_type: double
+    value: FPS_TARGET
+  -
+    type: block
+    what: timing

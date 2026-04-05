@@ -1,0 +1,10 @@
+# Blade Jumper 1.0.0
+# BID: 0A3CBB829DB69221
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5D0F000, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

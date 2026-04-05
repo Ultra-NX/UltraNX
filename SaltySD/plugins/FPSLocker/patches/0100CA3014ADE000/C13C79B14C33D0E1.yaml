@@ -1,0 +1,27 @@
+# Umurangi Generation 1.6.9.0 (Cartridge exclusive update)
+# BID: C13C79B14C33D0E1
+
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_lock
+    value_type: float
+    default_value: 0.03333333333
+    evaluate: "1 / FPS_TARGET"
+MASTER_WRITE:
+  ## REF: 81 1a 40 bd 02 10 2e 1e 
+  ## REF: FPSTarget.<>d__6::MoveNext()
+  -
+    type: asm_a64
+    main_offset: 0x1F083A0
+    instructions: [
+      [adrp, x8, $fps_lock],
+      [ldr, s1, [x8, $fps_lock]],
+      [mov, x0, xzr],
+      [ldr, s0, [x20, 0x24]],
+      [nop]
+    ]
+ALL_FPS:
+  -
+    type: block
+    what: timing

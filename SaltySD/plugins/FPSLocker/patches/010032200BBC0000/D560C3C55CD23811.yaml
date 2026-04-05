@@ -1,0 +1,25 @@
+# Ragtag Adventurers 1.1.5.6
+# BID: D560C3C55CD23811
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5B7C530, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1) - 0.1", "TruncDec(FRAMETIME_TARGET, 1) - 0.1"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5BA1098, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x533B880, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

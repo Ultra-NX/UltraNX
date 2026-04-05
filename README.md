@@ -82,7 +82,7 @@
       * [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Форк Status Monitor от kantorski.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay) - Та самая игра в виде оверлея. Работает только на последних версиях Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Регулировка глобальной громкости, позволяет поднять громкость выше максимума. Использовать аккуратно!
-      * [NX-FanControl](https://github.com/Insektaure/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
+      * [NX-FanControl](https://github.com/Insektaure/NX-FanControl) + [NX-FanControl Overlay Fork](https://github.com/ppkantorski/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
       * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться\подключаться к bluetooth-гарнитуре.
       * [Fizeau](https://github.com/averne/Fizeau) - Модуль для изменения цветового профиля экрана.
       * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.

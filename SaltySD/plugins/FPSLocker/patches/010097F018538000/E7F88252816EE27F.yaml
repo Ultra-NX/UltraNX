@@ -1,0 +1,10 @@
+# DAVE THE DIVER 1.0.5.1111
+# BID: E7F88252816EE27F
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  -
+    type: evaluate_write
+    address: [MAIN, 0xDF6EEE8, 0x50]
+    value_type: uint32
+    value: "141120000 / FPS_TARGET"

@@ -1,0 +1,10 @@
+# Becastled 1.5
+# BID: A91CF6368FE718E6
+
+ALL_FPS:
+  # DynamicResolution_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0xA099BF0, 0xB8, 0, 0x58]
+    value_type: float
+    value: "0.96 * FRAMETIME_TARGET"

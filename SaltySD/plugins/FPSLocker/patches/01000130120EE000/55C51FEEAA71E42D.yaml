@@ -1,0 +1,26 @@
+# Fuga: Melodies of Steel 1.1.8
+# BID: 55C51FEEAA71E42D
+
+ALL_FPS:
+  # Disable bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0x67285B8, 0x7B8]
+    address_unsafe: true
+    value_type: uint32
+    value: 7
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x5F60428, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6728E88, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

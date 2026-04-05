@@ -1,0 +1,25 @@
+# Call of the Sea 1.0.0
+# BID: FA5ADB594BCE0C88
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget (Default is 34)
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5E762D8, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x56A6E68, 0]
+    value_type: int32
+    value: [0, 0]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5EA3F98, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  -
+    type: block
+    what: timing

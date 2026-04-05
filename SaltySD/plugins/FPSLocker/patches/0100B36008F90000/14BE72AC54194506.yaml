@@ -1,0 +1,28 @@
+# INAZUMA ELEVEN: Victory Road 3.1.0
+# BID: 14BE72AC54194506
+
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_target
+    value_type: float
+    default_value: 30
+    evaluate: FPS_TARGET
+MASTER_WRITE:
+  # Dynamic Resolution FPS Target
+  ## REF: 62 02 23 1E 21 18 22 1E, ucvtf + fdiv
+  -
+    type: asm_a64
+    main_offset: 0xC711A8
+    instructions: [
+      [adrp, x9, $fps_target],
+      [ldr, s1, [x9, $fps_target]]
+    ]
+ALL_FPS:
+  # Disable FPS Lock
+  ## REF: 20 01 00 A9 00 01 63 9E, second LDRB below that, IDA will show address after full analyze
+  -
+    type: write
+    address: [MAIN, 0x37B337D]
+    value_type: uint8
+    value: 0

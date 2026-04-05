@@ -1,0 +1,167 @@
+# The Legend of Zelda: Breath of the Wild 1.9.0
+# BID: CD57B23FA4BBAD65
+
+DECLARATIONS:
+  -
+    type: variable
+    name: game_speed
+    value_type: float
+    default_value: 1.0
+  -
+    type: variable
+    name: min_delta
+    value_type: float
+    default_value: 1.0
+    evaluate: 30 / FPS_TARGET
+  -
+    type: variable
+    name: dr_factor
+    value_type: float
+    default_value: 100.0
+    evaluate: (FPS_TARGET / 30) * 100
+  -
+    type: variable
+    name: frame_tick
+    value_type: uint64
+    default_value: 0
+  -
+    type: const
+    name: default_frame_nanoseconds
+    value: 33333333
+  -
+    type: code
+    name: dynamicSpeed
+    instructions: [
+      [stp, x29, x30, [sp, -16], "!"],
+      [mov, x29, sp],
+      [blr, x8],
+      [mrs, x2, cntpct_el0],
+      [adrp, x8, $frame_tick],
+      [ldr, x1, [x8, $frame_tick]],
+      [cmp, x1, xzr],
+      [str, x2, [x8, $frame_tick]],
+      [b.eq, :goto4],
+      [sub, x0, x2, x1],
+      [bl, _convertTickToTimeSpan()],
+      [ucvtf, s0, x0],
+      [mov, w0, $default_frame_nanoseconds],
+      [movk, w0, $default_frame_nanoseconds, 16],
+      [ucvtf, s1, w0],
+      [fdiv, s0, s0, s1],
+      [fmov, s1, 2.0],
+      [fcmp, s0, s1],
+      [b.lt, :goto2],
+      [fmov, s0, s1],
+      :goto2, [adrp, x8, $min_delta],
+      [ldr, s1, [x8, $min_delta]],
+      [fcmp, s0, s1],
+      [b.gt, :goto3],
+      [fmov, s0, s1],
+      :goto3, [adrp, x8, $game_speed],
+      [str, s0, [x8, $game_speed]],
+      :goto4, [ldp, x29, x30, [sp], 16],
+      [ret]
+    ]
+  -
+    type: variable
+    name: cutscene_state
+    value_type: uint8
+    default_value: 1
+  -
+    type: code
+    name: signalCutscene
+    instructions: [
+      [adrp, x7, $cutscene_state],
+      [strb, w1, [x7, $cutscene_state]],
+      [b, 0xD0B208] # Update this to jump to address replaced via "Signal Cutscenes playing"
+    ]
+MASTER_WRITE:
+  # Remove double buffer
+  ## REF: 61 F6 42 39
+  -
+    type: asm_a64
+    main_offset: 0xE93DC8
+    instructions: [
+      [mov, w1, 1]
+    ]
+  # Change pointer of time factor for DR calculations to $dr_factor
+  ## REF: 01 01 27 1E 08 59 A8 52 03 08 21 1E, replace hardcoded 100.0 float
+  -
+    type: asm_a64
+    main_offset: 0x12670A4
+    instructions: [
+      [adrp, x8, $dr_factor],
+      [fmul, s3, s0, s1],
+      [ldr, s1, [x8, $dr_factor]]
+    ]
+  # Dynamic speed
+  ## Replace nvnQueuePresentTexture call to code cave _dynamicSpeed()
+  -
+    type: asm_a64
+    main_offset: 0xE9AB7C
+    instructions: [
+      [bl, _dynamicSpeed()]
+    ]
+  ## Patch game speed function to use speed from $game_speed
+  ## REF: 00 3C 40 BD 00 40 00 BD, replace CBZ W8 after it
+  -
+    type: asm_a64
+    main_offset: 0x151D448
+    instructions: [
+      [b, +12]
+    ]
+  ## REF: 01 01 23 1E 28 00 80 52  42 D8 21 7E, replace FDIV + FMUL after that
+  -
+    type: asm_a64
+    main_offset: 0x151D46C
+    instructions: [
+      [adrp, x9, $game_speed],
+      [ldr, s1, [x9, $game_speed]]
+    ]
+  ## Patch UI speed function to use speeed from $game_speed
+  ## REF: 01 10 2C 1E E0 03 1F 2A
+  -
+    type: asm_a64
+    main_offset: 0x1280ED8
+    instructions: [
+      [adrp, x7, $game_speed]
+    ]
+  ## REF: 00 08 21 1E  00 21 0B BD
+  -
+    type: asm_a64
+    main_offset: 0x1280EE4
+    instructions: [
+      [ldr, s0, [x7, $game_speed]]
+    ]
+  # Signal Cutscenes playing
+  ## REF: A8 00 80 52 E0 03 13 AA 68 C2 01 F8, second BL after that, before second BL you should have MOV X0, X19 + MOV W1, 1
+  -
+    type: asm_a64
+    main_offset: 0xD13910
+    instructions: [
+      [bl, _signalCutscene()]
+    ]
+  ## REF: 03 1C 40 92  80 82 17 91 E1 03 15 AA, second BL after that
+  -
+    type: asm_a64
+    main_offset: 0xD140D0
+    instructions: [
+      [bl, _signalCutscene()]
+    ]
+ALL_FPS:
+  # Scrolling speed
+  ## REF: 68 16 41 B9 D8 22 D5 1A
+  ## ADRP + LDR above it
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1DAD0E0]
+    value_type: float
+    value: "30 / FPS_TARGET"
+  # Prerendered cutscenes must be played at 30 FPS
+  -
+    type: compare
+    compare_address: [VARIABLE, cutscene_state]
+    compare_type: "=="
+    compare_value: 0
+    value_type: refresh_rate
+    value: 30
