@@ -7,3 +7,8 @@ URL=https://dbi.ultranx.ru/
 Name=notUltraNX EN
 Type=ApacheHTTP
 URL=https://dbi.ultranx.ru/en/
+
+[Location_2]
+Name=Horizon OS
+Type=GitHub
+URL=github:THZoria/NX_Firmware

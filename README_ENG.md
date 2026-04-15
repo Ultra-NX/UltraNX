@@ -6,7 +6,7 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [UltraNX 2.8|RC2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.8-RC1) Supports all HOS up to and including 22.1.0 (22.1.0 in Safe Mode)
+### [UltraNX 2.8|RC2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.8-RC1) Supports all HOS up to and including 22.1.0 (22.0.0+ in Safe Mode)
 
 
 
@@ -39,7 +39,6 @@
 
 
 1. **Installed Homebrew**
-   * [Sphaira](https://github.com/ITotalJustice/sphaira) - Modern Homebrew Menu, analogous to nx-hbmenu
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Program to update Ultra to the current version, as well as to download cheats & HOS.
    * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - A program for updating HOS.
    * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - The best file manager, save manager and program installer on the console.
@@ -81,12 +80,12 @@
       * [NX-FanControl](https://github.com/Insektaure/NX-FanControl) + [NX-FanControl Overlay Fork](https://github.com/ppkantorski/NX-FanControl) - Module for manually adjusting the speed of the cooler. The changes are applied immediately, the module works from SOC temperature and not Skin temperature like Atmosphere.
       * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - An overlay that allows you to quickly disconnect\connect to a bluetooth headset.
       * [Fizeau](https://github.com/averne/Fizeau) - Module for changing the screen color profile.
-      * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Overlay music player, works in background.
+      * [sys-tune](https://github.com/ppkantorski/sys-tune) - Overlay music player, works in background.
 
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - The patch package for FPSLocker allows you to update all patches at once, instead of downloading one at a time through the FPSLocker overlay. UltraNX always has the latest patches by default, so it's enough to update the CFW in a timely manner.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - SysDVR patches, work without the system module, activating background recording in games where it is initially prohibited.
-      * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - A package for downloading, installing, and managing mods for games.
+      * [Mod Alchemist](https://github.com/ppkantorski/Alchemist) - A package for downloading, installing, and managing mods for games.
       * [sys-ftpd](https://github.com/ELY3M/sys-ftpd) - FTP server running in background.
 
 

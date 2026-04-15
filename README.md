@@ -8,7 +8,7 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [UltraNX 2.8|RC2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.8-RC1) Поддерживает все HOS до 22.1.0 включительно (22.1.0 в Safe Mode)
+### [UltraNX 2.8|RC2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.8-RC1) Поддерживает все HOS до 22.1.0 включительно (22.0.0+ в Safe Mode)
 
 
 
@@ -43,7 +43,6 @@
 
 
 1. **Установленные Homebrew**
-   * [Sphaira](https://github.com/ITotalJustice/sphaira) - Современное Хоумбрю Меню, аналог nx-hbmenu
    * [AiO Switch Updater](https://github.com/HamletDuFromage/aio-switch-updater) - Программа для обновления UltraNX до актуальной версии, а так же для скачивания читов и HOS.
    * [Daybreak](https://github.com/Atmosphere-NX/Atmosphere) - Программа для обновления HOS (системного ПО).
    * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Лучший файловый менеджер, менеджер сохранений и установщик программ на консоль.
@@ -85,12 +84,12 @@
       * [NX-FanControl](https://github.com/Insektaure/NX-FanControl) + [NX-FanControl Overlay Fork](https://github.com/ppkantorski/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
       * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться\подключаться к bluetooth-гарнитуре.
       * [Fizeau](https://github.com/averne/Fizeau) - Модуль для изменения цветового профиля экрана.
-      * [sys-tune](https://github.com/HookedBehemoth/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.
+      * [sys-tune](https://github.com/ppkantorski/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.
 
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Пакет патчей для FPSLocker, позволяет обновить все патчи сразу, вместо скачивания по одному через оверлей FPSLocker'а. В Ультре по умолчанию всегда последние патчи, так что достаточно своевременно обновлять сборку.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
-      * [Mod Alchemist](https://github.com/ppkantorski/Mod-Alchemist) - Пакет для скачивания, установки и управления модами для игр.
+      * [Mod Alchemist](https://github.com/ppkantorski/Alchemist) - Пакет для скачивания, установки и управления модами для игр.
       * [sys-ftpd](https://github.com/ELY3M/sys-ftpd) - FTP сервер, работающий на фоне.
 
 
