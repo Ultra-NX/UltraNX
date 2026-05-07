@@ -1,0 +1,10 @@
+# 마법사서 아리아나 칠영걸의 서 / 魔法司書阿莉艾娜 七英傑之書 1.0.0
+# BID: EE53B0DDC797E251
+
+ALL_FPS:
+  # UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x4C69F48, 0xB8, 0]
+    value_type: int32
+    value: -1

@@ -1,0 +1,10 @@
+# Garfield Kart 2 - All You Can Drift 1.1.0
+# BID: 42D27CE0955EDF99
+
+ALL_FPS:
+  # Eden.Graphics.DynamicResolutionScaler_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0xF6FF450, 0xB8, 0x18, 0x20]
+    value_type: float
+    value: ["0.93 / FPS_TARGET", "(0.93 / FPS_TARGET) - 0.002", "(0.93 / FPS_TARGET) - 0.001"]

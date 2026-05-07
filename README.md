@@ -8,13 +8,14 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [UltraNX 2.8|RC2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.8-R1) Поддерживает все HOS до 22.1.0 включительно (22.0.0+ в Safe Mode)
+### [UltraNX 2.8|R1](https://github.com/Ultra-NX/UltraNX/releases/tag/2.8-R1) Поддерживает все HOS до 22.1.0 включительно (22.0.0+ в Safe Mode)
+### [UltraNX 3.0|Test1](https://github.com/Ultra-NX/UltraNX/releases/tag/3.0-T1) Поддерживает все HOS до 22.1.0 включительно
 
 
 
 ## Особенности Ultra
 
-* Предварительно настроенный OC Switchcraft (Преемник OC-Suite, аналог 4IFIR) с пресетами.
+* Предварительно настроенный Horizon OC (Преемник EOS) с пресетами.
 * Небольшой андервольт (сниженные вольтажи) в стоке, что заметно снижает потребление консоли, и заметный разгон памяти, который сделает игры плавнее.
 * Лучший кастомизатор разгона для Свитч - [Ultra-Tuner](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Ultra-Tuner), позволяющий настраивать разгон прямо с консоли. Был первым, и остается неповторимым.
 * Сборка максимально легкая и не нагруженная. В ней нет лишнего, минимум необходимый для разгона и комфортного использования.
@@ -34,7 +35,7 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, кастомная прошивка для Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Пользовательский графический загрузчик Nintendo Switch, патчер прошивки, инструментарий и многое другое.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Пакет для Ultrahand, позволяющий произвести тонкую настройку параметров под свою консоль. В случае нестабильной работы разгона, или при желании увеличить производительность консоли, Ultra Tuner - Ваш незаменимый помощник.
-1. **[OC-Switchcraft](https://github.com/halop/OC-Switchcraft-EOS/releases)**, форк **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Загрузчик Атмосферы с разгоном от B3711 и Meha, позволяет выжать из N.Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
+1. **[Horizon OC](https://github.com/Horizon-OC/Horizon-OC)** - Загрузчик Атмосферы с разгоном от Soul и Lightos, позволяет выжать из N.Switch мощность Xbox One. Вовремя обновляется для поддержки новых возможностей Атмосферы.
 
 
 1. **Установленные пейлоады**:
@@ -50,26 +51,26 @@
 
 1. **Установленные модули**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины.
-   * [sys-clk](https://github.com/ppkantorski/sys-clk) - Модуль отвечающий за разгон процессора, памяти и видеочипа - для лучшей производительности.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - С помощью этого модуля осуществляется переключение установленных модулей.
-   * [sys-patch](https://github.com/impeeza/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
+   * [sys-patch](https://github.com/borntohonk/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Также позволяет использовать самописные пакеты, например - Ultra Tuner.
-     - **`Ultra OC (sys-clk)`**, мод [sys-clk](https://github.com/ppkantorski/sys-clk) - Оверлей для управления модулем sys-clk. Немного изменен мной, но без копания в исходниках (Так как они закрыты).
-     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), форк [Status Monitor](https://github.com/hanai3Bi/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Tuner.
-     - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
-     - [EdiZon](https://github.com/ppkantorski/EdiZon-Overlay) - Оверлей для использования читов, включая графические.
-     - [ReverseNX-RT](https://github.com/masagrator/ReverseNX-RT) - Оверлей для переключения запущенной игры в портатив\док, меняет настройки графики\разрешения в играх.
+     - [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) - Оверлей для управления модулем sys-clk.
+     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Tuner.
+     - [FPSLocker](https://github.com/ppkantorski/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
+     - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов, включая графические.
+     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - Оверлей для переключения запущенной игры в портатив\док, меняет настройки графики\разрешения в играх.
      - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Оверлей для включения\отключения установленных системных модулей.
 
 
 1. **Доступные для скачивания через [Ultra Tuner](https://github.com/Ultra-NX/UltraNX/wiki/Tuner-RU#ultra-tuner)**
    * Homebrews:
       * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Здесь можно скачать DBI или обновить имеющийся.
+      * [AIO](https://github.com/HamletDuFromage/aio-switch-updater) - Скачивает настроенный AIO для UltraNX.
       * [Linkalho](https://gbatemp.net/download/linkalho.38822) - Программа для привязки аккаунта. Без привязки не будут работать некоторые игры.
-      * [Sphaira](https://github.com/ITotalJustice/sphaira) - Здесь можно обновить Sphaira\обновить ее конфиг.
-      * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - Эмулятор PSP.
+      * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10805015) - Эмулятор PSP.
+      * [DuckStation](https://gbatemp.net/threads/duckstation-for-switch.654484/page-7#post-10768042) - Эмулятор PS1.
       * [Moonlight](https://github.com/XITRIX/Moonlight-Switch) - Клиент Moonlight, позволяет транслировать на консоль игры с PC.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Поиск и установка тем на свитч.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Программа для сброса контроллера батареи. Не используйте просто так!
@@ -79,11 +80,12 @@
 
    * Overlays:
       * [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Форк Status Monitor от kantorski.
+      * [sys-dock](https://github.com/masagrator/sys-dock) - Модуль позволяющий изменять частоту подключенного экрана через Док.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay) - Та самая игра в виде оверлея. Работает только на последних версиях Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Регулировка глобальной громкости, позволяет поднять громкость выше максимума. Использовать аккуратно!
       * [NX-FanControl](https://github.com/Insektaure/NX-FanControl) + [NX-FanControl Overlay Fork](https://github.com/ppkantorski/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
       * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться\подключаться к bluetooth-гарнитуре.
-      * [Fizeau](https://github.com/averne/Fizeau) - Модуль для изменения цветового профиля экрана.
+      * [Fizeau](https://github.com/averne/Fizeau) + [Fizeau Overlay Fork](https://github.com/ppkantorski/Fizeau) - Модуль для изменения цветового профиля экрана.
       * [sys-tune](https://github.com/ppkantorski/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.
 
    * Other:

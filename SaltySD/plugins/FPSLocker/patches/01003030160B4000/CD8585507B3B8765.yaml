@@ -1,0 +1,74 @@
+# ダイイングライト ディフィニティブエディション 1.0.4
+# BID: CD8585507B3B8765
+
+DECLARATIONS:
+  -
+    type: variable
+    name: dr_timing1
+    value_type: float
+    default_value: 0.034
+    evaluate: "1.02 / FPS_TARGET"
+  -
+    type: variable
+    name: dr_timing2
+    value_type: float
+    default_value: 0.028
+    evaluate: "0.84 / FPS_TARGET"
+  -
+    type: variable
+    name: dr_timing3
+    value_type: float
+    default_value: 0.028985508
+    evaluate: "0.87 / FPS_TARGET"
+  -
+    type: variable
+    name: dr_timing4
+    value_type: float
+    default_value: 0.02631579
+    evaluate: "0.79 / FPS_TARGET"
+  -
+    type: variable
+    name: dr_timing5
+    value_type: float
+    default_value: 0.032467533
+    evaluate: "0.974 / FPS_TARGET"
+MASTER_WRITE:
+  # Disable Dynamic GPU Clocks
+  -
+    type: asm_a64
+    main_offset: 0x1DE8AC4
+    instructions: [
+      [nop]
+    ]
+  # Redirect Dynamic Resolution Timings
+  -
+    type: asm_a64
+    main_offset: 0x1DE8AA0
+    instructions: [
+      [adrp, x10, $dr_timing1],
+      [ldr, w10, [x10, $dr_timing1]]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x1DE8B00
+    instructions: [
+      [adrp, x10, $dr_timing2],
+      [ldr, w10, [x10, $dr_timing2]]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x1DE81C0
+    instructions: [
+      [adrp, x11, $dr_timing3],
+      [ldr, w12, [x11, $dr_timing3]],
+      [adrp, x11, $dr_timing4],
+      [ldr, w11, [x11, $dr_timing4]]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x1DE81F0
+    instructions: [
+      [adrp, x11, $dr_timing5],
+      [ldr, w11, [x11, $dr_timing5]]
+    ]
+

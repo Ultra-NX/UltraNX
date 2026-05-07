@@ -7,12 +7,13 @@
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
 ### [UltraNX 2.8|RC2](https://github.com/Ultra-NX/UltraNX/releases/tag/2.8-R1) Supports all HOS up to and including 22.1.0 (22.0.0+ in Safe Mode)
+### [UltraNX 3.0|Test1](https://github.com/Ultra-NX/UltraNX/releases/tag/3.0-T1) Supports all HOS up to and including 22.1.0
 
 
 
 ## Features of Ultra
 
-* Pre-configured OC Switchcraft (Successor to OC-Suite) with presets.
+* Pre-configured Horizon OC (Successor to EOS) with presets.
 * By default, there's already an undervolt that noticeably reduces the console's consumption, and a slight memory overclock that will make games smoother.
 * The best overclocking customizer for Switch - Ultra-Tuner, that allows you to customize overclocking right from the console. It was the first, and remains unique.
 * The CFW is as light as possible. There are no unnecessary things in it, only minimum necessary for overclocking and comfortable use.
@@ -30,7 +31,7 @@
 1. **[Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)** - Atmosphère, custom firmware for the Nintendo Switch.
 1. **[Hekate](https://github.com/CTCaer/hekate)** - Custom Nintendo Switch graphical bootloader, firmware patcher, toolkit and more.
 1. **[Ultra Tuner](https://github.com/Ultra-NX/Ultra-Tuner)** - Package for Ultrahand, which allows you to fine-tune the OC parameters for your console. In case of unstable overclocking, or if you want to increase the performance of your console, Ultra Tuner is your indispensable assistant.
-1. **[OC-Switchcraft](https://github.com/halop/OC-Switchcraft-EOS/releases)**, a fork of **[OC-Suite](https://github.com/hanai3Bi/Switch-OC-Suite/)** - Atmosphere Loader with overclocking from B3711 & Meha, allows you to reach from N.Switch power Xbox One. Updated in time to support new Atmosphere features.
+1. **[Horizon OC](https://github.com/Horizon-OC/Horizon-OC)** - Atmosphere Loader with overclocking from Soul & Lightos, allows you to reach from N.Switch power Xbox One. Updated in time to support new Atmosphere features.
 
 
 1. **Installed Payloads**:
@@ -46,26 +47,26 @@
 
 1. **Installed Modules**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins.
-   * [sys-clk](https://github.com/ppkantorski/sys-clk) - Module responsible for overclocking CPU, memory and GPU - for better performance.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - This module is used to switch the installed modules.
-   * [sys-patch](https://github.com/impeeza/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
+   * [sys-patch](https://github.com/borntohonk/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console via bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
-     - **`Ultra OC (sys-clk)`**, a mod of [sys-clk](https://github.com/ppkantorski/sys-clk) - Overlay for controlling sys-clk module. Slightly modified by me, but without digging into sources (Since they're closed).
-     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay), a fork of [Status Monitor](https://github.com/masagrator/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Tuner.
-     - [FPSLocker](https://github.com/masagrator/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
-     - [EdiZon](https://github.com/ppkantorski/EdiZon-Overlay) - An overlay for using cheats.
-     - [ReverseNX-RT](https://github.com/masagrator/ReverseNX-RT) - An overlay for switching a running game to a handheld\dock mode, which changes the graphics and resolution settings in games.
+     - [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) - Overlay for controlling sys-clk module.
+     - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Tuner.
+     - [FPSLocker](https://github.com/ppkantorski/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
+     - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - An overlay for using cheats.
+     - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - An overlay for switching a running game to a handheld\dock mode, which changes the graphics and resolution settings in games.
      - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Overlay for enabling\disabling installed system modules.
 
 
 1. **Available for download via [Updater](https://github.com/Ultra-NX/Ultra/wiki/Tuner-RU#Updater)**
    * Homebrews:
       * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Here you can download a DBI or update an existing one.
-      * [Linkalho](https://gbatemp.net/download/linkalho.38822/) - Account linking program. Some games won't work without the link.
-      * [Sphaira](https://github.com/ITotalJustice/sphaira) - Here you can update Sphaira\update its config.
-      * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10492671) - PSP emulator.
+      * [AIO](https://github.com/HamletDuFromage/aio-switch-updater) - Downloads the configured AIO for UltraNX.
+      * [Linkalho](https://gbatemp.net/download/linkalho.38822/) - Account linking program. Some games won't work without the link.=
+      * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10805015) - PSP emulator.
+      * [DuckStation](https://gbatemp.net/threads/duckstation-for-switch.654484/page-7#post-10768042) - PS1 emulator.
       * [Moonlight](https://github.com/XITRIX/Moonlight-Switch) - Moonlight client, allows to stream games from PC.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Searching and installing themes on Switch.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Program to reset the battery controller. Do not use unnecessarily!
@@ -75,11 +76,12 @@
 
    * Overlays:
       * [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Status Monitor fork from kantorski.
+      * [sys-dock](https://github.com/masagrator/sys-dock) - A module that allows you to change the frequency of your connected screen via the Dock.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay/) - "That" game in the form of an overlay. Works only on the latest versions of Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Global volume control, allows you to raise the volume above the maximum. Use with care!
       * [NX-FanControl](https://github.com/Insektaure/NX-FanControl) + [NX-FanControl Overlay Fork](https://github.com/ppkantorski/NX-FanControl) - Module for manually adjusting the speed of the cooler. The changes are applied immediately, the module works from SOC temperature and not Skin temperature like Atmosphere.
       * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - An overlay that allows you to quickly disconnect\connect to a bluetooth headset.
-      * [Fizeau](https://github.com/averne/Fizeau) - Module for changing the screen color profile.
+      * [Fizeau](https://github.com/averne/Fizeau) + [Fizeau Overlay Fork](https://github.com/ppkantorski/Fizeau) - Module for changing the screen color profile.
       * [sys-tune](https://github.com/ppkantorski/sys-tune) - Overlay music player, works in background.
 
    * Other:

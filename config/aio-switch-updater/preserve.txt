@@ -1,12 +1,12 @@
 /atmosphere/config/system_settings.ini
 /bootloader/hekate_ipl.ini
 /bootloader/nyx.ini
-/config/sys-clk/config.ini
+/config/horizon-oc/config.ini
 /config/status-monitor/config.ini
 /config/tesla/config.ini
-/config/sphaira/config.ini
 /config/ultrahand/config.ini
 /config/ultrahand/theme.ini
 /config/ultrahand/overlays.ini
 /config/ultrahand/packages.ini
+/config/UltraNX/40MB.ini
 /switch/DBI/dbi.config
