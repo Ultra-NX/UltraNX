@@ -1,0 +1,115 @@
+# Bubsy 4D 1.2.1
+# BID: 2A8408073157B4BC
+
+DECLARATIONS:
+  -
+    type: variable
+    name: drVeryBad
+    value_type: float
+    default_value: 38
+    evaluate: "FRAMETIME_TARGET + 5"
+  -
+    type: variable
+    name: drBad
+    value_type: float
+    default_value: 36
+    evaluate: "FRAMETIME_TARGET + 3"
+  -
+    type: variable
+    name: drOptimalMax
+    value_type: float
+    default_value: 34
+    evaluate: "FRAMETIME_TARGET + 0.7"
+  -
+    type: variable
+    name: drOptimalMin
+    value_type: float
+    default_value: 32
+    evaluate: "FRAMETIME_TARGET - 1.4"
+  -
+    type: variable
+    name: drGood
+    value_type: float
+    default_value: 29.5
+    evaluate: "FRAMETIME_TARGET - 4"
+  -
+    type: code
+    name: getDrVeryBad
+    instructions: [
+      [adrp, x0, $drVeryBad],
+      [ldr, s1, [x0, $drVeryBad]],
+      [ret]
+    ]
+  -
+    type: code
+    name: getDrBad
+    instructions: [
+      [adrp, x0, $drBad],
+      [ldr, s1, [x0, $drBad]],
+      [ret]
+    ]
+  -
+    type: code
+    name: getDrOptimalMax
+    instructions: [
+      [adrp, x0, $drOptimalMax],
+      [ldr, s1, [x0, $drOptimalMax]],
+      [ret]
+    ]
+  -
+    type: code
+    name: getDrOptimalMin
+    instructions: [
+      [adrp, x0, $drOptimalMin],
+      [ldr, s1, [x0, $drOptimalMin]],
+      [ret]
+    ]
+  -
+    type: code
+    name: getDrGood
+    instructions: [
+      [adrp, x0, $drGood],
+      [ldr, s1, [x0, $drGood]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # Dynamic Resolution
+  # REF: Fabraz.DynamicResolutionManager::DetermineWhetherScaleRequired
+  -
+    type: asm_a64
+    main_offset: 0x2B79588
+    instructions: [
+      [bl, _getDrGood()]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x2B795A4
+    instructions: [
+      [bl, _getDrVeryBad()]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x2B795B0
+    instructions: [
+      [bl, _getDrBad()]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x2B795D4
+    instructions: [
+      [bl, _getDrOptimalMax()]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x2B795E0
+    instructions: [
+      [bl, _getDrOptimalMax()]
+    ]
+ALL_FPS:
+  # Vsync
+  # Ref: GetVsyncEvent, address is used for do-while loop
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9B25AD8]
+    value_type: int32
+    value: VSYNC_TARGET

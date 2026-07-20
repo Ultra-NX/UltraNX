@@ -79,6 +79,7 @@
     "LIBULTRAHAND_TITLES": "libultrahandタイトル",
     "LIBULTRAHAND_VERSIONS": "libultrahandバージョン",
     "PACKAGE_TITLES": "パッケージタイトル",
+    "IN_PACKAGE_TITLES": "パッケージ内タイトル",
     "KEY_COMBO": "キーコンボ",
     "MODE": "モード",
     "LAUNCH_MODES": "起動モード",

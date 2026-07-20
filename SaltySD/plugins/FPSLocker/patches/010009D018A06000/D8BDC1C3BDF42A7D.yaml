@@ -1,0 +1,25 @@
+# ソードアート・オンライン フラクチュアード デイドリーム 1.7.0.0
+# BID: D8BDC1C3BDF42A7D
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x86D4728, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 1)", "TruncDec(FRAMETIME_TARGET, 1)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x870F2E0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x7F0EF88, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

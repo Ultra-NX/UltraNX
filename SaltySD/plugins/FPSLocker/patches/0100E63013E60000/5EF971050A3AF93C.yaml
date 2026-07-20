@@ -1,0 +1,25 @@
+# ASTRONEER 1.42.3.0
+# BID: 5EF971050A3AF93C
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0xAE78748, 0]
+    value_type: float
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xAEA65D0, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0xA6A9850, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

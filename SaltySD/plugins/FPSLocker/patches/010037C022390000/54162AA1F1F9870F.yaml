@@ -1,0 +1,18 @@
+# Hitman Absolution 1.3.1_101097
+# BID: 54162AA1F1F9870F
+
+ALL_FPS:
+  # IdleFPS/ResponsiveFPS
+  # REF: 68 02 40 F9 08 35 41 F9 E0 03 13 AA 00 01 3F D6 F4 4F 42 A9, first result, first ADRP + ADD above it, add 0x38
+  -
+    type: evaluate_write
+    address: [MAIN, 0x35887C0, 0x70]
+    value_type: uint32
+    value: [FPS_TARGET, FPS_TARGET]
+  # DynamicResolutionScaling/FPSTarget
+  # REF: E0 1E 40 BD  01 10 2E 1E 00 20 21 1E, any result, first ADRP+ADD above that
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3285408, 0x2C]
+    value_type: float
+    value: FPS_TARGET

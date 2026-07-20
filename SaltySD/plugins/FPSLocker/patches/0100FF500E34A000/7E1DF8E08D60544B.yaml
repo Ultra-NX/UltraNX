@@ -1,0 +1,41 @@
+# Xenoblade Chronicles: Definitive Edition 2.0.0
+# BID: 7E1DF8E08D60544B
+
+DECLARATIONS:
+  -
+    type: variable
+    value_type: float
+    name: dr_target
+    default_value: 0.0166666666
+    evaluate: "(1 / FPS_TARGET) / VSYNC_TARGET"
+  -
+    type: code
+    name: getDrTarget
+    instructions: [
+      [adrp, x8, $dr_target],
+      [ldr, s0, [x8, $dr_target]],
+      [ret]
+    ]
+MASTER_WRITE:
+  # REF: 03 08 21 1e 01 10 21 1e 60 28 21 1e, search for a function pointer call with 0xD0, replace BLR
+  -
+    type: asm_a64
+    main_offset: 0x5BCAD8
+    instructions: [
+      [bl, _getDrTarget()]
+    ]
+ALL_FPS:
+  # REF: 0a 01 40 b9 00 01 00 b9
+  -
+    type: evaluate_write
+    address: [MAIN, 0xB67FF8]
+    value_type: int32
+    value: [VSYNC_TARGET, VSYNC_TARGET]
+  # UI Speed (mm::mtl::PtrSingleton<layer::LayerManager>::sys(void)::s_instance)
+  # Ref: Find first xref of "pltcsr_mc", then look for first adrp + add below it
+  -
+    type: evaluate_write
+    address: [MAIN, 0xBA1240, 0x70]
+    address_unsafe: true
+    value_type: float
+    value: "1 / FPS_TARGET"

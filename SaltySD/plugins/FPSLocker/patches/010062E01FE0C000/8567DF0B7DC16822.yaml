@@ -1,0 +1,71 @@
+# Digimon Story Time Stranger 1.2.1
+# BID: 8567DF0B7DC16822
+
+DECLARATIONS:
+  # REF: 00 00 C8 41 6E DB 0E 42
+  # Custom formulas so it works better when 60 FPS is the target
+  -
+    type: variable
+    name: dr_target1
+    value_type: float
+    default_value: 25
+    evaluate: "FPS_TARGET + 2"
+  -
+    type: variable
+    name: dr_target2
+    value_type: float
+    default_value: 35.7142868
+    evaluate: 1000 / (FPS_TARGET + 5)
+  -
+    type: variable
+    name: dr_target3
+    value_type: float
+    default_value: 28
+    evaluate: (1000 / (FPS_TARGET + 5)) * 0.78
+  -
+    type: variable
+    name: dr_target4
+    value_type: float
+    default_value: 56
+  -
+    type: variable
+    name: dr_target5
+    value_type: float
+    default_value: 16.949152
+  -
+    type: variable
+    name: dr_target6
+    value_type: float
+    default_value: 13
+  
+MASTER_WRITE:
+  -
+    type: asm_a64
+    main_offset: 0x9D6218
+    instructions: [
+      [adrp, x21, $dr_target1]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x9D622C
+    instructions: [
+      [add, x21, x21, $dr_target1]
+    ]
+ALL_FPS:
+  # FPS Lock
+  # REF: 1B 41 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1425CD0]
+    value_type: uint32
+    value: FRAMETIME_TARGET * 1000
+  # Unknown value, but set in the same function as FPS lock, so it may be important
+  # REF: 3C 00 00 00 01 00 00 00 00 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1425C98]
+    value_type: uint32
+    value: FPS_TARGET
+  -
+    type: block
+    what: timing

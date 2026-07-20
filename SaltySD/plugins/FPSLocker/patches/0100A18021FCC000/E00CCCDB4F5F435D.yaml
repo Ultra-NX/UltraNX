@@ -1,0 +1,18 @@
+# Deer & Boy 1.1.4
+# BID: E00CCCDB4F5F435D
+
+ALL_FPS:
+  # Vsync
+  # Ref: 01 00 00 00 03 00 00 00 00 00 00 08
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9AD34B0]
+    value_type: int32
+    value: VSYNC_TARGET
+  # fixedDeltaTime
+  # Fixes an issue with game animation targeting always 25 FPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x9DF8428, 0x50]
+    value_type: uint32
+    value: "141120000 / FPS_TARGET"

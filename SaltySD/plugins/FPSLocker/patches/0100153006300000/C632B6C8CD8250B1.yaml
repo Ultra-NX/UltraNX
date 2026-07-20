@@ -1,0 +1,25 @@
+# 無双OROCHI２ Ultimate 1.0.2
+# BID: C632B6C8CD8250B1
+
+ALL_FPS:
+  # REF: 01 00 00 00 3C 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0xE31668]
+    value_type: uint32
+    value: [VSYNC_TARGET, FPS_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0xE31670]
+    value_type: float
+    value: FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0xE31674]
+    value_type: uint32
+    value: [VSYNC_TARGET, FPS_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0xE3167C]
+    value_type: float
+    value: FPS_TARGET

@@ -1,0 +1,11 @@
+# Subnautica Below Zero 1.21.49397-1.22.54460
+# BID: 5B050C55B8264040
+
+ALL_FPS:
+  # DynamicResolution_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5BDC3F0, 0xB8, 0]
+    address_unsafe: true
+    value_type: double
+    value: [FPS_TARGET, FRAMETIME_TARGET]

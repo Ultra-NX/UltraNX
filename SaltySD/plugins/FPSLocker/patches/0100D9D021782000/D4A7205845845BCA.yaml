@@ -17,3 +17,6 @@ ALL_FPS:
     address: [MAIN, 0xC97CE4]
     value_type: uint32
     value: FPS_TARGET
+  -
+    type: block
+    what: timing
