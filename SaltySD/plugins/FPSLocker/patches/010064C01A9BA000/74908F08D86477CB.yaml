@@ -1,0 +1,10 @@
+# Tamagotchi Plaza 1.0.9
+# BID: 74908F08D86477CB
+
+ALL_FPS:
+  # UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x7109700, 0xB8, 0]
+    value_type: int32
+    value: -1

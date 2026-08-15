@@ -1,0 +1,34 @@
+# Kingdom Rush Origins 4.2.27.1
+# BID: C1A74A28CBF48C3C
+
+MASTER_WRITE:
+  - # REF: vtable with string "getAverageDelta", search inside that vtable "sleep", it's above actual function, patch BLX X1 inside that function
+    type: bytes
+    main_offset: 0xF5514
+    value_type: uint32
+    value: 0xEB069E4D # BL 0x29CE50
+  -
+    type: bytes
+    main_offset: 0x29CE50 # Code cave
+    value_type: uint32
+    value: 
+    - 0xE24F2008 # SUB  R2, PC, #8
+    - 0xE30931A8 # MOVW R3, #0x91A8
+    - 0xE3403076 # MOVT R3, #0x0076
+    - 0xE0822003 # ADD  R2, R2, R3 - 0x29CE50 + 0x7691A8 = 0xA05FF8
+    - 0xED921B00 # VLDR D1, [R2]
+    - 0xEEB51B40 # VCMP.F64 D1, #0.0
+    - 0xEEF1FA10 # VMRS APSR_nzcv, FPSCR
+    - 0x1EB00B41 # VMOVNE.F64 D0, D1
+    - 0xE12FFF11 # BX R1
+  -
+    type: bytes
+    main_offset: 0xA05FF8
+    value_type: double
+    value: 0
+ALL_FPS:
+  -
+    type: write
+    address: [MAIN, 0xA05FF8]
+    value_type: double
+    value: 0.001

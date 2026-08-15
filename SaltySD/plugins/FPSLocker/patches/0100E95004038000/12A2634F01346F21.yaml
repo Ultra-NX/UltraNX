@@ -1,0 +1,168 @@
+# Xenoblade Chronicles 2 3.0.0
+# BID: 12A2634F01346F21
+
+DECLARATIONS:
+  -
+    type: variable
+    name: last_tick
+    value_type: uint64
+    default_value: 0
+  -
+    type: variable
+    name: game_speed
+    value_type: float
+    default_value: 0.03333333333
+  -
+    type: variable
+    name: min_delta
+    value_type: float
+    default_value: 0.03333333333
+    evaluate: "1 / FPS_TARGET"
+  -
+    type: variable
+    name: max_delta
+    value_type: float
+    default_value: 30
+    evaluate: "FPS_TARGET / 2"
+  -
+    type: variable
+    name: dr_target
+    value_type: float
+    default_value: 0.0166666666
+    evaluate: "(1 / FPS_TARGET) / VSYNC_TARGET * 0.96"
+  -
+    type: const
+    name: microseconds_in_sec
+    value: 1000000
+  -
+    type: const
+    name: nano_in_micro
+    value: 1000
+  -
+    type: code
+    name: dynamicSpeed
+    instructions: [
+      [stp, x29, x30, [sp, -16], "!"],
+      [mov, x29, sp],
+      [mrs, x0, cntpct_el0],
+      [adrp, x2, $last_tick],
+      [ldr, x1, [x2, $last_tick]],
+      [str, x0, [x2, $last_tick]],
+      [cbz, x1, :goto3],
+      [sub, x0, x0, x1],
+      [bl, _convertTickToTimeSpan()],
+      [adrp, x1, $max_delta],
+      [ldr, s2, [x1, $max_delta]],
+      [mov, w1, $nano_in_micro],
+      [udiv, x0, x0, x1],
+      [ucvtf, s0, x0],
+      [mov, w1, $microseconds_in_sec],
+      [movk, w1, $microseconds_in_sec, 16],
+      [ucvtf, s1, w1],
+      [b, :goto2],
+      :goto4, [adrp, x0, 0xb90000],
+      [ldr, x0, [x0, 0xd0]], # REF: F4 03 00 AA  88 22 47 39 09 12 80 52, adrp + ldr below it
+      [cbz, x0, :goto3],
+      [str, s0, [x0, 0x78]],
+      [str, s0, [x0, 0x7c]],
+      [adrp, x0, 0xc23000], # REF: 29 01 40 F9  1F 01 00 F1 24 19 40 FA, two results, the one that has no RET soon after this, look at first adrp + ldr above it
+      [ldr, x0, [x0, 0x2c8]],
+      [str, s0, [x0, 0x80]],
+      [adrp, x0, $game_speed],
+      [str, s0, [x0, $game_speed]],
+      [b, :goto3],
+      :goto5, [fmov, s1, 1.0],
+      [fdiv, s2, s1, s2],
+      [fcmp, s0, s2],
+      [b.lt, :goto6],
+      [fmov, s0, s2],
+      [b, :goto4],
+      :goto6, [adrp, x0, $min_delta],
+      [ldr, s2, [x0, $min_delta]],
+      [fcmp, s0, s2],
+      [b.hi, :goto4],
+      [fmov, s0, s2],
+      [b, :goto4],
+      :goto2, [fdiv, s0, s0, s1],
+      [b, :goto5],
+      :goto3, [mov, w8, 0x21a0],
+      [ldp, x29, x30, [sp], 16],
+      [ret],
+    ]
+MASTER_WRITE:
+  # Dynamic speed
+  # Jump before pushing frame
+  -
+    type: asm_a64
+    main_offset: 0x7009E4
+    instructions: [
+      [bl, _dynamicSpeed()]
+    ]
+  # Patch wind speed to take game speed
+  # REF: C6 09 26 1E C8 08 23 1E C9 08 21 1E CA 08 22 1E, adrp + ldr above
+  -
+    type: asm_a64
+    main_offset: 0x748658
+    instructions: [
+      [adrp, x8, $game_speed],
+      [ldr, s6, [x8, $game_speed]]
+    ]
+  # Redirect DR timing
+  # REF: 74 02 40 B9 08 FD 66 D3 08 01 23 1E, LDR X8, [X8,#0xD0] below it
+  -
+    type: asm_a64
+    main_offset: 0x6AAABC
+    instructions: [
+      [adrp, x8, $dr_target],
+      [ldr, s0, [x8, $dr_target]]
+    ]
+ALL_FPS:
+  # REF: 0A 01 40 B9 00 01 00 B9, adrp + ldr above
+  -
+    type: evaluate_write
+    address: [MAIN, 0xB75C40]
+    value_type: uint32
+    value: ["VSYNC_TARGET", "VSYNC_TARGET"]
+  # Cutscenes in 30 FPS
+  # REF: 09 41 00 91 08 E1 00 91  3F D8 09 A9, any result, first STR XZR above is the offset we want
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 1
+    compare_address: [MAIN, 0xBD8F40]
+    value_type: refresh_rate
+    value: 60
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 1
+    compare_address: [MAIN, 0xBD8F40]
+    address: [VARIABLE, min_delta]
+    value: 0.0333333333
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 1
+    compare_address: [MAIN, 0xBD8F40]
+    address: [VARIABLE, max_delta]
+    value: 30
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 1
+    compare_address: [MAIN, 0xBD8F40]
+    address: [MAIN, 0xB75C40] # VSYNC TARGET
+    value_type: uint32
+    value: [2, 2]
+  -
+    type: compare
+    compare_type: "=="
+    compare_value_type: uint8
+    compare_value: 1
+    compare_address: [MAIN, 0xBD8F40]
+    address: [VARIABLE, dr_target]
+    value: 0.0166666666

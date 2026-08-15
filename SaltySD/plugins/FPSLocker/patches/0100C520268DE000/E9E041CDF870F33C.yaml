@@ -1,0 +1,11 @@
+# 亰都ザナドゥ -桜花幻舞- 1.0.4
+# BID: E9E041CDF870F33C
+
+ALL_FPS:
+  # Used to set min delta timing for various parts of game
+  # REF: C9 03 80 52 first result, look where is written
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7E4810, 0x2C]
+    value_type: uint32
+    value: FPS_TARGET

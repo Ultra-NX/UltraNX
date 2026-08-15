@@ -1,8 +1,6 @@
 # Ghostrunner 1.8
 # BID: D3DD5B220DCEB626
 
-unsafeCheck: true
-
 ALL_FPS:
   # r.DynamicRes.FrameTimeBudget = 0.93 * (1000/FPS)
   -

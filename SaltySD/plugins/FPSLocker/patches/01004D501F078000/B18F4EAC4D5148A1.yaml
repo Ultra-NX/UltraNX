@@ -1,0 +1,82 @@
+# The Lord of the Rings: War in the North - Legacy Edition 1.0.1
+# BID: B18F4EAC4D5148A1
+# INFO: RenderThreadWaitOnGPU blocks game to 59 FPS and causes CPU cores to rampage if not adjusted, but if adjusted to allow perfect 60 FPS image starts tearing, so i decided to not change it
+
+DECLARATIONS:
+  -
+    type: variable
+    name: frametime
+    value_type: uint32
+    default_value: 33333
+    evaluate: 1000000 / FPS_LOCK_TARGET
+  -
+    type: variable
+    name: half_frametime
+    value_type: float
+    default_value: 0.01665
+    evaluate: 0.999 * (1 / FPS_TARGET)
+  -
+    type: code
+    name: sleep
+    instructions: [
+      [adrp, x26, $frametime],
+      [ldr, w26, [x26, $frametime]],
+      [sub, w24, w26, 1],
+      [cmp, x0, x24],
+      [b, 0x1B6DD8]
+    ]
+  -
+    type: code
+    name: sleep2
+    instructions: [
+      [adrp, x26, $frametime],
+      [ldr, w26, [x26, $frametime]],
+      [sub, w24, w26, 1],
+      [cmp, x0, x24],
+      [b, 0x1B6D30]
+    ]
+  -
+    type: code
+    name: gpuSleep
+    instructions: [
+      [mov, x0, -2],
+      [svc, 0xB],
+      [mov, x0, 10000],
+      [svc, 0xB],
+      [ret]
+    ]
+MASTER_WRITE:
+  # RenderThreadWaitOnMainThread, main FPS lock
+  # REF: 98 46 90 52 BA 46 90 52, search for CMP X0, X24
+  -
+    type: asm_a64
+    main_offset: 0x1B6DD4
+    instructions: [
+      [b, _sleep()]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x1B6D2C
+    instructions: [
+      [b, _sleep2()]
+    ]
+  # RenderThreadWaitOnGPU
+  # REF: A8 B2 8C 52 08 91 A7 72
+  -
+    type: asm_a64
+    main_offset: 0x25C998
+    instructions: [
+      [adrp, x8, $half_frametime],
+      [ldr, w8, [x8, $half_frametime]]
+    ]
+  # Stabilize CPU usage
+  -
+    type: asm_a64
+    main_offset: 0x25C9B0
+    instructions: [
+      [bl, _gpuSleep()]
+    ]
+ALL_FPS:
+  -
+    type: block
+    what: timing

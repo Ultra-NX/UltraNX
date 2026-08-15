@@ -1,0 +1,37 @@
+# 信長の野望･新生 1.1.7
+# BID: DAE8585805CE94AC
+# Cursor speed is tied to framerate
+
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_target
+    value_type: uint32
+    default_value: 30
+    evaluate: FPS_TARGET
+  -
+    type: variable
+    name: frametime_target
+    value_type: uint32
+    default_value: 33
+    evaluate: 1000 / FPS_LOCK_TARGET
+  -
+    type: variable
+    name: lock30
+    value_type: uint32
+    default_value: 1
+    evaluate: VSYNC_TARGET - 1
+MASTER_WRITE:
+  # Min delta based on vsync + fps lock outside of cutscenes
+  # REF: 28 00 80 52 68 CE 00 B9 C8 03 80 D2 28 04 C0 F2
+  # 2nd REF: Search immediate 0x210000001E and main_offset is MOV W8, #1 above
+  -
+    type: asm_a64
+    main_offset: 0x12AFA18
+    instructions: [
+      [adrp, x8, $fps_target],
+      [ldr, w1, [x8, $lock30]],
+      [ldp, w8, w9, [x8]],
+      [str, w1, [x19, 0xCC]],
+      [stp, w8, w9, [x21]]
+    ]

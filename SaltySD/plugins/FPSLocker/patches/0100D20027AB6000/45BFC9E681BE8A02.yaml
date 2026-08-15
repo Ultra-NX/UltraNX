@@ -1,0 +1,11 @@
+# 쿄토 재너두 -앵화환무- 1.0.3
+# BID: 45BFC9E681BE8A02
+
+ALL_FPS:
+  # Used to set min delta timing for various parts of game
+  # REF: C9 03 80 52 first result, look where is written
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7DB820, 0x2C]
+    value_type: uint32
+    value: FPS_TARGET
