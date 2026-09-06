@@ -211,5 +211,19 @@
     "X: %u Y: %u": "X : %u Y : %u",
     "%u.%u%u mV": "%u.%u%u mV",
     "Compiling with minimal features": "Compilation avec fonctionnalités minimales",
-    "THE BEER-WARE LICENSE": "LA LICENCE BEER-WARE"
+    "THE BEER-WARE LICENSE": "LA LICENCE BEER-WARE",
+    "Horizon OC\nKip opening failed": "Horizon OC\nÉchec d'ouverture du KIP",
+    "Horizon OC\nKip read failed": "Horizon OC\nÉchec de lecture du KIP",
+    "Horizon OC\nOutdated kip detected!\nPlease update Horizon OC": "Horizon OC\nKIP obsolète détecté !\nVeuillez mettre à jour Horizon OC",
+    "Horizon OC\nOutdated sysmodule detected!\nPlease update Horizon OC": "Horizon OC\nSysmodule obsolète détecté !\nVeuillez mettre à jour Horizon OC",
+    "Horizon OC\nKip write failed": "Horizon OC\nÉchec d'écriture du KIP",
+    "Horizon OC\nKip config set failed": "Horizon OC\nÉchec de configuration du KIP",
+    "Kip is not loaded!": "Le KIP n'est pas chargé !",
+    "Horizon OC\nKIP has been updated\nPlease reboot your console": "Horizon OC\nLe KIP a été mis à jour\nVeuillez redémarrer la console",
+    "Horizon OC has been installed": "Horizon OC a été installé",
+    "Horizon OC\nConfig Buffer Mismatch": "Horizon OC\nIncohérence du tampon de configuration",
+    "Horizon OC\nDeactivated frequency.\nReboot to apply.": "Horizon OC\nFréquence désactivée.\nRedémarrez pour appliquer.",
+    "Horizon OC\nSecmon read failed!\n This may be a hardware issue!": "Horizon OC\nÉchec de lecture Secmon !\n Cela peut être un problème matériel !",
+    "Horizon OC\nFailed to write I2C\nwhile setting vddq": "Horizon OC\nÉchec d'écriture I2C\nlors du réglage de VDDQ",
+    "Horizon OC\nKip version mismatch\nPlease reinstall Horizon OC": "Horizon OC\nVersion du KIP incompatible\nVeuillez réinstaller Horizon OC"
 }

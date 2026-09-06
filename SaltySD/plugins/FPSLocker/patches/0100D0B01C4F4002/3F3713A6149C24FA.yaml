@@ -1,0 +1,40 @@
+# METAL GEAR SOLID 4 GUNS OF THE PATRIOTS (MASTER COLLECTION版) 1.4.1
+# BID: 3F3713A6149C24FA
+
+ALL_FPS:
+  # Memoized result of the "FPSLimiter.FPS_NX" config-key resolver.
+  ## REF: 88 02 40 B9 1F 05 00 31 E0 00 00 54, ADRP + ADD above
+  -
+    type: evaluate_write
+    address: [MAIN, 0x149B7E8]
+    value_type: int32
+    value: FPS_LOCK_TARGET
+  # Dynamic resolution governor
+  ## REF: 08 29 9C 52 48 EF A7 72 01 01 27 1E A9 99, first ADRP + LDR below gets base address
+  # budget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1BAADF8] # base + 0x1D0
+    value_type: float
+    value: "floor(FRAMETIME_TARGET * 0.98)"
+  # slow-frame threshold
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1BAADFC] # base + 0x1D4
+    value_type: float
+    value: "floor(floor(FRAMETIME_TARGET * 0.98) * 1.29 + 1.05)"
+  # band offset
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1BAAE14] # base + 0x1EC
+    value_type: float
+    value: "floor(FRAMETIME_TARGET * 0.98) * 0.05"
+  # band half-width
+  -
+    type: evaluate_write
+    address: [MAIN, 0x1BAAE18] # base + 0x1F0
+    value_type: float
+    value: "floor(FRAMETIME_TARGET * 0.98) * 0.025"
+  -
+    type: block
+    what: timing

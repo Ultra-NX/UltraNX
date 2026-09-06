@@ -7,7 +7,7 @@ ALL_FPS:
     type: evaluate_write
     address: [MAIN, 0x93CF440, 0]
     value_type: float
-    value: ["TruncDec(FRAMETIME_TARGET, 2", "TruncDec(FRAMETIME_TARGET, 2)"]
+    value: ["TruncDec(FRAMETIME_TARGET, 2)", "TruncDec(FRAMETIME_TARGET, 2)"]
   # r.VSync
   -
     type: write

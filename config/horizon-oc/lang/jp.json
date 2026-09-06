@@ -142,5 +142,19 @@
     "or 1228MHz on HiOPT can cause ": "or 1228MHz on HiOPT can cause",
     "permanent damage to your Switch!": "permanent damage to your Switch!",
     "921MHz without UV and 960MHz on": "921MHz without UV and 960MHz on",
-    "SLT or HiOPT can cause ": "SLT or HiOPT can cause"
+    "SLT or HiOPT can cause ": "SLT or HiOPT can cause",
+    "Horizon OC\nKip opening failed": "Horizon OC\nKip opening failed",
+    "Horizon OC\nKip read failed": "Horizon OC\nKip read failed",
+    "Horizon OC\nOutdated kip detected!\nPlease update Horizon OC": "Horizon OC\nOutdated kip detected!\nPlease update Horizon OC",
+    "Horizon OC\nOutdated sysmodule detected!\nPlease update Horizon OC": "Horizon OC\nOutdated sysmodule detected!\nPlease update Horizon OC",
+    "Horizon OC\nKip write failed": "Horizon OC\nKip write failed",
+    "Horizon OC\nKip config set failed": "Horizon OC\nKip config set failed",
+    "Kip is not loaded!": "Kip is not loaded!",
+    "Horizon OC\nKIP has been updated\nPlease reboot your console": "Horizon OC\nKIP has been updated\nPlease reboot your console",
+    "Horizon OC has been installed": "Horizon OC has been installed",
+    "Horizon OC\nConfig Buffer Mismatch": "Horizon OC\nConfig Buffer Mismatch",
+    "Horizon OC\nDeactivated frequency.\nReboot to apply.": "Horizon OC\nDeactivated frequency.\nReboot to apply.",
+    "Horizon OC\nSecmon read failed!\n This may be a hardware issue!": "Horizon OC\nSecmon read failed!\n This may be a hardware issue!",
+    "Horizon OC\nFailed to write I2C\nwhile setting vddq": "Horizon OC\nFailed to write I2C\nwhile setting vddq",
+    "Horizon OC\nKip version mismatch\nPlease reinstall Horizon OC": "Horizon OC\nKip version mismatch\nPlease reinstall Horizon OC"
 }

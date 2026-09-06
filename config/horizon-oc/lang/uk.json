@@ -211,5 +211,19 @@
     "X: %u Y: %u": "X: %u Y: %u",
     "%u.%u%u mV": "%u.%u%u мВ",
     "Compiling with minimal features": "Компіляція з мінімальними можливостями",
-    "THE BEER-WARE LICENSE": "ЛІЦЕНЗІЯ НА ПИВНИЙ ПОСУД"
+    "THE BEER-WARE LICENSE": "ЛІЦЕНЗІЯ НА ПИВНИЙ ПОСУД",
+    "Horizon OC\nKip opening failed": "Horizon OC\nНе вдалося відкрити KIP",
+    "Horizon OC\nKip read failed": "Horizon OC\nНе вдалося прочитати KIP",
+    "Horizon OC\nOutdated kip detected!\nPlease update Horizon OC": "Horizon OC\nВиявлено застарілий KIP!\nОновіть Horizon OC",
+    "Horizon OC\nOutdated sysmodule detected!\nPlease update Horizon OC": "Horizon OC\nВиявлено застарілий sysmodule!\nОновіть Horizon OC",
+    "Horizon OC\nKip write failed": "Horizon OC\nПомилка запису KIP",
+    "Horizon OC\nKip config set failed": "Horizon OC\nПомилка налаштування KIP",
+    "Kip is not loaded!": "KIP не завантажено!",
+    "Horizon OC\nKIP has been updated\nPlease reboot your console": "Horizon OC\nKIP оновлено\nПерезавантажте консоль",
+    "Horizon OC has been installed": "Horizon OC встановлено",
+    "Horizon OC\nConfig Buffer Mismatch": "Horizon OC\nНевідповідність буфера конфігурації",
+    "Horizon OC\nDeactivated frequency.\nReboot to apply.": "Horizon OC\nЧастоту вимкнено.\nПерезавантажте для застосування.",
+    "Horizon OC\nSecmon read failed!\n This may be a hardware issue!": "Horizon OC\nПомилка читання Secmon!\n Це може бути апаратна проблема!",
+    "Horizon OC\nFailed to write I2C\nwhile setting vddq": "Horizon OC\nПомилка запису I2C\nпід час встановлення VDDQ",
+    "Horizon OC\nKip version mismatch\nPlease reinstall Horizon OC": "Horizon OC\nНевідповідність версії KIP\nПеревстановіть Horizon OC"
 }

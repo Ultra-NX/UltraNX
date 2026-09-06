@@ -1,0 +1,10 @@
+# Ariana and the Elder Codex `US` 1.0.1
+# BID: C99AC4C0BEDEBEE5
+
+ALL_FPS:
+  # UnityEngine.Rendering.OnDemandRendering_TypeInfo
+  -
+    type: write
+    address: [MAIN, 0x4C69F68, 0xB8, 0]
+    value_type: int32
+    value: -1

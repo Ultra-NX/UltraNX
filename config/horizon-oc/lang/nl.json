@@ -211,5 +211,19 @@
     "X: %u Y: %u": "X: %u Y: %u",
     "%u.%u%u mV": "%u.%u%u mV",
     "Compiling with minimal features": "Compileren met minimale functies",
-    "THE BEER-WARE LICENSE": "DE LICENTIE VOOR BIERWAREN"
+    "THE BEER-WARE LICENSE": "DE LICENTIE VOOR BIERWAREN",
+    "Horizon OC\nKip opening failed": "Horizon OC\nKIP openen mislukt",
+    "Horizon OC\nKip read failed": "Horizon OC\nKIP lezen mislukt",
+    "Horizon OC\nOutdated kip detected!\nPlease update Horizon OC": "Horizon OC\nVerouderde KIP gedetecteerd!\nWerk Horizon OC bij",
+    "Horizon OC\nOutdated sysmodule detected!\nPlease update Horizon OC": "Horizon OC\nVerouderde sysmodule gedetecteerd!\nWerk Horizon OC bij",
+    "Horizon OC\nKip write failed": "Horizon OC\nKIP schrijven mislukt",
+    "Horizon OC\nKip config set failed": "Horizon OC\nKIP-configuratie mislukt",
+    "Kip is not loaded!": "KIP is niet geladen!",
+    "Horizon OC\nKIP has been updated\nPlease reboot your console": "Horizon OC\nKIP is bijgewerkt\nHerstart je console",
+    "Horizon OC has been installed": "Horizon OC is geïnstalleerd",
+    "Horizon OC\nConfig Buffer Mismatch": "Horizon OC\nConfiguratiebuffer komt niet overeen",
+    "Horizon OC\nDeactivated frequency.\nReboot to apply.": "Horizon OC\nFrequentie gedeactiveerd.\nHerstart om toe te passen.",
+    "Horizon OC\nSecmon read failed!\n This may be a hardware issue!": "Horizon OC\nSecmon lezen mislukt!\n Dit kan een hardwareprobleem zijn!",
+    "Horizon OC\nFailed to write I2C\nwhile setting vddq": "Horizon OC\nI2C schrijven mislukt\nbij het instellen van VDDQ",
+    "Horizon OC\nKip version mismatch\nPlease reinstall Horizon OC": "Horizon OC\nKIP-versie komt niet overeen\nInstalleer Horizon OC opnieuw"
 }

@@ -211,5 +211,19 @@
     "X: %u Y: %u": "X: %u Y: %u",
     "%u.%u%u mV": "%u.%u%umV",
     "Compiling with minimal features": "최소한의 기능으로 컴파일하기",
-    "THE BEER-WARE LICENSE": "맥주 제품 라이센스"
+    "THE BEER-WARE LICENSE": "맥주 제품 라이센스",
+    "Horizon OC\nKip opening failed": "Horizon OC\nKIP을 열지 못했습니다",
+    "Horizon OC\nKip read failed": "Horizon OC\nKIP 읽기에 실패했습니다",
+    "Horizon OC\nOutdated kip detected!\nPlease update Horizon OC": "Horizon OC\n오래된 KIP이 감지되었습니다!\nHorizon OC를 업데이트하세요",
+    "Horizon OC\nOutdated sysmodule detected!\nPlease update Horizon OC": "Horizon OC\n오래된 sysmodule이 감지되었습니다!\nHorizon OC를 업데이트하세요",
+    "Horizon OC\nKip write failed": "Horizon OC\nKIP 쓰기에 실패했습니다",
+    "Horizon OC\nKip config set failed": "Horizon OC\nKIP 설정에 실패했습니다",
+    "Kip is not loaded!": "KIP이 로드되지 않았습니다!",
+    "Horizon OC\nKIP has been updated\nPlease reboot your console": "Horizon OC\nKIP이 업데이트되었습니다\n본체를 재부팅하세요",
+    "Horizon OC has been installed": "Horizon OC가 설치되었습니다",
+    "Horizon OC\nConfig Buffer Mismatch": "Horizon OC\n설정 버퍼가 일치하지 않습니다",
+    "Horizon OC\nDeactivated frequency.\nReboot to apply.": "Horizon OC\n주파수가 비활성화되었습니다.\n적용하려면 재부팅하세요.",
+    "Horizon OC\nSecmon read failed!\n This may be a hardware issue!": "Horizon OC\nSecmon 읽기에 실패했습니다!\n 하드웨어 문제일 수 있습니다!",
+    "Horizon OC\nFailed to write I2C\nwhile setting vddq": "Horizon OC\nVDDQ 설정 중\nI2C 쓰기에 실패했습니다",
+    "Horizon OC\nKip version mismatch\nPlease reinstall Horizon OC": "Horizon OC\nKIP 버전이 일치하지 않습니다\nHorizon OC를 다시 설치하세요"
 }

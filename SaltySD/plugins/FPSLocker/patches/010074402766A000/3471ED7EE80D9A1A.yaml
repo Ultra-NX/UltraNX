@@ -1,0 +1,45 @@
+# Sacred 2 Remaster 1.0.1
+# BID: 3471ED7EE80D9A1A
+
+DECLARATIONS:
+  -
+    type: variable
+    name: fps_lock
+    value_type: uint32
+    default_value: 33332999
+    evaluate: (1000000000 * TruncDec(1 / FPS_TARGET, 6)) - 1
+  -
+    type: variable
+    name: fps_lock_remainder
+    value_type: uint32
+    default_value: 32333000
+    evaluate: 1000000000 * (TruncDec(1 / FPS_TARGET, 6) - 0.01)
+  -
+    type: code
+    name: getFpsLock
+    instructions: [
+      [adrp, x23, $fps_lock],
+      [ldr, w23, [x23, $fps_lock]],
+      [add, x8, x23, 1],
+      [ret]
+    ]
+MASTER_WRITE:
+  # REF: 0x1ED5CC8, look at ADD X8, X23, #1 above it
+  -
+    type: asm_a64
+    main_offset: 0xE947E0
+    instructions: [
+      [bl, _getFpsLock()]
+    ]
+  # REF: 0x1ED5CC8
+  -
+    type: asm_a64
+    main_offset: 0xE947EC
+    instructions: [
+      [adrp, x8, $fps_lock_remainder],
+      [ldr, w8, [x8, $fps_lock_remainder]]
+    ]
+ALL_FPS:
+  -
+    type: block
+    what: timing
