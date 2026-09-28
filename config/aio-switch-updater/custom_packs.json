@@ -1,6 +1,7 @@
 {
   "ams": {
-    "[PACK] UltraNX 3.0|R4": "https://github.com/Ultra-NX/UltraNX/releases/latest/download/Ultra.zip"
+    "[PACK] UltraNX 3.1|RC1      Prerelease HOS ≤23.0.0": "https://github.com/Ultra-NX/UltraNX/releases/latest/download/Ultra.zip",
+    "[PACK] UltraNX 3.0|R4+            Stable HOS ≤22.5.0": "https://github.com/Ultra-NX/UltraNX/releases/download/3.0-R4/Ultra.zip"
   },
   "misc": {
     "Refresh AIO": "https://github.com/Ultra-NX/Ultra-Resources/releases/download/Homebrews/AIO.zip"
