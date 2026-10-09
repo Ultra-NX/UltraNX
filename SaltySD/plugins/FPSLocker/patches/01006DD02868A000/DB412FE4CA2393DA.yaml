@@ -1,0 +1,18 @@
+# Artis Impact 1.0.1
+# BID: DB412FE4CA2393DA
+
+ALL_FPS:
+  # Vsync
+  # Ref: 01 00 00 00 01 00 00 00 00 00 00 08
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6F32BD8]
+    value_type: int32
+    value: VSYNC_TARGET
+  # FPS lock
+  # Ref: 89 88 88 3C 03 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0x6F32BE4]
+    value_type: float
+    value: "1 / FPS_LOCK_TARGET"

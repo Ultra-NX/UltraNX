@@ -1,0 +1,19 @@
+# Hyrule Warriors: Age of Calamity 1.4.1
+# BID: E5F275B5D0889899
+# Non-prerenderd cutscenes are tied to framerate
+
+ALL_FPS:
+  # REF: 1e 00 00 00 02 00 00 00 1e 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0x26A2280]
+    value_type: int32
+    value: [FPS_TARGET, VSYNC_TARGET, FPS_TARGET]
+  -
+    type: evaluate_write
+    address: [MAIN, 0x26A228C]
+    value_type: float
+    value: FPS_LOCK_TARGET
+  -
+    type: block
+    what: timing

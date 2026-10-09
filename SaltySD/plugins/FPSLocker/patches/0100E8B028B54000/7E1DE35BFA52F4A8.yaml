@@ -1,0 +1,20 @@
+# 하늘의 궤적 the 2nd / 空之軌跡 the 2nd 1.0.3a
+# BID: 7E1DE35BFA52F4A8
+
+ALL_FPS:
+  # Min Delta
+  ## REF: C1 03 80 52 28 4D 28 9B, first ADRP + ADD below it
+  # By default 60
+  -
+    type: evaluate_write
+    address: [MAIN, 0x878890, 0x2C]
+    value_type: uint32
+    value: FPS_TARGET
+  # Dynamic Resolution
+  ## REF: First function in .init_array section, ADRP + ADD + 0x228 (default float: 2.3)
+  ## Adding there 0.95 by myself because game seems to have issues with reaching 60 FPS without it
+  -
+    type: write
+    address: [MAIN, 0x8783D8]
+    value_type: float
+    value: 0.95

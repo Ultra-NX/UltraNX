@@ -1,0 +1,24 @@
+# Castle of Heart 1.3.0
+# BID: 38E31B826DE0764C
+
+DECLARATIONS:
+  -
+    type: variable
+    name: limiter_frametime
+    value_type: double
+    default_value: 0.033
+    evaluate: "TruncDec(1 / FPS_TARGET, 3)"
+MASTER_WRITE:
+  # FPS lock
+  ## REF: 00 20 68 1e 4b fd ff 54 74 d6 01 a9, look at adrp x8 + ldr d8, [x8, #0x98] above
+  -
+    type: asm_a64
+    main_offset: 0x72165C
+    instructions: [
+      [adrp, x8, $limiter_frametime],
+      [ldr, d8, [x8, $limiter_frametime]]
+    ]
+ALL_FPS:
+  -
+    type: block
+    what: timing

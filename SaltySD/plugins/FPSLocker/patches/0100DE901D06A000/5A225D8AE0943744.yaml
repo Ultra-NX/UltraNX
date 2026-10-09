@@ -1,0 +1,10 @@
+# 영웅전설 여의 궤적 1.0.1
+# BID: 5A225D8AE0943744
+
+ALL_FPS:
+  # REF: 68 EA 50 B9 E0 03 1F 2A 7F B2 00 F9
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5510B0, 0x34]
+    value_type: uint32
+    value: FPS_LOCK_TARGET

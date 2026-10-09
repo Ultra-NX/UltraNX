@@ -1,0 +1,52 @@
+# Castle of Heart: Retold 1.0.5
+# BID: E902A297D1544CCF
+
+DECLARATIONS:
+  -
+    type: variable
+    name: limiter_sleep_threshold
+    value_type: int64
+    default_value: 319999
+    evaluate: "(10000000 / FPS_TARGET) - 13001"
+  -
+    type: variable
+    name: limiter_sleep_target
+    value_type: int64
+    default_value: 330000
+    evaluate: "(10000000 / FPS_TARGET) - 3000"
+MASTER_WRITE:
+  # FPS lock
+  ## REF: e8 3f 9c 52 88 00 a0 72
+  -
+    type: asm_a64
+    main_offset: 0x2490648
+    instructions: [
+      [adrp, x8, $limiter_sleep_threshold],
+      [ldr, x8, [x8, $limiter_sleep_threshold]]
+    ]
+  ## REF: 14 22 81 52 b4 00 a0 72
+  -
+    type: asm_a64
+    main_offset: 0x2490654
+    instructions: [
+      [adrp, x20, $limiter_sleep_target],
+      [ldr, x20, [x20, $limiter_sleep_target]]
+    ]
+ALL_FPS:
+  # Dynamic Resolution
+  ## REF: e9 11 e8 f2 20 01 67 9e 00 18 68 1e 08 01 00 6d, look at adrp + ldr x0 above
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8360C68, 0xB8, 0x0]
+    address_unsafe: true
+    value_type: double
+    value: FPS_TARGET
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8360C68, 0xB8, 0x8]
+    address_unsafe: true
+    value_type: double
+    value: FRAMETIME_TARGET
+  -
+    type: block
+    what: timing

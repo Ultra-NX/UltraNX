@@ -8,7 +8,7 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с упором в разгон и улучшенный пользовательский опыт.
 
-### [UltraNX 3.1|RC1](https://github.com/Ultra-NX/UltraNX/releases/tag/3.1-R1) Поддерживает все HOS до 23.0.0 включительно
+### [UltraNX 3.1|R1](https://github.com/Ultra-NX/UltraNX/releases/tag/3.1-R1) Поддерживает все HOS до 23.0.1 включительно
 
 
 
@@ -54,10 +54,11 @@
    * [sys-patch](https://github.com/borntohonk/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
+   * [disable remap dialog](https://github.com/ndeadly/disable_remap_dialog) - Модуль, убирающий предупреждение о переназначенных кнопках при каждом заходе в игры.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Также позволяет использовать самописные пакеты, например - Ultra Tuner.
      - [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) - Оверлей для управления модулем sys-clk.
      - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Tuner.
-     - [FPSLocker](https://github.com/ppkantorski/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
+     - [FPSLocker](https://github.com/masagrator/FPSLocker) - Оверлей, позволяющий разблокировать 60 FPS в играх.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - Оверлей для использования читов, включая графические.
      - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - Оверлей для переключения запущенной игры в портатив\док, меняет настройки графики\разрешения в играх.
      - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Оверлей для включения\отключения установленных системных модулей.

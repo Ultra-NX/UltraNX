@@ -1,0 +1,20 @@
+# Trails in the Sky 2nd Chapter 1.0.3
+# BID: 5EA394E096752EE3
+
+ALL_FPS:
+  # Min Delta
+  ## REF: C1 03 80 52 28 4D 28 9B, first ADRP + ADD below it
+  # By default 60
+  -
+    type: evaluate_write
+    address: [MAIN, 0x879890, 0x2C]
+    value_type: uint32
+    value: FPS_TARGET
+  # Dynamic Resolution
+  ## REF: First function in .init_array section, ADRP + ADD + 0x228 (default float: 2.3)
+  ## Adding there 0.95 by myself because game seems to have issues with reaching 60 FPS without it
+  -
+    type: write
+    address: [MAIN, 0x8793D8]
+    value_type: float
+    value: 0.95

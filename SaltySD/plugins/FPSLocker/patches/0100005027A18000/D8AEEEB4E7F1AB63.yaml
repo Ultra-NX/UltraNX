@@ -1,0 +1,18 @@
+# Graveyard Keeper 2 1.0.2
+# BID: D8AEEEB4E7F1AB63
+
+ALL_FPS:
+  # Vsync
+  # Ref: 01 00 00 00 01 00 00 00 00 00 00 08
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7A9FA98]
+    value_type: int32
+    value: VSYNC_TARGET
+  # FPS lock
+  # Ref: 89 88 88 3C 03 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7A9FAA4]
+    value_type: float
+    value: "1 / FPS_LOCK_TARGET"

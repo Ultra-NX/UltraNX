@@ -81,7 +81,77 @@ DECLARATIONS:
       :goto3, [mov, w8, 0x21a0],
       [ret],
     ]
+  -
+    type: code
+    name: effectSpeed
+    instructions: [
+      [ldr, s0, [x20, 4]],
+      [fmov, s1, 30.0],
+      [fmul, s0, s0, s1],
+      [str, s0, [x27, 856]],
+      [ret]
+    ]
+  -
+    type: code
+    name: menuWaitFrames
+    instructions: [
+      [adrp, x0, $game_speed],
+      [ldr, s0, [x0, $game_speed]],
+      [fmov, s2, 30.0],
+      [fmul, s0, s0, s2],
+      [ucvtf, s1, w8],
+      [fdiv, s1, s1, s0],
+      [fmov, s2, 0.5],
+      [fadd, s1, s1, s2],
+      [fcvtzu, w8, s1],
+      [mov, w0, wzr],
+      [ret]
+    ]
 MASTER_WRITE:
+  # Quest log (quest title, "Received", quest completed): menu sequence "wait" step counts frames, scale wait length by 1 / (frame time * 30)
+  # GfMenuObjQuestLog sequence wait, start of wait branch (ldr w8,[x19,#392]; str w8,[x19,#948]; orr w8,wzr,#1; mov w0,wzr; strb w8,[x19,#944])
+  # Title sequence pushes wait 20 -> fade in -> wait 119 -> fade out
+  # REF: 68 DA 43 F9 08 05 00 91 68 DA 03 F9 F3 03 00 32, patch at REF+0x248
+  -
+    type: asm_a64
+    main_offset: 0x46E1D4
+    instructions: [
+      [ldr, w8, [x19, 392]],
+      [bl, _menuWaitFrames()],
+      [str, w8, [x19, 948]],
+      [mov, w8, 1],
+      [strb, w8, [x19, 944]]
+    ]
+  # Quest "Received" / quest completed / task sequences (second sequence of GfMenuObjQuestLog, pushes wait 55, 75, 45, 54...)
+  # Same wait code, other template instance (ldr w8,[x19,#264]; str w8,[x19,#644]; orr w8,wzr,#1; mov w0,wzr; strb w8,[x19,#640])
+  # REF: 68 DA 43 F9 08 05 00 91 68 DA 03 F9 F3 03 00 32, patch at REF+0x174
+  -
+    type: asm_a64
+    main_offset: 0x46E100
+    instructions: [
+      [ldr, w8, [x19, 264]],
+      [bl, _menuWaitFrames()],
+      [str, w8, [x19, 644]],
+      [mov, w8, 1],
+      [strb, w8, [x19, 640]]
+    ]
+  # Effects speed (aura, fire etc.): game feeds effect system with layer speed (1.0) per frame, scale it by frame time * 30
+  # REF: 88 0A 40 B9 68 5B 03 B9 (ldr w8,[x20,#8]; str w8,[x27,#856]), patch at REF
+  -
+    type: asm_a64
+    main_offset: 0x17794C
+    instructions: [
+      [bl, _effectSpeed()],
+      [nop]
+    ]
+  # QTE rings: speed factor already includes frame time * 30 and menu multiplies it again by frame time, force factor to 1.0
+  # REF: A0 06 40 BD 01 D0 27 1E 08 08 21 1E, patch at REF+8 (fmul s8,s0,s1 -> fmov s8,#1.0)
+  -
+    type: asm_a64
+    main_offset: 0x1D0C4
+    instructions: [
+      [fmov, s8, 1.0]
+    ]
   # Dynamic speed
   # Jump before pushing frame
   -

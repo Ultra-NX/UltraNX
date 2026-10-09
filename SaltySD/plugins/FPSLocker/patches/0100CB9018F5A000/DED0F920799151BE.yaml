@@ -1,0 +1,11 @@
+# Another Code: Recollection 1.0.0
+# BID: DED0F920799151BE
+
+ALL_FPS:
+  # UnityEngine.Time::fixedDeltaTime 
+  # Fixes issues with popups animations
+  -
+    type: evaluate_write
+    address: [MAIN, 0x624b160, 0x48]
+    value_type: float
+    value: "1 / FPS_TARGET"

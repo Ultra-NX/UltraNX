@@ -1,0 +1,17 @@
+# Another Eden Begins 1.1.0
+# BID: F09FD343105D328B
+
+ALL_FPS:
+  # Vsync
+  # Ref: 01 00 00 00 89 88 88 3C
+  -
+    type: evaluate_write
+    address: [MAIN, 0xEA787E0]
+    value_type: int32
+    value: VSYNC_TARGET
+  # FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0xEA787E4]
+    value_type: float
+    value: "1 / FPS_LOCK_TARGET"

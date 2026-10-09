@@ -1,0 +1,13 @@
+# EA SPORTS FC 27 1.8c.cab1
+# BID: FB81983AA1CC3A2E
+
+ALL_FPS:
+  # Internal FPS Lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0xDA19E38, 8]
+    value_type: double
+    value: FPS_TARGET
+  -
+    type: block
+    what: timing

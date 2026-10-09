@@ -6,7 +6,7 @@
 #
 ### Ultra is a functional custom firmware for Nintendo Switch, with a focus on overclocking and an improved user experience.
 
-### [UltraNX 3.1|RC1](https://github.com/Ultra-NX/UltraNX/releases/tag/3.1-R1) Supports all HOS up to and including 23.0.0
+### [UltraNX 3.1|R1](https://github.com/Ultra-NX/UltraNX/releases/tag/3.1-R1) Supports all HOS up to and including 23.0.1
 
 
 
@@ -50,10 +50,11 @@
    * [sys-patch](https://github.com/borntohonk/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that allows you to connect almost any gamepads to the console via bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
+   * [disable remap dialog](https://github.com/ndeadly/disable_remap_dialog) - A module that removes the warning about reconfigured buttons every time you enter the game.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
      - [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) - Overlay for controlling sys-clk module.
      - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Tuner.
-     - [FPSLocker](https://github.com/ppkantorski/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
+     - [FPSLocker](https://github.com/masagrator/FPSLocker) - An overlay that allows you to unlock 60 FPS in games.
      - [EdiZon](https://github.com/proferabg/EdiZon-Overlay) - An overlay for using cheats.
      - [ReverseNX-RT](https://github.com/ppkantorski/ReverseNX-RT) - An overlay for switching a running game to a handheld\dock mode, which changes the graphics and resolution settings in games.
      - [Sysmodules](https://github.com/ppkantorski/ovl-sysmodules) - Overlay for enabling\disabling installed system modules.

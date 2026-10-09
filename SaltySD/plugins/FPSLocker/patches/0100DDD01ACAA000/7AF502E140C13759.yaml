@@ -1,0 +1,25 @@
+# The Entropy Centre 1.0.1
+# BID: 7AF502E140C13759
+
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7052288, 0]
+    value_type: float
+    value: ["0.9 * FRAMETIME_TARGET", "0.9 * FRAMETIME_TARGET"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x707FF48, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x6E838E8, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

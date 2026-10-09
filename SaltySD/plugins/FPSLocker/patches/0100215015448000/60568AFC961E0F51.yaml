@@ -1,0 +1,11 @@
+# 영웅전설 시작의 궤적 1.0.5
+# BID: 60568AFC961E0F51
+
+ALL_FPS:
+  # Set game to 60 FPS mode
+  # REF: find xref of "PhyreFrameworkApplication" string, look at first LDR above it
+  -
+    type: write
+    address: [MAIN, 0x4FBDA80, 0x20A4]
+    value_type: uint32
+    value: 0

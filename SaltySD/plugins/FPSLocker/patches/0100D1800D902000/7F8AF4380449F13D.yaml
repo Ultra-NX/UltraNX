@@ -1,0 +1,10 @@
+# SENRAN KAGURA Peach Ball `US` 1.0.2
+# BID: 7F8AF4380449F13D
+
+ALL_FPS:
+  # CRendSpanMgr:[SpanType_30FPS] = 1, CRendSpanMgr:[SpanType_60FPS] = 0
+  -
+    type: write
+    address: [MAIN, 0x62D8CC]
+    value_type: int32
+    value: 0

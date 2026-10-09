@@ -1,0 +1,19 @@
+# Dragon Quest Heroes: Torneko's Mystery Dungeon -Classic HD- 1.0.1
+# BID: 724C36A143F3F225
+
+ALL_FPS:
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0x5E703C8, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0x4E63150, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

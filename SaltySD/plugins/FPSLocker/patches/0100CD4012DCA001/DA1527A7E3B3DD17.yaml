@@ -1,0 +1,60 @@
+# 三國志14 with 威力加強版 1.1.1
+# BID: DA1527A7E3B3DD17
+# Cursor speed is tied to framerate, main menu animations speed is not adjusted properly in range from 35 to 55 FPS
+
+DECLARATIONS:
+  # DON'T PUT ANYTHING BETWEEN - START
+  -
+    type: variable
+    name: fps_lock
+    value_type: uint32
+    default_value: 30
+    evaluate: FPS_LOCK_TARGET
+  -
+    type: variable
+    name: fps_lock2
+    value_type: uint32
+    default_value: 60
+    evaluate: FPS_LOCK_TARGET
+  # DON'T PUT ANYTHING BETWEEN - END
+  -
+    type: variable
+    name: game_speed
+    value_type: float
+    default_value: 0.0333333333
+    evaluate: "1/FPS_TARGET"
+MASTER_WRITE:
+  # Redirect adjusting game speed to FPS Lock, REF: 20 79 68 BC 01 10 2E 1E 00 D8 21 7E, patch ADRP + ADD above it
+  -
+    type: asm_a64
+    main_offset: 0xB8F568
+    instructions: [
+      [adrp, x9, $fps_lock],
+      [add, x9, x9, $fps_lock]
+    ]
+  # Redirect FPS Lock, REF: C8 32 40 B9 E8 C2 00 B9, patch CBNZ + LDR
+  -
+    type: asm_a64
+    main_offset: 0x896DE0
+    instructions: [
+      [adrp, x8, $fps_lock],
+      [ldr, w8, [x8, $fps_lock]]
+    ]
+  # Redirect game speed, REF: 00 28 21 1E 00 A0 00 BD C0 03 5F D6
+  -
+    type: asm_a64
+    main_offset: 0x1116D8C
+    instructions: [
+      [adrp, x8, $game_speed],
+      [ldr, s0, [x0, 0xa0]],
+      [ldr, s1, [x8, $game_speed]]
+    ]
+ALL_FPS:
+  - # Adjust min delta for menus, 0 - 30 FPS, 1 - 60 FPS, REF: 20 79 68 BC 01 10 2E 1E 00 D8 21 7E, ADRP + LDR above
+    type: evaluate_write
+    address: [MAIN, 0x2552AD0]
+    value_type: uint32
+    value: "FPS_TARGET / 60"
+  -
+    type: block
+    what: timing

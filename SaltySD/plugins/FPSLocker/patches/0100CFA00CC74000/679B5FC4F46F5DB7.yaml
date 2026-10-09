@@ -1,0 +1,75 @@
+# Blades of Time 1.2.200127
+# BID: 679B5FC4F46F5DB7
+
+DECLARATIONS:
+  -
+    type: variable
+    name: act_step
+    value_type: float
+    default_value: 0.0333333333
+    evaluate: "1 / FPS_TARGET"
+  -
+    type: variable
+    name: act_threshold
+    value_type: float
+    default_value: 0.0333333333
+    evaluate: "0.95 / FPS_TARGET"
+  -
+    type: variable
+    name: act_catchup
+    value_type: float
+    default_value: 0.0666666667
+    evaluate: "2 / FPS_TARGET"
+  -
+    type: code
+    name: getFixedActTime
+    instructions: [
+      [ldr, w8, [x20, 0x20]],
+      [mov, w9, 0x8889],
+      [movk, w9, 0x3d08, 16],
+      [cmp, w8, w9],
+      [b.ne, :keep],
+      [adrp, x8, $act_step],
+      [ldr, w8, [x8, $act_step]],
+      :keep, [ret]
+    ]
+MASTER_WRITE:
+  # REF: TpsGameScene::actScene() - skip-frame threshold (was 1/30 from 0x13A1E20)
+  -
+    type: asm_a64
+    main_offset: 0xA5FA0
+    instructions: [
+      [adrp, x8, $act_threshold],
+      [ldr, s9, [x8, $act_threshold]]
+    ]
+  # REF: catch-up threshold (was 1/15 from 0x13A1E24)
+  -
+    type: asm_a64
+    main_offset: 0xA5FD0
+    instructions: [
+      [adrp, x8, $act_catchup]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0xA5FD8
+    instructions: [
+      [ldr, s2, [x8, $act_catchup]]
+    ]
+  # REF: accumulator -= step, dt = step (was -1/30 and 0x3D088889)
+  -
+    type: asm_a64
+    main_offset: 0xA6038
+    instructions: [
+      [adrp, x8, $act_step],
+      [ldr, s1, [x8, $act_step]],
+      [fsub, s0, s0, s1],
+      [ldr, w21, [x8, $act_step]],
+      [nop]
+    ]
+  # REF: fixed physics act time passed to PhysicsThread::act (scene+0x20, 1/30 when vsync30fps)
+  -
+    type: asm_a64
+    main_offset: 0xA627C
+    instructions: [
+      [bl, _getFixedActTime()]
+    ]
