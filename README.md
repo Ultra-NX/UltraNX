@@ -103,6 +103,7 @@
 
 [GPL 2.0](https://github.com/Atmosphere-NX/Atmosphere/blob/master/LICENSE): 
   * [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)
+  * [Mission Control](https://github.com/ndeadly/MissionControl)
 
 
 
@@ -110,10 +111,9 @@
 ## Благодарности 
 
 * Souldbminer
-* B3711
 * ppkantorski
-* Meha
 * duckbill
+* B3711
 * snupt
 #### А так же - отдельная благодарность администрации и участникам Ultra Group
 

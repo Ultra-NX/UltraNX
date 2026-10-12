@@ -98,16 +98,16 @@ Listed below are the licenses of those programs that have been modified specific
 
 [GPL 2.0](https://github.com/Atmosphere-NX/Atmosphere/blob/master/LICENSE): 
   * [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)
+  * [Mission Control](https://github.com/ndeadly/MissionControl)
 
 
 
 ## Credits 
 
 * Souldbminer
-* B3711
 * ppkantorski
-* Meha
 * duckbill
+* B3711
 * snupt
 #### And also - a special thanks to the administration and members of Ultra Group
 
