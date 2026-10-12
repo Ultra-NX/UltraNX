@@ -69,8 +69,8 @@
       * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Здесь можно скачать DBI или обновить имеющийся.
       * [AIO](https://github.com/HamletDuFromage/aio-switch-updater) - Скачивает настроенный AIO для UltraNX.
       * [Linkalho](https://gbatemp.net/download/linkalho.38822) - Программа для привязки аккаунта. Без привязки не будут работать некоторые игры.
-      * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10805015) - Эмулятор PSP.
-      * [DuckStation](https://gbatemp.net/threads/duckstation-for-switch.654484/page-7#post-10768042) - Эмулятор PS1.
+      * [PPSSPP](https://github.com/NaGaa95/ppsspp-nx) - Эмулятор PSP.
+      * [DuckStation](https://github.com/shooterspps/duckstation) - Эмулятор PS1.
       * [Moonlight](https://github.com/XITRIX/Moonlight-Switch) - Клиент Moonlight, позволяет транслировать на консоль игры с PC.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Поиск и установка тем на свитч.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Программа для сброса контроллера батареи. Не используйте просто так!
@@ -83,7 +83,7 @@
       * [sys-dock](https://github.com/masagrator/sys-dock) - Модуль позволяющий изменять частоту подключенного экрана через Док.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay) - Та самая игра в виде оверлея. Работает только на последних версиях Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Регулировка глобальной громкости, позволяет поднять громкость выше максимума. Использовать аккуратно!
-      * [NX-FanControl](https://github.com/Insektaure/NX-FanControl) + [NX-FanControl Overlay Fork](https://github.com/ppkantorski/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
+      * [NX-FanControl](https://github.com/Lightos1/NX-FanControl) - Модуль для ручной регулировки оборотов кулера. Изменения применяются сразу, модуль смотрит на температуру SOC а не Skin, как Атмосфера.
       * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - Оверлей, позволяющий быстро отключаться\подключаться к bluetooth-гарнитуре.
       * [Fizeau](https://github.com/averne/Fizeau) + [Fizeau Overlay Fork](https://github.com/ppkantorski/Fizeau) - Модуль для изменения цветового профиля экрана.
       * [sys-tune](https://github.com/ppkantorski/sys-tune) - Оверлей-музыкальный плеер, работает в фоне.

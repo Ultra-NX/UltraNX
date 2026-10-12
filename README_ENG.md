@@ -65,8 +65,8 @@
       * [DBI](https://4pda.to/forum/index.php?showtopic=939714&st=1100#entry86288632) - Here you can download a DBI or update an existing one.
       * [AIO](https://github.com/HamletDuFromage/aio-switch-updater) - Downloads the configured AIO for UltraNX.
       * [Linkalho](https://gbatemp.net/download/linkalho.38822/) - Account linking program. Some games won't work without the link.=
-      * [PPSSPP](https://gbatemp.net/threads/ppsspp-switch-standalone-beta.544071/post-10805015) - PSP emulator.
-      * [DuckStation](https://gbatemp.net/threads/duckstation-for-switch.654484/page-7#post-10768042) - PS1 emulator.
+      * [PPSSPP](https://github.com/NaGaa95/ppsspp-nx) - PSP emulator.
+      * [DuckStation](https://github.com/shooterspps/duckstation) - PS1 emulator.
       * [Moonlight](https://github.com/XITRIX/Moonlight-Switch) - Moonlight client, allows to stream games from PC.
       * [ThemezerNX](https://github.com/suchmememanyskill/themezer-nx) + [NXThemes Installer](https://github.com/exelix11/SwitchThemeInjector) + [Theme Patches](https://github.com/exelix11/theme-patches) - Searching and installing themes on Switch.
       * [Battery Desync Fix](https://github.com/CTCaer/battery_desync_fix_nx) - Program to reset the battery controller. Do not use unnecessarily!
@@ -79,7 +79,7 @@
       * [sys-dock](https://github.com/masagrator/sys-dock) - A module that allows you to change the frequency of your connected screen via the Dock.
       * [Tetris](https://github.com/ppkantorski/Tetris-Overlay/) - "That" game in the form of an overlay. Works only on the latest versions of Ultrahand.
       * [MasterVolume](https://github.com/averne/MasterVolume) - Global volume control, allows you to raise the volume above the maximum. Use with care!
-      * [NX-FanControl](https://github.com/Insektaure/NX-FanControl) + [NX-FanControl Overlay Fork](https://github.com/ppkantorski/NX-FanControl) - Module for manually adjusting the speed of the cooler. The changes are applied immediately, the module works from SOC temperature and not Skin temperature like Atmosphere.
+      * [NX-FanControl](https://github.com/Lightos1/NX-FanControl) - Module for manually adjusting the speed of the cooler. The changes are applied immediately, the module works from SOC temperature and not Skin temperature like Atmosphere.
       * [BT Audio](https://github.com/masagrator/BT_Audio-ovl) - An overlay that allows you to quickly disconnect\connect to a bluetooth headset.
       * [Fizeau](https://github.com/averne/Fizeau) + [Fizeau Overlay Fork](https://github.com/ppkantorski/Fizeau) - Module for changing the screen color profile.
       * [sys-tune](https://github.com/ppkantorski/sys-tune) - Overlay music player, works in background.
