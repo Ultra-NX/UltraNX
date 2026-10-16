@@ -1,0 +1,35 @@
+# 女神異聞錄５ 皇家版 1.0.2
+# BID: D4B150B29A931CD3
+
+DECLARATIONS:
+  -
+    type: code
+    name: p5FadeStep
+    instructions: [
+      [scvtf, s0, w0],
+      [fmul, s0, s8, s0],
+      [fmov, s2, 0.75],
+      [fcmp, s0, s2],
+      [b.ge, :norm],
+      [fadd, s0, s0, s0],
+      [tbz, w9, 0, :norm],
+      [fsub, s0, s0, s0],
+      :norm, [scvtf, s1, w20],
+      [fmul, s0, s0, s1],
+      [fcvtzu, w8, s0],
+      [mov, w9, 0xFF],
+      [cmp, w8, w9],
+      [csel, w8, w8, w9, lt],
+      [ret]
+    ]
+
+MASTER_WRITE:
+  -
+    type: asm_a64
+    main_offset: 0xEBDF5C
+    instructions: [
+      [adrp, x9, 0x231A000],
+      [ldr, w9, [x9, 0x7DC]],
+      [bl, _p5FadeStep()],
+      [b, +32]
+    ]

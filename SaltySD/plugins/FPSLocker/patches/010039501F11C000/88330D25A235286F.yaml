@@ -1,0 +1,14 @@
+# Wobbly Life 1.1.0.0
+# BID: 88330D25A235286F
+
+MASTER_WRITE:
+  # SwitchNetworkManager.Update calls CheckConnection every frame.
+  # When NetworkInterfaceWrapper.IsNetworkConnecting() is false it calls EnterNetworkConnecting()
+  # and then the blocking WaitForNetworkConnecting() on the main thread, capping FPS around 46-47.
+  ## NOP CheckConnection call
+  -
+    type: asm_a64
+    main_offset: 0x6448CF4
+    instructions: [
+      [nop]
+    ]

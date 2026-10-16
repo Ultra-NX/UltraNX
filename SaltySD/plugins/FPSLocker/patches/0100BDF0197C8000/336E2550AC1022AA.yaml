@@ -1,0 +1,11 @@
+# ワンス・アポン・ア・塊魂 2.0.1
+# BID: 336E2550AC1022AA
+
+ALL_FPS:
+  # Dynamic Resolution
+  ## REF: App.KatamariSin.AppSupport_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x8FF4D88, 0xB8, 0x18]
+    value_type: double
+    value: "0.9 * FRAMETIME_TARGET"

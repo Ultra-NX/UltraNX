@@ -1,0 +1,16 @@
+# SOMA 1.6.0
+# BID: AA2258B29060A289
+
+ALL_FPS:
+  # REF: "bool GetLimitFPS()"
+  -
+    type: write
+    address: [MAIN, 0xA7AAB0, 0x80]
+    value_type: uint8
+    value: 0
+  # Graphics target frame rate
+  -
+    type: evaluate_write
+    address: [MAIN, 0xA7AAB0, 0xC0, 0x28, 0x14]
+    value_type: uint32
+    value: FPS_TARGET

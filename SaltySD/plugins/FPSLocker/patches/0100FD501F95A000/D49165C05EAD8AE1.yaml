@@ -1,0 +1,18 @@
+# Viractal 1.4.5
+# BID: D49165C05EAD8AE1
+
+ALL_FPS:
+  # Vsync
+  # Ref: 01 00 00 00 01 00 00 00 00 00 00 08
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7A642D8]
+    value_type: int32
+    value: VSYNC_TARGET
+  # FPS lock
+  # Ref: 89 88 88 3C 03 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0x7A642E4]
+    value_type: float
+    value: "1 / FPS_LOCK_TARGET"

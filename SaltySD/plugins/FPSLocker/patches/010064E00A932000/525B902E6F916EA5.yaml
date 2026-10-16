@@ -1,0 +1,29 @@
+# Trine 2: Complete Story 1.0.1
+# BID: 525B902E6F916EA5
+
+MASTER_WRITE:
+  -
+    type: asm_a64
+    main_offset: 0x6A35D8
+    instructions: [
+      [ldr, w9, [x19, 0x338]],
+      [nop]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x6A35F4
+    instructions: [
+      [nop]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x6A3600
+    instructions: [
+      [nop]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x6A3610
+    instructions: [
+      [nop]
+    ]

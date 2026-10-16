@@ -1,0 +1,9 @@
+# Rabbids Party of Legends 1.0.1
+# BID: 7C0876057EE29DF3
+
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x2A68880]
+    value_type: float
+    value: "1 / FPS_TARGET"

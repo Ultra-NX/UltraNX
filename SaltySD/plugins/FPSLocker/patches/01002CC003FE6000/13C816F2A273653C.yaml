@@ -1,0 +1,29 @@
+# Starlink: Battle for Atlas 1.0.6
+# BID: 13C816F2A273653C
+
+MASTER_WRITE:
+  # Redirect reading DR FPS Target to MAIN + 0xFBF7F00
+  -
+    type: bytes
+    main_offset: 0x72770C
+    value_type: uint32
+    value: 
+      - 0x9007A688
+      - 0xBD4F0103
+  -
+    type: bytes
+    main_offset: 0x727720
+    value_type: uint32
+    value: 0xBD4F0104
+  # Default value
+  -
+    type: bytes
+    main_offset: 0xFBF7F00
+    value_type: float
+    value: 30
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0xFBF7F00]
+    value_type: float
+    value: "FPS_TARGET"

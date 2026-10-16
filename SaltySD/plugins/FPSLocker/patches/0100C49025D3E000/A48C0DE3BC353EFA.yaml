@@ -1,0 +1,58 @@
+# EA SPORTS FC 27 1.8d.310c
+# BID: A48C0DE3BC353EFA
+
+DECLARATIONS:
+  -
+    type: variable
+    value_type: uint32
+    name: hasStarted
+    default_value: 0
+  -
+    type: variable
+    value_type: float
+    name: dr_target
+    default_value: 33.333333
+    evaluate: FRAMETIME_TARGET
+MASTER_WRITE:
+  # Dynamic Resolution regulator
+  -
+    type: asm_a64
+    main_offset: 0x97F3CF8
+    instructions: [
+      [ldr, s8, [x0, 248]],
+      [ldr, s9, [x0, 324]],
+      [ldr, s10, [x0, 388]],
+      [ldr, s12, [x0, 472]],
+      [ldrb, w20, [x0, 576]],
+      [ldr, s0, [x0, 164]],
+      [adrp, x9, $hasStarted],
+      [ldr, w9, [x9, $hasStarted]],
+      [cbz, w9, +16],
+      [adrp, x9, $dr_target],
+      [ldr, s8, [x9, $dr_target]],
+      [fmov, s9, s8],
+      [nop],
+      [nop],
+      [nop],
+      [nop]
+    ]
+ALL_FPS:
+  -
+    type: write
+    address: [VARIABLE, hasStarted]
+    value: 1
+  # FPS lock
+  -
+    type: evaluate_write
+    address: [MAIN, 0xDA20E38, 8]
+    value_type: double
+    value: FPS_TARGET
+  # Dynamic resolution
+  -
+    type: evaluate_write
+    address: [MAIN, 0xDE83DA0, 0x14C8, 0xC]
+    value_type: float
+    value: [FRAMETIME_TARGET, FRAMETIME_TARGET]
+  -
+    type: block
+    what: timing

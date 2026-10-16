@@ -1,0 +1,65 @@
+# WWE 2K18 1.04
+# BID: DEEE18D307C81634
+
+MASTER_WRITE:
+  # NOP 30 fps restore
+  -
+    type: asm_a64
+    main_offset: 0xEEB634
+    instructions: [
+      [ret]
+    ]
+  # SetFrameRate
+  -
+    type: asm_a64
+    main_offset: 0xEEB688
+    instructions: [
+      [adrp, x8, 0x3016000],
+      [ldr, x8, [x8, 0x990]],
+      [ldr, s0, [x8, 0x20]],
+      [ret]
+    ]
+  # NOP 30 fps restore
+  -
+    type: asm_a64
+    main_offset: 0xEEB7D4
+    instructions: [
+      [ret]
+    ]
+
+ALL_FPS:
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3748D38]
+    value_type: uint32
+    value: "FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3748D4C]
+    value_type: float
+    value: "1 / FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3748D50]
+    value_type: float
+    value: "FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3748D54]
+    value_type: float
+    value: "1000 / FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3748D58]
+    value_type: uint32
+    value: "1000 / FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3748D6C]
+    value_type: float
+    value: "60 / FPS_TARGET"
+  -
+    type: evaluate_write
+    address: [MAIN, 0x3748D70]
+    value_type: float
+    value: "FPS_TARGET / 60"

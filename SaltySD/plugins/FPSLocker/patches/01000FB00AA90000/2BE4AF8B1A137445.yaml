@@ -1,0 +1,15 @@
+# Little Town Hero 1.2.0
+# BID: 2BE4AF8B1A137445
+
+MASTER_WRITE:
+  # PlayerMoveController.CalculateVelocity
+  # MoveController.UpdateMe stores velocity*deltaTime back into velocity, so the effective
+  # speed is proportional to the lerp factor (14*dt) -> 2x slower at 60 FPS.
+  ## Constant lerp factor 0.46875 (~14/30, the 30 FPS value).
+  -
+    type: asm_a64
+    main_offset: 0x174882C
+    instructions: [
+      [fmov, s0, 0.46875],
+      [nop]
+    ]
