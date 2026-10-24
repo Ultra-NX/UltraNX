@@ -1,0 +1,33 @@
+# It Takes Two 1.0.4
+# BID: DDD039E882DBCD1C
+
+MASTER_WRITE:
+  # Set Triple Buffer
+  ## nvn.NumBufferedFrames
+  -
+    type: bytes
+    main_offset: 0x9739518
+    value_type: int8
+    value: 0x53
+ALL_FPS:
+  # r.DynamicRes.FrameTimeBudget = 0.87 * (1000/FPS) cutted to 2 decimals
+  -
+    type: evaluate_write
+    address: [MAIN, 0xBA7F3D8, 0]
+    value_type: float
+    value: ["TruncDec(0.87 * FRAMETIME_TARGET, 2)", "TruncDec(0.87 * FRAMETIME_TARGET, 2)"]
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xBAAD130, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0xB2CAEC0, 0]
+    value_type: uint32
+    value: [0, 0]
+  -
+    type: block
+    what: timing

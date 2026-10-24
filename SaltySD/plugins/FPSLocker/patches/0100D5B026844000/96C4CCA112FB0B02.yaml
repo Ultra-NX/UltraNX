@@ -1,0 +1,25 @@
+# Silver Pines 1.0.1
+# BID: 96C4CCA112FB0B02
+
+ALL_FPS:
+  # Vsync
+  # Ref: 01 00 00 00 01 00 00 00 00 00 00 08
+  -
+    type: evaluate_write
+    address: [MAIN, 0x4CDFE98]
+    value_type: int32
+    value: VSYNC_TARGET
+  # FPS lock
+  # Ref: 89 88 88 3C 03 00 00 00
+  -
+    type: evaluate_write
+    address: [MAIN, 0x4CDFEA4]
+    value_type: float
+    value: "1 / FPS_LOCK_TARGET"
+  # DynamicResolution_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x4A89728, 0xB8, 0]
+    address_unsafe: true
+    value_type: double
+    value: [FPS_TARGET, FRAMETIME_TARGET]

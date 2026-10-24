@@ -45,7 +45,7 @@
 1. **Installed Modules**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Background module allowing to modify files/processes in console, supports plugins.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - This module lets you toggle installed modules on and off.
-   * [sys-patch](https://github.com/borntohonk/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
+   * [sys-patch](https://github.com/impeeza/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that lets you connect almost any controller to the console via Bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
    * [disable remap dialog](https://github.com/ndeadly/disable_remap_dialog) - A module that hides the remap warning every time you launch a game.

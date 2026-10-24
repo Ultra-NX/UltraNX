@@ -1,0 +1,10 @@
+# Fabledom 1.0.8
+# BID: BCA08580CB5D670C
+
+ALL_FPS:
+  # DynamicResolution_TypeInfo
+  -
+    type: evaluate_write
+    address: [MAIN, 0x68243A0, 0xB8, 0]
+    value_type: double
+    value: [FPS_TARGET, FRAMETIME_TARGET]

@@ -49,7 +49,7 @@
 1. **Установленные модули**
    * [SaltyNX](https://github.com/masagrator/SaltyNX) - Фоновый модуль, позволяющий модифицировать файлы\процессы в консоли, поддерживает плагины.
    * [nx-ovlloader](https://github.com/ppkantorski/nx-ovlloader) - С помощью этого модуля осуществляется переключение установленных модулей.
-   * [sys-patch](https://github.com/borntohonk/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
+   * [sys-patch](https://github.com/impeeza/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
    * [disable remap dialog](https://github.com/ndeadly/disable_remap_dialog) - Модуль, скрывающий предупреждение о переназначенных кнопках при каждом запуске игры.
