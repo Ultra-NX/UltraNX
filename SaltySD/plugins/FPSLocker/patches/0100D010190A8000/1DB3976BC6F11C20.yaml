@@ -1,0 +1,550 @@
+# 나루토 X 보루토 나루티밋 스톰 커넥션즈 1.7.1
+# BID: 1DB3976BC6F11C20
+# FPS-independent game speed (frame skip): set any FPS target (20-60), FPS can be changed in-game.
+# Logic always runs 60 steps/s; missing steps are run before each drawn frame.
+# Movies play in the game's own 30 FPS mode (its movie playback flickers in the 60 FPS mode).
+# Frame skip state is kept in DECLARATIONS variables.
+
+DECLARATIONS:
+# frame skip state: F = repeated logic step, R = logic steps left, tick/acc = time, Saved/save* = hidden button edges, Step = logic step counter, Press = press delivered in this step;
+# mvStamp = logic step of the last movie scene update, mvForced = the game was switched to its 30 FPS mode for a movie
+- type: variable
+  name: fsF
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsR
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsTick
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: fsAcc
+  value_type: int64
+  default_value: 0
+- type: variable
+  name: fsSaved
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsStep
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsPress
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: mvStamp
+  value_type: uint32
+  default_value: 4026531840
+- type: variable
+  name: mvForced
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: saveA0
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA1
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA2
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA3
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA4
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB0
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB1
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB2
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB3
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB4
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB5
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB6
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB7
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB8
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB9
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB10
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB11
+  value_type: uint64
+  default_value: 0
+# frame start: measure time, decide how many logic steps to run, hide button edges until the last step;
+# while a movie plays: one step per frame and the game's own 30 FPS mode (its movie playback flickers in the 60 FPS mode)
+- type: code
+  name: fsStart
+  instructions: [
+    [mov, x16, 0x2e0],
+    [movk, x16, 0xe3, 16],
+    [sub, x16, x30, x16],
+    [adrp, x17, $fsF],
+    [mov, w15, 0],
+    [str, w15, [x17, $fsF]],
+    [str, w15, [x17, $fsSaved]],
+    [ldr, w9, [x17, $fsStep]],
+    [add, w9, w9, 1],
+    [str, w9, [x17, $fsStep]],
+    [stp, x16, x30, [sp, -0x10], "!"],
+    [mov, x9, 0x3cb0],
+    [movk, x9, 0x12f, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldp, x16, x30, [sp]],
+    [add, sp, sp, 0x10],
+    [adrp, x17, $fsF],
+    [mov, w15, 0],
+    [mov, x10, x0],
+    [ldr, x11, [x17, $fsTick]],
+    [str, x10, [x17, $fsTick]],
+    [cbz, x11, :one],
+    [sub, x11, x10, x11],
+    [ldr, x12, [x17, $fsAcc]],
+    [add, x12, x12, x11],
+    [mov, x9, 0xe200],
+    [movk, x9, 0x4, 16],
+    [sdiv, x10, x12, x9],
+    [cmp, x10, 1],
+    [b.ge, :c1],
+    [mov, x10, 1],
+    :c1,
+    [cmp, x10, 4],
+    [b.le, :ok],
+    [mov, x10, 4],
+    [mov, x12, 0],
+    [b, :store],
+    :ok,
+    [mul, x13, x10, x9],
+    [sub, x12, x12, x13],
+    [mov, x13, 0],
+    [sub, x13, x13, x9],
+    [cmp, x12, x13],
+    [csel, x12, x12, x13, ge],
+    :store,
+    [ldr, w11, [x17, $mvStamp]],
+    [ldr, w9, [x17, $fsStep]],
+    [sub, w9, w9, w11],
+    [cmp, w9, 8],
+    [b.hi, :nomv],
+    [mov, x10, 1],
+    [mov, x12, 0],
+    [ldr, w11, [x17, $mvForced]],
+    [cbnz, w11, :mvdone],
+    [mov, w11, 1],
+    [str, w11, [x17, $mvForced]],
+    [mov, w13, 30],
+    [b, :setfps],
+    :nomv,
+    [ldr, w11, [x17, $mvForced]],
+    [cbz, w11, :mvdone],
+    [str, w15, [x17, $mvForced]],
+    [mov, w13, 60],
+    :setfps,
+    [stp, x10, x12, [sp, -0x20], "!"],
+    [stp, x16, x30, [sp, 0x10]],
+    [mov, x0, 0x4668],
+    [movk, x0, 0x214, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :nofps],
+    [mov, w1, w13],
+    [mov, x9, 0x81e8],
+    [movk, x9, 0x117, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :nofps,
+    [ldp, x16, x30, [sp, 0x10]],
+    [ldp, x10, x12, [sp]],
+    [add, sp, sp, 0x20],
+    [adrp, x17, $fsF],
+    [mov, w15, 0],
+    :mvdone,
+    [str, x12, [x17, $fsAcc]],
+    [sub, w10, w10, 1],
+    [str, w10, [x17, $fsR]],
+    [cbz, w10, :done],
+    [mov, x9, 0xda70],
+    [movk, x9, 0x215, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :sA],
+    [add, x9, x9, 0x10],
+    [add, x13, x17, $saveA0],
+    [mov, w14, 3],
+    :slA,
+    [ldr, w12, [x9, 0x70]],
+    [str, w12, [x13]],
+    [str, w15, [x9, 0x70]],
+    [ldr, w12, [x9, 0x74]],
+    [str, w12, [x13, 4]],
+    [str, w15, [x9, 0x74]],
+    [ldr, w12, [x9, 0x80]],
+    [str, w12, [x13, 8]],
+    [str, w15, [x9, 0x80]],
+    [add, x9, x9, 0xc0],
+    [add, x13, x13, 0xc],
+    [sub, w14, w14, 1],
+    [cbnz, w14, :slA],
+    :sA,
+    [mov, x9, 0x4668],
+    [movk, x9, 0x214, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :sB],
+    [ldrb, w14, [x9, 0xfdc]],
+    [ldr, x9, [x9, 0xb38]],
+    [cbz, x9, :sB],
+    [cbz, w14, :sB],
+    [cmp, w14, 8],
+    [b.le, :snb],
+    [mov, w14, 8],
+    :snb,
+    [add, x13, x17, $saveB0],
+    :slB,
+    [ldr, w12, [x9, 0x10]],
+    [str, w12, [x13]],
+    [str, w15, [x9, 0x10]],
+    [ldr, w12, [x9, 0x14]],
+    [str, w12, [x13, 4]],
+    [str, w15, [x9, 0x14]],
+    [ldr, w12, [x9, 0x20]],
+    [str, w12, [x13, 8]],
+    [str, w15, [x9, 0x20]],
+    [add, x9, x9, 0x60],
+    [add, x13, x13, 0xc],
+    [sub, w14, w14, 1],
+    [cbnz, w14, :slB],
+    :sB,
+    [mov, w12, 1],
+    [str, w12, [x17, $fsSaved]],
+    :done,
+    [ret],
+    :one,
+    [str, x15, [x17, $fsAcc]],
+    [str, w15, [x17, $fsR]],
+    [ret]
+  ]
+# after logic tasks: run another logic step (particle delete queue + deferred particle deletion as after a drawn frame, clear draw lists, show button edges in the last step) or continue to drawing
+- type: code
+  name: afterLogic
+  instructions: [
+    [mov, x16, 0x2a4],
+    [movk, x16, 0xe3, 16],
+    [sub, x16, x30, x16],
+    [adrp, x17, $fsF],
+    [mov, w15, 0],
+    [ldr, w10, [x17, $fsR]],
+    [cbz, w10, :draw],
+    [sub, w10, w10, 1],
+    [str, w10, [x17, $fsR]],
+    [mov, w9, 1],
+    [str, w9, [x17, $fsF]],
+    [ldr, w9, [x17, $fsStep]],
+    [add, w9, w9, 1],
+    [str, w9, [x17, $fsStep]],
+    [cbnz, w10, :norest],
+    [ldr, w12, [x17, $fsSaved]],
+    [cbz, w12, :norest],
+    [mov, x9, 0xda70],
+    [movk, x9, 0x215, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :rA],
+    [add, x9, x9, 0x10],
+    [add, x13, x17, $saveA0],
+    [mov, w14, 3],
+    :rlA,
+    [ldr, w12, [x13]],
+    [str, w12, [x9, 0x70]],
+    [ldr, w12, [x13, 4]],
+    [str, w12, [x9, 0x74]],
+    [ldr, w12, [x13, 8]],
+    [str, w12, [x9, 0x80]],
+    [add, x9, x9, 0xc0],
+    [add, x13, x13, 0xc],
+    [sub, w14, w14, 1],
+    [cbnz, w14, :rlA],
+    :rA,
+    [mov, x9, 0x4668],
+    [movk, x9, 0x214, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :rB],
+    [ldrb, w14, [x9, 0xfdc]],
+    [ldr, x9, [x9, 0xb38]],
+    [cbz, x9, :rB],
+    [cbz, w14, :rB],
+    [cmp, w14, 8],
+    [b.le, :rnb],
+    [mov, w14, 8],
+    :rnb,
+    [add, x13, x17, $saveB0],
+    :rlB,
+    [ldr, w12, [x13]],
+    [str, w12, [x9, 0x10]],
+    [ldr, w12, [x13, 4]],
+    [str, w12, [x9, 0x14]],
+    [ldr, w12, [x13, 8]],
+    [str, w12, [x9, 0x20]],
+    [add, x9, x9, 0x60],
+    [add, x13, x13, 0xc],
+    [sub, w14, w14, 1],
+    [cbnz, w14, :rlB],
+    :rB,
+    [str, w15, [x17, $fsSaved]],
+    :norest,
+    [stp, x16, x30, [sp, -0x10], "!"],
+    [mov, x9, 0x44e8],
+    [movk, x9, 0x214, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldrb, w9, [x9]],
+    [tbz, w9, 0, :nopt],
+    [mov, x0, 0x44f0],
+    [movk, x0, 0x214, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [mov, x9, 0x3f30],
+    [movk, x9, 0x11e, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldr, x16, [sp]],
+    [mov, x0, 0x44f0],
+    [movk, x0, 0x214, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [mov, x9, 0x5998],
+    [movk, x9, 0x11e, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldr, x16, [sp]],
+    :nopt,
+    [mov, x9, 0xd720],
+    [movk, x9, 0x116, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldr, x16, [sp]],
+    [mov, x0, 0xeb28],
+    [movk, x0, 0x214, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [mov, x9, 0x2f70],
+    [movk, x9, 0x11c, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldp, x16, x30, [sp]],
+    [add, sp, sp, 0x10],
+    [mov, x30, 0x2e0],
+    [movk, x30, 0xe3, 16],
+    [add, x30, x16, x30],
+    [ret],
+    :draw,
+    [str, w15, [x17, $fsF]],
+    [mov, x15, 0],
+    [mov, x9, 0xda70],
+    [movk, x9, 0x215, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :tz],
+    [add, x9, x9, 0x10],
+    [mov, w14, 3],
+    :tl,
+    [ldr, w12, [x9, 0x70]],
+    [add, x15, x15, x12],
+    [ldr, w12, [x9, 0x74]],
+    [add, x15, x15, x12],
+    [ldr, w12, [x9, 0x80]],
+    [add, x15, x15, x12],
+    [add, x9, x9, 0xc0],
+    [sub, w14, w14, 1],
+    [cbnz, w14, :tl],
+    :tz,
+    [cbz, x15, :nf],
+    [mov, x15, 1],
+    :nf,
+    [str, w15, [x17, $fsPress]],
+    [ldr, x0, [x19, 0x58]],
+    [ret]
+  ]
+# layer job wait: only in the first logic step of a frame (the layer threads are started only with drawing)
+- type: code
+  name: layerWaitGate
+  instructions: [
+    [adrp, x17, $fsF],
+    [ldr, w9, [x17, $fsF]],
+    [cbnz, w9, :skip],
+    [mov, w1, 0],
+    [mov, x10, 0x94e0],
+    [movk, x10, 0x87, 16],
+    [sub, x10, x30, x10],
+    [mov, x9, 0x1d7c],
+    [movk, x9, 0x11c, 16],
+    [add, x9, x10, x9],
+    [mov, x30, x16],
+    [br, x9],
+    :skip,
+    [mov, x30, x16],
+    [ret]
+  ]
+# ParticleDefferedRendering task: run only in the last logic step
+- type: code
+  name: pdrGate
+  instructions: [
+    [adrp, x17, $fsF],
+    [ldr, w9, [x17, $fsR]],
+    [cbnz, w9, :skip],
+    [mov, x16, 0x64],
+    [movk, x16, 0x88, 16],
+    [sub, x16, x30, x16],
+    [mov, x20, 0x4000],
+    [movk, x20, 0x214, 16],
+    [add, x20, x16, x20],
+    [ret],
+    :skip,
+    [ldp, x20, x19, [sp, 0x10]],
+    [ldp, x30, x21, [sp]],
+    [add, sp, sp, 0x20],
+    [ret]
+  ]
+# Scaleform Advance: set its arguments and return the minimum dt (1/30 s) in a frame that delivers a button press
+- type: code
+  name: flashDt
+  instructions: [
+    [adrp, x17, $fsF],
+    [mov, w9, 0],
+    [ldr, w10, [x17, $fsPress]],
+    [cbz, w10, :o],
+    [movk, w9, 0x8889, 0],
+    [movk, w9, 0x3d08, 16],
+    :o,
+    [mov, x0, x22],
+    [mov, w1, 1],
+    [mov, w2, 1],
+    [ret]
+  ]
+# particle delete queue: do not queue the same effect twice (several logic steps run before one queue flush)
+- type: code
+  name: deleteQueueOnce
+  instructions: [
+    [ldp, x10, x11, [x19, 0xe0]],
+    :l,
+    [cmp, x10, x11],
+    [b.eq, :push],
+    [ldr, x12, [x10, 0x8]],
+    [cmp, x12, x20],
+    [b.eq, :dup],
+    [add, x10, x10, 0x10],
+    [b, :l],
+    :push,
+    [ldp, x9, x8, [x19, 0xe8]],
+    [ret],
+    :dup,
+    [add, x30, x30, 0x130],
+    [ret]
+  ]
+# movie draw task (exists only while a movie plays): remember the logic step
+- type: code
+  name: movieStamp
+  instructions: [
+    [adrp, x17, $fsF],
+    [ldr, w9, [x17, $fsStep]],
+    [str, w9, [x17, $mvStamp]],
+    [mov, x9, x30],
+    [mov, x30, x16],
+    [mov, x10, 0xc310],
+    [movk, x10, 0x1c6, 16],
+    [add, x10, x9, x10],
+    [ldr, x0, [x10]],
+    [br, x9]
+  ]
+
+MASTER_WRITE:
+# logic runs in 60 FPS mode (was BL to the FPS setting getter)
+- type: asm_a64
+  main_offset: 0x886DC0
+  instructions: [[mov, w0, 60]]
+# frame start (was BL to an empty function)
+- type: asm_a64
+  main_offset: 0xE302DC
+  instructions: [[bl, _fsStart()]]
+# after logic tasks (was LDR X0, [X19, 0x58])
+- type: asm_a64
+  main_offset: 0xE302A0
+  instructions: [[bl, _afterLogic()]]
+# layer job wait task (was MOV W1, WZR; B 0x11C1D7C)
+- type: asm_a64
+  main_offset: 0x8794D8
+  instructions: [[mov, x16, x30], [bl, _layerWaitGate()]]
+# ParticleDefferedRendering (was ADRP X20, 0x2144000)
+- type: asm_a64
+  main_offset: 0x880060
+  instructions: [[bl, _pdrGate()]]
+# Scaleform movies: dt = max(real dt, 1/30) in a frame with a button press (fixes button polling)
+- type: asm_a64
+  main_offset: 0x96D2CC
+  instructions: [[bl, _flashDt()], [fmov, s1, w9]]
+# FMAXNM is not supported by asm_a64
+- type: bytes
+  main_offset: 0x96D2D4
+  value_type: uint32
+  value: 0x1E216900 # fmaxnm s0, s8, s1
+- type: asm_a64
+  main_offset: 0x96D2D8
+  instructions: [[ldr, x8, [x8, 0xc8]], [blr, x8], [nop]]
+# particle delete request: queue push (was LDP X9, X8, [X19, 0xE8])
+- type: asm_a64
+  main_offset: 0x11E4FEC
+  instructions: [[bl, _deleteQueueOnce()]]
+# movie draw task (was ADRP X0, 0x2149000; LDR X0, [X0, 0x578])
+- type: asm_a64
+  main_offset: 0x4DD260
+  instructions: [[mov, x16, x30], [bl, _movieStamp()]]

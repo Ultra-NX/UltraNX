@@ -6,7 +6,7 @@
 #
 ### Ultra is a feature-rich custom firmware for the Nintendo Switch, focused on overclocking and a smoother user experience.
 
-### [UltraNX 3.1|R1+](https://github.com/Ultra-NX/UltraNX/releases/tag/3.1-R1) Supports all HOS up to and including 23.0.1
+### [UltraNX 3.1|R2](https://github.com/Ultra-NX/UltraNX/releases/tag/3.1-R2) Supports all HOS up to and including 23.0.1
 
 
 
@@ -48,7 +48,7 @@
    * [sys-patch](https://github.com/impeeza/sys-patch) - Patches the system to run unsigned software instead of sigpatches.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - A module that lets you connect almost any controller to the console via Bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - A module that allows you to connect almost any gamepads to the console via USB.
-   * [disable remap dialog](https://github.com/ndeadly/disable_remap_dialog) - A module that hides the remap warning every time you launch a game.
+   * [disable remap dialog](https://github.com/ndeadly/mc_exefs_patches) - A module that hides the remap warning every time you launch a game.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Special overlay-menu for interacting with the system: overclocking, controlling modes via ReverseNX, enabling cheats, etc. Also allows to use your own packages, for example, Ultra Tuner.
      - [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) - Overlay for controlling sys-clk module.
      - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Overlay that allows you to monitor console parameters in real time. It can act as an FPS counter. You change preset of Micro-overlay appearance in Tuner.

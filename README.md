@@ -8,7 +8,7 @@
 
 ### Ultra - это функциональная кастомная прошивка для Nintendo Switch, с акцентом на разгон и улучшение пользовательского опыта.
 
-### [UltraNX 3.1|R1+](https://github.com/Ultra-NX/UltraNX/releases/tag/3.1-R1) Поддерживает все HOS до 23.0.1 включительно
+### [UltraNX 3.1|R2](https://github.com/Ultra-NX/UltraNX/releases/tag/3.1-R2) Поддерживает все HOS до 23.0.1 включительно
 
 
 
@@ -52,7 +52,7 @@
    * [sys-patch](https://github.com/impeeza/sys-patch) - Патчит систему на работу неподписанного софта вместо сигпатчей.
    * [Mission Control](https://github.com/ndeadly/MissionControl) - Модуль, позволяющий подключать практически любые геймпады к консоли по Bluetooth.
    * [sys-con](https://github.com/o0Zz/sys-con) - Модуль, позволяющий подключать практически любые геймпады к консоли по USB.
-   * [disable remap dialog](https://github.com/ndeadly/disable_remap_dialog) - Модуль, скрывающий предупреждение о переназначенных кнопках при каждом запуске игры.
+   * [disable remap dialog](https://github.com/ndeadly/mc_exefs_patches) - Модуль, скрывающий предупреждение о переназначенных кнопках при каждом запуске игры.
    * [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) - Специальное оверлей-меню для взаимодействия с системой: разгон, управление режимами через ReverseNX, включение читов, прочее. Также позволяет использовать самописные пакеты, например - Ultra Tuner.
      - [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) - Оверлей для управления модулем sys-clk.
      - [Status Monitor](https://github.com/ppkantorski/Status-Monitor-Overlay) - Оверлей позволяющий следить за параметрами консоли в реальном времени. Может выступать в качестве счетчика FPS. Сменить пресет Micro-оверлея можно в Tuner.

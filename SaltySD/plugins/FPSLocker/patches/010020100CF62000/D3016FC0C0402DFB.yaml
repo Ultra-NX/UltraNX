@@ -1,0 +1,1183 @@
+# NARUTO -나루토- 질풍전 나루티밋 스톰 4 ROAD TO BORUTO 1.1.0
+# BID: D3016FC0C0402DFB
+# FPS-independent game speed (frame skip): set any FPS target (20-60), FPS can be changed in-game.
+# Logic always runs 60 steps/s; missing steps are run before each drawn frame.
+# Gameplay timing = original 30 FPS game. Resolution unchanged (EdiZon cheats).
+# Frame skip state is kept in DECLARATIONS variables.
+
+DECLARATIONS:
+# frame skip state: F = repeated logic step, R = logic steps left, tick/acc = time, Saved/save* = hidden button edges, Step = logic step counter, Press = press delivered in this step;
+# pr*/rl* = script Press/Release edge of the current logic step
+- type: variable
+  name: fsF
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsR
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsTick
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: fsAcc
+  value_type: int64
+  default_value: 0
+- type: variable
+  name: fsSaved
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsStep
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsPress
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: prStep
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: prHold
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: prEdge
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: rlStep
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: rlHold
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: rlEdge
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: saveA0
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA1
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA2
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA3
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA4
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB0
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB1
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB2
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB3
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB4
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB5
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB6
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB7
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB8
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB9
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB10
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB11
+  value_type: uint64
+  default_value: 0
+# frame start: measure time, decide how many logic steps to run, hide button edges until the last step
+- type: code
+  name: fsStart
+  instructions: [
+    [mov, x16, 0xcdd8],
+    [movk, x16, 0x105, 16],
+    [sub, x16, x30, x16],
+    [adrp, x17, $fsF],
+    [mov, w15, 0],
+    [str, w15, [x17, $fsF]],
+    [str, w15, [x17, $fsSaved]],
+    [ldr, w9, [x17, $fsStep]],
+    [add, w9, w9, 1],
+    [str, w9, [x17, $fsStep]],
+    [stp, x16, x30, [sp, -0x10], "!"],
+    [mov, x9, 0x8440],
+    [movk, x9, 0x131, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldp, x16, x30, [sp]],
+    [add, sp, sp, 0x10],
+    [adrp, x17, $fsF],
+    [mov, w15, 0],
+    [mov, x10, x0],
+    [ldr, x11, [x17, $fsTick]],
+    [str, x10, [x17, $fsTick]],
+    [cbz, x11, :one],
+    [sub, x11, x10, x11],
+    [ldr, x12, [x17, $fsAcc]],
+    [add, x12, x12, x11],
+    [mov, x9, 0xe200],
+    [movk, x9, 0x4, 16],
+    [sdiv, x10, x12, x9],
+    [cmp, x10, 1],
+    [b.ge, :c1],
+    [mov, x10, 1],
+    :c1,
+    [cmp, x10, 4],
+    [b.le, :ok],
+    [mov, x10, 4],
+    [mov, x12, 0],
+    [b, :store],
+    :ok,
+    [mul, x13, x10, x9],
+    [sub, x12, x12, x13],
+    [mov, x13, 0],
+    [sub, x13, x13, x9],
+    [cmp, x12, x13],
+    [csel, x12, x12, x13, ge],
+    :store,
+    [str, x12, [x17, $fsAcc]],
+    [sub, w10, w10, 1],
+    [str, w10, [x17, $fsR]],
+    [cbz, w10, :done],
+    [mov, x9, 0xe620],
+    [movk, x9, 0x23d, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :sA],
+    [add, x9, x9, 0x10],
+    [add, x13, x17, $saveA0],
+    [mov, w14, 3],
+    :slA,
+    [ldr, w12, [x9, 0x60]],
+    [str, w12, [x13]],
+    [str, w15, [x9, 0x60]],
+    [ldr, w12, [x9, 0x64]],
+    [str, w12, [x13, 4]],
+    [str, w15, [x9, 0x64]],
+    [ldr, w12, [x9, 0x70]],
+    [str, w12, [x13, 8]],
+    [str, w15, [x9, 0x70]],
+    [add, x9, x9, 0xb0],
+    [add, x13, x13, 0xc],
+    [sub, w14, w14, 1],
+    [cbnz, w14, :slA],
+    :sA,
+    [mov, x9, 0xac90],
+    [movk, x9, 0x23c, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :sB],
+    [ldrb, w14, [x9, 0xfcc]],
+    [ldr, x9, [x9, 0xb20]],
+    [cbz, x9, :sB],
+    [cbz, w14, :sB],
+    [cmp, w14, 8],
+    [b.le, :snb],
+    [mov, w14, 8],
+    :snb,
+    [add, x13, x17, $saveB0],
+    :slB,
+    [ldr, w12, [x9, 0x10]],
+    [str, w12, [x13]],
+    [str, w15, [x9, 0x10]],
+    [ldr, w12, [x9, 0x14]],
+    [str, w12, [x13, 4]],
+    [str, w15, [x9, 0x14]],
+    [ldr, w12, [x9, 0x20]],
+    [str, w12, [x13, 8]],
+    [str, w15, [x9, 0x20]],
+    [add, x9, x9, 0x60],
+    [add, x13, x13, 0xc],
+    [sub, w14, w14, 1],
+    [cbnz, w14, :slB],
+    :sB,
+    [mov, w12, 1],
+    [str, w12, [x17, $fsSaved]],
+    :done,
+    [ret],
+    :one,
+    [str, x15, [x17, $fsAcc]],
+    [str, w15, [x17, $fsR]],
+    [ret]
+  ]
+# after logic tasks: run another logic step (clear draw lists, show button edges in the last step) or continue to drawing
+- type: code
+  name: afterLogic
+  instructions: [
+    [mov, x16, 0xce24],
+    [movk, x16, 0x105, 16],
+    [sub, x16, x30, x16],
+    [adrp, x17, $fsF],
+    [mov, w15, 0],
+    [ldr, w10, [x17, $fsR]],
+    [cbz, w10, :draw],
+    [sub, w10, w10, 1],
+    [str, w10, [x17, $fsR]],
+    [mov, w9, 1],
+    [str, w9, [x17, $fsF]],
+    [ldr, w9, [x17, $fsStep]],
+    [add, w9, w9, 1],
+    [str, w9, [x17, $fsStep]],
+    [cbnz, w10, :norest],
+    [ldr, w12, [x17, $fsSaved]],
+    [cbz, w12, :norest],
+    [mov, x9, 0xe620],
+    [movk, x9, 0x23d, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :rA],
+    [add, x9, x9, 0x10],
+    [add, x13, x17, $saveA0],
+    [mov, w14, 3],
+    :rlA,
+    [ldr, w12, [x13]],
+    [str, w12, [x9, 0x60]],
+    [ldr, w12, [x13, 4]],
+    [str, w12, [x9, 0x64]],
+    [ldr, w12, [x13, 8]],
+    [str, w12, [x9, 0x70]],
+    [add, x9, x9, 0xb0],
+    [add, x13, x13, 0xc],
+    [sub, w14, w14, 1],
+    [cbnz, w14, :rlA],
+    :rA,
+    [mov, x9, 0xac90],
+    [movk, x9, 0x23c, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :rB],
+    [ldrb, w14, [x9, 0xfcc]],
+    [ldr, x9, [x9, 0xb20]],
+    [cbz, x9, :rB],
+    [cbz, w14, :rB],
+    [cmp, w14, 8],
+    [b.le, :rnb],
+    [mov, w14, 8],
+    :rnb,
+    [add, x13, x17, $saveB0],
+    :rlB,
+    [ldr, w12, [x13]],
+    [str, w12, [x9, 0x10]],
+    [ldr, w12, [x13, 4]],
+    [str, w12, [x9, 0x14]],
+    [ldr, w12, [x13, 8]],
+    [str, w12, [x9, 0x20]],
+    [add, x9, x9, 0x60],
+    [add, x13, x13, 0xc],
+    [sub, w14, w14, 1],
+    [cbnz, w14, :rlB],
+    :rB,
+    [str, w15, [x17, $fsSaved]],
+    :norest,
+    [stp, x16, x30, [sp, -0x10], "!"],
+    [mov, x9, 0x9010],
+    [movk, x9, 0xf2, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldr, x16, [sp]],
+    [mov, x0, 0xf018],
+    [movk, x0, 0x23d, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [mov, x9, 0x22c0],
+    [movk, x9, 0xf8, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldp, x16, x30, [sp]],
+    [add, sp, sp, 0x10],
+    [mov, x30, 0xcdd8],
+    [movk, x30, 0x105, 16],
+    [add, x30, x16, x30],
+    [ret],
+    :draw,
+    [str, w15, [x17, $fsF]],
+    [mov, x15, 0],
+    [mov, x9, 0xe620],
+    [movk, x9, 0x23d, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :tz],
+    [add, x9, x9, 0x10],
+    [mov, w14, 3],
+    :tl,
+    [ldr, w12, [x9, 0x60]],
+    [add, x15, x15, x12],
+    [ldr, w12, [x9, 0x64]],
+    [add, x15, x15, x12],
+    [ldr, w12, [x9, 0x70]],
+    [add, x15, x15, x12],
+    [add, x9, x9, 0xb0],
+    [sub, w14, w14, 1],
+    [cbnz, w14, :tl],
+    :tz,
+    [cbz, x15, :nf],
+    [mov, x15, 1],
+    :nf,
+    [str, w15, [x17, $fsPress]],
+    [ldr, x0, [x19, 0x58]],
+    [ret]
+  ]
+# ParticleDefferedRendering task: run only in the last logic step
+- type: code
+  name: pdrGate
+  instructions: [
+    [adrp, x17, $fsF],
+    [ldr, w9, [x17, $fsR]],
+    [cbnz, w9, :skip],
+    [mov, x16, 0xaeb0],
+    [movk, x16, 0x92, 16],
+    [sub, x16, x30, x16],
+    [mov, x9, 0x99a0],
+    [movk, x9, 0xf9, 16],
+    [add, x9, x16, x9],
+    [br, x9],
+    :skip,
+    [ldp, x29, x30, [sp, 0x10]],
+    [ldr, x19, [sp]],
+    [add, sp, sp, 0x20],
+    [ret]
+  ]
+# Scaleform Advance: load Advance() and return the minimum dt (1/30 s) in a frame that delivers a button press
+- type: code
+  name: flashDt
+  instructions: [
+    [adrp, x17, $fsF],
+    [mov, w9, 0],
+    [ldr, w10, [x17, $fsPress]],
+    [cbz, w10, :o],
+    [movk, w9, 0x8889, 0],
+    [movk, w9, 0x3d08, 16],
+    :o,
+    [ldr, x0, [x8]],
+    [ldr, x10, [x0]],
+    [ldr, x8, [x10, 0xc8]],
+    [mov, w1, 0],
+    [mov, w2, 1],
+    [ret]
+  ]
+# script GetPadRepeat: only in the last logic step
+- type: code
+  name: repeatGate
+  instructions: [
+    [ldr, w8, [x8, 0x2f8]],
+    [adrp, x17, $fsF],
+    [ldr, w9, [x17, $fsR]],
+    [cbz, w9, :o],
+    [mov, w8, 0],
+    [mov, w0, 0],
+    :o,
+    [ret]
+  ]
+
+MASTER_WRITE:
+# engine starts in 60 FPS logic mode (was LDR W1, [X20, 0xC])
+- type: asm_a64
+  main_offset: 0x105C2B0
+  instructions: [[mov, w1, 60]]
+# frame start (was BL to an empty function)
+- type: asm_a64
+  main_offset: 0x105CDD4
+  instructions: [[bl, _fsStart()]]
+# after logic tasks (was LDR X0, [X19, 0x58])
+- type: asm_a64
+  main_offset: 0x105CE20
+  instructions: [[bl, _afterLogic()]]
+# ParticleDefferedRendering (was BL 0xF999A0)
+- type: asm_a64
+  main_offset: 0x92AEAC
+  instructions: [[bl, _pdrGate()]]
+# Scaleform movies: dt = max(real dt, 1/30) in a frame with a button press (fixes button polling)
+- type: asm_a64
+  main_offset: 0xAC89F0
+  instructions: [[sub, x9, x21, x9], [ucvtf, s0, x9], [fdiv, s0, s0, s8], [bl, _flashDt()], [fmov, s1, w9]]
+# FMAXNM is not supported by asm_a64
+- type: bytes
+  main_offset: 0xAC8A04
+  value_type: uint32
+  value: 0x1E216800 # fmaxnm s0, s0, s1
+- type: asm_a64
+  main_offset: 0xAC8A08
+  instructions: [[blr, x8], [nop], [nop]]
+# engine bug: VSync counter could skip the signal when the present interval changes (black screen at boot / freeze on FPS change)
+- type: asm_a64
+  main_offset: 0xEEF580
+  instructions: [[cbz, w9, +32], [add, w23, w23, 1], [cmp, w23, w9], [b.lo, +20], [nop]]
+# "end of motion" events (frame 9999): motion length in 30 FPS frames
+- type: asm_a64
+  main_offset: 0x81BADC
+  instructions: [[mov, w7, 100], [udiv, w7, w25, w7], [nop]]
+# GetPadTrigger binding: read Hold instead of Trigger
+- type: asm_a64
+  main_offset: 0x668F74
+  instructions: [[ldr, x8, [x8, 0x30]]]
+- type: asm_a64
+  main_offset: 0x668F8C
+  instructions: [[ldr, w8, [x8, 0x2e8]]]
+# edge = hold & ~last hold, once per logic step, only in the last step
+- type: asm_a64
+  main_offset: 0x668F94
+  instructions: [[adrp, x9, $fsF], [ldr, w12, [x9, $fsR]], [cbnz, w12, +48], [ldr, w0, [x9, $fsStep]], [ldr, w10, [x9, $prStep]], [ldr, w11, [x9, $prHold]], [cmp, w10, w0], [b.eq, +20]]
+# BIC is not supported by asm_a64
+- type: bytes
+  main_offset: 0x668FB4
+  value_type: uint32
+  value: 0x0A2B028B # bic w11, w20, w11
+- type: asm_a64
+  main_offset: 0x668FB8
+  instructions: [[str, w0, [x9, $prStep]], [str, w20, [x9, $prHold]], [str, w11, [x9, $prEdge]], [ldr, w20, [x9, $prEdge]], [b, 0x669024], [mov, w20, 0], [b, 0x669024]]
+# GetPadRepeat binding (was LDR W8, [X8, 0x2F8])
+- type: asm_a64
+  main_offset: 0x66901C
+  instructions: [[bl, _repeatGate()]]
+# GetPadRelease binding: release = last hold & ~hold, once per logic step, only in the last step
+- type: asm_a64
+  main_offset: 0x669094
+  instructions: [[ldr, x8, [x8, 0x30]]]
+- type: asm_a64
+  main_offset: 0x6690AC
+  instructions: [[ldr, w8, [x8, 0x2e8]]]
+- type: asm_a64
+  main_offset: 0x6690B4
+  instructions: [[adrp, x9, $fsF], [ldr, w12, [x9, $fsR]], [cbnz, w12, +48], [ldr, w0, [x9, $fsStep]], [ldr, w10, [x9, $rlStep]], [cmp, w10, w0], [b.eq, +24], [ldr, w11, [x9, $rlHold]]]
+# BIC is not supported by asm_a64
+- type: bytes
+  main_offset: 0x6690D4
+  value_type: uint32
+  value: 0x0A34016B # bic w11, w11, w20
+- type: asm_a64
+  main_offset: 0x6690D8
+  instructions: [[str, w0, [x9, $rlStep]], [str, w20, [x9, $rlHold]], [str, w11, [x9, $rlEdge]], [ldr, w20, [x9, $rlEdge]], [b, 0x669024], [mov, w20, 0], [b, 0x669024]]
+# gameplay timing: durations stored in 30 FPS frames are converted with 30 instead of the runtime FPS (228 sites)
+- type: asm_a64
+  main_offset: 0x7DAE4
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x853D4
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8BE88
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0xA3088
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0xA3188
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0xA3284
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0xA3384
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0xA60D0
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xA92EC
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xA9330
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xAFF74
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xB0018
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xB00BC
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xB0160
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xB2D68
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0xB43D0
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0xBAE7C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xBAF30
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xBAF6C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xE0C08
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0xF4024
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xFC258
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x10727C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x10AAE4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x10AB58
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x11BB44
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x11BB58
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x11C874
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x11C8E8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1217C4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1217D8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x13B8D4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x153180
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1531A8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x162300
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0x16FB10
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x17319C
+  instructions: [[mov, w23, 30]]
+- type: asm_a64
+  main_offset: 0x1731C0
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x190674
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x19DDC0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x19DDD4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x19F3B0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x19F3C4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1B32C8
+  instructions: [[mov, w8, 30]]
+- type: asm_a64
+  main_offset: 0x1B332C
+  instructions: [[mov, w8, 30]]
+- type: asm_a64
+  main_offset: 0x1B8DAC
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x1B920C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x1BD580
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x1DAB68
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1DAB74
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1DAB84
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1DB330
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1DB3A4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1DB858
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1DDD6C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1DDDE0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1DDE08
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1E0638
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1E0644
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1E0654
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1E0D70
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1E0DE4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1E1298
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1E302C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1E30A0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1E30C8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1ECB1C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x1F4578
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1F4584
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x1F4594
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x200660
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x20066C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x200688
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x200698
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x26884C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x268894
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x2688EC
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26B4F4
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26B714
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26B870
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26B8AC
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26B994
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26D6F8
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26D9EC
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26DA28
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26DBCC
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26DC98
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26DD40
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26DD8C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x26E394
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x26E3A0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x26E3B0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x26E884
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x26E890
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x26E8A0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x26F778
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x2704F0
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x270574
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x2705C8
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x270614
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x288CBC
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0x29C2D4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x29C2E8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x2B41D0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x2BA250
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x2DB418
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x2DB808
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x2DB81C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x2E7B74
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x30DE64
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x313EB0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x348F84
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x38D3C4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x38E3A0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x38E5DC
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x38E6EC
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x38E984
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x38F904
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x393178
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x3A3AC4
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x3A3C50
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x3A8554
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x3C2D40
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x40C494
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x41A114
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x41F044
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x43C56C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x43C5E0
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x43C6BC
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x43C72C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x46DA3C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x4BA890
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x4C92E8
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0x4DEA84
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0x51F6A0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x51F714
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x5200A0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x5202B4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x53D6C8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x53D6D8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x53E2B4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x53E3A0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x6E2E70
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x6E2EFC
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x78C0F4
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x7CD244
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x7CD3F4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x7CD478
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x7CF808
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x7CF87C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x802AA0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x80C024
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x81BBEC
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x81BCF0
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x81CE9C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x820C44
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x820C5C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x820C70
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x821018
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x82102C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x82103C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x821048
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x830BD8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x830CA8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x837DDC
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x838570
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x83893C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x838D0C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x8395A8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x8397B0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x83A128
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x83A204
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x83A2E4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x83A3B8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x83A3E8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x83A5E0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x83A5F4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x83B958
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x83B9BC
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x8407D4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x84085C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x840A10
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x842C20
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x842CD0
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x842D24
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x842D50
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x842DF8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x84571C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x8494A8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x8494B4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x8494C4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x8494D4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x8494E4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x849B04
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x849B10
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x849B20
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x84A00C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x84A01C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x84A028
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x86E7D4
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x86FB58
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8700D8
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8716DC
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x872400
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x873F74
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x876A64
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x896FF4
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x89729C
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x89A0BC
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x89A0EC
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x89F520
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x89F5B8
+  instructions: [[mov, w0, 30]]
+- type: asm_a64
+  main_offset: 0x8B6170
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0x8D7934
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8D9350
+  instructions: [[mov, w10, 30]]
+- type: asm_a64
+  main_offset: 0x8DC510
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8DEE54
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8DEE74
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8DEE9C
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8DEEC4
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8DEFC8
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8DEFE8
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8DF010
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8DF038
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8DF0D8
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8DF130
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0xFBC7E8
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x10C4F74
+  instructions: [[mov, w9, 30]]
