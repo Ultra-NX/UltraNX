@@ -1,38 +1,162 @@
-# NARUTO SHIPPUDEN: Ultimate Ninja STORM 4 ROAD TO BORUTO 1.3.0
+# NARUTO SHIPPUDEN: Ultimate Ninja STORM 4 ROAD TO BORUTO `US` 1.2.0
 # BID: D3016FC0C0402DFB
 # FPS-independent game speed (frame skip): set any FPS target (20-60), FPS can be changed in-game.
 # Logic always runs 60 steps/s; missing steps are run before each drawn frame.
 # Gameplay timing = original 30 FPS game. Resolution unchanged (EdiZon cheats).
-# Frame skip state lives in the unused tail of the game's .bss (main+0x498B9F00).
+# Frame skip state is kept in DECLARATIONS variables.
 
 DECLARATIONS:
+# frame skip state: F = repeated logic step, R = logic steps left, tick/acc = time, Saved/save* = hidden button edges, Step = logic step counter, Press = press delivered in this step;
+# pr*/rl* = script Press/Release edge of the current logic step
+- type: variable
+  name: fsF
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsR
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsTick
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: fsAcc
+  value_type: int64
+  default_value: 0
+- type: variable
+  name: fsSaved
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsStep
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsPress
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: prStep
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: prHold
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: prEdge
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: rlStep
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: rlHold
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: rlEdge
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: saveA0
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA1
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA2
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA3
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveA4
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB0
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB1
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB2
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB3
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB4
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB5
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB6
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB7
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB8
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB9
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB10
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: saveB11
+  value_type: uint64
+  default_value: 0
 # frame start: measure time, decide how many logic steps to run, hide button edges until the last step
 - type: code
   name: fsStart
   instructions: [
-    [mov, x17, 0xd138],
-    [movk, x17, 0x4885, 16],
-    [add, x17, x30, x17],
+    [mov, x16, 0xcdd8],
+    [movk, x16, 0x105, 16],
+    [sub, x16, x30, x16],
+    [adrp, x17, $fsF],
     [mov, w15, 0],
-    [str, w15, [x17, 0x0]],
-    [str, w15, [x17, 0x18]],
-    [ldr, w9, [x17, 0x1c]],
+    [str, w15, [x17, $fsF]],
+    [str, w15, [x17, $fsSaved]],
+    [ldr, w9, [x17, $fsStep]],
     [add, w9, w9, 1],
-    [str, w9, [x17, 0x1c]],
-    [stp, x17, x30, [sp, -0x10], "!"],
-    [mov, x9, 0x1ad0],
-    [movk, x9, 0x485a, 16],
-    [sub, x9, x17, x9],
+    [str, w9, [x17, $fsStep]],
+    [stp, x16, x30, [sp, -0x10], "!"],
+    [mov, x9, 0x8440],
+    [movk, x9, 0x131, 16],
+    [add, x9, x16, x9],
     [blr, x9],
-    [ldp, x17, x30, [sp, 0]],
+    [ldp, x16, x30, [sp]],
     [add, sp, sp, 0x10],
+    [adrp, x17, $fsF],
     [mov, w15, 0],
     [mov, x10, x0],
-    [ldr, x11, [x17, 0x8]],
-    [str, x10, [x17, 0x8]],
+    [ldr, x11, [x17, $fsTick]],
+    [str, x10, [x17, $fsTick]],
     [cbz, x11, :one],
     [sub, x11, x10, x11],
-    [ldr, x12, [x17, 0x10]],
+    [ldr, x12, [x17, $fsAcc]],
     [add, x12, x12, x11],
     [mov, x9, 0xe200],
     [movk, x9, 0x4, 16],
@@ -54,22 +178,22 @@ DECLARATIONS:
     [cmp, x12, x13],
     [csel, x12, x12, x13, ge],
     :store,
-    [str, x12, [x17, 0x10]],
+    [str, x12, [x17, $fsAcc]],
     [sub, w10, w10, 1],
-    [str, w10, [x17, 0x4]],
+    [str, w10, [x17, $fsR]],
     [cbz, w10, :done],
-    [mov, x9, 0xb8f0],
-    [movk, x9, 0x474d, 16],
-    [sub, x9, x17, x9],
-    [ldr, x9, [x9, 0]],
-    [ldr, x9, [x9, 0]],
+    [mov, x9, 0xe620],
+    [movk, x9, 0x23d, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
     [cbz, x9, :sA],
     [add, x9, x9, 0x10],
-    [add, x13, x17, 0x30],
+    [add, x13, x17, $saveA0],
     [mov, w14, 3],
     :slA,
     [ldr, w12, [x9, 0x60]],
-    [str, w12, [x13, 0]],
+    [str, w12, [x13]],
     [str, w15, [x9, 0x60]],
     [ldr, w12, [x9, 0x64]],
     [str, w12, [x13, 4]],
@@ -82,11 +206,11 @@ DECLARATIONS:
     [sub, w14, w14, 1],
     [cbnz, w14, :slA],
     :sA,
-    [mov, x9, 0xf280],
-    [movk, x9, 0x474e, 16],
-    [sub, x9, x17, x9],
-    [ldr, x9, [x9, 0]],
-    [ldr, x9, [x9, 0]],
+    [mov, x9, 0xac90],
+    [movk, x9, 0x23c, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
     [cbz, x9, :sB],
     [ldrb, w14, [x9, 0xfcc]],
     [ldr, x9, [x9, 0xb20]],
@@ -96,10 +220,10 @@ DECLARATIONS:
     [b.le, :snb],
     [mov, w14, 8],
     :snb,
-    [add, x13, x17, 0x60],
+    [add, x13, x17, $saveB0],
     :slB,
     [ldr, w12, [x9, 0x10]],
-    [str, w12, [x13, 0]],
+    [str, w12, [x13]],
     [str, w15, [x9, 0x10]],
     [ldr, w12, [x9, 0x14]],
     [str, w12, [x13, 4]],
@@ -113,45 +237,46 @@ DECLARATIONS:
     [cbnz, w14, :slB],
     :sB,
     [mov, w12, 1],
-    [str, w12, [x17, 0x18]],
+    [str, w12, [x17, $fsSaved]],
     :done,
     [ret],
     :one,
-    [str, x15, [x17, 0x10]],
-    [str, w15, [x17, 0x4]],
+    [str, x15, [x17, $fsAcc]],
+    [str, w15, [x17, $fsR]],
     [ret]
   ]
 # after logic tasks: run another logic step (clear draw lists, show button edges in the last step) or continue to drawing
 - type: code
   name: afterLogic
   instructions: [
-    [mov, x17, 0xd0ec],
-    [movk, x17, 0x4885, 16],
-    [add, x17, x30, x17],
+    [mov, x16, 0xce24],
+    [movk, x16, 0x105, 16],
+    [sub, x16, x30, x16],
+    [adrp, x17, $fsF],
     [mov, w15, 0],
-    [ldr, w10, [x17, 0x4]],
+    [ldr, w10, [x17, $fsR]],
     [cbz, w10, :draw],
     [sub, w10, w10, 1],
-    [str, w10, [x17, 0x4]],
+    [str, w10, [x17, $fsR]],
     [mov, w9, 1],
-    [str, w9, [x17, 0x0]],
-    [ldr, w9, [x17, 0x1c]],
+    [str, w9, [x17, $fsF]],
+    [ldr, w9, [x17, $fsStep]],
     [add, w9, w9, 1],
-    [str, w9, [x17, 0x1c]],
+    [str, w9, [x17, $fsStep]],
     [cbnz, w10, :norest],
-    [ldr, w12, [x17, 0x18]],
+    [ldr, w12, [x17, $fsSaved]],
     [cbz, w12, :norest],
-    [mov, x9, 0xb8f0],
-    [movk, x9, 0x474d, 16],
-    [sub, x9, x17, x9],
-    [ldr, x9, [x9, 0]],
-    [ldr, x9, [x9, 0]],
+    [mov, x9, 0xe620],
+    [movk, x9, 0x23d, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
     [cbz, x9, :rA],
     [add, x9, x9, 0x10],
-    [add, x13, x17, 0x30],
+    [add, x13, x17, $saveA0],
     [mov, w14, 3],
     :rlA,
-    [ldr, w12, [x13, 0]],
+    [ldr, w12, [x13]],
     [str, w12, [x9, 0x60]],
     [ldr, w12, [x13, 4]],
     [str, w12, [x9, 0x64]],
@@ -162,11 +287,11 @@ DECLARATIONS:
     [sub, w14, w14, 1],
     [cbnz, w14, :rlA],
     :rA,
-    [mov, x9, 0xf280],
-    [movk, x9, 0x474e, 16],
-    [sub, x9, x17, x9],
-    [ldr, x9, [x9, 0]],
-    [ldr, x9, [x9, 0]],
+    [mov, x9, 0xac90],
+    [movk, x9, 0x23c, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
     [cbz, x9, :rB],
     [ldrb, w14, [x9, 0xfcc]],
     [ldr, x9, [x9, 0xb20]],
@@ -176,9 +301,9 @@ DECLARATIONS:
     [b.le, :rnb],
     [mov, w14, 8],
     :rnb,
-    [add, x13, x17, 0x60],
+    [add, x13, x17, $saveB0],
     :rlB,
-    [ldr, w12, [x13, 0]],
+    [ldr, w12, [x13]],
     [str, w12, [x9, 0x10]],
     [ldr, w12, [x13, 4]],
     [str, w12, [x9, 0x14]],
@@ -189,37 +314,37 @@ DECLARATIONS:
     [sub, w14, w14, 1],
     [cbnz, w14, :rlB],
     :rB,
-    [str, w15, [x17, 0x18]],
+    [str, w15, [x17, $fsSaved]],
     :norest,
-    [stp, x17, x30, [sp, -0x10], "!"],
-    [mov, x9, 0xf00],
-    [movk, x9, 0x4899, 16],
-    [sub, x9, x17, x9],
+    [stp, x16, x30, [sp, -0x10], "!"],
+    [mov, x9, 0x9010],
+    [movk, x9, 0xf2, 16],
+    [add, x9, x16, x9],
     [blr, x9],
-    [ldr, x17, [sp, 0]],
-    [mov, x0, 0xaef8],
-    [movk, x0, 0x474d, 16],
-    [sub, x0, x17, x0],
-    [ldr, x0, [x0, 0]],
-    [ldr, x0, [x0, 0]],
-    [mov, x9, 0x7c50],
-    [movk, x9, 0x4893, 16],
-    [sub, x9, x17, x9],
+    [ldr, x16, [sp]],
+    [mov, x0, 0xf018],
+    [movk, x0, 0x23d, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [mov, x9, 0x22c0],
+    [movk, x9, 0xf8, 16],
+    [add, x9, x16, x9],
     [blr, x9],
-    [ldp, x17, x30, [sp, 0]],
+    [ldp, x16, x30, [sp]],
     [add, sp, sp, 0x10],
-    [mov, x30, 0xd138],
-    [movk, x30, 0x4885, 16],
-    [sub, x30, x17, x30],
+    [mov, x30, 0xcdd8],
+    [movk, x30, 0x105, 16],
+    [add, x30, x16, x30],
     [ret],
     :draw,
-    [str, w15, [x17, 0x0]],
+    [str, w15, [x17, $fsF]],
     [mov, x15, 0],
-    [mov, x9, 0xb8f0],
-    [movk, x9, 0x474d, 16],
-    [sub, x9, x17, x9],
-    [ldr, x9, [x9, 0]],
-    [ldr, x9, [x9, 0]],
+    [mov, x9, 0xe620],
+    [movk, x9, 0x23d, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
     [cbz, x9, :tz],
     [add, x9, x9, 0x10],
     [mov, w14, 3],
@@ -237,7 +362,7 @@ DECLARATIONS:
     [cbz, x15, :nf],
     [mov, x15, 1],
     :nf,
-    [str, w15, [x17, 0x20]],
+    [str, w15, [x17, $fsPress]],
     [ldr, x0, [x19, 0x58]],
     [ret]
   ]
@@ -245,18 +370,19 @@ DECLARATIONS:
 - type: code
   name: pdrGate
   instructions: [
-    [mov, x17, 0xf060],
-    [movk, x17, 0x48f8, 16],
-    [add, x17, x30, x17],
-    [ldr, w9, [x17, 0x4]],
+    [adrp, x17, $fsF],
+    [ldr, w9, [x17, $fsR]],
     [cbnz, w9, :skip],
-    [mov, x9, 0x570],
-    [movk, x9, 0x4892, 16],
-    [sub, x9, x17, x9],
+    [mov, x16, 0xaeb0],
+    [movk, x16, 0x92, 16],
+    [sub, x16, x30, x16],
+    [mov, x9, 0x99a0],
+    [movk, x9, 0xf9, 16],
+    [add, x9, x16, x9],
     [br, x9],
     :skip,
     [ldp, x29, x30, [sp, 0x10]],
-    [ldr, x19, [sp, 0]],
+    [ldr, x19, [sp]],
     [add, sp, sp, 0x20],
     [ret]
   ]
@@ -264,17 +390,15 @@ DECLARATIONS:
 - type: code
   name: flashDt
   instructions: [
-    [mov, x17, 0x1510],
-    [movk, x17, 0x48df, 16],
-    [add, x17, x30, x17],
+    [adrp, x17, $fsF],
     [mov, w9, 0],
-    [ldr, w10, [x17, 0x20]],
+    [ldr, w10, [x17, $fsPress]],
     [cbz, w10, :o],
     [movk, w9, 0x8889, 0],
     [movk, w9, 0x3d08, 16],
     :o,
-    [ldr, x0, [x8, 0]],
-    [ldr, x10, [x0, 0]],
+    [ldr, x0, [x8]],
+    [ldr, x10, [x0]],
     [ldr, x8, [x10, 0xc8]],
     [mov, w1, 0],
     [mov, w2, 1],
@@ -285,10 +409,8 @@ DECLARATIONS:
   name: repeatGate
   instructions: [
     [ldr, w8, [x8, 0x2f8]],
-    [mov, x17, 0xef0],
-    [movk, x17, 0x4925, 16],
-    [add, x17, x30, x17],
-    [ldr, w9, [x17, 0x4]],
+    [adrp, x17, $fsF],
+    [ldr, w9, [x17, $fsR]],
     [cbz, w9, :o],
     [mov, w8, 0],
     [mov, w0, 0],
@@ -343,7 +465,7 @@ MASTER_WRITE:
 # edge = hold & ~last hold, once per logic step, only in the last step
 - type: asm_a64
   main_offset: 0x668F94
-  instructions: [[adrp, x9, 0x498b9000], [add, x9, x9, 0xf00], [ldr, w12, [x9, 0x14]], [cbnz, w12, +40], [ldr, w0, [x9, 0x2c]], [ldp, w10, w11, [x9, 0]], [cmp, w10, w0], [b.eq, +16]]
+  instructions: [[adrp, x9, $fsF], [ldr, w12, [x9, $fsR]], [cbnz, w12, +48], [ldr, w0, [x9, $fsStep]], [ldr, w10, [x9, $prStep]], [ldr, w11, [x9, $prHold]], [cmp, w10, w0], [b.eq, +20]]
 # BIC is not supported by asm_a64
 - type: bytes
   main_offset: 0x668FB4
@@ -351,7 +473,7 @@ MASTER_WRITE:
   value: 0x0A2B028B # bic w11, w20, w11
 - type: asm_a64
   main_offset: 0x668FB8
-  instructions: [[stp, w0, w20, [x9, 0]], [str, w11, [x9, 8]], [ldr, w20, [x9, 8]], [b, 0x669024], [mov, w20, 0], [b, 0x669024]]
+  instructions: [[str, w0, [x9, $prStep]], [str, w20, [x9, $prHold]], [str, w11, [x9, $prEdge]], [ldr, w20, [x9, $prEdge]], [b, 0x669024], [mov, w20, 0], [b, 0x669024]]
 # GetPadRepeat binding (was LDR W8, [X8, 0x2F8])
 - type: asm_a64
   main_offset: 0x66901C
@@ -365,15 +487,15 @@ MASTER_WRITE:
   instructions: [[ldr, w8, [x8, 0x2e8]]]
 - type: asm_a64
   main_offset: 0x6690B4
-  instructions: [[adrp, x9, 0x498b9000], [add, x9, x9, 0xf00], [ldr, w12, [x9, 0x14]], [cbnz, w12, +48], [ldr, w0, [x9, 0x2c]], [ldr, w10, [x9, 0x64]], [cmp, w10, w0], [b.eq, +24], [ldr, w11, [x9, 0x68]]]
+  instructions: [[adrp, x9, $fsF], [ldr, w12, [x9, $fsR]], [cbnz, w12, +48], [ldr, w0, [x9, $fsStep]], [ldr, w10, [x9, $rlStep]], [cmp, w10, w0], [b.eq, +24], [ldr, w11, [x9, $rlHold]]]
 # BIC is not supported by asm_a64
 - type: bytes
-  main_offset: 0x6690D8
+  main_offset: 0x6690D4
   value_type: uint32
   value: 0x0A34016B # bic w11, w11, w20
 - type: asm_a64
-  main_offset: 0x6690DC
-  instructions: [[str, w0, [x9, 0x64]], [str, w20, [x9, 0x68]], [str, w11, [x9, 0x6c]], [ldr, w20, [x9, 0x6c]], [b, 0x669024], [mov, w20, 0], [b, 0x669024]]
+  main_offset: 0x6690D8
+  instructions: [[str, w0, [x9, $rlStep]], [str, w20, [x9, $rlHold]], [str, w11, [x9, $rlEdge]], [ldr, w20, [x9, $rlEdge]], [b, 0x669024], [mov, w20, 0], [b, 0x669024]]
 # gameplay timing: durations stored in 30 FPS frames are converted with 30 instead of the runtime FPS (228 sites)
 - type: asm_a64
   main_offset: 0x7DAE4

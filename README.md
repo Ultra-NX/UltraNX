@@ -89,8 +89,10 @@
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - Пакет патчей для FPSLocker, позволяет обновить все патчи сразу, вместо скачивания по одному через оверлей FPSLocker'а. В Ультре по умолчанию всегда последние патчи, так что достаточно своевременно обновлять сборку.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - Патчи SysDVR, работают и без системного модуля, активируя фоновую запись в играх, где это изначально запрещено.
+      * [LANywhere](https://github.com/SEc-123/lanywhere-selfhost) - Аналог LAN Play, но без необходимости запуска хоста на PC.
       * [Mod Alchemist](https://github.com/ppkantorski/Alchemist) - Пакет для скачивания, установки и управления модами для игр.
-      * [sys-ftpd](https://github.com/ELY3M/sys-ftpd) - FTP сервер, работающий на фоне.
+      * [sys-ftpd](https://github.com/ELY3M/sys-ftpd) - FTP сервер, работающий на фоне. Старая версия, работает стабильнее, потребляет больше памяти.
+      * [sys-ftp](https://github.com/ppkantorski/ftpsrv) - FTP сервер, работающий на фоне. Новая версия, потребляет сильно меньше памяти, но постоянно разрывает подключение при простое.
 
 
 

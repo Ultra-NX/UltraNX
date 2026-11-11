@@ -1,0 +1,925 @@
+# NARUTO SHIPPUDEN: Ultimate Ninja STORM TRILOGY (Japan) 1.0.0
+# BID: 577EFDFDBB7545CF
+# Storm 1, 2 and 3: FPS-independent game speed (frame skip): set any FPS target (20-60), FPS can be changed in-game.
+# Logic runs in the game's 60 FPS mode (60 steps/s); missing steps are run before each drawn frame.
+# STORM 1 uses the game's own 30 FPS mode with an FPS target of 30 or less; its free roam also uses it when the last free roam ran too slow in the 60 FPS mode;
+# the mode is chosen only when a STORM 1 game mode starts. The launcher also runs at 60 FPS.
+# Resolution unchanged (EdiZon cheats). Frame skip state is kept in DECLARATIONS variables.
+
+DECLARATIONS:
+# gameId = running game (0 launcher, 1-3 STORM 1-3), fpsTgt = FPSLocker FPS target, lAvg = average logic step time, mHold = frames since the last mode change, fAvg = average frame time;
+# frame skip state: R = logic steps left, tick/acc = time, Step = logic step counter, tStep0 = start of the current logic step
+- type: variable
+  name: fsR
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fsTick
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: fsAcc
+  value_type: int64
+  default_value: 0
+- type: variable
+  name: fsStep
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: tStep0
+  value_type: uint64
+  default_value: 0
+- type: variable
+  name: gameId
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fpsTgt
+  value_type: uint32
+  default_value: 60
+  evaluate: "FPS_TARGET"
+- type: variable
+  name: lAvg
+  value_type: int64
+  default_value: 0
+- type: variable
+  name: mHold
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: fAvg
+  value_type: int64
+  default_value: 0
+- type: variable
+  name: rpgStamp
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: rpgSlow
+  value_type: uint32
+  default_value: 1
+- type: variable
+  name: rpgN
+  value_type: uint32
+  default_value: 0
+- type: variable
+  name: rpgNSlow
+  value_type: uint32
+  default_value: 0
+# frame start: measure time, decide how many logic steps to run (step = 1/60 s in the 60 FPS mode, 1/30 s in the 30 FPS mode); STORM 1 free roam: count frames slower than its FPS mode allows
+- type: code
+  name: fsStart
+  instructions: [
+    [mov, x16, 0x9dd8],
+    [movk, x16, 0x117, 16],
+    [sub, x16, x30, x16],
+    [adrp, x17, $fsR],
+    [ldr, w9, [x17, $fsStep]],
+    [add, w9, w9, 1],
+    [str, w9, [x17, $fsStep]],
+    [ldr, w9, [x17, $gameId]],
+    [cmp, w9, 1],
+    [b.ne, :nl],
+    [ldr, w9, [x17, $fsStep]],
+    [ldr, w10, [x17, $rpgStamp]],
+    [sub, w9, w9, w10],
+    [cmp, w9, 4],
+    [b.hi, :nl],
+    [ldr, w9, [x17, $mHold]],
+    [add, w9, w9, 1],
+    [str, w9, [x17, $mHold]],
+    [cmp, w9, 120],
+    [b.lo, :nl],
+    [mov, x0, 0x14d0],
+    [movk, x0, 0x322, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :nl],
+    [ldrb, w10, [x0, 0x9f2]],
+    [ldr, w9, [x17, $rpgN]],
+    [add, w9, w9, 1],
+    [str, w9, [x17, $rpgN]],
+    [cmp, w10, 60],
+    [b.ne, :l30],
+    [ldr, x9, [x17, $fAvg]],
+    [mov, x11, 0xc400],
+    [movk, x11, 0x9, 16],
+    [cmp, x9, x11],
+    [b.le, :nl],
+    [b, :slow],
+    :l30,
+    [ldr, x9, [x17, $lAvg]],
+    [mov, x11, 0xfb00],
+    [movk, x11, 0x4, 16],
+    [cmp, x9, x11],
+    [b.lt, :nl],
+    :slow,
+    [ldr, w9, [x17, $rpgNSlow]],
+    [add, w9, w9, 1],
+    [str, w9, [x17, $rpgNSlow]],
+    :nl,
+    [stp, x16, x30, [sp, -0x10], "!"],
+    [mov, x9, 0x1f80],
+    [movk, x9, 0x16a, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldp, x16, x30, [sp]],
+    [add, sp, sp, 0x10],
+    [adrp, x17, $fsR],
+    [mov, w15, 0],
+    [str, x0, [x17, $tStep0]],
+    [mov, x10, x0],
+    [ldr, x11, [x17, $fsTick]],
+    [str, x10, [x17, $fsTick]],
+    [cbz, x11, :one],
+    [sub, x11, x10, x11],
+    [ldr, x9, [x17, $fAvg]],
+    [sub, x13, x11, x9],
+    [mov, x14, 0x4c00],
+    [movk, x14, 0x1d, 16],
+    [cmp, x13, x14],
+    [csel, x13, x13, x14, lt],
+    [mov, x14, 16],
+    [sdiv, x13, x13, x14],
+    [add, x9, x9, x13],
+    [str, x9, [x17, $fAvg]],
+    [ldr, x12, [x17, $fsAcc]],
+    [add, x12, x12, x11],
+    [mov, x9, 0x14d0],
+    [movk, x9, 0x322, 16],
+    [add, x9, x16, x9],
+    [ldr, x9, [x9]],
+    [ldr, x9, [x9]],
+    [cbz, x9, :one],
+    [ldrb, w9, [x9, 0x9f2]],
+    [cmp, w9, 60],
+    [b.eq, :q60],
+    [cmp, w9, 30],
+    [b.ne, :one],
+    [mov, x9, 0xc400],
+    [movk, x9, 0x9, 16],
+    [b, :q],
+    :q60,
+    [mov, x9, 0xe200],
+    [movk, x9, 0x4, 16],
+    :q,
+    [sdiv, x10, x12, x9],
+    [cmp, x10, 1],
+    [b.ge, :c1],
+    [mov, x10, 1],
+    :c1,
+    [cmp, x10, 4],
+    [b.le, :ok],
+    [mov, x10, 4],
+    [mov, x12, 0],
+    [b, :store],
+    :ok,
+    [mul, x13, x10, x9],
+    [sub, x12, x12, x13],
+    [mov, x13, 0],
+    [sub, x13, x13, x9],
+    [cmp, x12, x13],
+    [csel, x12, x12, x13, ge],
+    :store,
+    [str, x12, [x17, $fsAcc]],
+    [sub, w10, w10, 1],
+    [str, w10, [x17, $fsR]],
+    [ret],
+    :one,
+    [str, x15, [x17, $fsAcc]],
+    [str, w15, [x17, $fsR]],
+    [ret]
+  ]
+# after logic tasks: run another logic step (pop the memory block, clear the layers' draw lists, read the controllers again) or continue to drawing
+- type: code
+  name: afterLogic
+  instructions: [
+    [mov, x16, 0x9e24],
+    [movk, x16, 0x117, 16],
+    [sub, x16, x30, x16],
+    [stp, x16, x30, [sp, -0x10], "!"],
+    [mov, x9, 0x1f80],
+    [movk, x9, 0x16a, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldp, x16, x30, [sp]],
+    [add, sp, sp, 0x10],
+    [adrp, x17, $fsR],
+    [ldr, x9, [x17, $tStep0]],
+    [sub, x11, x0, x9],
+    [str, x0, [x17, $tStep0]],
+    [mov, x10, 0xa600],
+    [movk, x10, 0xe, 16],
+    [cmp, x11, x10],
+    [csel, x11, x11, x10, lt],
+    [ldr, x9, [x17, $lAvg]],
+    [sub, x11, x11, x9],
+    [mov, x12, 16],
+    [sdiv, x11, x11, x12],
+    [add, x9, x9, x11],
+    [str, x9, [x17, $lAvg]],
+    [ldr, w10, [x17, $fsR]],
+    [cbz, w10, :draw],
+    [sub, w10, w10, 1],
+    [str, w10, [x17, $fsR]],
+    [ldr, w9, [x17, $fsStep]],
+    [add, w9, w9, 1],
+    [str, w9, [x17, $fsStep]],
+    [stp, x16, x30, [sp, -0x20], "!"],
+    [mov, x9, 0x4708],
+    [movk, x9, 0x10b, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldr, x16, [sp]],
+    [mov, x0, 0x6710],
+    [movk, x0, 0x323, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :nol],
+    [mov, x9, 0x5fc0],
+    [movk, x9, 0x110, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :nol,
+    [ldr, x16, [sp]],
+    [mov, x0, 0x14d0],
+    [movk, x0, 0x322, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :noin],
+    [str, x0, [sp, 0x10]],
+    [mov, x9, 0xdf24],
+    [movk, x9, 0x10b, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    [ldr, x16, [sp]],
+    [ldr, x0, [sp, 0x10]],
+    [mov, x9, 0xdf30],
+    [movk, x9, 0x10b, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :noin,
+    [ldp, x16, x30, [sp]],
+    [add, sp, sp, 0x20],
+    [mov, x30, 0x9dd8],
+    [movk, x30, 0x117, 16],
+    [add, x30, x16, x30],
+    [ret],
+    :draw,
+    [ldr, x0, [x19, 0x58]],
+    [ret]
+  ]
+# launcher start: no game is running; SetFrameRate body with 60 (the launcher animations are fixed below)
+- type: code
+  name: launcher
+  instructions: [
+    [adrp, x17, $fsR],
+    [mov, w9, 0],
+    [str, w9, [x17, $gameId]],
+    [mov, w1, 60],
+    [mov, x16, 0x2210],
+    [sub, x16, x30, x16],
+    [mov, x9, 0x3c0c],
+    [movk, x9, 0x10c, 16],
+    [add, x9, x16, x9],
+    [br, x9]
+  ]
+# STORM 1 start (ns1::Initialize): switch the game to its 60 FPS mode
+- type: code
+  name: init1
+  instructions: [
+    [stp, x0, x16, [sp, -0x20], "!"],
+    [str, x30, [sp, 0x10]],
+    [adrp, x17, $fsR],
+    [mov, w9, 1],
+    [str, w9, [x17, $gameId]],
+    [mov, x16, 0x4164],
+    [movk, x16, 0x1, 16],
+    [sub, x16, x30, x16],
+    [mov, x0, 0x14d0],
+    [movk, x0, 0x322, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :n],
+    [mov, w1, 60],
+    [mov, x9, 0x3c0c],
+    [movk, x9, 0x10c, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :n,
+    [ldp, x0, x16, [sp]],
+    [ldr, x9, [sp, 0x10]],
+    [add, sp, sp, 0x20],
+    [sub, sp, sp, 0xe0],
+    [stp, x26, x25, [sp, 0x90]],
+    [mov, x30, x16],
+    [br, x9]
+  ]
+# STORM 2 start (ns2::Initialize): switch the game to its 60 FPS mode
+- type: code
+  name: init2
+  instructions: [
+    [stp, x0, x16, [sp, -0x20], "!"],
+    [str, x30, [sp, 0x10]],
+    [adrp, x17, $fsR],
+    [mov, w9, 2],
+    [str, w9, [x17, $gameId]],
+    [mov, x16, 0x1a40],
+    [movk, x16, 0x43, 16],
+    [sub, x16, x30, x16],
+    [mov, x0, 0x14d0],
+    [movk, x0, 0x322, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :n],
+    [mov, w1, 60],
+    [mov, x9, 0x3c0c],
+    [movk, x9, 0x10c, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :n,
+    [ldp, x0, x16, [sp]],
+    [ldr, x9, [sp, 0x10]],
+    [add, sp, sp, 0x20],
+    [sub, sp, sp, 0xe0],
+    [str, x25, [sp, 0x90]],
+    [mov, x30, x16],
+    [br, x9]
+  ]
+# STORM 3 start (ns3::Initialize): switch the game to its 60 FPS mode
+- type: code
+  name: init3
+  instructions: [
+    [stp, x0, x16, [sp, -0x20], "!"],
+    [str, x30, [sp, 0x10]],
+    [adrp, x17, $fsR],
+    [mov, w9, 3],
+    [str, w9, [x17, $gameId]],
+    [mov, x16, 0x3608],
+    [movk, x16, 0x91, 16],
+    [sub, x16, x30, x16],
+    [mov, x0, 0x14d0],
+    [movk, x0, 0x322, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :n],
+    [mov, w1, 60],
+    [mov, x9, 0x3c0c],
+    [movk, x9, 0x10c, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :n,
+    [ldp, x0, x16, [sp]],
+    [ldr, x9, [sp, 0x10]],
+    [add, sp, sp, 0x20],
+    [sub, sp, sp, 0xe0],
+    [stp, x26, x25, [sp, 0x90]],
+    [mov, x30, x16],
+    [br, x9]
+  ]
+# STORM 1 ns1::ccGameRpg::Draw: draw only in the last logic step of a frame (STORM 1 draws inside its logic task)
+- type: code
+  name: drawRpg
+  instructions: [
+    [adrp, x17, $fsR],
+    [ldr, w9, [x17, $fsStep]],
+    [str, w9, [x17, $rpgStamp]],
+    [ldr, w9, [x17, $fsR]],
+    [cbnz, w9, :skip],
+    [mov, x9, x30],
+    [mov, x30, x16],
+    [str, d8, [sp, -0x70], "!"],
+    [stp, x28, x27, [sp, 0x10]],
+    [br, x9],
+    :skip,
+    [mov, x30, x16],
+    [ret]
+  ]
+# STORM 1 ns1::ccGameDuel::MajorProcessDraw: draw only in the last logic step of a frame (STORM 1 draws inside its logic task)
+- type: code
+  name: drawDuel
+  instructions: [
+    [adrp, x17, $fsR],
+    [ldr, w9, [x17, $fsR]],
+    [cbnz, w9, :skip],
+    [mov, x9, x30],
+    [mov, x30, x16],
+    [str, d8, [sp, -0x70], "!"],
+    [stp, x28, x27, [sp, 0x10]],
+    [br, x9],
+    :skip,
+    [mov, x30, x16],
+    [ret]
+  ]
+# STORM 1 ns1::ccGameHugeBtl::MajorProcessDraw: draw only in the last logic step of a frame (STORM 1 draws inside its logic task)
+- type: code
+  name: drawHugeBtl
+  instructions: [
+    [adrp, x17, $fsR],
+    [ldr, w9, [x17, $fsR]],
+    [cbnz, w9, :skip],
+    [mov, x9, x30],
+    [mov, x30, x16],
+    [str, d8, [sp, -0x70], "!"],
+    [stp, x28, x27, [sp, 0x10]],
+    [br, x9],
+    :skip,
+    [mov, x30, x16],
+    [ret]
+  ]
+# STORM 1 ns1::ccGameForestRace::Draw: draw only in the last logic step of a frame (STORM 1 draws inside its logic task)
+- type: code
+  name: drawForestRace
+  instructions: [
+    [adrp, x17, $fsR],
+    [ldr, w9, [x17, $fsR]],
+    [cbnz, w9, :skip],
+    [mov, x9, x30],
+    [mov, x30, x16],
+    [str, d8, [sp, -0x70], "!"],
+    [stp, x28, x27, [sp, 0x10]],
+    [br, x9],
+    :skip,
+    [mov, x30, x16],
+    [ret]
+  ]
+# STORM 1 ns1::ccGameKinoboriRace::Draw: draw only in the last logic step of a frame (STORM 1 draws inside its logic task)
+- type: code
+  name: drawKinoboriRace
+  instructions: [
+    [adrp, x17, $fsR],
+    [ldr, w9, [x17, $fsR]],
+    [cbnz, w9, :skip],
+    [mov, x9, x30],
+    [mov, x30, x16],
+    [str, d8, [sp, -0x60], "!"],
+    [str, x27, [sp, 0x8]],
+    [br, x9],
+    :skip,
+    [mov, x30, x16],
+    [ret]
+  ]
+# STORM 1 ns1::ccSelectCharacter::Draw: draw only in the last logic step of a frame (STORM 1 draws inside its logic task)
+- type: code
+  name: drawSelectChara
+  instructions: [
+    [adrp, x17, $fsR],
+    [ldr, w9, [x17, $fsR]],
+    [cbnz, w9, :skip],
+    [mov, x9, x30],
+    [mov, x30, x16],
+    [stp, x24, x23, [sp, -0x40], "!"],
+    [stp, x22, x21, [sp, 0x10]],
+    [br, x9],
+    :skip,
+    [mov, x30, x16],
+    [ret]
+  ]
+# STORM 1 ns1::ccGameRpg::Init: choose the game's 30 or 60 FPS mode when this game mode starts (free roam: 30 if the last free-roam session ran below 30 FPS in the 60 FPS mode)
+- type: code
+  name: modeRpg
+  instructions: [
+    [stp, x0, x16, [sp, -0x20], "!"],
+    [str, x30, [sp, 0x10]],
+    [adrp, x17, $fsR],
+    [mov, w9, 0],
+    [str, w9, [x17, $mHold]],
+    [ldr, w9, [x17, $rpgN]],
+    [cmp, w9, 600],
+    [b.lo, :keep],
+    [ldr, w10, [x17, $rpgNSlow]],
+    [lsl, w10, w10, 2],
+    [mov, w11, 0],
+    [cmp, w10, w9],
+    [b.ls, :st],
+    [mov, w11, 1],
+    :st,
+    [str, w11, [x17, $rpgSlow]],
+    :keep,
+    [mov, w9, 0],
+    [str, w9, [x17, $rpgN]],
+    [str, w9, [x17, $rpgNSlow]],
+    [mov, w1, 60],
+    [ldr, w9, [x17, $fpsTgt]],
+    [cmp, w9, 30],
+    [b.hi, :t],
+    [mov, w1, 30],
+    [b, :s],
+    :t,
+    [ldr, w9, [x17, $rpgSlow]],
+    [cbz, w9, :s],
+    [mov, w1, 30],
+    :s,
+    [mov, x16, 0x8f4c],
+    [movk, x16, 0x18, 16],
+    [sub, x16, x30, x16],
+    [mov, x0, 0x14d0],
+    [movk, x0, 0x322, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :n],
+    [ldrb, w9, [x0, 0x9f2]],
+    [cmp, w9, w1],
+    [b.eq, :n],
+    [mov, x9, 0x3c0c],
+    [movk, x9, 0x10c, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :n,
+    [ldp, x0, x16, [sp]],
+    [ldr, x9, [sp, 0x10]],
+    [add, sp, sp, 0x20],
+    [sub, sp, sp, 0x110],
+    [str, x28, [sp, 0xd0]],
+    [mov, x30, x16],
+    [br, x9]
+  ]
+# STORM 1 ns1::ccGameDuel::Init: choose the game's 30 or 60 FPS mode when this game mode starts
+- type: code
+  name: modeDuel
+  instructions: [
+    [stp, x0, x16, [sp, -0x20], "!"],
+    [str, x30, [sp, 0x10]],
+    [adrp, x17, $fsR],
+    [mov, w9, 0],
+    [str, w9, [x17, $mHold]],
+    [mov, w1, 60],
+    [ldr, w9, [x17, $fpsTgt]],
+    [cmp, w9, 30],
+    [b.hi, :t],
+    [mov, w1, 30],
+    [b, :s],
+    :t,
+    :s,
+    [mov, x16, 0x7e74],
+    [movk, x16, 0x15, 16],
+    [sub, x16, x30, x16],
+    [mov, x0, 0x14d0],
+    [movk, x0, 0x322, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :n],
+    [ldrb, w9, [x0, 0x9f2]],
+    [cmp, w9, w1],
+    [b.eq, :n],
+    [mov, x9, 0x3c0c],
+    [movk, x9, 0x10c, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :n,
+    [ldp, x0, x16, [sp]],
+    [ldr, x9, [sp, 0x10]],
+    [add, sp, sp, 0x20],
+    [str, x23, [sp, -0x40], "!"],
+    [stp, x22, x21, [sp, 0x10]],
+    [mov, x30, x16],
+    [br, x9]
+  ]
+# STORM 1 ns1::ccGameHugeBtl::Init: choose the game's 30 or 60 FPS mode when this game mode starts
+- type: code
+  name: modeHugeBtl
+  instructions: [
+    [stp, x0, x16, [sp, -0x20], "!"],
+    [str, x30, [sp, 0x10]],
+    [adrp, x17, $fsR],
+    [mov, w9, 0],
+    [str, w9, [x17, $mHold]],
+    [mov, w1, 60],
+    [ldr, w9, [x17, $fpsTgt]],
+    [cmp, w9, 30],
+    [b.hi, :t],
+    [mov, w1, 30],
+    [b, :s],
+    :t,
+    :s,
+    [mov, x16, 0x4414],
+    [movk, x16, 0x17, 16],
+    [sub, x16, x30, x16],
+    [mov, x0, 0x14d0],
+    [movk, x0, 0x322, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :n],
+    [ldrb, w9, [x0, 0x9f2]],
+    [cmp, w9, w1],
+    [b.eq, :n],
+    [mov, x9, 0x3c0c],
+    [movk, x9, 0x10c, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :n,
+    [ldp, x0, x16, [sp]],
+    [ldr, x9, [sp, 0x10]],
+    [add, sp, sp, 0x20],
+    [stp, x22, x21, [sp, -0x30], "!"],
+    [stp, x20, x19, [sp, 0x10]],
+    [mov, x30, x16],
+    [br, x9]
+  ]
+# STORM 1 ns1::ccGameForestRace::Init: choose the game's 30 or 60 FPS mode when this game mode starts
+- type: code
+  name: modeForestRace
+  instructions: [
+    [stp, x0, x16, [sp, -0x20], "!"],
+    [str, x30, [sp, 0x10]],
+    [adrp, x17, $fsR],
+    [mov, w9, 0],
+    [str, w9, [x17, $mHold]],
+    [mov, w1, 60],
+    [ldr, w9, [x17, $fpsTgt]],
+    [cmp, w9, 30],
+    [b.hi, :t],
+    [mov, w1, 30],
+    [b, :s],
+    :t,
+    :s,
+    [mov, x16, 0xed30],
+    [movk, x16, 0x16, 16],
+    [sub, x16, x30, x16],
+    [mov, x0, 0x14d0],
+    [movk, x0, 0x322, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :n],
+    [ldrb, w9, [x0, 0x9f2]],
+    [cmp, w9, w1],
+    [b.eq, :n],
+    [mov, x9, 0x3c0c],
+    [movk, x9, 0x10c, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :n,
+    [ldp, x0, x16, [sp]],
+    [ldr, x9, [sp, 0x10]],
+    [add, sp, sp, 0x20],
+    [str, x21, [sp, -0x30], "!"],
+    [stp, x20, x19, [sp, 0x10]],
+    [mov, x30, x16],
+    [br, x9]
+  ]
+# STORM 1 ns1::ccGameKinoboriRace::Init: choose the game's 30 or 60 FPS mode when this game mode starts
+- type: code
+  name: modeKinoboriRace
+  instructions: [
+    [stp, x0, x16, [sp, -0x20], "!"],
+    [str, x30, [sp, 0x10]],
+    [adrp, x17, $fsR],
+    [mov, w9, 0],
+    [str, w9, [x17, $mHold]],
+    [mov, w1, 60],
+    [ldr, w9, [x17, $fpsTgt]],
+    [cmp, w9, 30],
+    [b.hi, :t],
+    [mov, w1, 30],
+    [b, :s],
+    :t,
+    :s,
+    [mov, x16, 0xbfe8],
+    [movk, x16, 0x17, 16],
+    [sub, x16, x30, x16],
+    [mov, x0, 0x14d0],
+    [movk, x0, 0x322, 16],
+    [add, x0, x16, x0],
+    [ldr, x0, [x0]],
+    [ldr, x0, [x0]],
+    [cbz, x0, :n],
+    [ldrb, w9, [x0, 0x9f2]],
+    [cmp, w9, w1],
+    [b.eq, :n],
+    [mov, x9, 0x3c0c],
+    [movk, x9, 0x10c, 16],
+    [add, x9, x16, x9],
+    [blr, x9],
+    :n,
+    [ldp, x0, x16, [sp]],
+    [ldr, x9, [sp, 0x10]],
+    [add, sp, sp, 0x20],
+    [str, x21, [sp, -0x30], "!"],
+    [stp, x20, x19, [sp, 0x10]],
+    [mov, x30, x16],
+    [br, x9]
+  ]
+# UI text (ccUiFont / STORM 3 ccUiFontApp): its command list is rebuilt every logic step and cleared only after it was drawn; with several logic steps per frame the text was drawn 2-4 times (bolder, flickering at 35-55 FPS). Clear it also when the last commands were added in an earlier logic step (flag = 0x8000xxxx, xxxx = logic step)
+- type: code
+  name: uiFontNeedClear
+  instructions: [
+    [adrp, x17, $fsR],
+    [ldr, w16, [x17, $fsStep]],
+    [movk, w16, 0x8000, 16],
+    [ldr, w8, [x19, 0xb0]],
+    [cmp, w8, 1],
+    [b.eq, :yes],
+    [tbz, w8, 31, :no],
+    [cmp, w8, w16],
+    [b.eq, :no],
+    :yes,
+    [mov, w8, 1],
+    [ret],
+    :no,
+    [str, w16, [x19, 0xb0]],
+    [mov, w8, 0],
+    [ret]
+  ]
+# UI text: after clearing, remember the logic step instead of 0
+- type: code
+  name: uiFontStamp
+  instructions: [
+    [adrp, x17, $fsR],
+    [ldr, w16, [x17, $fsStep]],
+    [movk, w16, 0x8000, 16],
+    [str, w16, [x19, 0xb0]],
+    [ret]
+  ]
+# STORM 2 UI text (ccUiFontNS2, flag at +0xC0): same as uiFontNeedClear
+- type: code
+  name: uiFontNeedClearNS2
+  instructions: [
+    [adrp, x17, $fsR],
+    [ldr, w16, [x17, $fsStep]],
+    [movk, w16, 0x8000, 16],
+    [ldr, w8, [x19, 0xc0]],
+    [cmp, w8, 1],
+    [b.eq, :yes],
+    [tbz, w8, 31, :no],
+    [cmp, w8, w16],
+    [b.eq, :no],
+    :yes,
+    [mov, w8, 1],
+    [ret],
+    :no,
+    [str, w16, [x19, 0xc0]],
+    [mov, w8, 0],
+    [ret]
+  ]
+# STORM 2 UI text: same as uiFontStamp
+- type: code
+  name: uiFontStampNS2
+  instructions: [
+    [adrp, x17, $fsR],
+    [ldr, w16, [x17, $fsStep]],
+    [movk, w16, 0x8000, 16],
+    [str, w16, [x19, 0xc0]],
+    [ret]
+  ]
+
+MASTER_WRITE:
+# Framework::MainLoop frame start (was BL to the empty GameActor::Base::_UpdateSystem)
+- type: asm_a64
+  main_offset: 0x1179DD4
+  instructions: [[bl, _fsStart()]]
+# Framework::MainLoop after logic tasks (was LDR X0, [X19, 0x58])
+- type: asm_a64
+  main_offset: 0x1179E20
+  instructions: [[bl, _afterLogic()]]
+# nuccSys::SetFrameRate wrapper: the games' own FPS mode requests always use the 60 FPS mode; only the STORM 1 mode choice (ns1 game mode Init hooks below) can select 30 (was AND W1, W1, 0xFF)
+- type: asm_a64
+  main_offset: 0x10BF858
+  instructions: [[mov, w1, 60]]
+# launcher start (was BL to the SetFrameRate wrapper)
+- type: asm_a64
+  main_offset: 0x220C
+  instructions: [[bl, _launcher()]]
+# STORM 1: ns1::Initialize (was SUB SP, SP, 0xE0; STP X26, X25, [SP, 0x90])
+- type: asm_a64
+  main_offset: 0x1415C
+  instructions: [[mov, x16, x30], [bl, _init1()]]
+# STORM 2: ns2::Initialize (was SUB SP, SP, 0xE0; STR X25, [SP, 0x90])
+- type: asm_a64
+  main_offset: 0x431A38
+  instructions: [[mov, x16, x30], [bl, _init2()]]
+# STORM 3: ns3::Initialize (was SUB SP, SP, 0xE0; STP X26, X25, [SP, 0x90])
+- type: asm_a64
+  main_offset: 0x913600
+  instructions: [[mov, x16, x30], [bl, _init3()]]
+# STORM 1 ns1::ccGameRpg::Draw (was STR D8, [SP, -0x70]!; STP X28, X27, [SP, 0x10])
+- type: asm_a64
+  main_offset: 0x18A410
+  instructions: [[mov, x16, x30], [bl, _drawRpg()]]
+# STORM 1 ns1::ccGameDuel::MajorProcessDraw (was STR D8, [SP, -0x70]!; STP X28, X27, [SP, 0x10])
+- type: asm_a64
+  main_offset: 0x15DE84
+  instructions: [[mov, x16, x30], [bl, _drawDuel()]]
+# STORM 1 ns1::ccGameHugeBtl::MajorProcessDraw (was STR D8, [SP, -0x70]!; STP X28, X27, [SP, 0x10])
+- type: asm_a64
+  main_offset: 0x176980
+  instructions: [[mov, x16, x30], [bl, _drawHugeBtl()]]
+# STORM 1 ns1::ccGameForestRace::Draw (was STR D8, [SP, -0x70]!; STP X28, X27, [SP, 0x10])
+- type: asm_a64
+  main_offset: 0x171194
+  instructions: [[mov, x16, x30], [bl, _drawForestRace()]]
+# STORM 1 ns1::ccGameKinoboriRace::Draw (was STR D8, [SP, -0x60]!; STR X27, [SP, 0x8])
+- type: asm_a64
+  main_offset: 0x17D1EC
+  instructions: [[mov, x16, x30], [bl, _drawKinoboriRace()]]
+# STORM 1 ns1::ccSelectCharacter::Draw (was STP X24, X23, [SP, -0x40]!; STP X22, X21, [SP, 0x10])
+- type: asm_a64
+  main_offset: 0x309CCC
+  instructions: [[mov, x16, x30], [bl, _drawSelectChara()]]
+# STORM 1 ns1::ccGameRpg::Init (was SUB SP, SP, 0x110; STR X28, [SP, 0xD0])
+- type: asm_a64
+  main_offset: 0x188F44
+  instructions: [[mov, x16, x30], [bl, _modeRpg()]]
+# STORM 1 ns1::ccGameDuel::Init (was STR X23, [SP, -0x40]!; STP X22, X21, [SP, 0x10])
+- type: asm_a64
+  main_offset: 0x157E6C
+  instructions: [[mov, x16, x30], [bl, _modeDuel()]]
+# STORM 1 ns1::ccGameHugeBtl::Init (was STP X22, X21, [SP, -0x30]!; STP X20, X19, [SP, 0x10])
+- type: asm_a64
+  main_offset: 0x17440C
+  instructions: [[mov, x16, x30], [bl, _modeHugeBtl()]]
+# STORM 1 ns1::ccGameForestRace::Init (was STR X21, [SP, -0x30]!; STP X20, X19, [SP, 0x10])
+- type: asm_a64
+  main_offset: 0x16ED28
+  instructions: [[mov, x16, x30], [bl, _modeForestRace()]]
+# STORM 1 ns1::ccGameKinoboriRace::Init (was STR X21, [SP, -0x30]!; STP X20, X19, [SP, 0x10])
+- type: asm_a64
+  main_offset: 0x17BFE0
+  instructions: [[mov, x16, x30], [bl, _modeKinoboriRace()]]
+# ccUiFont::AddCommand: clear check (was LDR W8, [X19, 0xB0])
+- type: asm_a64
+  main_offset: 0x11E936C
+  instructions: [[bl, _uiFontNeedClear()]]
+# ccUiFont::AddCommand: after clear (was STR WZR, [X19, 0xB0])
+- type: asm_a64
+  main_offset: 0x11E93A0
+  instructions: [[bl, _uiFontStamp()]]
+# ccUiFont::CtrlInternal: clear check (was LDR W8, [X19, 0xB0])
+- type: asm_a64
+  main_offset: 0x11ECABC
+  instructions: [[bl, _uiFontNeedClear()]]
+# ccUiFont::CtrlInternal: after clear (was STR WZR, [X19, 0xB0])
+- type: asm_a64
+  main_offset: 0x11ECAF0
+  instructions: [[bl, _uiFontStamp()]]
+# ns3::ccUiFontApp::AddCommand: clear check (was LDR W8, [X19, 0xB0])
+- type: asm_a64
+  main_offset: 0xCB0D9C
+  instructions: [[bl, _uiFontNeedClear()]]
+# ns3::ccUiFontApp::AddCommand: after clear (was STR WZR, [X19, 0xB0])
+- type: asm_a64
+  main_offset: 0xCB0DD0
+  instructions: [[bl, _uiFontStamp()]]
+# ns3::ccUiFontApp::CtrlInternal: clear check (was LDR W8, [X19, 0xB0])
+- type: asm_a64
+  main_offset: 0xCB462C
+  instructions: [[bl, _uiFontNeedClear()]]
+# ns3::ccUiFontApp::CtrlInternal: after clear (was STR WZR, [X19, 0xB0])
+- type: asm_a64
+  main_offset: 0xCB4660
+  instructions: [[bl, _uiFontStamp()]]
+# ccUiFontNS2::AddCommand (STORM 2): clear check (was LDR W8, [X19, 0xC0])
+- type: asm_a64
+  main_offset: 0x48E378
+  instructions: [[bl, _uiFontNeedClearNS2()]]
+# ccUiFontNS2::AddCommand (STORM 2): after clear (was STR WZR, [X19, 0xC0])
+- type: asm_a64
+  main_offset: 0x48E3B0
+  instructions: [[bl, _uiFontStampNS2()]]
+# ccUiFontNS2::CtrlInternal (STORM 2): clear check (was LDR W8, [X19, 0xC0])
+- type: asm_a64
+  main_offset: 0x491CF4
+  instructions: [[bl, _uiFontNeedClearNS2()]]
+# ccUiFontNS2::CtrlInternal (STORM 2): after clear (was STR WZR, [X19, 0xC0])
+- type: asm_a64
+  main_offset: 0x491D2C
+  instructions: [[bl, _uiFontStampNS2()]]
+# launcher (game selection screen, ns123::ccSceneTitle): animation table frames are 30 FPS frames, but were converted with the runtime FPS (pictures and selection animations broke in the 60 FPS mode); per-step time stays FPS based
+- type: asm_a64
+  main_offset: 0x7198
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x7784
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x7BC0
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x7C70
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8124
+  instructions: [[mov, w9, 30]]
+- type: asm_a64
+  main_offset: 0x8530
+  instructions: [[mov, w14, 30]]
+- type: asm_a64
+  main_offset: 0x8594
+  instructions: [[mov, w10, 30]]
+# STORM 1 game speed factor 30/fps -> 1.0 (speeds are already divided by the FPS; was FDIV S0, S1, S0)
+- type: asm_a64
+  main_offset: 0x1420EC
+  instructions: [[fmov, s0, 1.0]]
+# engine bug: VSync counter could skip the signal when the present interval gets shorter (freeze when the FPS mode changes); was B.HS / B.NE, now: no signal while the interval is 0, signal when the counter reaches or passes it
+- type: asm_a64
+  main_offset: 0x105F68C
+  instructions: [[cbz, w9, +28], [add, w23, w23, 1], [cmp, w23, w9], [b.lo, +16]]

@@ -85,8 +85,10 @@
    * Other:
       * [FPSLocker Patches](https://github.com/masagrator/FPSLocker-Warehouse) - The FPSLocker patch pack lets you update all patches at once instead of downloading them one by one through the FPSLocker overlay. UltraNX always has the latest patches by default, so it's enough to update the CFW in a timely manner.
       * [DVR Patches](https://github.com/exelix11/dvr-patches) - SysDVR patches, work without the system module, activating background recording in games where it is initially prohibited.
+      * [LANywhere](https://github.com/SEc-123/lanywhere-selfhost) - An alternative to LAN Play, but without the need to run a host on a PC.
       * [Mod Alchemist](https://github.com/ppkantorski/Alchemist) - A package for downloading, installing, and managing mods for games.
-      * [sys-ftpd](https://github.com/ELY3M/sys-ftpd) - FTP server running in background.
+      * [sys-ftpd](https://github.com/ELY3M/sys-ftpd) - FTP server running in background. Older version: more stable, but consumes more memory.
+      * [sys-ftp](https://github.com/ppkantorski/ftpsrv) - FTP server running in background. Newer version: consumes significantly less memory, but frequently drops the connection during periods of inactivity.
 
 
 

@@ -1,0 +1,32 @@
+# Frostpunk 1.0.1
+# BID: E258A7371ECD2A27
+
+DECLARATIONS:
+  -
+    type: variable
+    value_type: float
+    name: fpsLock
+    default_value: 33.333333333
+    evaluate: FRAMETIME_TARGET
+MASTER_WRITE:
+  # FPS Lock
+  ## REF: LiquidRenderer::_OnProcessMessage, 0x42055555
+  -
+    type: asm_a64
+    main_offset: 0x760C78
+    instructions: [
+      [adrp, x8, $fpsLock],
+      [ldr, w8, [x8, $fpsLock]]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x760C94
+    instructions: [
+      [adrp, x9, $fpsLock],
+      [ldr, s9, [x9, $fpsLock]],
+      [nop]
+    ]
+ALL_FPS:
+  -
+    type: block
+    what: timing

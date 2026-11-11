@@ -39,7 +39,7 @@ DECLARATIONS:
 - type: variable
   name: mvStamp
   value_type: uint32
-  default_value: 4026531840
+  default_value: 0xF0000000
 - type: variable
   name: mvForced
   value_type: uint32

@@ -1,0 +1,51 @@
+# Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles 2 2.01
+# BID: 23F5E6C535C45844
+
+MASTER_WRITE:
+  # Gravity uses fixed value, now it's scaled relative to frametime
+  ## REF: 0A 66 81 52 01 10 2E 1E, start at BL above result
+  -
+    type: asm_a64
+    main_offset: 0x580AFB0
+    instructions: [
+      [adrp, x8, 0xA68E000],
+      [ldr, d0, [x8, 0x850]], # ref: 0x3FA1111111111111, second result
+      [fcvt, s0, d0],
+      [fmov, s1, 30.0],
+      [fmul, s8, s0, s1],
+      [b, 0x580B064] # BL below "FCSEL S8, S1, S0, LT", ~40 instructions lower
+    ]
+  ## REF: 04 09 23 1E 23 0A 24 1E, both results
+  -
+    type: asm_a64
+    main_offset: 0x5C6371C
+    instructions: [
+      [fmul, s4, s6, s3]
+    ]
+  -
+    type: asm_a64
+    main_offset: 0x5C6375C
+    instructions: [
+      [fmul, s4, s6, s3]
+    ]
+
+ALL_FPS:
+  # bUseFixedFrameRate
+  -
+    type: write
+    address: [MAIN, 0xC97B080, 0xB1C]
+    address_unsafe: true
+    value_type: uint32
+    value: 7
+  # t.MaxFPS
+  -
+    type: evaluate_write
+    address: [MAIN, 0xC973468, 0]
+    value_type: float
+    value: [FPS_LOCK_TARGET, FPS_LOCK_TARGET]
+  # r.VSync
+  -
+    type: write
+    address: [MAIN, 0xB967330, 0]
+    value_type: uint32
+    value: [0, 0]
