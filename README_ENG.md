@@ -118,7 +118,7 @@ Listed below are the licenses of those programs that have been modified specific
 If you like the project and want to support it with a small donation, I would be very grateful.
 I currently have no other source of income, so any financial support is especially valuable.
 ```
-TON:  UQC9p9jHJHLVnm4uXJDoH4GQ76golzgKnG-bEExO2QsotCV5
+GRAM: UQC9p9jHJHLVnm4uXJDoH4GQ76golzgKnG-bEExO2QsotCV5
 BTC:  bc1q407f2fv3nsdy86y6njfx8updhxfmuwx49erhal
 USDT TRC20:  TUZ5szAmRsnvBuC4rFB8RaAoCbN6Ucy4sL
 ```

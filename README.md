@@ -130,7 +130,7 @@
 Т-Банк:  2200700170486970
 Сбер:    2202200513345833
 
-TON:  UQC9p9jHJHLVnm4uXJDoH4GQ76golzgKnG-bEExO2QsotCV5
+GRAM: UQC9p9jHJHLVnm4uXJDoH4GQ76golzgKnG-bEExO2QsotCV5
 BTC:  bc1q407f2fv3nsdy86y6njfx8updhxfmuwx49erhal
 USDT TRC20:  TUZ5szAmRsnvBuC4rFB8RaAoCbN6Ucy4sL
 ```           
